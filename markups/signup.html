@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Signup
+    </title>
+    <link rel = 'stylesheet' type = 'text/css' href = '../styles/bootstrap-css/bootstrap.min.css' />
+    <link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css' />
+  </head>
+  <body>
+    <div>
+      <h1>
+        Event Manager
+      </h1><br />
+    </div>
+    <div  id = 'signup_form'>
+      <form method = 'POST' action = 'route/to/singup/controller'>
+        <h4>
+         Signup  with Event Manager and Allow us manage your upcoming events
+        </h4>
+        <label for = 'firstname'>Firstname</label>
+        <input type = 'text'  id = 'firstname' name = 'firstname' /><span class = 'requiredFields'>*</span><br />
+        <label for = 'lastname'>Lastname</label>
+        <input type = 'text' id = 'lastname' name = 'lastname' /><span class = 'requiredFields'>*</span><br />
+        <label for = "profile-photo">Add Photo</label>
+        <input type = 'file'  id = 'profile-photo' name = 'profile-photo' /><br />
+        <label for = 'email-address'>Email</label>
+        <input type = 'text' id = 'email-address' name = 'email' placeholder = 'you@example.com' /><span class = 'requiredFields'>*</span><br/>
+        <label for = 'user-name'>Username</label>
+        <input type = 'text'  id = 'username' name = 'username' placeholder = 'Username' /><span class = 'requiredFields'>*</span><br />
+        <label for = "passwd">Password</label>
+        <input type = 'password'   id= 'passwd1' name = 'password1' placeholder = 'Password' /><span class = 'requiredFields'>*</span><br />
+        <label for = 'passwd2'>Confirm Pasword</label>
+        <input type = 'password' id = 'passwd2' name = 'confirmpassword' placeholder = 'Confirm Password' /><span class = 'requiredFields'>*</span><br />
+        <label for = 'security-question'>Security Question</label>
+        <select name = 'securityQuestion' id = 'security-question'>
+          <option>
+            What is the name of your first school?
+          </option>
+          <option>
+            How old are you when you got married?
+          </option>
+          <option>
+            What is the brand name of your first car?
+          </option>
+          <option>
+            What is the name of your favorite teacher?
+          </option>
+        </select><span class = 'requiredFields'>*</span><br />
+        <label for = 'security-answer'>Answer</label>
+        <input type = 'text' id = 'security-answer' name = 'security-answer' /><span class = 'requiredFields'>*</span><br />
+        <p>Agree to our <a href = 'terms-of-use.html'>terms</a> of use</p>
+        <span class = 'requiredFields'>*</span>
+        <input type = 'radio' id = 'agree-to-use' name = 'agreement' value = 'Agree' />
+        <label for = 'agree-to-use'>Agree</label><br />
+        <input type = 'radio' id = 'disagree-to-use' name = 'agreement' value = 'disagree' />
+        <label for = 'disagree-to-use'>Disagree</label><br />
+        <input type = 'submit' id= 'register' name = 'signup' value = 'Submit' />
+      </form><br />
+      <p>I already have an <a href = 'signin.html'> Account</a></p>
+    </div>
+    <script src = 'path/to/script' >
+    </script>
+  </body>
+</html>
