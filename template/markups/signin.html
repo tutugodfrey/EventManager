@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>
+  		Login
+  	</title>
+     <link rel = 'stylesheet' type = 'text/css' href = '../styles/bootstrap-css/bootstrap.min.css' />
+  	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css'/>
+  </head>
+  <body>
+    <div >
+      <h1>
+        Event Manager
+      </h1>
+    </div>
+    <div>
+      <h1>
+        Login
+      </h1>
+  	  <form method = 'POST' action = 'route/to/login/controller'>
+        <label for = 'username'>Username</label><br / >
+        <input type = 'text' id = 'username' name = 'username' placeholder = 'Username/email' />
+          <span class = 'requiredFields'>*</span><br />
+        <label for = 'password'>Password</label><br / >
+        <input type = 'password' id = 'password' name = 'password' placeholder = 'Password' />
+            <span class = 'requiredFields'>*</span><br />
+        <input type = 'submit' name = 'signin' value = 'SignIn' />
+  	  </form>
+    	<p>I do no have an <a href = 'signup.html'> SignUp</a></p><br />
+      <a href = 'forget-password.html'>Forgot password?</a>
+      <p>I want to <a href = 'change-password.html'> Change password</a></p>
+    </div>
+  	<script src = 'path/to/script'>
+  	</script>
+  </body>
+</html>
