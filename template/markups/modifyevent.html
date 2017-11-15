@@ -65,11 +65,22 @@
       Modify Events
     </h1>
       <form id ='add-event-form' method = 'POST' action = 'route/to/addcenter/controller'>
+      <input type = 'hidden' value = '3' name = 'eventId' />
+      <label for = 'event-type'>Event EventType</label><br / >
+      <select id = 'event-type' name = 'eventType'>
+      </select>
       <label for = 'location'>Location</label><br / >
       <select id = 'location' name = 'location'>
       </select><br />
       <label for = 'location'>Event Centers</label><br / >
       <select id = 'location' name = 'centerName'>
+      </select>
+      <label for = 'event-date'>Date</label><br / >
+      <select id = 'event-day' name = 'eventDay'>
+      </select>
+      <select id = 'event-month' name = 'eventMonth'>
+      </select>
+      <select id = 'event-year' name = 'eventYear'>
       </select>
       <legend> Facilities</legend>
       <fieldset>
