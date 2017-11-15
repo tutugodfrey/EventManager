@@ -1,0 +1,33 @@
+    <!DOCTYPE html>
+<html>
+  <head>
+  	<title>
+  		Add Event
+  	</title>
+    <link rel = 'stylesheet' type = 'text/css' href = '../styles/bootstrap-css/bootstrap.min.css' />
+  	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css' />
+  </head>
+  <body>
+    <div class = 'header-div'>
+      <h1>
+        EventManager
+      </h1>
+    </div>
+  <div class = 'content-area'>
+    <h1>
+      Submit Request for an Event
+    </h1>
+  	<form id ='add-event-form' method = 'POST' action = 'route/to/addcenter/controller'>
+      <label for = 'center-name'>Name</label><br / >
+  	  <input type = 'text' id = centerName name = 'centerName' placeholder = 'name' /><br />
+      <label for = 'location'>Location</label><br / >
+      <select id = 'location' name = 'location'>
+      </select>
+  	  <input type = 'text' id = 'preferre-location' name = 'location' placeholder = 'location' /><br />
+      <input type = 'submit' name = 'addCenter' value = 'Add Center' />
+  	</form>
+    </div>
+  	<script src = 'path/to/script'>
+  	</script>
+  </body>
+</html>

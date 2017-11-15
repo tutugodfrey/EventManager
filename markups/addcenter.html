@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>
+  		Add Event Center
+  	</title>
+    <link rel = 'stylesheet' type = 'text/css' href = '../styles/bootstrap-css/bootstrap.min.css' />
+  	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css' />
+  </head>
+  <body>
+    <div class 'body-div'>
+      <h1>
+        EventManager
+      </h1>
+    </div>
+  <div class = 'form-div' >
+    <h1>
+      Add New Event Center
+    </h1>
+  	<form id ='add-center-form' method = 'POST' action = 'route/to/addcenter/controller'>
+      <label for = 'center-name'>Name</label><br / >
+      <input type = 'text' id = 'center-name' name = 'centerName' placeholder = 'name' /><br />
+      <label for = 'sitting-capacity'>Sitting Capacity</label><br / >
+  		<input type = 'text' id = 'sitting-capacity' name = 'sittingCapacity' /><br />
+      <label for = 'price'>price</label><br / >
+      <input type = 'text' id = 'price' name = 'Price' /><br />
+      <select id = 'location' name = 'location'>
+      </select>
+      <legend> Facilities</legend>
+      <fieldset>
+        <input type = 'checkbox' id = 'aircondition' class = 'centerfacilities' value = 'Air Condition' name = 'facilities' />
+        <label for = 'aircondition' > Air Condition </label><br />
+        <input type = 'checkbox' id = 'fans' class = 'centerfacilities' value = 'fans' name = 'facilities' />
+        <label for = 'fans' >Fan </label><br />
+        <input type = 'checkbox' id = 'catering' class = 'centerfacilities' value = 'catering' name = 'facilities' />
+        <label for = 'catering' >Catering</label><br />
+        <input type = 'checkbox' id = 'decoration' class = 'centerfacilities' value = 'decoration' name = 'facilities' />
+        <label for = 'decoration' >Decoration </label><br />
+        <input type = 'checkbox' id = 'projector' class = 'centerfacilities' value = 'projector' name = 'facilities' />
+        <label for = 'projector' >Projector</label><br />
+        <input type = 'checkbox' id = 'lodging' class = 'centerfacilities' value = 'lodging' name = 'facilities' />
+        <label for = 'lodging' >Lodging</label><br />
+      </fieldset>
+  	</form>
+    </div>
+  	<script src = 'path/to/script'>
+  	</script>
+  </body>
+</html>
