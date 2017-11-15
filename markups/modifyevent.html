@@ -64,7 +64,7 @@
     <h1>
       Modify Events
     </h1>
-      <form id ='add-event-form' method = 'POST' action = 'route/to/addcenter/controller'>
+      <form id ='add-event-form' method = 'PUT' action = 'route/to/addcenter/controller'>
       <input type = 'hidden' value = '3' name = 'eventId' />
       <label for = 'event-type'>Event EventType</label><br / >
       <select id = 'event-type' name = 'eventType'>
@@ -97,6 +97,7 @@
         <input type = 'checkbox' id = 'lodging' class = 'centerfacilities' value = 'lodging' name = 'facilities' />
         <label for = 'lodging' >Lodging</label><br />
       </fieldset>
+      <input type = 'submit' id= 'modify-event' name = 'modifyEvent' value = 'Submit' />
   	</form>
     </div>
     <div id = 'footer-div'>

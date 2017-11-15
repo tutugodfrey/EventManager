@@ -1,0 +1,109 @@
+    <!DOCTYPE html>
+<html>
+  <head>
+  	<title>
+  		Events
+  	</title>
+    <link rel = 'stylesheet' type = 'text/css' href = '../styles/bootstrap-css/bootstrap.min.css' />
+  	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css' />
+  </head>
+  <body>
+    <div id = 'header-div' >
+      <ul id = 'main-menu'>
+        <li>
+          <a href = './addcenter.html' >
+            Event Centers
+          </a>
+        </li>
+        <li>
+          <a href = './eventcenters.html' >
+            View center details
+          </a>
+        </li>
+        <li>
+          <a href = 'contactus.html' >
+            Contact Us
+          </a>
+        </li>
+      </ul>
+      <ul id = 'sub-menu'>
+        <li>
+          <a>
+            signup
+          </a>
+        </li>
+        <li>
+          <a>
+            logout
+          </a>
+        </li>
+      </ul>
+      <h1>
+        EventManager
+      </h1><br />
+      <a href = 'your-profile.html'>
+        <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
+      </a>
+      <a id = 'signout' href = '' >
+        signout
+      </a>
+    </div>
+  <div class = 'content-area'>
+    <h1>
+      These are the Events You add so far
+      <h3> Select a center to view details</h3>
+    </h1>
+      <form id ='event-centers' method = 'POST' action = 'route/to/addcenter/controller' >
+        <dl class = 'events-list'>
+          <dt>
+            Kft event Center
+          </dt>
+          <dd>
+            Lagos
+          </dd>
+          <input type = 'checkbox' class = 'eventitems' value = '1' name = 'eventId' />
+        </dl>
+        <dl class = 'events-list'>
+          <dt>
+            D' Cubicle Event Center
+          </dt>
+          <dd>
+            Lagos
+          </dd>
+          <input type = 'checkbox' class = 'eventitems' value = '2' name = 'eventId' />
+        </dl>
+        <dl class = 'events-list'>
+          <dt>
+            D' Cubicle Event Center
+          </dt>
+          <dd>
+            Lagos
+          </dd>
+          <input type = 'checkbox' class = 'eventitems' value = '3' name = 'eventId' />
+        </dl>
+      <input type = 'submit' id= 'view-detail' name = 'viewDetail' value = 'View Details' />
+  	</form>
+    </div>
+    <div id = 'footer-div'>
+      <ul>
+        <li>
+          <a>
+            Contact us
+          </a>
+        </li>
+        <li>
+          <a>
+            About us
+          </a>
+        </li>
+        <li>
+          <a>
+            Terms of use
+          </a>
+        </li>
+      </ul>
+    </div>
+  	<script src = 'path/to/script'>
+  	</script>
+  </body>
+</html>
