@@ -65,6 +65,9 @@
       Submit Request for an Event
     </h1>
       <form id ='add-event-form' method = 'POST' action = 'route/to/addcenter/controller'>
+      <label for = 'event-name'>Event Name</label><br / >
+      <select id = 'event-name' name = 'eventName'>
+      </select><br />
       <label for = 'location'>Location</label><br / >
       <select id = 'location' name = 'location'>
       </select><br />
@@ -86,6 +89,7 @@
         <input type = 'checkbox' id = 'lodging' class = 'centerfacilities' value = 'lodging' name = 'facilities' />
         <label for = 'lodging' >Lodging</label><br />
       </fieldset>
+      <input type = 'submit' id= 'signup' name = 'signup' value = 'Submit' />
   	</form>
     </div>
     <div id = 'footer-div'>
