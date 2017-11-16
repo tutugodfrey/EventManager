@@ -37,18 +37,22 @@
             logout
           </a>
         </li>
+        <li>
+          <a href = 'your-profile.html'>
+            <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
+          </a>
+        </li>
+        <li>
+          <a id = 'signout' href = '' >
+            signout
+          </a>
+        </li>
       </ul>
       <h1>
         EventManager
-      </h1><br />
-      <a href = 'your-profile.html'>
-        <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
-      </a>
-      <a id = 'signout' href = '' >
-        signout
-      </a>
-    </div>
-  <div class = 'content-area' >
+    </h1><br />
+  </div>
+  <div id = 'body-div' class = 'content-area' >
     <h1>
       Add New Event Center
     </h1>
@@ -59,6 +63,7 @@
   		<input type = 'text' id = 'sitting-capacity' name = 'sittingCapacity' /><br />
       <label for = 'price'>price</label><br / >
       <input type = 'text' id = 'price' name = 'Price' /><br />
+      <label for = 'location'>Location</label><br / >
       <select id = 'location' name = 'location'>
       </select>
       <legend> Facilities</legend>
@@ -94,10 +99,6 @@
         <li>
           <a>
             Terms of use
-          </a>
-        </li>
-        <li>
-          <a>
           </a>
         </li>
       </ul>
