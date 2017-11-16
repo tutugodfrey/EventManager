@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset = 'UTF-8'/>
+    <meta http-equiv = 'X--Compatible' content = 'IE=edge' />
+    <meta name = 'viewport' content= 'width= device-width, initial-scale =1' />
   	<title>
   		Login
   	</title>
-     <link rel = 'stylesheet' type = 'text/css' href = '../styles/bootstrap-css/bootstrap.min.css' />
+     <link rel = 'stylesheet' type = 'text/css' href = '../styles/css/bootstrap.min.css' />
   	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css'/>
   </head>
   <body>
-    <div id = 'header-div'>
-      <h1>
-        Event Manager
-      </h1>
-    </div>
-    <div id = 'body-div'>
-      <h1>
-        Login
-      </h1>
-  	  <form method = 'POST' action = 'route/to/login/controller'>
-        <label for = 'username'>Username</label><br / >
-        <input type = 'text' id = 'username' name = 'username' placeholder = 'Username/email' />
-          <span class = 'requiredFields'>*</span><br />
-        <label for = 'password'>Password</label><br / >
-        <input type = 'password' id = 'password' name = 'password' placeholder = 'Password' />
+    <div class = 'container'>
+      <div id = 'header-div' class = 'page-header'>
+        <h1>
+          Event Manager
+        </h1>
+      </div>
+      <div id = 'body-div'>
+        <h1>
+          Login
+        </h1>
+        <form method = 'POST' action = 'route/to/login/controller'>
+          <label for = 'username'>Username</label><br / >
+          <input type = 'text' id = 'username' name = 'username' placeholder = 'Username/email' />
             <span class = 'requiredFields'>*</span><br />
-        <input type = 'submit' name = 'signin' value = 'SignIn' />
-  	  </form>
-    	<p>I do no have an <a href = 'signup.html'> SignUp</a></p><br />
-      <a href = 'forget-password.html'>Forgot password?</a>
-      <p>I want to <a href = 'change-password.html'> Change password</a></p>
-    </div>
-    <div id = 'footer-div'>
-      <li>
-          <a>
-            Contact us
-          </a>
-        </li>
+          <label for = 'password'>Password</label><br / >
+          <input type = 'password' id = 'password' name = 'password' placeholder = 'Password' />
+              <span class = 'requiredFields'>*</span><br />
+          <input type = 'submit' name = 'signin' value = 'SignIn' />
+        </form>
+        <p>I do no have an <a href = 'signup.html'> SignUp</a></p><br />
+        <a href = 'forget-password.html'>Forgot password?</a>
+        <p>I want to <a href = 'change-password.html'> Change password</a></p>
+      </div>
+      <div id = 'footer-div'>
         <li>
-          <a>
-            About us
-          </a>
-        </li>
-        <li>
-          <a>
-            Terms of use
-          </a>
-        </li>
+            <a>
+              Contact us
+            </a>
+          </li>
+          <li>
+            <a>
+              About us
+            </a>
+          </li>
+          <li>
+            <a>
+              Terms of use
+            </a>
+          </li>
+      </div>
     </div>
   	<script src = 'path/to/script'>
   	</script>

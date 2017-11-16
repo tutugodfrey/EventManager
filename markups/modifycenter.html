@@ -1,107 +1,112 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset = 'UTF-8'/>
+    <meta http-equiv = 'X--Compatible' content = 'IE=edge' />
+    <meta name = 'viewport' content= 'width= device-width, initial-scale =1' />
   	<title>
   		Modify Event Center
   	</title>
-    <link rel = 'stylesheet' type = 'text/css' href = '../styles/bootstrap-css/bootstrap.min.css' />
+    <link rel = 'stylesheet' type = 'text/css' href = '../styles/css/bootstrap.min.css' />
   	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css' />
   </head>
   <body>
-    <div id = 'header-div' >
-      <ul id = 'main-menu'>
-        <li>
-          <a href = './addcenter.html' >
-            Event Centers
-          </a>
-        </li>
-        <li>
-          <a href = './modifycenter.html' >
-            Modify center details
-          </a>
-        </li>
-        <li>
-          <a href = 'contactus.html' >
-            Contact Us
-          </a>
-        </li>
-      </ul>
-      <ul id = 'sub-menu'>
-        <li>
-          <a>
-            signup
-          </a>
-        </li>
-        <li>
-          <a>
-            logout
-          </a>
-        </li>
-      </ul>
+    <div class = 'container'>
+      <div id = 'header-div' class = 'page-header'>
+        <ul id = 'main-menu'>
+          <li>
+            <a href = './addcenter.html' >
+              Event Centers
+            </a>
+          </li>
+          <li>
+            <a href = './modifycenter.html' >
+              Modify center details
+            </a>
+          </li>
+          <li>
+            <a href = 'contactus.html' >
+              Contact Us
+            </a>
+          </li>
+        </ul>
+        <ul id = 'sub-menu'>
+          <li>
+            <a>
+              signup
+            </a>
+          </li>
+          <li>
+            <a>
+              logout
+            </a>
+          </li>
+        </ul>
+        <h1>
+          EventManager
+        </h1><br />
+        <a href = 'your-profile.html'>
+          <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
+        </a>
+        <a id = 'signout' href = '' >
+          signout
+        </a>
+      </div>
+    <div id = 'body-div' class = 'content-area' >
       <h1>
-        EventManager
-      </h1><br />
-      <a href = 'your-profile.html'>
-        <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
-      </a>
-      <a id = 'signout' href = '' >
-        signout
-      </a>
-    </div>
-  <div id = 'body-div' class = 'content-area' >
-    <h1>
-      Modity Your Event Center Details
-    </h1>
-  	<form id ='add-center-form' method = 'PUT' action = 'route/to/addcenter/controller'>
-      <label for = 'center-name'>Name</label><br / >
-      <input type = 'text' id = 'center-name' name = 'centerName' placeholder = 'name' /><br />
-      <label for = 'sitting-capacity'>Sitting Capacity</label><br / >
-  		<input type = 'text' id = 'sitting-capacity' name = 'sittingCapacity' /><br />
-      <label for = 'price'>price</label><br / >
-      <input type = 'text' id = 'price' name = 'Price' /><br />
-      <select id = 'location' name = 'location'>
-        <!-- i will generate detail dynamically -->
-      </select>
-      <legend> Facilities</legend>
-      <fieldset>
-        <input type = 'checkbox' checked = 'checked' id = 'aircondition' class = 'centerfacilities' value = 'Air Condition' name = 'facilities' />
-        <label for = 'aircondition' > Air Condition </label><br />
-        <input type = 'checkbox' id = 'fans' class = 'centerfacilities' value = 'fans' name = 'facilities' />
-        <label for = 'fans' >Fan </label><br />
-        <input type = 'checkbox' id = 'catering' class = 'centerfacilities' value = 'catering' name = 'facilities' />
-        <label for = 'catering' >Catering</label><br />
-        <input type = 'checkbox' checked = 'checked' id = 'decoration' class = 'centerfacilities' value = 'decoration' name = 'facilities' />
-        <label for = 'decoration' >Decoration </label><br />
-        <input type = 'checkbox' checked = 'checked' id = 'projector' class = 'centerfacilities' value = 'projector' name = 'facilities' />
-        <label for = 'projector' >Projector</label><br />
-        <input type = 'checkbox' id = 'lodging' class = 'centerfacilities' value = 'lodging' name = 'facilities' />
-        <label for = 'lodging' >Lodging</label><br />
-      </fieldset>
-      <input type = 'submit' id= 'modify-center' name = 'modifyCenter' value = 'Submit' />
-  	</form>
-    </div>
-    <div id = 'footer-div'>
-      <ul>
-        <li>
-          <a>
-            Contact us
-          </a>
-        </li>
-        <li>
-          <a>
-            About us
-          </a>
-        </li>
-        <li>
-          <a>
-            Terms of use
-          </a>
-        </li>
-        <li>
-          <a>
-          </a>
-        </li>
-      </ul>
+        Modity Your Event Center Details
+      </h1>
+      <form id ='add-center-form' method = 'PUT' action = 'route/to/addcenter/controller'>
+        <label for = 'center-name'>Name</label><br / >
+        <input type = 'text' id = 'center-name' name = 'centerName' placeholder = 'name' /><br />
+        <label for = 'sitting-capacity'>Sitting Capacity</label><br / >
+        <input type = 'text' id = 'sitting-capacity' name = 'sittingCapacity' /><br />
+        <label for = 'price'>price</label><br / >
+        <input type = 'text' id = 'price' name = 'Price' /><br />
+        <select id = 'location' name = 'location'>
+          <!-- i will generate detail dynamically -->
+        </select>
+        <legend> Facilities</legend>
+        <fieldset>
+          <input type = 'checkbox' checked = 'checked' id = 'aircondition' class = 'centerfacilities' value = 'Air Condition' name = 'facilities' />
+          <label for = 'aircondition' > Air Condition </label><br />
+          <input type = 'checkbox' id = 'fans' class = 'centerfacilities' value = 'fans' name = 'facilities' />
+          <label for = 'fans' >Fan </label><br />
+          <input type = 'checkbox' id = 'catering' class = 'centerfacilities' value = 'catering' name = 'facilities' />
+          <label for = 'catering' >Catering</label><br />
+          <input type = 'checkbox' checked = 'checked' id = 'decoration' class = 'centerfacilities' value = 'decoration' name = 'facilities' />
+          <label for = 'decoration' >Decoration </label><br />
+          <input type = 'checkbox' checked = 'checked' id = 'projector' class = 'centerfacilities' value = 'projector' name = 'facilities' />
+          <label for = 'projector' >Projector</label><br />
+          <input type = 'checkbox' id = 'lodging' class = 'centerfacilities' value = 'lodging' name = 'facilities' />
+          <label for = 'lodging' >Lodging</label><br />
+        </fieldset>
+        <input type = 'submit' id= 'modify-center' name = 'modifyCenter' value = 'Submit' />
+      </form>
+      </div>
+      <div id = 'footer-div'>
+        <ul>
+          <li>
+            <a>
+              Contact us
+            </a>
+          </li>
+          <li>
+            <a>
+              About us
+            </a>
+          </li>
+          <li>
+            <a>
+              Terms of use
+            </a>
+          </li>
+          <li>
+            <a>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   	<script src = 'path/to/script'>
   	</script>
