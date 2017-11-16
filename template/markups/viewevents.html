@@ -4,117 +4,119 @@
   	<title>
   		Events
   	</title>
-    <link rel = 'stylesheet' type = 'text/css' href = '../styles/bootstrap-css/bootstrap.min.css' />
+    <link rel = 'stylesheet' type = 'text/css' href = '../styles/css/bootstrap.min.css' />
   	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css' />
   </head>
   <body>
-    <div id = 'header-div' >
-      <ul id = 'main-menu'>
-        <li>
-          <a href = './addevent.html' >
-           Book an Event
-          </a>
-        </li>
-        <li>
-          <a href = './viewevents.html'>
-            Events
-          </a>
-        </li>
-        <li>
-          <a href = './viewevents.html' >
-            Modify an Event
-          </a>
-        </li>
-        <li>
-          <a href = './viewevents.html' >
-            Delete an Event
-          </a>
-        </li>
-      </ul>
-      <ul id = 'sub-menu'>
-        <li>
-          <a href = 'contactus.html' >
-            Contact Us
-          </a>
-        </li>
-        <li>
-          <a>
-            signup
-          </a>
-        </li>
-        <li>
-          <a>
-            logout
-          </a>
-        </li> 
-        <li>
-          <a>
-            Profile
-          </a>
-        </li> 
-        <a href = 'your-profile.html'>
-          <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
-        </a>       
-      </ul>
+    <div class = 'container'>
+      <div id = 'header-div' class = 'page-header'>
+        <ul id = 'main-menu'>
+          <li>
+            <a href = './addevent.html' >
+            Book an Event
+            </a>
+          </li>
+          <li>
+            <a href = './viewevents.html'>
+              Events
+            </a>
+          </li>
+          <li>
+            <a href = './viewevents.html' >
+              Modify an Event
+            </a>
+          </li>
+          <li>
+            <a href = './viewevents.html' >
+              Delete an Event
+            </a>
+          </li>
+        </ul>
+        <ul id = 'sub-menu'>
+          <li>
+            <a href = 'contactus.html' >
+              Contact Us
+            </a>
+          </li>
+          <li>
+            <a>
+              signup
+            </a>
+          </li>
+          <li>
+            <a>
+              logout
+            </a>
+          </li> 
+          <li>
+            <a>
+              Profile
+            </a>
+          </li> 
+          <a href = 'your-profile.html'>
+            <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
+          </a>       
+        </ul>
+        <h1>
+          EventManager
+        </h1><br />
+      </div>
+    <div id = 'body-div' class = 'content-area'>
       <h1>
-        EventManager
-      </h1><br />
-    </div>
-  <div id = 'body-div' class = 'content-area'>
-    <h1>
-      These are the Events You add so far
-      <h3> Select an item to modify or delete </h3>
-    </h1>
-      <form id ='events-form' method = 'POST' action = 'route/to/addcenter/controller' >
-        <dl class = 'events-list'>
-          <dt>
-            Marriage
-          </dt>
-          <dd>
-            Lagos
-          </dd>
-          <input type = 'checkbox' class = 'eventitems' value = '1' name = 'eventId' />
-        </dl>
-        <dl class = 'events-list'>
-          <dt>
-            Concert
-          </dt>
-          <dd>
-            Abuja
-          </dd>
-          <input type = 'checkbox' class = 'eventitems' value = '2' name = 'eventId' />
-        </dl>
-        <dl class = 'events-list'>
-          <dt>
-            Book launching
-          </dt>
-          <dd>
-            Ibadan
-          </dd>
-          <input type = 'checkbox' class = 'eventitems' value = '3' name = 'eventId' />
-        </dl>
-      <input type = 'submit' id= 'edit-event' name = 'editEvent' value = 'Edit item' />
-      <input type = 'submit' id= 'deleteEvent' name = 'deleteEvent' value = 'Delete' />
-  	</form>
-    </div>
-    <div id = 'footer-div'>
-      <ul>
-        <li>
-          <a>
-            Contact us
-          </a>
-        </li>
-        <li>
-          <a>
-            About us
-          </a>
-        </li>
-        <li>
-          <a>
-            Terms of use
-          </a>
-        </li>
-      </ul>
+        These are the Events You add so far
+        <h3> Select an item to modify or delete </h3>
+      </h1>
+        <form id ='events-form' method = 'POST' action = 'route/to/addcenter/controller' >
+          <dl class = 'events-list'>
+            <dt>
+              Marriage
+            </dt>
+            <dd>
+              Lagos
+            </dd>
+            <input type = 'checkbox' class = 'eventitems' value = '1' name = 'eventId' />
+          </dl>
+          <dl class = 'events-list'>
+            <dt>
+              Concert
+            </dt>
+            <dd>
+              Abuja
+            </dd>
+            <input type = 'checkbox' class = 'eventitems' value = '2' name = 'eventId' />
+          </dl>
+          <dl class = 'events-list'>
+            <dt>
+              Book launching
+            </dt>
+            <dd>
+              Ibadan
+            </dd>
+            <input type = 'checkbox' class = 'eventitems' value = '3' name = 'eventId' />
+          </dl>
+        <input type = 'submit' id= 'edit-event' name = 'editEvent' value = 'Edit item' />
+        <input type = 'submit' id= 'deleteEvent' name = 'deleteEvent' value = 'Delete' />
+      </form>
+      </div>
+      <div id = 'footer-div'>
+        <ul>
+          <li>
+            <a>
+              Contact us
+            </a>
+          </li>
+          <li>
+            <a>
+              About us
+            </a>
+          </li>
+          <li>
+            <a>
+              Terms of use
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   	<script src = 'path/to/script'>
   	</script>

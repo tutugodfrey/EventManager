@@ -1,122 +1,127 @@
     <!DOCTYPE html>
 <html>
   <head>
+    <meta charset = 'UTF-8'/>
+    <meta http-equiv = 'X--Compatible' content = 'IE=edge' />
+    <meta name = 'viewport' content= 'width= device-width, initial-scale =1' />
   	<title>
   		Add Event
   	</title>
-    <link rel = 'stylesheet' type = 'text/css' href = '../styles/bootstrap-css/bootstrap.min.css' />
+    <link rel = 'stylesheet' type = 'text/css' href = '../styles/css/bootstrap.min.css' />
   	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css' />
   </head>
   <body>
-    <div id = 'header-div' >
-      <ul id = 'main-menu'>
-        <li>
-          <a href = './addevent.html' >
-           Book an Event
-          </a>
-        </li>
-        <li>
-          <a href = './viewevents.html'>
-            Events
-          </a>
-        </li>
-        <li>
-          <a href = './modifyevent.html' >
-            Modify an Event
-          </a>
-        </li>
-        <li>
-          <a href = './modifyevent.html' >
-            Delete an Event
-          </a>
-        </li>
-      </ul>
-      <ul id = 'sub-menu'>
-        <li>
-          <a href = 'contactus.html' >
-            Contact Us
-          </a>
-        </li>
-        <li>
-          <a>
-            signup
-          </a>
-        </li>
-        <li>
-          <a>
-            logout
-          </a>
-        </li> 
-        <li>
-          <a>
-            Profile
-          </a>
-        </li> 
-        <a href = 'your-profile.html'>
-          <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
-        </a>       
-      </ul>
+    <div class = 'container'>
+      <div id = 'header-div' class = 'page-header'>
+        <ul id = 'main-menu'>
+          <li>
+            <a href = './addevent.html' >
+            Book an Event
+            </a>
+          </li>
+          <li>
+            <a href = './viewevents.html'>
+              Events
+            </a>
+          </li>
+          <li>
+            <a href = './modifyevent.html' >
+              Modify an Event
+            </a>
+          </li>
+          <li>
+            <a href = './modifyevent.html' >
+              Delete an Event
+            </a>
+          </li>
+        </ul>
+        <ul id = 'sub-menu'>
+          <li>
+            <a href = 'contactus.html' >
+              Contact Us
+            </a>
+          </li>
+          <li>
+            <a>
+              signup
+            </a>
+          </li>
+          <li>
+            <a>
+              logout
+            </a>
+          </li> 
+          <li>
+            <a>
+              Profile
+            </a>
+          </li> 
+          <a href = 'your-profile.html'>
+            <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
+          </a>       
+        </ul>
+        <h1>
+          EventManager
+        </h1><br />
+      </div>
+    <div id = 'body-div' class = 'content-area'>
       <h1>
-        EventManager
-      </h1><br />
-    </div>
-  <div id = 'body-div' class = 'content-area'>
-    <h1>
-      Submit Request for an Event
-    </h1>
-      <form id ='add-event-form' method = 'POST' action = 'route/to/addcenter/controller'>
-      <label for = 'event-type'>Event Type</label><br / >
-      <select id = 'event-type' name = 'eventType'>
-      </select><br />
-      <label for = 'location'>Location</label><br / >
-      <select id = 'location' name = 'location'>
-      </select><br />
-      <label for = 'location'>Event Centers</label><br / >
-      <select id = 'location' name = 'centerName'>
-      </select>
-      <label for = 'event-date'>Date</label><br / >
-      <select id = 'event-day' name = 'eventDay'>
-      </select>
-      <select id = 'event-month' name = 'eventMonth'>
-      </select>
-      <select id = 'event-year' name = 'eventYear'>
-      </select>
-      <legend> Facilities</legend>
-      <fieldset>
-        <input type = 'checkbox' id = 'aircondition' class = 'centerfacilities' value = 'Air Condition' name = 'facilities' />
-        <label for = 'aircondition' > Air Condition </label><br />
-        <input type = 'checkbox' id = 'fans' class = 'centerfacilities' value = 'fans' name = 'facilities' />
-        <label for = 'fans' >Fan </label><br />
-        <input type = 'checkbox' id = 'catering' class = 'centerfacilities' value = 'catering' name = 'facilities' />
-        <label for = 'catering' >Catering</label><br />
-        <input type = 'checkbox' id = 'decoration' class = 'centerfacilities' value = 'decoration' name = 'facilities' />
-        <label for = 'decoration' >Decoration </label><br />
-        <input type = 'checkbox' id = 'projector' class = 'centerfacilities' value = 'projector' name = 'facilities' />
-        <label for = 'projector' >Projector</label><br />
-        <input type = 'checkbox' id = 'lodging' class = 'centerfacilities' value = 'lodging' name = 'facilities' />
-        <label for = 'lodging' >Lodging</label><br />
-      </fieldset>
-      <input type = 'submit' id= 'signup' name = 'signup' value = 'Submit' />
-  	</form>
-    </div>
-    <div id = 'footer-div'>
-      <ul>
-        <li>
-          <a>
-            Contact us
-          </a>
-        </li>
-        <li>
-          <a>
-            About us
-          </a>
-        </li>
-        <li>
-          <a>
-            Terms of use
-          </a>
-        </li>
-      </ul>
+        Submit Request for an Event
+      </h1>
+        <form id ='add-event-form' method = 'POST' action = 'route/to/addcenter/controller'>
+        <label for = 'event-type'>Event Type</label><br / >
+        <select id = 'event-type' name = 'eventType'>
+        </select><br />
+        <label for = 'location'>Location</label><br / >
+        <select id = 'location' name = 'location'>
+        </select><br />
+        <label for = 'location'>Event Centers</label><br / >
+        <select id = 'location' name = 'centerName'>
+        </select>
+        <label for = 'event-date'>Date</label><br / >
+        <select id = 'event-day' name = 'eventDay'>
+        </select>
+        <select id = 'event-month' name = 'eventMonth'>
+        </select>
+        <select id = 'event-year' name = 'eventYear'>
+        </select>
+        <legend> Facilities</legend>
+        <fieldset>
+          <input type = 'checkbox' id = 'aircondition' class = 'centerfacilities' value = 'Air Condition' name = 'facilities' />
+          <label for = 'aircondition' > Air Condition </label><br />
+          <input type = 'checkbox' id = 'fans' class = 'centerfacilities' value = 'fans' name = 'facilities' />
+          <label for = 'fans' >Fan </label><br />
+          <input type = 'checkbox' id = 'catering' class = 'centerfacilities' value = 'catering' name = 'facilities' />
+          <label for = 'catering' >Catering</label><br />
+          <input type = 'checkbox' id = 'decoration' class = 'centerfacilities' value = 'decoration' name = 'facilities' />
+          <label for = 'decoration' >Decoration </label><br />
+          <input type = 'checkbox' id = 'projector' class = 'centerfacilities' value = 'projector' name = 'facilities' />
+          <label for = 'projector' >Projector</label><br />
+          <input type = 'checkbox' id = 'lodging' class = 'centerfacilities' value = 'lodging' name = 'facilities' />
+          <label for = 'lodging' >Lodging</label><br />
+        </fieldset>
+        <input type = 'submit' id= 'signup' name = 'signup' value = 'Submit' />
+      </form>
+      </div>
+      <div id = 'footer-div'>
+        <ul>
+          <li>
+            <a>
+              Contact us
+            </a>
+          </li>
+          <li>
+            <a>
+              About us
+            </a>
+          </li>
+          <li>
+            <a>
+              Terms of use
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   	<script src = 'path/to/script'>
   	</script>

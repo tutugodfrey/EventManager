@@ -1,152 +1,157 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset = 'UTF-8'/>
+    <meta http-equiv = 'X--Compatible' content = 'IE=edge' />
+    <meta name = 'viewport' content= 'width= device-width, initial-scale =1' />
   	<title>
   		 Event Center Detail
   	</title>
-    <link rel = 'stylesheet' type = 'text/css' href = '../styles/bootstrap-css/bootstrap.min.css' />
+    <link rel = 'stylesheet' type = 'text/css' href = '../styles/css/bootstrap.min.css' />
   	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css' />
   </head>
   <body>
-    <div id = 'header-div' >
-      <ul id = 'main-menu'>
-        <li>
-          <a href = './addevent.html' >
-           Book an Event
-          </a>
-        </li>
-        <li>
-          <a href = './viewevents.html'>
-            Events
-          </a>
-        </li>
-        <li>
-          <a href = 'contactus.html' >
-            Contact Us
-          </a>
-        </li>
-      </ul>
-      <ul id = 'sub-menu'>
-        <li>
-          <a>
-            signup
-          </a>
-        </li>
-        <li>
-          <a>
-            logout
-          </a>
-        </li>
-      </ul>
-      <h1>
-        EventManager
-      </h1><br />
-      <a href = 'your-profile.html'>
-        <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
-      </a>
-      <a id = 'signout' href = '' >
-        signout
-      </a>
-    </div>
-  <div id = 'body-div' class = 'content-area' >
-    <h1>
-      KFT Event Center 
-    </h1>
-    <div id = 'center-detail'>
-      <h3>
-        Event Center Details
-      </h3>
-    <dl>
-        <dt>
-        Name:
-        </dt>
-        <dd>
-        KFT Event Center
-        </dd>
-        <dt>
-        Price
-        </dt>
-        <dd>
-        #49, 000
-        </dd>
-        <dt>
-        Location
-        </dt>
-        <dd>
-        Lagos
-        </dd> 
-        <dt>
-        Sitting Capacity
-        </dt>
-        <dd>
-        550
-        </dd>
-        <dt>
-        Facilities:
-        </dt>
-        <dd>
-        <ol>
-            <li>
-            Air condition
-            </li>
-            <li>
-            Projector
-            </li>
-            <li>
-            Decoration
-            </li>
-            <li>
-            Catering
-            </li>
-            <li>
-            Lodging
-            </li>
-        </ol>
-        </dd>
-    </dl>
-      </div>
-      <div>
+    <div class = 'container'>
+      <div id = 'header-div' class = 'page-header'>
+        <ul id = 'main-menu'>
+          <li>
+            <a href = './addevent.html' >
+            Book an Event
+            </a>
+          </li>
+          <li>
+            <a href = './viewevents.html'>
+              Events
+            </a>
+          </li>
+          <li>
+            <a href = 'contactus.html' >
+              Contact Us
+            </a>
+          </li>
+        </ul>
+        <ul id = 'sub-menu'>
+          <li>
+            <a>
+              signup
+            </a>
+          </li>
+          <li>
+            <a>
+              logout
+            </a>
+          </li>
+        </ul>
         <h1>
-          Upcoming Events at KFT Event Center
-        </h1>  
-        <dl>
-          <dt>
-            Date Scheduled
-          </dt>
-          </dd>
-            <ul>
-              <li>
-                15th December 2017
-              </li>
-              <li>
-                15th January 2018
-              </li>
-            </ul>
-          </dd>
-        </dl>
-        <a href = './addevent.html'>
-          Book an Event
+          EventManager
+        </h1><br />
+        <a href = 'your-profile.html'>
+          <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
+        </a>
+        <a id = 'signout' href = '' >
+          signout
         </a>
       </div>
-    </div>
-    <div id = 'footer-div'>
-      <ul>
-        <li>
-          <a>
-            Contact us
+    <div id = 'body-div' class = 'content-area' >
+      <h1>
+        KFT Event Center 
+      </h1>
+      <div id = 'center-detail'>
+        <h3>
+          Event Center Details
+        </h3>
+      <dl>
+          <dt>
+          Name:
+          </dt>
+          <dd>
+          KFT Event Center
+          </dd>
+          <dt>
+          Price
+          </dt>
+          <dd>
+          #49, 000
+          </dd>
+          <dt>
+          Location
+          </dt>
+          <dd>
+          Lagos
+          </dd> 
+          <dt>
+          Sitting Capacity
+          </dt>
+          <dd>
+          550
+          </dd>
+          <dt>
+          Facilities:
+          </dt>
+          <dd>
+          <ol>
+              <li>
+              Air condition
+              </li>
+              <li>
+              Projector
+              </li>
+              <li>
+              Decoration
+              </li>
+              <li>
+              Catering
+              </li>
+              <li>
+              Lodging
+              </li>
+          </ol>
+          </dd>
+      </dl>
+        </div>
+        <div>
+          <h1>
+            Upcoming Events at KFT Event Center
+          </h1>  
+          <dl>
+            <dt>
+              Date Scheduled
+            </dt>
+            </dd>
+              <ul>
+                <li>
+                  15th December 2017
+                </li>
+                <li>
+                  15th January 2018
+                </li>
+              </ul>
+            </dd>
+          </dl>
+          <a href = './addevent.html'>
+            Book an Event
           </a>
-        </li>
-        <li>
-          <a>
-            About us
-          </a>
-        </li>
-        <li>
-          <a>
-            Terms of use
-          </a>
-        </li>
-      </ul>
+        </div>
+      </div>
+      <div id = 'footer-div'>
+        <ul>
+          <li>
+            <a>
+              Contact us
+            </a>
+          </li>
+          <li>
+            <a>
+              About us
+            </a>
+          </li>
+          <li>
+            <a>
+              Terms of use
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   	<script src = 'path/to/script'>
   	</script>

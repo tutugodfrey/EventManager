@@ -13,3 +13,7 @@ div#footer-div {
 	background-color:#ceb384; height:160px; width:100%; padding:8px;
 	 margin:-2px;
 }
+#body-div form {
+	background-color:#accdaa; width:35%; position:relative; left:30%;
+	border:2px white solid; margin-top:25px;
+}
