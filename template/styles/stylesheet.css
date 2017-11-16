@@ -1,0 +1,15 @@
+body  {
+	background-color:#cab4ee; margin:2px;
+}
+div#header-div {
+	background-color:#ceb384; height:200px; width:100%; padding:8px;
+	 margin:-2px;
+}
+div#body-div {
+	background-color:#e5d7b1; height:800px; width:100%; padding:8px;
+   margin:-2px;
+}
+div#footer-div {
+	background-color:#ceb384; height:160px; width:100%; padding:8px;
+	 margin:-2px;
+}
