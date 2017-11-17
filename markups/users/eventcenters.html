@@ -1,32 +1,42 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
   <head>
     <meta charset = 'UTF-8'/>
     <meta http-equiv = 'X--Compatible' content = 'IE=edge' />
     <meta name = 'viewport' content= 'width= device-width, initial-scale =1' />
   	<title>
-  		Welcome
-  	</title>
+  		Event Centers
+    </title>
     <link rel = 'stylesheet' type = 'text/css' href = './../../styles/css/bootstrap.min.css' />
-    <link rel = 'stylesheet' type = 'text/css' href = './../../styles/stylesheet.css' />
+  	<link rel = 'stylesheet' type = 'text/css' href = './../../styles/stylesheet.css' />
   </head>
   <body>
     <div id = 'header-div'>
       <div class = 'navbar' >
         <ul id = 'main-menu' class = 'nav nav-tabs'>
           <li class = 'nav-item'>
-            <a href = './index.html' class = 'nav-link active'>
-              Home
+            <a href = './index.html' class = 'nav-link'>
+            Home
             </a>
           </li>
           <li class = 'nav-item'>
-            <a href = './addcenter.html' class = 'nav-link'>
-            Add Event Center
+            <a href = './addevent.html' class = 'nav-link'>
+            Book an Event
             </a>
           </li>
           <li class = 'nav-item'>
-            <a href = './eventcenters.html' class = 'nav-link'>
+            <a href = './eventcenters.html' class = 'nav-link active'>
               Event Centers
+            </a>
+          </li>
+          <li class = 'nav-item'>
+            <a href = './viewevents.html' class = 'nav-link'>
+              Events
+            </a>
+          </li>
+          <li class = 'nav-item'>
+            <a href = './viewevents.html' class = 'nav-link'>
+              Delete an Event
             </a>
           </li>
           <li class = 'nav-item' >
@@ -56,16 +66,41 @@
           </ul>
         </div>
       </div>
-        <div class = 'page-header' id = 'site-name'>
-          <h1>
-            EventManager
-          </h1>
-        </div>
-    </div>
-      <div id = 'body-div' class = 'content-area'>
-        <p>
-          We manage your events and provide neccessary logistics to make your events a great success
-        </p>
+    <div id = 'body-div' class = 'container-fuild content-area'>
+      <h1>
+        Here are a list of event centers we manage
+        <h3> Select a center to view details</h3>
+      </h1>
+        <form id ='event-centers' method = 'POST' action = 'route/to/addcenter/controller' >
+          <dl class = 'events-list'>
+            <dt>
+              Kft event Center
+            </dt>
+            <dd>
+              Lagos
+            </dd>
+            <input type = 'checkbox' class = 'eventitems' value = '1' name = 'eventId' />
+          </dl>
+          <dl class = 'events-list'>
+            <dt>
+              D' Cubicle Event Center
+            </dt>
+            <dd>
+              Lagos
+            </dd>
+            <input type = 'checkbox' class = 'eventitems' value = '2' name = 'eventId' />
+          </dl>
+          <dl class = 'events-list'>
+            <dt>
+              D' Cubicle Event Center
+            </dt>
+            <dd>
+              Lagos
+            </dd>
+            <input type = 'checkbox' class = 'eventitems' value = '3' name = 'eventId' />
+          </dl>
+        <input type = 'submit' id= 'view-detail' name = 'viewDetail' value = 'View Details' />
+      </form>
       </div>
       <div id = 'footer-div' class ='navbar'>
       <ul class = 'nav'>
@@ -86,7 +121,7 @@
         </li>
       </ul>
     </div>
-  	<script script src = "path/to/scripts">
+  	<script src = 'path/to/script'>
   	</script>
   </body>
 </html>
