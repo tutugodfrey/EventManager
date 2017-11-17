@@ -17,3 +17,15 @@ div#footer-div {
 	background-color:#accdaa; width:35%; position:relative; left:30%;
 	border:2px white solid; margin-top:25px;
 }
+img {
+	height:30px; width:30px;
+}
+div#sub-menu {
+	background-color:#e5d7b1; position:relative; left:75%; top:-50px; width:280px;
+}
+div#site-name {
+	text-align:center;
+}
+div#footer-div ul {
+	position:relative; left:40%;
+}
