@@ -7,15 +7,20 @@
   	<title>
   		Add Event
   	</title>
-    <link rel = 'stylesheet' type = 'text/css' href = '../styles/css/bootstrap.min.css' />
-  	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css' />
+    <link rel = 'stylesheet' type = 'text/css' href = './../../styles/css/bootstrap.min.css' />
+  	<link rel = 'stylesheet' type = 'text/css' href = './../../styles/stylesheet.css' />
   </head>
   <body>
     <div id = 'header-div'>
       <div class = 'navbar' >
         <ul id = 'main-menu' class = 'nav nav-tabs'>
           <li class = 'nav-item'>
-            <a href = './addevent.html' class = 'nav-link active'>
+            <a href = './index.html' class = 'nav-link'>
+            Home
+            </a>
+          </li>
+          <li class = 'nav-item'>
+            <a href = './addevent.html' class = 'nav-link'>
             Book an Event
             </a>
           </li>
@@ -25,7 +30,7 @@
             </a>
           </li>
           <li class = 'nav-item'>
-            <a href = './modifyevent.html' class = 'nav-link'>
+            <a href = './modifyevent.html' class = 'nav-link active'>
               Modify an Event
             </a>
           </li>
@@ -35,7 +40,7 @@
             </a>
           </li>
           <li class = 'nav-item' >
-            <a href = './contactus.html' class = 'nav-link'> 
+            <a href = './../contactus.html' class = 'nav-link'> 
               Contact Us
             </a>
           </li>
@@ -43,19 +48,19 @@
           <div id = 'sub-menu' class = 'rounded-top'>
           <ul class = 'nav'>
             <li class = 'nav-item'>
-              <a href = './signup.html' class = 'nav-link'>
+              <a href = './../signup.html' class = 'nav-link'>
                 signup
               </a>
             </li>
             <li class = 'nav-item'>
-              <a href = './signin.html' class = 'nav-link'>
+              <a href = './../signin.html' class = 'nav-link'>
                 logout
               </a>
             </li>
             <li class = 'nav-item'>
               <a href = 'userprofile.html' class = 'nav-link'>
                 <span>Profile</span>
-                <img id = 'profile-pix' class = 'img-fuild rounded' src = './../avatar/sam_3264.jpg' alt = 'profile pix' />
+                <img id = 'profile-pix' class = 'img-fuild rounded' src = './../../avatar/sam_3264.jpg' alt = 'profile pix' />
               </a>
             </li>
           </ul>
@@ -107,26 +112,25 @@
         <input type = 'submit' id= 'modify-event' name = 'modifyEvent' value = 'Submit' />
       </form>
       </div>
-      <div id = 'footer-div'>
-        <ul>
-          <li>
-            <a>
+      <div id = 'footer-div' class ='navbar'>
+        <ul class = 'nav'>
+          <li class = 'nav-item'>
+            <a href = './../contactus.html' class = 'nav-link'>
               Contact us
             </a>
           </li>
-          <li>
-            <a>
+          <li class = 'nav-item'>
+            <a href = './../about-us.html' class = 'nav-link'>
               About us
             </a>
           </li>
-          <li>
-            <a>
+          <li class = 'nav-item'>
+            <a href = './../terms-of-use.html' class = 'nav-link'>
               Terms of use
             </a>
           </li>
         </ul>
       </div>
-    </div>
   	<script src = 'path/to/script'>
   	</script>
   </body>

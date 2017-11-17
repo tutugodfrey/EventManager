@@ -5,53 +5,63 @@
     <meta http-equiv = 'X--Compatible' content = 'IE=edge' />
     <meta name = 'viewport' content= 'width= device-width, initial-scale =1' />
   	<title>
-  		Events
+  		Event Centers
     </title>
-    <link rel = 'stylesheet' type = 'text/css' href = '../styles/css/bootstrap.min.css' />
-  	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css' />
+    <link rel = 'stylesheet' type = 'text/css' href = './../../styles/css/bootstrap.min.css' />
+  	<link rel = 'stylesheet' type = 'text/css' href = './../../styles/stylesheet.css' />
   </head>
   <body>
-    <div class = 'container'>
-      <div id = 'header-div' class = 'page-header'>
-        <ul id = 'main-menu'>
-          <li>
-            <a href = './addcenter.html' >
+    <div id = 'header-div'>
+      <div class = 'navbar' >
+        <ul id = 'main-menu' class = 'nav nav-tabs'>
+          <li class = 'nav-item'>
+            <a href = './index.html' class = 'nav-link'>
+              Home
+            </a>
+          </li>
+          <li class = 'nav-item'>
+            <a href = './addcenter.html' class = 'nav-link active'>
+            Add Event Center
+            </a>
+          </li>
+          <li class = 'nav-item'>
+            <a href = './eventcenters.html' class = 'nav-link'>
               Event Centers
             </a>
           </li>
-          <li>
-            <a href = './eventcenters.html' >
-              View center details
-            </a>
-          </li>
-          <li>
-            <a href = 'contactus.html' >
+          <li class = 'nav-item' >
+            <a href = './../contactus.html' class = 'nav-link'> 
               Contact Us
             </a>
           </li>
         </ul>
-        <ul id = 'sub-menu'>
-          <li>
-            <a>
-              signup
-            </a>
-          </li>
-          <li>
-            <a>
-              logout
-            </a>
-          </li>
-        </ul>
-        <h1>
-          EventManager
-        </h1><br />
-        <a href = 'your-profile.html'>
-          <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
-        </a>
-        <a id = 'signout' href = '' >
-          signout
-        </a>
+          <div id = 'sub-menu' class = 'rounded-top'>
+          <ul class = 'nav'>
+            <li class = 'nav-item'>
+              <a href = './../signup.html' class = 'nav-link'>
+                signup
+              </a>
+            </li>
+            <li class = 'nav-item'>
+              <a href = './../signin.html' class = 'nav-link'>
+                logout
+              </a>
+            </li>
+            <li class = 'nav-item'>
+              <a href = './../userprofile.html' class = 'nav-link'>
+                <span>Profile</span>
+                <img id = 'profile-pix' class = 'img-fuild rounded' src = './../../avatar/sam_3264.jpg' alt = 'profile pix' />
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
+        <div class = 'page-header' id = 'site-name'>
+          <h1>
+            EventManager
+          </h1>
+        </div>
+    </div>
     <div id = 'body-div' class = 'container-fuild content-area'>
       <h1>
         These are the Events You add so far
