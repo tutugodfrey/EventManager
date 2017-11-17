@@ -11,47 +11,62 @@
   	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css' />
   </head>
   <body>
-    <div class = 'container'>
-      <div id = 'header-div' class = 'page-header'>
-        <ul id = 'main-menu'>
-          <li>
-            <a href = './addevent.html' >
+    <div id = 'header-div'>
+      <div class = 'navbar' >
+        <ul id = 'main-menu' class = 'nav nav-tabs'>
+          <li class = 'nav-item'>
+            <a href = './addevent.html' class = 'nav-link active'>
             Book an Event
             </a>
           </li>
-          <li>
-            <a href = './viewevents.html'>
+          <li class = 'nav-item'>
+            <a href = './viewevents.html' class = 'nav-link'>
               Events
             </a>
           </li>
-          <li>
-            <a href = 'contactus.html' >
+          <li class = 'nav-item'>
+            <a href = './modifyevent.html' class = 'nav-link'>
+              Modify an Event
+            </a>
+          </li>
+          <li class = 'nav-item'>
+            <a href = './modifyevent.html' class = 'nav-link'>
+              Delete an Event
+            </a>
+          </li>
+          <li class = 'nav-item' >
+            <a href = './contactus.html' class = 'nav-link'> 
               Contact Us
             </a>
           </li>
         </ul>
-        <ul id = 'sub-menu'>
-          <li>
-            <a>
-              signup
-            </a>
-          </li>
-          <li>
-            <a>
-              logout
-            </a>
-          </li>
-        </ul>
-        <h1>
-          EventManager
-        </h1><br />
-        <a href = 'your-profile.html'>
-          <img id = 'profile-pix' src = 'path/to/pix' alt = 'profile pix' />
-        </a>
-        <a id = 'signout' href = '' >
-          signout
-        </a>
+          <div id = 'sub-menu' class = 'rounded-top'>
+          <ul class = 'nav'>
+            <li class = 'nav-item'>
+              <a href = './signup.html' class = 'nav-link'>
+                signup
+              </a>
+            </li>
+            <li class = 'nav-item'>
+              <a href = './signin.html' class = 'nav-link'>
+                logout
+              </a>
+            </li>
+            <li class = 'nav-item'>
+              <a href = 'userprofile.html' class = 'nav-link'>
+                <span>Profile</span>
+                <img id = 'profile-pix' class = 'img-fuild rounded' src = './../avatar/sam_3264.jpg' alt = 'profile pix' />
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
+        <div class = 'page-header' id = 'site-name'>
+          <h1>
+            EventManager
+          </h1>
+        </div>
+    </div>
     <div id = 'body-div' class = 'content-area' >
       <h1>
         KFT Event Center 
@@ -152,7 +167,6 @@
           </li>
         </ul>
       </div>
-    </div>
   	<script src = 'path/to/script'>
   	</script>
   </body>

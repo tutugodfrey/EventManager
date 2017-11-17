@@ -22,13 +22,21 @@
           Login
         </h1>
         <form method = 'POST' action = 'route/to/login/controller'>
-          <label for = 'username'>Username</label><br / >
-          <input type = 'text' id = 'username' name = 'username' placeholder = 'Username/email' />
-            <span class = 'requiredFields'>*</span><br />
-          <label for = 'password'>Password</label><br / >
-          <input type = 'password' id = 'password' name = 'password' placeholder = 'Password' />
-              <span class = 'requiredFields'>*</span><br />
-          <input type = 'submit' name = 'signin' value = 'SignIn' />
+          <div  class = 'input-group input-group-md'>
+            <label for = 'username' class = 'input-group-addon'>Username
+              <span class = 'requiredFields'>*</span>
+            </label><br / >
+            <input type = 'text' id = 'username' name = 'username' placeholder = 'Username/email' />
+          </div>
+          <div  class = 'input-group input-group-md'>
+            <label for = 'password' class = 'input-group-addon'>Password
+              <span class = 'requiredFields'>*</span>
+            </label><br / >
+            <input type = 'password' id = 'password' name = 'password' placeholder = 'Password' />
+          </div>
+          <div  class = 'input-group input-group-md'>
+          <input type = 'submit' class = 'form-control' name = 'signin' value = 'SignIn' />
+          </div>
         </form>
         <p>I do no have an <a href = 'signup.html'> SignUp</a></p><br />
         <a href = 'forget-password.html'>Forgot password?</a>
