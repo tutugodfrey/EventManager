@@ -11,37 +11,42 @@
   	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css'/>
   </head>
   <body>
-    <div class = 'container'>
-      <div id = 'header-div' class = 'page-header'>
+    <div id = 'header-div' >
+      <div class = 'page-header' id = 'site-name'>
         <h1>
           Event Manager
         </h1>
       </div>
-      <div id = 'body-div'>
-        <h1>
-          Login
-        </h1>
+    </div>
+    <div id = 'body-div'>
+      <div class = 'form-div'>
         <form method = 'POST' action = 'route/to/login/controller'>
+          <h4 class = 'form-description'>
+            Login
+          </h4>
           <div  class = 'input-group input-group-md'>
             <label for = 'username' class = 'input-group-addon'>Username
               <span class = 'requiredFields'>*</span>
-            </label><br / >
-            <input type = 'text' id = 'username' name = 'username' placeholder = 'Username/email' />
+            </label>
+            <input type = 'text' id = 'username' class = 'form-control' name = 'username' placeholder = 'Username/email' />
           </div>
           <div  class = 'input-group input-group-md'>
             <label for = 'password' class = 'input-group-addon'>Password
               <span class = 'requiredFields'>*</span>
-            </label><br / >
-            <input type = 'password' id = 'password' name = 'password' placeholder = 'Password' />
+            </label>
+            <input type = 'password' id = 'password' class = 'form-control' name = 'password' placeholder = 'Password' />
           </div>
           <div  class = 'input-group input-group-md'>
           <input type = 'submit' class = 'form-control' name = 'signin' value = 'SignIn' />
           </div>
         </form>
-        <p>I do no have an <a href = 'signup.html'> SignUp</a></p><br />
-        <a href = 'forget-password.html'>Forgot password?</a>
-        <p>I want to <a href = 'change-password.html'> Change password</a></p>
-      </div>
+        <div>
+          <p>I do no have an <a href = 'signup.html'> SignUp</a></p><br />
+          <a href = 'forget-password.html'>Forgot password?</a>
+          <p>I want to <a href = 'change-password.html'> Change password</a></p>
+        </div>
+      </div> 
+    </div>
       <div id = 'footer-div' class ='navbar'>
       <ul class = 'nav'>
         <li class = 'nav-item'>
