@@ -25,6 +25,9 @@ div#footer-div {
 img {
 	height:30px; width:30px;
 }
+#index-page {
+	background-image:url(event.jpg)
+}
 div#sub-menu {
 	background-color:#e5d7b1; position:relative; left:75%; top:-50px; width:280px;
 }
@@ -38,15 +41,44 @@ span.requiredFields{
 	color:red; font-size:16px;
 }
 
-h4.form-description, page-description {
+h4.form-description, h1.page-description {
 	text-align:center;
 }
 ol li {
 	background-color :#aaddaa; width:30px
 }
+div#center-detail {
+	position:relative; left:25%; top:40px; margin:20px; background-color:#cccccc; width:600px; padding:50px;
+}
 div#center-detail dl {
-	 width:300px; hieght:20px
+	 width:300px; hieght:20px;
 }
 div#center-detail li {
-	position:relative; right:40px;
+	position:relative;
+}
+
+div#center-detail .items {
+	background-color:#aacaad;
+}
+#scheduled-events  {
+	background : #cccccc; width:600px; position:relative; left:26.5%; top:30px; padding:10px;
+}
+div#scheduled-events table {
+  position:relative; left:5%; border:1px solid white; width:510px
+}
+#scheduled-events th {
+	background-color:#aaaccc;
+}
+#scheduled-events td {
+	background-color:#aacaad;
+}
+div#body-div .info-head {
+ text-align:center;
+}
+
+div#centers-list .list-term {
+ background:#aacadd;
+}
+div#centers-list .list-term-value {
+	background-color:#aacaad
 }

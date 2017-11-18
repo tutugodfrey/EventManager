@@ -73,39 +73,41 @@
       </div>
     </div>
     <div id = 'body-div'>
-      <h1>
-        Here are a list of event centers we manage
-        <h3> Select a center to view details</h3>
-      </h1>
+      <h1 class = 'page-description'>
+        event centers
+      </h1><br/>
         <form id ='event-centers' method = 'POST' action = 'route/to/addcenter/controller' >
+           <h3> Select a center to view details</h3>
+          <div id = 'centers-list' class = 'list-group'>
           <dl class = 'events-list'>
-            <dt>
+            <dt class = 'list-term list-group-item'>
               Kft event Center
             </dt>
-            <dd>
+            <dd class = 'list-term-value list-group-item'>
               Lagos
             </dd>
-            <input type = 'checkbox' class = 'eventitems' value = '1' name = 'eventId' />
+            <input type = 'checkbox' class = 'eventitems list-group-item' value = '1' name = 'eventId' />
           </dl>
           <dl class = 'events-list'>
-            <dt>
+            <dt class = 'list-term list-group-item'>
               D' Cubicle Event Center
             </dt>
-            <dd>
+            <dd class = 'list-term-value list-group-item'>
               Lagos
             </dd>
-            <input type = 'checkbox' class = 'eventitems' value = '2' name = 'eventId' />
+            <input type = 'checkbox' class = 'eventitems list-group-item' value = '2' name = 'eventId' />
           </dl>
           <dl class = 'events-list'>
-            <dt>
+            <dt class = 'list-term list-group-item'>
               D' Cubicle Event Center
             </dt>
-            <dd>
+            <dd class = 'list-term-value list-group-item'>
               Lagos
             </dd>
-            <input type = 'checkbox' class = 'eventitems' value = '3' name = 'eventId' />
+            <input type = 'checkbox' class = 'eventitems list-group-item' value = '3' name = 'eventId' />
           </dl>
-        <input type = 'submit' id= 'view-detail' name = 'viewDetail' value = 'View Details' />
+        <input type = 'submit' id= 'view-detail'class = 'btn btn-default' name = 'viewDetail' value = 'View Details' />
+        </div>
       </form>
       </div>
       <div id = 'footer-div' class ='navbar'>
