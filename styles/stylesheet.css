@@ -11,7 +11,7 @@ div#header-div {
 	 margin:-2px;  position:fixed; top:0px; left:0px; Z-index:1
 }
 div#body-div {
-	background-color:#e5d7b1; height:800px; width:100%; padding:8px;
+	background-color:#e5d7b1; height:1500px; width:100%; padding:8px;
    margin:-2px; position:relative; top:200px;
 }
 div#footer-div {
@@ -20,7 +20,7 @@ div#footer-div {
 }
 #body-div form {
 	background-color:#accdaa; width:35%; position:relative; left:30%;
-	border:2px white solid; margin-top:25px;
+	border:2px white solid; margin-top:25px; 
 }
 img {
 	height:30px; width:30px;
@@ -37,6 +37,16 @@ div#footer-div ul {
 span.requiredFields{
 	color:red; font-size:16px;
 }
-h4.form-description {
+
+h4.form-description, page-description {
 	text-align:center;
+}
+ol li {
+	background-color :#aaddaa; width:30px
+}
+div#center-detail dl {
+	 width:300px; hieght:20px
+}
+div#center-detail li {
+	position:relative; right:40px;
 }
