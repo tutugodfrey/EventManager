@@ -78,43 +78,79 @@
         </div>
     </div>
     <div id = 'body-div' class = 'content-area'>
-      <h1>
-        Modify Events
-      </h1>
-        <form id ='add-event-form' method = 'PUT' action = 'route/to/addcenter/controller'>
+        <form id ='add-event-form' method = 'PUT' action = 'route/to/addcenter/controller'> 
+          <h4 class = 'form-description'>
+            Modify Events
+          </h4>
         <input type = 'hidden' value = '3' name = 'eventId' />
-        <label for = 'event-type'>Event EventType</label><br / >
+        <div class = 'form-group'>
+        <label for = 'event-type' class="col-xs-3 col-form-label mr-2">Event EventType
+           <span class = 'requiredFields'>*</span>
+        </label>
+        <div class = 'col-xs-9'>
         <select id = 'event-type' name = 'eventType'>
         </select>
-        <label for = 'location'>Location</label><br / >
-        <select id = 'location' name = 'location'>
-        </select><br />
-        <label for = 'location'>Event Centers</label><br / >
-        <select id = 'location' name = 'centerName'>
+        </div>
+       </div>
+       <div class = 'form-group'>
+        <label for = 'location' class="col-xs-3 col-form-label mr-2">Location
+           <span class = 'requiredFields'>*</span>
+        </label>
+        <div class = 'col-xs-9'>
+        <select id = 'location' class = 'form-control' name = 'location'>
         </select>
-        <label for = 'event-date'>Date</label><br / >
-        <select id = 'event-day' name = 'eventDay'>
+        </div>
+        </div>
+        <div class = 'form-group'>
+        <label for = 'location' class="col-xs-3 col-form-label mr-2">Event Centers
+           <span class = 'requiredFields'>*</span>
+        </label>
+        <div class = 'col-xs-9'>
+        <select id = 'location' class = 'form-control' name = 'centerName'>
         </select>
-        <select id = 'event-month' name = 'eventMonth'>
+        </div>
+        </div>
+        <div class = 'form-group'>
+        <label for = 'event-date' class="col-xs-3 col-form-label mr-2">Date
+           <span class = 'requiredFields'>*</span>
+        </label>
+        <div class = 'col-xs-9'>
+        <select id = 'event-day'  name = 'eventDay'>
         </select>
-        <select id = 'event-year' name = 'eventYear'>
+        <select id = 'event-month'  name = 'eventMonth'>
         </select>
-        <legend> Facilities</legend>
-        <fieldset>
-          <input type = 'checkbox' checked = 'checked' id = 'aircondition' class = 'centerfacilities' value = 'Air Condition' name = 'facilities' />
-          <label for = 'aircondition' > Air Condition </label><br />
-          <input type = 'checkbox' id = 'fans' class = 'centerfacilities' value = 'fans' name = 'facilities' />
-          <label for = 'fans' >Fan </label><br />
-          <input type = 'checkbox' id = 'catering' class = 'centerfacilities' value = 'catering' name = 'facilities' />
-          <label for = 'catering' >Catering</label><br />
-          <input type = 'checkbox' checked = 'checked' id = 'decoration' class = 'centerfacilities' value = 'decoration' name = 'facilities' />
-          <label for = 'decoration' >Decoration </label><br />
-          <input type = 'checkbox' checked = 'checked' id = 'projector' class = 'centerfacilities' value = 'projector' name = 'facilities' />
-          <label for = 'projector' >Projector</label><br />
-          <input type = 'checkbox' id = 'lodging' class = 'centerfacilities' value = 'lodging' name = 'facilities' />
-          <label for = 'lodging' >Lodging</label><br />
+        <select id = 'event-year'  name = 'eventYear'>
+        </select>
+        </div>
+        </div>
+        <legend> Facilities <span class = 'requiredFields'>*</span></legend>
+        <fieldset  class = 'form-group'>
+          <div class = 'col-xs-9'>
+          <input type = 'checkbox' checked = 'checked' id = 'aircondition' class = 'form-control centerfacilities' value = 'Air Condition' name = 'facilities' />
+          </div>
+          <label for = 'aircondition' class="col-xs-3 col-form-label mr-2" > Air Condition </label>
+          <div class = 'col-xs-9'>
+          <input type = 'checkbox' id = 'fans' class = 'form-control centerfacilities' value = 'fans' name = 'facilities' />
+          </div>
+          <label for = 'fans'class="col-xs-3 col-form-label mr-2" >Fan </label>
+          <div class = 'col-xs-9'>
+          <input type = 'checkbox' id = 'catering' class = 'form-control centerfacilities' value = 'catering' name = 'facilities' />
+          </div>
+          <label for = 'catering' class="col-xs-3 col-form-label mr-2" >Catering</label>
+          <div class = 'col-xs-9'>
+          <input type = 'checkbox' checked = 'checked' id = 'decoration' class = 'form-control centerfacilities' value = 'decoration' name = 'facilities' />
+          </div>
+          <label for = 'decoration' class="col-xs-3 col-form-label mr-2" >Decoration </label>
+          <div class = 'col-xs-9'>
+          <input type = 'checkbox' checked = 'checked' id = 'projector' class = 'form-control centerfacilities' value = 'projector' name = 'facilities' />
+          </div>
+          <label for = 'projector' class="col-xs-3 col-form-label mr-2" >Projector</label>
+          <div class = 'col-xs-9'>
+          <input type = 'checkbox' id = 'lodging' class = 'form-control centerfacilities' value = 'lodging' name = 'facilities' />
+          </div>
+          <label for = 'lodging' class="col-xs-3 col-form-label mr-2" >Lodging</label><br />
         </fieldset>
-        <input type = 'submit' id= 'modify-event' name = 'modifyEvent' value = 'Submit' />
+        <input type = 'submit' id= 'modify-event' class = 'btn btn-default' name = 'modifyEvent' value = 'Submit' />
       </form>
       </div>
       <div id = 'footer-div' class ='navbar'>
