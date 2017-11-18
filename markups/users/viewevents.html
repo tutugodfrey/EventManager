@@ -70,43 +70,45 @@
         </div>
     </div>
     <div id = 'body-div' class = 'content-area'>
-      <h1>
-        These are the Events You add so far
-        <h3> Select an item to modify or delete </h3>
+      <h1 class = 'page-description'>
+        Your Events
       </h1>
-        <form id ='events-form' method = 'POST' action = 'route/to/addcenter/controller' >
+      <form id ='events-form' method = 'POST' action = 'route/to/veiwevents/controller' >
+           <h3> Select an item to modify or delete </h3>
+          <div id = 'centers-list' class = 'list-group'>
           <dl class = 'events-list'>
-            <dt>
+            <dt class = 'list-term list-group-item'>
               Marriage
             </dt>
-            <dd>
-              Lagos
+            <dd class = 'list-term-value list-group-item'>
+              KFT Event Center
             </dd>
-            <input type = 'checkbox' class = 'eventitems' value = '1' name = 'eventId' />
+            <input type = 'checkbox' class = 'eventitems list-group-item' value = '1' name = 'eventId' />
           </dl>
           <dl class = 'events-list'>
-            <dt>
+            <dt class = 'list-term list-group-item'>
               Concert
             </dt>
-            <dd>
-              Abuja
+            <dd class = 'list-term-value list-group-item'>
+              D' Cubicle Event Center
             </dd>
-            <input type = 'checkbox' class = 'eventitems' value = '2' name = 'eventId' />
+            <input type = 'checkbox' class = 'eventitems list-group-item' value = '2' name = 'eventId' />
           </dl>
           <dl class = 'events-list'>
-            <dt>
-              Book launching
+            <dt class = 'list-term list-group-item'>
+              Book Launching
             </dt>
-            <dd>
-              Ibadan
+            <dd class = 'list-term-value list-group-item'>
+              Royal Hall
             </dd>
-            <input type = 'checkbox' class = 'eventitems' value = '3' name = 'eventId' />
+            <input type = 'checkbox' class = 'eventitems list-group-item' value = '3' name = 'eventId' />
           </dl>
-        <input type = 'submit' id= 'edit-event' class = 'btn btn-default' name = 'editEvent' value = 'Edit item' />
-        <input type = 'submit' id= 'deleteEvent' class = 'btn btn-default' name = 'deleteEvent' value = 'Delete' />
+        <input type = 'submit' id= 'edit-event' class = 'btn form-control' name = 'editEvent' value = 'Edit item' />
+        <input type = 'submit' id= 'deleteEvent' class = 'btn form-control' name = 'deleteEvent' value = 'Delete' />
+        </div>
       </form>
-      </div>
-      <div id = 'footer-div' class ='navbar'>
+    </div>
+       <div id = 'footer-div' class ='navbar'>
         <ul class = 'nav'>
           <li class = 'nav-item'>
             <a href = './../contactus.html' class = 'nav-link'>
