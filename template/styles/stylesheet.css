@@ -1,17 +1,22 @@
 body  {
 	background-color:#cab4ee; margin:2px;
 }
+/*
+@media only screen and (max-width:700px) and (orientation:landscape) {
+	position:absolute;
+}
+*/
 div#header-div {
 	background-color:#ceb384; height:200px; width:100%; padding:8px;
-	 margin:-2px;
+	 margin:-2px;  position:fixed; top:0px; left:0px; Z-index:1
 }
 div#body-div {
 	background-color:#e5d7b1; height:800px; width:100%; padding:8px;
-   margin:-2px;
+   margin:-2px; position:relative; top:200px;
 }
 div#footer-div {
 	background-color:#ceb384; height:160px; width:100%; padding:8px;
-	 margin:-2px;
+	 margin:-2px; position:relative; top:100px;
 }
 #body-div form {
 	background-color:#accdaa; width:35%; position:relative; left:30%;
@@ -28,4 +33,10 @@ div#site-name {
 }
 div#footer-div ul {
 	position:relative; left:40%;
+}
+span.requiredFields{
+	color:red; font-size:16px;
+}
+h4.form-description {
+	text-align:center;
 }
