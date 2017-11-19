@@ -21,6 +21,7 @@
         <div id = 'body-div'>
           <div class = 'form-div'>
           <form method = 'POST' action = 'route/to/singup/controller'>
+            <p id = 'validationNotice'> The fields marked below are required</p>
             <h4>
             Signup  with Event Manager and Allow us manage your upcoming events
             </h4>
@@ -28,19 +29,19 @@
               <label class = 'input-group-addon' for = 'firstname'>Firstname
                 <span class = 'requiredFields'>*</span>
               </label>
-              <input type = 'text'  id = 'firstname' class = 'form-control' name = 'firstname' />
+              <input type = 'text'  id = 'firstname' class = 'requiredFields form-control' name = 'firstname' />
             </div>
             <div  class = 'form-group'>
               <label class = 'input-group-addon' for = 'lastname'>Lastname
                 <span class = 'requiredFields'>*</span>
               </label>
-              <input type = 'text' id = 'lastname' class ='form-control' name = 'lastname' />
+              <input type = 'text' id = 'lastname' class ='requiredFields form-control' name = 'lastname' />
             </div>
             <div  class = 'form-group'>
               <label  for = 'gender' class = 'input-group-addon'>Gender
                 <span class = 'requiredFields'>*</span>
               </label>
-              <select class = 'form-control' name = 'gender'>
+              <select class = 'requiredFields form-control' name = 'gender'>
                 <option value = 'select'>
                   Select
                 </option>
@@ -60,31 +61,31 @@
               <label for = 'email-address' class = 'input-group-addon' >Email
                 <span class = 'requiredFields'>*</span>
               </label>
-              <input type = 'text' id = 'email-address' class = 'form-control' name = 'email' placeholder = 'you@example.com' /><br/>
+              <input type = 'text' id = 'email-address' class = 'requiredFields form-control' name = 'email' placeholder = 'you@example.com' /><br/>
             </div>
             <div  class = 'form-group'>
               <label for = 'user-name' class = 'input-group-addon'>Username
                 <span class = 'requiredFields'>*</span>
               </label>
-              <input type = 'text'  id = 'username' class = 'form-control' name = 'username' placeholder = 'Username' />
+              <input type = 'text'  id = 'username' class = 'requiredFields form-control' name = 'username' placeholder = 'Username' />
             </div>
             <div  class = 'form-group'>
               <label for = "passwd" class = 'input-group-addon'>Password
                 <span class = 'requiredFields'>*</span>
               </label>
-              <input type = 'password'   id= 'passwd1' class = 'form-control' name = 'password1' placeholder = 'Password' />
+              <input type = 'password'   id= 'passwd1' class = 'requiredFields form-control' name = 'password1' placeholder = 'Password' />
             </div>
             <div  class = 'form-group'>
               <label for = 'passwd2' class = 'input-group-addon'>Confirm Pasword
                 <span class = 'requiredFields'>*</span>
               </label>
-              <input type = 'password' id = 'passwd2' class = 'form-control' name = 'confirmpassword' placeholder = 'Confirm Password' />
+              <input type = 'password' id = 'passwd2' class = 'requiredFields form-control' name = 'confirmpassword' placeholder = 'Confirm Password' />
             </div>
             <div  class = 'form-group'>
               <label for = 'security-question' class = 'input-group-addon' >Security Question
                 <span class = 'requiredFields'>*</span>
               </label>
-              <select name = 'securityQuestion' id = 'security-question' class = 'form-control'>
+              <select name = 'securityQuestion' id = 'security-question' class = 'requiredFields form-control'>
                 <option>
                   What is the name of your first school?
                 </option>
@@ -103,17 +104,17 @@
               <label for = 'security-answer' class = 'input-group-addon'>Answer
                 <span class = 'requiredFields'>*</span>
               </label>
-              <input type = 'text' id = 'security-answer' class = 'form-control'name = 'security-answer' />
+              <input type = 'text' id = 'security-answer' class = 'requiredFields form-control'name = 'security-answer' />
             </div>
             <p>Agree to our <a href = 'terms-of-use.html'>terms</a> of use <span class = 'requiredFields'>*</span></p>
-            <div  class = 'form-group'>
-              <input type = 'radio' id = 'agree-to-use' name = 'agreement' value = 'Agree' />
-              <label for = 'agree-to-use' class = 'input-group-addon'>Agree</label>
-              <input type = 'radio' id = 'disagree-to-use' name = 'agreement' value = 'disagree' />
+            <div  class = 'form-group' id = 'radio-div'>
+              <input type = 'radio' id = 'agree-to-use' class = 'requiredFields' name = 'agreement' value = 'Agree' />
+              <label for = 'agree-to-use' class ='requiredFields input-group-addon'>Agree</label>
+              <input type = 'radio' id = 'disagree-to-use' class = 'requiredFields' name = 'agreement' value = 'disagree' />
               <label for = 'disagree-to-use' class = 'input-group-addon'>Disagree</label>
             </div>
             <div  class = 'form-group'>
-            <input type = 'submit' id = 'signup' class = 'btn btn-default' name = 'signup' value = 'Submit' />
+            <input type = 'submit' id = 'signup' class = 'submitForm btn btn-default' name = 'signup' value = 'Submit' />
             </div>
             <div class = 'form-div-append'>
               <p>I already have an <a href = 'signin.html'> Account</a></p>

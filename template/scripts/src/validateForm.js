@@ -1,0 +1,78 @@
+
+/**
+ * This file will the use for performing form validation
+ * it should export a  class that contains methods for validation on different basis
+ */
+
+import { helperfuncs, changeAttribute }  from './funcs';
+const newFuncs = new helperfuncs();
+
+ export const ValidateForm = class {
+   constructor () {
+   }
+   validateSignin(formElement) {
+     let eleControls = formElement.elements;
+	  for(let elem of eleControls){
+		  alert(elem.getAttribute('name'));
+	  }
+   }  //end validateSignin
+
+   validateSignup(formElement) {
+     let validated = true;
+     let radioChecked = true;
+     let radioName;
+     let eleControls = formElement.elements;
+     const regex = /requiredFields/;
+	   for(let elem of eleControls){
+       let eleValue;
+       
+     if(elem.getAttribute('class')){
+       const eleClass = elem.getAttribute('class');
+       if(eleClass.match(regex)){
+         const eleType = elem.type;
+         // alert(eleType)
+         let eleId
+         if(eleType === 'text'){
+           eleValue = elem.value.trim();
+           if(eleValue === '' || eleValue === ' '){
+              changeAttribute([elem, 'class', 'failValidation form-control']);
+              validated = false;
+           } else {
+            //validated
+           }
+         } else if (eleType === 'password'  && elem.value.trim() === '') {
+           validated = false;
+           changeAttribute([elem, 'class', 'failValidation form-control']);
+         } else if (eleType === 'select-one'){
+           let eleName = elem.getAttribute('name');
+           eleValue = newFuncs.selectValue(eleName);
+           alert(eleValue);
+           if(eleValue === 'select' || eleValue === ''){
+              changeAttribute([elem, 'class', 'failValidation form-control']);
+           }
+         } else if ( eleType === 'radio') {
+           radioName = elem.name;
+           eleValue = newFuncs.getCheckedValue(elem);
+           if(eleValue === undefined) {
+             radioChecked = false;
+           } else {
+             radioChecked = true;
+           }
+         }
+
+
+
+       }
+     }
+     }
+    if(radioChecked === false) {
+      const radioEle = document.getElementById('radio-div');
+      alert(radioEle)
+      changeAttribute([radioEle, 'class', 'failValidation form-group']);
+    }
+    if(validated === false){
+      const pElement = document.getElementById('validationNotice');
+      pElement.style.visibility = 'visible';
+    }
+   }
+ } //end class block
