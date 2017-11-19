@@ -8,9 +8,10 @@ dom_notifier();
 
 function dom_notifier () {
 	const submitElementId = ['signup', 'signin']
-const eleObject = document.getElementsByClassName('submitForm');
-
-let ele_id = newFuncs.newEvent(eleObject[0], 'click', getSubmitEle, eleObject[0]);
+	if(document.getElementById('submitForm')){
+		const eleObject = document.getElementsByClassName('submitForm');
+		newFuncs.newEvent(eleObject[0], 'click', getSubmitEle, eleObject[0]);
+	}
 }
 
 function getSubmitEle(ele) {
@@ -23,10 +24,13 @@ function getSubmitEle(ele) {
 //	}
 }		
 
+
+
 //keep at the bottom of the script
 const modificationNotice = document.getElementById('modificationNotice');
-const modificationDate = document.lastModified;
-modificationNotice.innerHTML = `last modified ${modificationDate}`
+let modificationDate = document.lastModified;
+modificationDate = modificationDate.split(' ');
+modificationNotice.innerHTML = `last modified: ${modificationDate[0]}`;
 
 
 

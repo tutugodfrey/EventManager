@@ -4,15 +4,15 @@ export const helperfuncs =  class {
   constructor () {
   }
 
-newEvent(element_object,  event_type, callback, func_argument){
-if(element_object.addEventListener){
-element_object.addEventListener(event_type, function(event) {
+newEvent(elementObject,  eventType, callback, func_argument){
+if(elementObject.addEventListener){
+elementObject.addEventListener(eventType, function(event) {
 event.preventDefault();	
 callback(func_argument);
 },
 false );
 }	else if (element_object.attachEvent) {
-element_object.attachEvent("on"+ event_type,
+elementObject.attachEvent("on"+ eventType,
 function(event){
 event.preventDefault();	
 callback(func_argument);
