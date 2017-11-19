@@ -6,6 +6,17 @@ body  {
 	position:absolute;
 }
 */
+
+p#validationNotice {
+	visibility:hidden; border:1px solid red;
+}
+
+.failValidation {
+	 border: 1px solid red;
+}
+#failValidation {
+	background-color:red; color:red;
+}
 div#header-div {
 	background-color:#ceb384; height:200px; width:100%; padding:8px;
 	 margin:-2px;  position:fixed; top:0px; left:0px; Z-index:1
@@ -16,7 +27,7 @@ div#body-div {
 }
 div#footer-div {
 	background-color:#ceb384; height:160px; width:100%; padding:8px;
-	 margin:-2px; position:relative; top:100px;
+	 margin:-2px; position:relative; top:1200px;
 }
 #body-div form {
 	background-color:#accdaa; width:35%; position:relative; left:30%;
@@ -51,7 +62,7 @@ div#center-detail {
 	position:relative; left:25%; top:40px; margin:20px; background-color:#cccccc; width:600px; padding:50px;
 }
 div#center-detail dl {
-	 width:300px; hieght:20px;
+	 width:300px; height:20px;
 }
 div#center-detail li {
 	position:relative;
