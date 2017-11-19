@@ -8,7 +8,6 @@ export const  Validation = class {
   validate(formElement) {
      let validated = true;
      let radioChecked = true;
-     let radioName;
      let eleControls = formElement.elements;
      const regex = /requiredFields/;
 	   for(let elem of eleControls){
@@ -34,7 +33,6 @@ export const  Validation = class {
          } else if (eleType === 'select-one'){
            let eleName = elem.getAttribute('name');
            eleValue = newFuncs.selectValue(eleName);
-           alert(eleValue);
            if(eleValue === 'select' || eleValue === ''){
               changeAttribute([elem, 'class', 'failValidation form-control']);
            }
@@ -55,7 +53,6 @@ export const  Validation = class {
      }
     if(radioChecked === false) {
       const radioEle = document.getElementById('radio-div');
-      alert(radioEle)
       changeAttribute([radioEle, 'class', 'failValidation form-group']);
     }
     if(validated === false){

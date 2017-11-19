@@ -65,6 +65,7 @@
     <div id = 'body-div' class = 'content-area' >
       <div class = 'form-div'>
       <form id ='add-center-form' method = 'POST' action = 'route/to/addcenter/controller'>
+        <p id = 'validationNotice'> The fields marked below are required</p>
         <h4 class = 'form-description'>
           Add New Event Center
         </h4>
@@ -73,7 +74,7 @@
           <span class = 'requiredFields'>*</span>
         </label>
         <div class = 'col-xs-9'>
-        <input type = 'text' id = 'center-name' class = 'form-control' name = 'centerName' placeholder = 'name' />
+        <input type = 'text' id = 'center-name' class = 'requiredFields form-control' name = 'centerName' placeholder = 'name' />
         </div>
         </div>
         <div  class = 'form-group'>
@@ -81,7 +82,7 @@
           <span class = 'requiredFields'>*</span>
         </label>
         <div class = 'col-xs-9'>
-        <input type = 'text' id = 'sitting-capacity' class = 'form-control' name = 'sittingCapacity' />
+        <input type = 'text' id = 'sitting-capacity' class = 'requiredFields form-control' name = 'sittingCapacity' />
         </div>
         </div>
         <div  class = 'form-group'>
@@ -89,7 +90,7 @@
           <span class = 'requiredFields'>*</span>
         </label>
         <div class = 'col-xs-9'>
-        <input type = 'text' id = 'price' class = 'form-control' name = 'Price' />
+        <input type = 'text' id = 'price' class = 'requiredFields form-control' name = 'Price' />
         </div>
         </div>
         <div  class = 'form-group'>
@@ -97,7 +98,7 @@
           <span class = 'requiredFields'>*</span>
         </label>
         <div class = 'col-xs-9'>
-        <select id = 'location' class = 'form-control' name = 'location'>
+        <select id = 'location' class = 'requiredFields form-control' name = 'location'>
         </select>
         </div>
         </div>
@@ -131,7 +132,7 @@
           <input type = 'checkbox' id = 'lodging' class = 'form-control centerfacilities' value = 'lodging' name = 'facilities' />
           </div>
         </fieldset>
-        <input type = 'submit' id= 'add-center' class ='btn btn-default' name = 'addCenter' value = 'Add Center' />
+        <input type = 'submit' id = 'add-center' class ='submitForm btn btn-default' name = 'addCenter' value = 'Add Center' />
       </form>
       </div>
       </div>
@@ -154,7 +155,7 @@
         </li>
       </ul>
     </div>
-  	<script src = 'path/to/script'>
+  	<script src = './../../scripts/dist/bundle.js'>
   	</script>
   </body>
 </html>
