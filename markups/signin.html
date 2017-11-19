@@ -21,6 +21,7 @@
     <div id = 'body-div'>
       <div class = 'form-div'>
         <form method = 'POST' action = 'route/to/login/controller'>
+          <p id = 'validationNotice'> The fields marked below are required</p>
           <h4 class = 'form-description'>
             Login
           </h4>
@@ -28,13 +29,13 @@
             <label for = 'username' class = 'input-group-addon'>Username
               <span class = 'requiredFields'>*</span>
             </label>
-            <input type = 'text' id = 'username' class = 'form-control' name = 'username' placeholder = 'Username/email' />
+            <input type = 'text' id = 'username' class = 'requiredFields form-control' name = 'username' placeholder = 'Username/email' />
           </div>
           <div  class = 'input-group input-group-md'>
             <label for = 'password' class = 'input-group-addon'>Password
               <span class = 'requiredFields'>*</span>
             </label>
-            <input type = 'password' id = 'password' class = 'form-control' name = 'password' placeholder = 'Password' />
+            <input type = 'password' id = 'password' class = 'requiredFields form-control' name = 'password' placeholder = 'Password' />
           </div>
           <div  class = 'input-group input-group-md'>
           <input type = 'submit' id = 'signin' class = 'submitForm form-control' name = 'signin' value = 'SignIn' />
