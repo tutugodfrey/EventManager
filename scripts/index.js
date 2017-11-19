@@ -23,6 +23,10 @@ function getSubmitEle(ele) {
 //	}
 }		
 
+//keep at the bottom of the script
+const modificationNotice = document.getElementById('modificationNotice');
+const modificationDate = document.lastModified;
+modificationNotice.innerHTML = `last modified ${modificationDate}`
 
 
 
