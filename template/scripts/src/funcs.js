@@ -1,28 +1,28 @@
 
 
-export const helperfuncs =  class {
+export const HelperFuncs =  class {
   constructor () {
   }
 
-newEvent(elementObject,  eventType, callback, func_argument){
-if(elementObject.addEventListener){
-elementObject.addEventListener(eventType, function(event) {
-event.preventDefault();	
-callback(func_argument);
-},
-false );
-}	else if (element_object.attachEvent) {
-elementObject.attachEvent("on"+ eventType,
-function(event){
-event.preventDefault();	
-callback(func_argument);
-} );
-}
-}		//close the function block
+  newEvent(elementObject,  eventType, callBack, callBackArgument){
+    if(elementObject.addEventListener){
+      elementObject.addEventListener(eventType, function(event) {
+      event.preventDefault();	
+      callBack(callBackArgument);
+      },
+      false );
+    }	else if (element_object.attachEvent) {
+      elementObject.attachEvent("on"+ eventType, function(event){
+      event.preventDefault();	
+      callBack(callBackArgument);
+      });
+    }
+  }		//close the function block
 
 getFormElement(ele){
     let formElement;
-    while(ele.toString() !== "[object HTMLFormElement]") {	//trying to get the form for ele
+    while(ele.toString() !== "[object HTMLFormElement]") {	
+      //trying to get the form containing ele
       ele = ele.parentNode;
       if(ele.toString()  === "[object HTMLFormElement]"){
         formElement = ele;
@@ -43,38 +43,41 @@ selectValue(eleName) {
 }
 
 getCheckedValue(checkEle){		//can be used for both checkbox and radio button
-if(checkEle.checked){
-const eleValue = checkEle.value;
-return eleValue;
-}
+  if(checkEle.checked){
+    const eleValue = checkEle.value;
+    return eleValue;
+  }
 }
 
+//confirm password
+confirmPasswordValues(passWord1, passWord2){
+  if(passWord1 !== passWord2){
+    return false;
+  }
+  return true;
+}
 
 }  // end class block
 
-export const changeAttribute  = function(data_array) {
-// data_array = [ele_object, att_to_change, new_att, remove_attr]
-const ele_object = data_array[0];
-const attr_to_change = data_array[1];
-const new_attr = data_array[2];
-const remove_attr = data_array[3];		// a string yes/no/change_attr_to if new_attr already exist
-
-const ele_attr = ele_object.getAttribute(attr_to_change);
-if (ele_attr === null || ele_attr !== new_attr) 	{
-//set the attribute and the image become large
-ele_object.setAttribute(attr_to_change, new_attr);
-} else
- if (ele_attr === new_attr && remove_attr === "yes") {
-//remove the attribute. the image become small
-ele_object.removeAttribute(attr_to_change);
-} 	
-else if (ele_attr === new_attr && remove_attr === "no") {
-//no action taken
-}
-else if(ele_attr === new_attr && (remove_attr !== "yes" || remove_attr !== "no" || remove_attr !== "undefined")){
-const change_to = remove_attr;
-ele_object.setAttribute(attr_to_change, remove_attr);
-} 
-
+export const changeAttribute  = function(dataArray) {
+  // data_array = [eleObject, att_to_change, newAttr, removeAttr]
+  const eleObject = dataArray[0];
+  const attrToChange = dataArray[1];
+  const newAttr = dataArray[2];
+  const removeAttr = dataArray[3];		// a string yes/no/change_attr_to if newAttr already exist
+  const eleAttr = eleObject.getAttribute(attrToChange);
+  if (eleAttr === null || eleAttr !== newAttr) 	{
+  //set the attribute and the image become large
+  eleObject.setAttribute(attrToChange, newAttr);
+  } else
+  if (eleAttr === newAttr && removeAttr === "yes") {
+  eleObject.removeAttribute(attrToChange);
+  } 	
+  else if (eleAttr === newAttr && removeAttr === "no") {
+  //no action taken
+  }
+  else if(eleAttr === newAttr && (removeAttr !== "yes" || removeAttr !== "no" || removeAttr !== "undefined")){
+  eleObject.setAttribute(attrToChange, removeAttr);
+  } 
 }		//end changeClass
 

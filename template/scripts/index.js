@@ -1,32 +1,28 @@
 
-import { helperfuncs }   from './src/funcs';
+import { HelperFuncs }   from './src/funcs';
 import { ValidateForm } from './src/validateForm';
 const validation = new ValidateForm();
-const newFuncs = new helperfuncs();
+const newFuncs = new HelperFuncs();
 
 dom_notifier();
 
 function dom_notifier () {
-	const submitElementId = ['signup', 'signin']
-	if(document.getElementById('submitForm')){
+	// const submitElementId = ['signup', 'signin']; not in use for now
+	if(document.getElementsByClassName('submitForm')){
 		const eleObject = document.getElementsByClassName('submitForm');
 		newFuncs.newEvent(eleObject[0], 'click', getSubmitEle, eleObject[0]);
 	}
 }
 
 function getSubmitEle(ele) {
-//	const submitEleId = ele.getAttribute("id");
+	// can perform logics base on the type of element here
   const formElement = newFuncs.getFormElement(ele);
-//	if(submitEleId === 'signin'){
-//		validation.validateSignin(formElement);
-//	} else if (submitEleId === 'signup') {
-		validation.validateSignup(formElement);
-//	}
+	validation.validateForms(formElement);
 }		
 
 
 
-//keep at the bottom of the script
+// keep at the bottom of the script
 const modificationNotice = document.getElementById('modificationNotice');
 let modificationDate = document.lastModified;
 modificationDate = modificationDate.split(' ');
