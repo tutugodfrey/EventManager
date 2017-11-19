@@ -73,6 +73,9 @@
       <h3>
         Your Profile
       </h3><br />
+      <div>
+         <img id = 'profile-pix' class = 'image-large img-fuild rounded' src = './../avatar/sam_3264.jpg' alt = 'profile pix' />
+      </div>
       <dl class = 'userprofile'>
             <dt class = 'list-term'>
               Lastname:
@@ -99,6 +102,10 @@
               Male
             </dd> 
       </dl>
+      <form method = 'PUT' action = 'path/to/editProfile/controller' >
+        <input type = 'hidden' value = '2' name = 'userId' />
+        <input type = 'submit' name = 'editProfile' />
+      </form>
     <div id = 'footer-div' class ='navbar'>
       <ul class = 'nav'>
         <li class = 'nav-item'>
