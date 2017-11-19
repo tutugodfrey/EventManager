@@ -75,6 +75,7 @@
     <div id = 'body-div'>
       <div class = 'form-div'>
         <form id ='add-event-form' method = 'POST' action = 'route/to/addcenter/controller'>
+          <p id = 'validationNotice'> The fields marked below are required</p>
           <h4 class = 'form-description'>
             Submit Request for an Event
           </h4>
@@ -83,7 +84,7 @@
               <span class = 'requiredFields'>*</span>
             </label>
             <div class = 'col-xs-9'>
-            <select id = 'event-type' class = 'form-control' name = 'eventType'>
+            <select id = 'event-type' class = 'requiredFields form-control' name = 'eventType'>
             </select>
             </div>
           </div>
@@ -92,7 +93,7 @@
             <span class = 'requiredFields'>*</span>
             </label>
           <div class = 'col-xs-9'>
-            <select id = 'location' class = 'form-control' name = 'location'>
+            <select id = 'location' class = 'requiredFields form-control' name = 'location'>
             </select>
             </div>
           </div>
@@ -101,7 +102,7 @@
             <span class = 'requiredFields'>*</span>
             </label>
           <div class = 'col-xs-9'>
-            <select id = 'location' class = 'form-control' name = 'centerName'>
+            <select id = 'location' class = 'requiredFields form-control' name = 'centerName'>
             </select>
             </div>
           </div>
@@ -146,7 +147,7 @@
              </div>
           </fieldset>
           <div  class = 'input-group'>
-          <input type = 'submit' id= 'signup' class = 'btn btn-default' name = 'signup' value = 'Submit' />
+          <input type = 'submit' id= 'addEvent' class = 'submitForm btn btn-default' name = 'signup' value = 'Submit' />
           </div>
         </form>
       </div>
@@ -171,7 +172,7 @@
         </ul>
       </div>>
     </div>
-  	<script src = 'path/to/script'>
+  	<script src = './../../scripts/dist/bundle.js' >
   	</script>
   </body>
 </html>
