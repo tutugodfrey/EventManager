@@ -26,21 +26,24 @@
             Signup  with Event Manager and Allow us manage your upcoming events
             </h4>
             <div  class = 'form-group'>
-              <label class = 'input-group-addon' for = 'firstname'>Firstname
+              <label for = 'firstname' class='col-xs-3 col-form-label mr-2' >Firstname
                 <span class = 'requiredFields'>*</span>
               </label>
               <input type = 'text'  id = 'firstname' class = 'requiredFields form-control' name = 'firstname' />
             </div>
             <div  class = 'form-group'>
-              <label class = 'input-group-addon' for = 'lastname'>Lastname
+              <label for = 'lastname' class='col-xs-3 col-form-label mr-2' >Lastname
                 <span class = 'requiredFields'>*</span>
               </label>
+              <div class = 'col-xs-9'>
               <input type = 'text' id = 'lastname' class ='requiredFields form-control' name = 'lastname' />
+              </div>
             </div>
             <div  class = 'form-group'>
-              <label  for = 'gender' class = 'input-group-addon'>Gender
+              <label  for = 'gender' class='col-xs-3 col-form-label mr-2'>Gender
                 <span class = 'requiredFields'>*</span>
               </label>
+              <div class = 'col-xs-9'>
               <select class = 'requiredFields form-control' name = 'gender'>
                 <option value = 'select'>
                   Select
@@ -52,59 +55,74 @@
                   Male
                 </option>
               </select>
+              </div>
             </div>
             <div  class = 'form-group'>
-              <label for = "profile-photo" class = 'input-group-addon'>Add Photo</label>
+              <label for = "profile-photo" class='col-xs-3 col-form-label mr-2'>Add Photo</label>
+              <div class = 'col-xs-9'>
               <input type = 'file'  id = 'profile-photo' class = 'form-control' name = 'profile-photo' /><br />
+              </div>
             </div>
             <div  class = 'form-group'>
-              <label for = 'email-address' class = 'input-group-addon' >Email
+              <label for = 'email-address' class='col-xs-3 col-form-label mr-2' >Email
                 <span class = 'requiredFields'>*</span>
               </label>
+              <div class = 'col-xs-9'>
               <input type = 'text' id = 'email-address' class = 'requiredFields form-control' name = 'email' placeholder = 'you@example.com' /><br/>
+              </div>
             </div>
             <div  class = 'form-group'>
-              <label for = 'user-name' class = 'input-group-addon'>Username
+              <label for = 'user-name' class='col-xs-3 col-form-label mr-2'>Username
                 <span class = 'requiredFields'>*</span>
               </label>
+              <div class = 'col-xs-9'>
               <input type = 'text'  id = 'username' class = 'requiredFields form-control' name = 'username' placeholder = 'Username' />
+              </div>
             </div>
             <div  class = 'form-group'>
-              <label for = "passwd" class = 'input-group-addon'>Password
+              <label for = "passwd" class='col-xs-3 col-form-label mr-2'>Password
                 <span class = 'requiredFields'>*</span>
               </label>
+              <div class = 'col-xs-9'>
               <input type = 'password'   id= 'passwd1' class = 'requiredFields form-control' name = 'password1' placeholder = 'Password' />
+              </div>
             </div>
             <div  class = 'form-group'>
-              <label for = 'passwd2' class = 'input-group-addon'>Confirm Pasword
+              <label for = 'passwd2' class='col-xs-3 col-form-label mr-2'>Confirm Pasword
                 <span class = 'requiredFields'>*</span>
               </label>
+              <div class = 'col-xs-9'>
               <input type = 'password' id = 'passwd2' class = 'requiredFields form-control' name = 'confirmpassword' placeholder = 'Confirm Password' />
+              </div>
             </div>
             <div  class = 'form-group'>
-              <label for = 'security-question' class = 'input-group-addon' >Security Question
+              <label for = 'security-question' class='col-xs-3 col-form-label mr-2' >Security Question
                 <span class = 'requiredFields'>*</span>
               </label>
-              <select name = 'securityQuestion' id = 'security-question' class = 'requiredFields form-control'>
-                <option>
-                  What is the name of your first school?
-                </option>
-                <option>
-                  How old are you when you got married?
-                </option>
-                <option>
-                  What is the brand name of your first car?
-                </option>
-                <option>
-                  What is the name of your favorite teacher?
-                </option>
-              </select>
+              <div class = 'col-xs-9'>
+                <select name = 'securityQuestion' id = 'security-question' class = 'requiredFields form-control'>
+                  <option>
+                    What is the name of your first school?
+                  </option>
+                  <option>
+                    How old are you when you got married?
+                  </option>
+                  <option>
+                    What is the brand name of your first car?
+                  </option>
+                  <option>
+                    What is the name of your favorite teacher?
+                  </option>
+                </select>
+              </div>
             </div>
             <div  class = 'form-group'>
-              <label for = 'security-answer' class = 'input-group-addon'>Answer
+              <label for = 'security-answer' class='col-xs-3 col-form-label mr-2'>Answer
                 <span class = 'requiredFields'>*</span>
               </label>
-              <input type = 'text' id = 'security-answer' class = 'requiredFields form-control'name = 'security-answer' />
+              <div class = 'col-xs-9'>
+                <input type = 'text' id = 'security-answer' class = 'requiredFields form-control'name = 'security-answer' />
+              </div>
             </div>
             <p>Agree to our <a href = 'terms-of-use.html'>terms</a> of use <span class = 'requiredFields'>*</span></p>
             <div  class = 'form-group' id = 'radio-div'>
