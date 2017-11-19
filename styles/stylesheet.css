@@ -10,13 +10,17 @@ body  {
 p#validationNotice {
 	visibility:hidden; border:1px solid red;
 }
-
+#modificationNotice {
+	font-weight:bold; position:relative; top:8px;
+}
 .failValidation {
 	 border: 1px solid red;
 }
-#failValidation {
+/*#failValidation {
 	background-color:red; color:red;
+
 }
+*/
 div#header-div {
 	background-color:#ceb384; height:200px; width:100%; padding:8px;
 	 margin:-2px;  position:fixed; top:0px; left:0px; Z-index:1
