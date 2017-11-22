@@ -1,17 +1,17 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset = 'UTF-8'/>
     <meta http-equiv = 'X--Compatible' content = 'IE=edge' />
     <meta name = 'viewport' content= 'width= device-width, initial-scale =1' />
-    <title>
-      Add Event
-    </title>
+  	<title>
+  		Add Event
+  	</title>
     <link rel = 'stylesheet' type = 'text/css' href = './../../styles/css/bootstrap.min.css' />
-    <link rel = 'stylesheet' type = 'text/css' href = './../../styles/stylesheet.css' />
+  	<link rel = 'stylesheet' type = 'text/css' href = './../../styles/stylesheet.css' />
   </head>
   <body>
-  <div id = 'header-div'>
+    <div id = 'header-div'>
       <div class = 'navbar' >
         <ul id = 'main-menu' class = 'nav nav-tabs'>
           <li class = 'nav-item'>
@@ -66,56 +66,285 @@
           </ul>
         </div>
       </div>
-       <div class = 'body-div'>
-      <!--  <img class ='background-images' src = './../../avatar/images16.jpg' alt= "image not loaded" /> -->
-        <div class = 'form-div'>
-          <form id ='add-event-form' method = 'POST' action = 'route/to/addcenter/controller'>
-             <fieldset  class = 'form-group'>
+    </div>
+    <div class = 'body-div'>
+      <div class = 'form-div container'>
+        <form id ='add-event-form' method = 'POST' action = 'route/to/addcenter/controller'>
+          <p id = 'validationNotice'> The fields marked below are required</p>
+          <h4 class = 'form-description'>
+            Submit Request for an Event
+          </h4>
+          <div  class = 'form-group'>
+            <label for = 'event-type' class="col-xs-3 col-form-label mr-2">Event Type
               <span class = 'requiredFields'>*</span>
-              <select id = 'location' class = 'requiredFields form-control' name = 'location'>
-                <option value = 'select' selected = 'selected'>Select</option>
-                <option>Abia</option>
-                <option>Adamawa</option>
-                <option>Akwa Ibom</option>
-                <option>Anambra</option>
-                <option>Bauchi</option>
-                <option>Bayelsa</option>
-                <option>Benue</option>
-                <option>Bornu</option>
-                <option>Cross River</option>
-                <option>Delta</option>
-                <option>Ebonyi</option>
-                <option>Edo</option>
-                <option>Ekiti</option>
-                <option>Enugu</option>
-                <option>Gombe</option>
-                <option>Imo</option>
-                <option>Jigawa</option>
-                <option>Kaduna</option>
-                <option>Kano</option>
-                <option>Kastina</option>
-                <option>Kebbi</option>
-                <option>Kwara</option>
-                <option>Lagos</optiion>
-                <option>Nasarawa</option>
-                <option>Niger</option>
-                <option>Ogun</option>
-                <option>Ondo</option>
-                <option>Osun</option>
-                <option>Oyo</option>
-                <option>Plateau</option>
-                <option>River</option>
-                <option>Sokoto</option>
-                <option>Taraba</option>
-                <option>Yobe</option>
-                <option>Zamfara</option>
-                <option>FCT</option>
-              </select>
-              </fieldset>
-         </form>
-        </div>
+            </label>
+            <div class = 'col-xs-9'>
+            <select id = 'event-type' class = 'requiredFields form-control' name = 'eventType'>
+              <option value = 'select' selected = 'selected'>Select</option>
+              <option>Wedding</option>
+              <option>Concert</option>
+              <option>Book Launching</option>
+            </select>
+            </div>
+          </div>
+          <div  class = 'form-group'>
+            <label for = 'location' class="col-xs-3 col-form-label mr-2">Location
+            <span class = 'requiredFields'>*</span>
+            </label>
+          <div class = 'col-xs-9'>
+            <select id = 'location' class = 'requiredFields form-control' name = 'location'>
+              <option value = 'select' selected = 'selected'>Select</option>
+              <option>Abia</option>
+              <option>Adamawa</option>
+              <option>Akwa Ibom</option>
+              <option>Anambra</option>
+              <option>Bauchi</option>
+              <option>Bayelsa</option>
+              <option>Benue</option>
+              <option>Bornu</option>
+              <option>Cross River</option>
+              <option>Delta</option>
+              <option>Ebonyi</option>
+              <option>Edo</option>
+              <option>Ekiti</option>
+              <option>Enugu</option>
+              <option>Gombe</option>
+              <option>Imo</option>
+              <option>Jigawa</option>
+              <option>Kaduna</option>
+              <option>Kano</option>
+              <option>Kastina</option>
+              <option>Kebbi</option>
+              <option>Kwara</option>
+              <option>Lagos</optiion>
+              <option>Nasarawa</option>
+              <option>Niger</option>
+              <option>Ogun</option>
+              <option>Ondo</option>
+              <option>Osun</option>
+              <option>Oyo</option>
+              <option>Plateau</option>
+              <option>River</option>
+              <option>Sokoto</option>
+              <option>Taraba</option>
+              <option>Yobe</option>
+              <option>Zamfara</option>
+              <option>FCT</option>
+            </select>
+            </div>
+          </div>
+          <div  class = 'form-group'>
+            <label for = 'location' class="col-xs-3 col-form-label mr-2">Event Centers
+            <span class = 'requiredFields'>*</span>
+            </label>
+          <div class = 'col-xs-9'>
+            <select id = 'location' class = 'requiredFields form-control' name = 'centerName'>
+              <option value = 'select' selected = 'selected'>Select</option>
+              <option>D' Cubicle Event Center</option>
+              <option>KFT Event Center</option>
+              <option>Queen's Tower</option>
+            </select>
+            </div>
+          </div>
+          <div class = 'form-group'>
+            <label for = 'event-date' class = "col-xs-3 col-form-label mr-2">Date
+            <span class = 'requiredFields'>*</span>
+            </label>
+          <div class = 'col-xs-9'>
+            <select id = 'event-day' name = 'eventDay'>
+              <option value = "select" selected= "selected">
+                Day
+              </option>
+              <option value = "1">
+                1
+              </option>
+              <option value = "2">
+                2
+              </option>
+              <option value = "3">
+                3
+              </option>
+              <option value = "4">
+                4
+              </option>
+              <option value = "5">
+                5
+              </option>
+              <option value = "6">
+                6
+              </option>
+              <option value = "7">
+                7
+              </option>
+              <option value = "8">
+                8
+              </option>
+              <option value = "9">
+                9
+              </option>
+              <option value = "10">
+              </option>
+              <option value = "11">
+                11
+              </option>
+              <option value = "12">
+                12
+              </option>
+              <option value = "13">
+                13
+              </option>
+              <option value = "14">
+                14
+              </option>
+              <option value = "15">
+                15
+              </option>
+              <option value = "16">
+                16
+              </option>
+              <option value = "17">
+                17
+              </option>
+              <option value = "18">
+                18
+              </option>
+              <option value = "19">
+                19
+              </option>
+              <option value = "20">
+                20
+              </option>
+              <option value = "21">
+                21
+              </option>
+              <option value = "22">
+                22
+              </option>
+              <option value = "23">
+                23
+              </option>
+              <option value = "24">
+                24
+              </option>
+              <option value = "25">
+                25
+              </option>
+              <option value = "26">
+                26
+              </option>
+              <option value = "27">
+                27
+              </option>
+              <option value = "28">
+                28
+              </option>
+              <option value = "29">
+                29
+              </option>
+              <option value = "30">
+                30
+              </option>
+              <option value = "31">
+                31
+              </option>
+            </select>
+            <select id = 'event-month'  name = 'eventMonth'>
+              <option value = "select" selected= "selected">
+                Month
+              </option>
+              <option value = "1" >
+                January
+              </option>
+              <option value = "2">
+                February
+              </option>
+              <option value = "3">
+                March
+              </option>
+              <option value = "4">
+                April
+              </option>
+              <option value = "5">
+                May
+              </option>
+              <option value = "6">
+                June
+              </option>
+              <option value = "7">
+                July
+              </option>
+              <option value = "8">
+                August
+              </option>
+              <option value = "9">
+                September
+              </option>
+              <option value = "10">
+                October
+              </option>
+              <option value = "11">
+                November
+              </option>
+              <option value = "12">
+                December
+              </option>
+            </select>
+            <select id = 'event-year'  name = 'eventYear'>
+                <option value = "select" selected= "selected">
+                  Year
+                </option>
+               <option value = "2017">
+                2019
+              </option>
+              <option value = "2018">
+                2018
+              </option>
+              <option value = "2019">
+                2019
+              </option>
+              <option value = "2020">
+                2020
+              </option>
+              <option value = "2021">
+                2021
+              </option>
+            </select>
+            </div>
+          </div>
+          <legend> Facilities  <span class = 'requiredFields'>*</span></legend>
+          <fieldset  class = 'form-group'>
+              <label for = 'aircondition' class = 'col-xs-3 col-form-label' > Air Condition </label>
+              <div class = 'col-xs-9'>
+                <input type = 'checkbox' id = 'aircondition' class = 'form-control centerfacilities' value = 'Air Condition' name = 'facilities' />  
+              </div>
+             <label for = 'fans' class="col-xs-3 col-form-label mr-2" >Fan </label>
+             <div class = 'col-xs-9'>
+               <input type = 'checkbox' id = 'fans' class = 'form-control centerfacilities' value = 'fans' name = 'facilities' />
+             </div>
+              <label for = 'catering' class="col-xs-3 col-form-label mr-2" >Catering</label>
+              <div class = 'col-xs-9'>
+                <input type = 'checkbox' id = 'catering' class = 'form-control centerfacilities' value = 'catering' name = 'facilities' /> 
+              </div>
+             <label for = 'decoration' class="col-xs-3 col-form-label mr-2" >Decoration </label>
+             <div class = 'col-xs-9'>
+               <input type = 'checkbox' id = 'decoration' class = 'form-control centerfacilities' value = 'decoration' name = 'facilities' />
+            </div>
+            <label for = 'projector' class="col-xs-3 col-form-label mr-2">Projector</label>
+            <div class = 'col-xs-9'>
+              <input type = 'checkbox' id = 'projector' class = 'form-control centerfacilities' value = 'projector' name = 'facilities' />  
+            </div>
+             <label for = 'lodging' class="col-xs-3 col-form-label mr-2">Lodging</label>
+             <div class = 'col-xs-9'>
+               <input type = 'checkbox' id = 'lodging' class = 'form-control centerfacilities' value = 'lodging' name = 'facilities' />
+             </div>
+          </fieldset>
+          <div  class = 'input-group'>
+          <input type = 'submit' id= 'addEvent' class = 'submitForm btn btn-default' name = 'signup' value = 'Submit' />
+          </div>
+        </form>
       </div>
-     <div id = 'footer-div' class ='navbar'>
+      </div>
+      <div id = 'footer-div' class ='navbar'>
         <ul class = 'nav'>
           <li class = 'nav-item'>
             <p id = 'modificationNotice'></p>
@@ -137,7 +366,8 @@
           </li>
         </ul>
       </div>
-  <script src = './../../scripts/dist/bundle.js' >
-    </script>
+    </div>
+  	<script src = './../../scripts/dist/bundle.js' >
+  	</script>
   </body>
 </html>
