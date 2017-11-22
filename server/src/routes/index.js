@@ -13,7 +13,8 @@ import express from 'express';
 		app.get('/', (req, res) => {
       res.status(200).send('Welcom to Eventmanager');
       });
-		app.post('/api/centers', eventCenter.addEventCenter)
+		app.post('/api/centers', eventCenter.addEventCenter);
+		app.get('/api/centers', eventCenter.getEventCenter);
 	}
 }
 

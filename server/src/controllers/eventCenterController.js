@@ -20,7 +20,10 @@ const EventCenterController = class {
 			cost:req.body.cost
 		}
 		eventCenters.push(newEventCenter);
-		res.send(newEventCenter);
+		res.status(201).send(newEventCenter);
+	}
+	getEventCenter(req, res) {
+		res.status(200).send(eventCenters);
 	}
 }
 
