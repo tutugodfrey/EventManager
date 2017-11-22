@@ -62,44 +62,28 @@
           </h1>
         </div>
     </div>
-    <div id = 'body-div' class = 'content-area' >
-      <div class = 'form-div'>
+    <div class = 'body-div' >
+      <div class = 'form-div card col-sm-4'>
       <form id ='add-center-form' method = 'POST' action = 'route/to/addcenter/controller'>
         <p id = 'validationNotice'> The fields marked below are required</p>
-        <h4 class = 'form-description'>
-          Add New Event Center
-        </h4>
-        <div  class = 'form-group'>
-        <label for = 'center-name' class= 'col-xs-3 col-form-label mr-2'>Name
+       <fieldset  class = 'form-group'>
           <span class = 'requiredFields'>*</span>
-        </label>
-        <div class = 'col-xs-9'>
-        <input type = 'text' id = 'center-name' class = 'requiredFields form-control' name = 'centerName' placeholder = 'name' />
-        </div>
-        </div>
-        <div  class = 'form-group'>
-        <label for = 'sitting-capacity' class= 'col-xs-3 col-form-label mr-2'>Sitting Capacity
+        <input type = 'text' id = 'center-name' class = 'requiredFields form-control' placeholder = 'Center' name = 'centerName' placeholder = 'name' />
+        </fieldset>
+        <fieldset  class = 'form-group'>
           <span class = 'requiredFields'>*</span>
-        </label>
-        <div class = 'col-xs-9'>
         <input type = 'text' id = 'sitting-capacity' class = 'requiredFields form-control' name = 'sittingCapacity' />
-        </div>
-        </div>
-        <div  class = 'form-group'>
-        <label for = 'price' class= 'col-xs-3 col-form-label mr-2'>price
+        </fieldset>
+        <fieldset  class = 'form-group'>
           <span class = 'requiredFields'>*</span>
-        </label>
         <div class = 'col-xs-9'>
-        <input type = 'text' id = 'price' class = 'requiredFields form-control' name = 'Price' />
-        </div>
-        </div>
-        <div  class = 'form-group'>
-        <label for = 'location' class= 'col-xs-3 col-form-label mr-2'>Location
+        <input type = 'text' id = 'price' class = 'requiredFields form-control' placeholder = 'name' name = 'Price' />
+        </fieldset>
+        <fieldset  class = 'form-group'>
           <span class = 'requiredFields'>*</span>
-        </label>
-        <div class = 'col-xs-9'>
+        <fieldset  class = 'form-group'>
         <select id = 'location' class = 'requiredFields form-control' name = 'location'>
-          <option value = 'select'>Select</option>
+          <option value = 'select'>Location</option>
           <option>Abia</option>
           <option>Adamawa</option>
           <option>Akwa Ibom</option>
@@ -137,37 +121,23 @@
           <option>Zamfara</option>
           <option>FCT</option>
         </select>
-        </div>
-        </div>
-        <div  class = 'form-group'>
+       </fieldset>
+        <fieldset  class = 'form-group'>
         <legend> Facilities
           <span class = 'requiredFields'>*</span>
         </legend>
         <fieldset class = 'form-group'>
           <label for = 'aircondition' class= 'col-xs-3 col-form-label mr-2' > Air Condition </label>
-          <div class = 'col-xs-9'>
           <input type = 'checkbox' id = 'aircondition' class = 'form-control centerfacilities' value = 'Air Condition' name = 'facilities' />
-          </div> 
           <label for = 'fans' class= 'col-xs-3 col-form-label mr-2' > Fan </label>
-          <div class = 'col-xs-9'>
           <input type = 'checkbox' id = 'fans' class = 'form-control centerfacilities' value = 'fans' name = 'facilities' />
-          </div>
           <label for = 'catering' class= 'col-xs-3 col-form-label mr-2'>Catering</label>
-          <div class = 'col-xs-9'>
-          <input type = 'checkbox' id = 'catering' class = 'form-control centerfacilities' value = 'catering' name = 'facilities' />
-          </div>
           <label for = 'decoration' class= 'col-xs-3 col-form-label mr-2'>Decoration </label>
-          <div class = 'col-xs-9'>
           <input type = 'checkbox' id = 'decoration' class = 'form-control centerfacilities' value = 'decoration' name = 'facilities' />
-          </div>
           <label for = 'projector' class= 'col-xs-3 col-form-label mr-2'>Projector</label>
-          <div class = 'col-xs-9'>
           <input type = 'checkbox' id = 'projector' class = 'form-control centerfacilities' value = 'projector' name = 'facilities' />
-          </div>
           <label for = 'lodging' class= 'col-xs-3 col-form-label mr-2' >Lodging</label>
-          <div class = 'col-xs-9'>
           <input type = 'checkbox' id = 'lodging' class = 'form-control centerfacilities' value = 'lodging' name = 'facilities' />
-          </div>
         </fieldset>
         <input type = 'submit' id = 'add-center' class ='submitForm btn btn-default' name = 'addCenter' value = 'Add Center' />
       </form>

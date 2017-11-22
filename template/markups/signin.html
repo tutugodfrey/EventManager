@@ -12,38 +12,23 @@
   </head>
   <body>
     <div id = 'header-div' >
-      <div class = 'page-header' id = 'site-name'>
-        <h1>
-          Event Manager
-        </h1>
-      </div>
-    </div>
     <div id = 'body-div'>
-      <div class = 'form-div'>
-        <form method = 'POST' action = 'route/to/login/controller'>
+      <div class = 'form-div card'>
+        <form class = 'form-class' method = 'POST' action = 'route/to/login/controller'>
           <p id = 'validationNotice'> The fields marked below are required</p>
           <h4 class = 'form-description'>
             Login
           </h4>
-          <div  class = 'form-group'>
-            <label for = 'username' class='col-xs-3 col-form-label mr-2'>Username
+          <fieldset  class = 'form-group'>
               <span class = 'requiredFields'>*</span>
-            </label>
-            <div class = 'col-xs-9'>
-            <input type = 'text' id = 'username' class = 'requiredFields form-control' name = 'username' placeholder = 'Username/email' />
-            </div>
-          </div>
-          <div  class = 'form-group'>
-            <label for = 'password' class='col-xs-3 col-form-label mr-2'>Password
-              <span class = 'requiredFields'>*</span>
-            </label>
-            <div class = 'col-xs-9'>
+            <input type = 'text' id = 'username' class = 'requiredFields form-control' name = 'username' placeholder = 'Username or  email' />
+            </fieldset>
+          <fieldset  class = 'form-group'>
             <input type = 'password' id = 'password' class = 'requiredFields form-control' name = 'password' placeholder = 'Password' />
-            </div>
-          </div>
-          <div  class = 'form-group'>
+          </fieldset>
+          <fieldset  class = 'form-group'>
           <input type = 'submit' id = 'signin' class = 'submitForm form-control' name = 'signin' value = 'SignIn' />
-          </div>
+          </fieldset>
           <div class ='form-div-append'>
             <p>I do no have an <a href = 'signup.html'> SignUp</a></p><br />
             <a href = 'forget-password.html'>Forgot password?</a>

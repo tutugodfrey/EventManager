@@ -1,114 +1,29 @@
 body  {
-	background-color:#cab4ee; margin:2px;
+	background-image:url(./../avatar/images18.jpg);  margin:2px;
+}
+
+div.body-div {
+	 background-color:rgba(0, 0, 0, 0.2);  padding:8px;
+	 margin:-2px; 
 }
 /*
-@media only screen and (max-width:700px) and (orientation:landscape) {
-	position:absolute;
-}
-*/
-
-p#validationNotice {
-	visibility:hidden; border:1px solid red;
-}
-#modificationNotice {
-	font-weight:bold; position:relative; top:8px;
-}
-.failValidation {
-	 border: 1px solid red;
-}
-#failValidation {
-	background-color:red; color:red;
-
-}
-
-div#header-div {
-	background-color:#ceb384; height:200px; width:100%; padding:8px;
-	 margin:-2px;  position:fixed; top:0px; left:0px; Z-index:1
-}
-div#body-div {
-	background-color:#e5d7b1; height:1600px; width:100%; padding:100px;
-   margin:-2px; position:relative; top:200px;
-}
-div#footer-div {
-	background-color:#ceb384; height:160px; width:100%; padding:8px;
-	 margin:-2px; position:relative; top:150px;
-}
-#body-div form {
-	background-color:#accdaa; width:35%; position:relative; left:30%;
-	border:2px white solid; margin-top:25px; 
-}
 img {
 	height:30px; width:30px;
 }
-#index-page {
-	background-image:url(event.jpg)
+*/
+div#header-div {
+	 background-color:rgba(0, 0, 0, 0.8);  height:50px;  padding:8px;
+	 margin:-2px; 
 }
-div#sub-menu {
-	background-color:#e5d7b1; position:relative; left:75%; top:-50px; width:280px;
+.form-div form {
+	background-color:rgba(0, 0, 0, 0.6); 
+ margin-top:25px; width:20rem;
 }
-div#site-name {
-	text-align:center;
+div#footer-div {
+	 background-color:rgba(0, 0, 0, 0.8);  height:50px;  padding:8px;
+	 margin:-2px; 
 }
-div#footer-div ul {
-	position:relative; left:40%;
+#modificationNotice {
+	background-color:rgba(0, 0, 0, 0.2); font-weight:bold; position:relative; top:8px;
 }
-span.requiredFields{
-	color:red; font-size:16px;
-}
-
-h4.form-description, h1.page-description {
-	text-align:center;
-}
-ol li {
-	background-color :#aaddaa; width:30px
-}
-div#center-detail {
-	position:relative; left:25%; top:40px; margin:20px; background-color:#cccccc; width:600px; height:1000px; padding:50px;
-}
-div#center-detail dl {
-	 width:300px; height:20px;
-}
-div#center-detail li {
-	position:relative;
-}
-
-div#center-detail .items {
-	background-color:#aacaad;
-}
-#scheduled-events  {
-	background : #cccccc; width:600px; position:relative; left:26.5%; top:30px; padding:10px;
-}
-div#scheduled-events table {
-  position:relative; left:5%; border:1px solid white; width:510px
-}
-#scheduled-events th {
-	background-color:#aaaccc;
-}
-#scheduled-events td {
-	background-color:#aacaad;
-}
-div#body-div .info-head {
- text-align:center;
-}
-
-div#centers-list .list-term {
- background:#aacadd;
-}
-div#centers-list .list-term-value {
-	background-color:#aacaad
-}
-div.form-dev-append {
-	padding:200px;
-}
-img.image-large {
-	height:200px; width:150px;
-}
-
-form#search-event-centers {
-	background-color:#e5d7b1; width:232px; position:fixed; left:80%; top:180px;
-	border:2px white solid; margin-top:25px; Z-index:1;
-}
-
-form#search-event-centers button {
-	width:22px; height:22px 
-}
+div.small

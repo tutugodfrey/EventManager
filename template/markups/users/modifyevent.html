@@ -71,34 +71,20 @@
           </ul>
         </div>
       </div>
-        <div class = 'page-header' id = 'site-name'>
-          <h1>
-            EventManager
-          </h1>
-        </div>
-    </div>
-    <div id = 'body-div' class = 'content-area'>
+        <div class = 'body-div'>    
+        <div class = 'form-div card col-sm-4'>
         <form id ='add-event-form' method = 'PUT' action = 'route/to/addcenter/controller'> 
-          <h4 class = 'form-description'>
-            Modify Events
-          </h4>
+         <fieldset  class = 'form-group'>
         <input type = 'hidden' value = '3' name = 'eventId' />
-        <div class = 'form-group'>
         <label for = 'event-type' class="col-xs-3 col-form-label mr-2">Event EventType
            <span class = 'requiredFields'>*</span>
-        </label>
-        <div class = 'col-xs-9'>
         <select id = 'event-type' name = 'eventType'>
         </select>
-        </div>
-       </div>
-       <div class = 'form-group'>
-        <label for = 'location' class="col-xs-3 col-form-label mr-2">Location
+        </fieldset>
+        <fieldset  class = 'form-group'>
            <span class = 'requiredFields'>*</span>
-        </label>
-        <div class = 'col-xs-9'>
         <select id = 'location' class = 'form-control' name = 'location'>
-          <option value = 'select'>Select</option>
+          <option value = 'select'>Location</option>
           <option>Abia</option>
           <option>Adamawa</option>
           <option>Akwa Ibom</option>
@@ -136,60 +122,37 @@
           <option>Zamfara</option>
           <option>FCT</option>
         </select>
-        </div>
-        </div>
-        <div class = 'form-group'>
+        </fieldset>
+         <fieldset  class = 'form-group'>
         <label for = 'location' class="col-xs-3 col-form-label mr-2">Event Centers
            <span class = 'requiredFields'>*</span>
         </label>
         <div class = 'col-xs-9'>
         <select id = 'location' class = 'form-control' name = 'centerName'>
         </select>
-        </div>
-        </div>
-        <div class = 'form-group'>
-        <label for = 'event-date' class="col-xs-3 col-form-label mr-2">Date
+        </fieldset>
+         <fieldset  class = 'form-group'>
            <span class = 'requiredFields'>*</span>
-        </label>
-        <div class = 'col-xs-9'>
         <select id = 'event-day'  name = 'eventDay'>
         </select>
         <select id = 'event-month'  name = 'eventMonth'>
         </select>
         <select id = 'event-year'  name = 'eventYear'>
         </select>
-        </div>
-        </div>
+        </fieldset>
         <legend> Facilities <span class = 'requiredFields'>*</span></legend>
         <fieldset  class = 'form-group'>
-          <div class = 'col-xs-9'>
           <input type = 'checkbox' checked = 'checked' id = 'aircondition' class = 'form-control centerfacilities' value = 'Air Condition' name = 'facilities' />
-          </div>
-          <label for = 'aircondition' class="col-xs-3 col-form-label mr-2" > Air Condition </label>
-          <div class = 'col-xs-9'>
           <input type = 'checkbox' id = 'fans' class = 'form-control centerfacilities' value = 'fans' name = 'facilities' />
-          </div>
-          <label for = 'fans'class="col-xs-3 col-form-label mr-2" >Fan </label>
-          <div class = 'col-xs-9'>
           <input type = 'checkbox' id = 'catering' class = 'form-control centerfacilities' value = 'catering' name = 'facilities' />
-          </div>
-          <label for = 'catering' class="col-xs-3 col-form-label mr-2" >Catering</label>
-          <div class = 'col-xs-9'>
-          <input type = 'checkbox' checked = 'checked' id = 'decoration' class = 'form-control centerfacilities' value = 'decoration' name = 'facilities' />
-          </div>
-          <label for = 'decoration' class="col-xs-3 col-form-label mr-2" >Decoration </label>
-          <div class = 'col-xs-9'>
+          <input type = 'checkbox' checked = 'checked' id = 'decoration' class = 'form-control centerfacilities' placeholder = 'Decoration' value = 'decoration' name = 'facilities' />
           <input type = 'checkbox' checked = 'checked' id = 'projector' class = 'form-control centerfacilities' value = 'projector' name = 'facilities' />
-          </div>
-          <label for = 'projector' class="col-xs-3 col-form-label mr-2" >Projector</label>
-          <div class = 'col-xs-9'>
           <input type = 'checkbox' id = 'lodging' class = 'form-control centerfacilities' value = 'lodging' name = 'facilities' />
-          </div>
-          <label for = 'lodging' class="col-xs-3 col-form-label mr-2" >Lodging</label><br />
         </fieldset>
         <input type = 'submit' id= 'modify-event' class = 'btn btn-default' name = 'modifyEvent' value = 'Submit' />
       </form>
       </div>
+    </div>
       <div id = 'footer-div' class ='navbar'>
         <ul class = 'nav'>
           <li class = 'nav-item'>

@@ -11,40 +11,27 @@
     <link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css' />
   </head>
   <body>
-    <div id = 'header-div' >
-      <div id = 'site-name' class = 'page-header'>
-          <h1>
-            Event Manager
-          </h1><br />
-        </div>
-        </div>
-        <div id = 'body-div'>
-          <div class = 'form-div'>
-          <form method = 'POST' action = 'route/to/singup/controller'>
+      <div  class = 'body-div' >
+        <div  id = 'signup-form' class = 'form-div col-sm-4 card'>
+          <form class = 'form-class' id = 'signup' method = 'POST' action = 'route/to/singup/controller'>
             <p id = 'validationNotice'> The fields marked below are required</p>
-            <h4>
-            Signup  with Event Manager and Allow us manage your upcoming events
-            </h4>
-            <div  class = 'form-group'>
-              <label for = 'firstname' class='col-xs-3 col-form-label mr-2' >Firstname
-                <span class = 'requiredFields'>*</span>
-              </label>
-              <input type = 'text'  id = 'firstname' class = 'requiredFields form-control' name = 'firstname' />
+            <div class = 'card-block'>
+              <h4 class = 'card-title'>
+              Signup 
+              </h4>
             </div>
-            <div  class = 'form-group'>
-              <label for = 'lastname' class='col-xs-3 col-form-label mr-2' >Lastname
+            <div class = 'card-block'>
+            <fieldset  class = 'form-group'>
                 <span class = 'requiredFields'>*</span>
-              </label>
-              <div class = 'col-xs-9'>
-              <input type = 'text' id = 'lastname' class ='requiredFields form-control' name = 'lastname' />
-              </div>
-            </div>
-            <div  class = 'form-group'>
-              <label  for = 'gender' class='col-xs-3 col-form-label mr-2'>Gender
+              <input type = 'text'  id = 'firstname' placeholder = 'firstname'class = 'requiredFields form-control' name = 'firstname' />
+            </fieldset>
+            <fieldset  class = 'form-group'>
                 <span class = 'requiredFields'>*</span>
-              </label>
-              <div class = 'col-xs-9'>
-              <select class = 'requiredFields form-control' name = 'gender'>
+              <input type = 'text' id = 'lastname' placeholder = 'lastname' class ='requiredFields form-control' name = 'lastname' />
+            </fieldset>
+            <fieldset  class = 'form-group'>
+                <span class = 'requiredFields'>*</span>
+              <select class = 'requiredFields form-control' placeholder= 'gender' name = 'gender'>
                 <option value = 'select'>
                   Select
                 </option>
@@ -54,52 +41,29 @@
                 <option value = 'male'>
                   Male
                 </option>
-              </select>
-              </div>
-            </div>
-            <div  class = 'form-group'>
-              <label for = "profile-photo" class='col-xs-3 col-form-label mr-2'>Add Photo</label>
-              <div class = 'col-xs-9'>
-              <input type = 'file'  id = 'profile-photo' class = 'form-control' name = 'profile-photo' /><br />
-              </div>
-            </div>
-            <div  class = 'form-group'>
-              <label for = 'email-address' class='col-xs-3 col-form-label mr-2' >Email
+            </select>
+            </fieldset>
+            <fieldset  class = 'form-group'>
+              <input type = 'file'  id = 'profile-photo' class = 'form-control' placeholder = 'Photo' name = 'profile-photo' />
+            </fieldset>
+            <fieldset  class = 'form-group'>
                 <span class = 'requiredFields'>*</span>
-              </label>
-              <div class = 'col-xs-9'>
-              <input type = 'text' id = 'email-address' class = 'requiredFields form-control' name = 'email' placeholder = 'you@example.com' /><br/>
-              </div>
-            </div>
-            <div  class = 'form-group'>
-              <label for = 'user-name' class='col-xs-3 col-form-label mr-2'>Username
+              <input type = 'text' id = 'email-address' class = 'requiredFields form-control' name = 'email' placeholder = 'you@example.com' />
+            </fieldset>
+            <fieldset  class = 'form-group'>
                 <span class = 'requiredFields'>*</span>
-              </label>
-              <div class = 'col-xs-9'>
               <input type = 'text'  id = 'username' class = 'requiredFields form-control' name = 'username' placeholder = 'Username' />
-              </div>
-            </div>
-            <div  class = 'form-group'>
-              <label for = "passwd" class='col-xs-3 col-form-label mr-2'>Password
+            </fieldset>
+            <fieldset  class = 'form-group'>
                 <span class = 'requiredFields'>*</span>
-              </label>
-              <div class = 'col-xs-9'>
               <input type = 'password'   id= 'passwd1' class = 'requiredFields form-control' name = 'password1' placeholder = 'Password' />
-              </div>
-            </div>
-            <div  class = 'form-group'>
-              <label for = 'passwd2' class='col-xs-3 col-form-label mr-2'>Confirm Pasword
+            </fieldset>
+            <fieldset  class = 'form-group'>
                 <span class = 'requiredFields'>*</span>
-              </label>
-              <div class = 'col-xs-9'>
               <input type = 'password' id = 'passwd2' class = 'requiredFields form-control' name = 'confirmpassword' placeholder = 'Confirm Password' />
-              </div>
-            </div>
-            <div  class = 'form-group'>
-              <label for = 'security-question' class='col-xs-3 col-form-label mr-2' >Security Question
+            </fieldset>
+            <fieldset  class = 'form-group'>
                 <span class = 'requiredFields'>*</span>
-              </label>
-              <div class = 'col-xs-9'>
                 <select name = 'securityQuestion' id = 'security-question' class = 'requiredFields form-control'>
                   <option>
                     What is the name of your first school?
@@ -114,33 +78,28 @@
                     What is the name of your favorite teacher?
                   </option>
                 </select>
-              </div>
-            </div>
-            <div  class = 'form-group'>
-              <label for = 'security-answer' class='col-xs-3 col-form-label mr-2'>Answer
+            </fieldset>
+            <fieldset  class = 'form-group'>
                 <span class = 'requiredFields'>*</span>
-              </label>
-              <div class = 'col-xs-9'>
-                <input type = 'text' id = 'security-answer' class = 'requiredFields form-control'name = 'security-answer' />
-              </div>
-            </div>
+                <input type = 'text' id = 'security-answer' placeholder = 'type' class = 'requiredFields form-control'name = 'security-answer' />
+              </fieldset>
             <p>Agree to our <a href = 'terms-of-use.html'>terms</a> of use <span class = 'requiredFields'>*</span></p>
-            <div  class = 'form-group' id = 'radio-div'>
+            <fieldset  class = 'form-group' id = 'radio-div'>
               <input type = 'radio' id = 'agree-to-use' class = 'requiredFields' name = 'agreement' value = 'Agree' />
               <label for = 'agree-to-use' class ='requiredFields input-group-addon'>Agree</label>
               <input type = 'radio' id = 'disagree-to-use' class = 'requiredFields' name = 'agreement' value = 'disagree' />
-              <label for = 'disagree-to-use' class = 'input-group-addon'>Disagree</label>
-            </div>
-            <div  class = 'form-group'>
+            </fieldset>
+            <fieldset  class = 'form-group'>
             <input type = 'submit' id = 'signup' class = 'submitForm btn btn-default' name = 'signup' value = 'Submit' />
-            </div>
+            </fieldset>
             <div class = 'form-div-append'>
               <p>I already have an <a href = 'signin.html'> Account</a></p>
-            </div>
+           </div>
+         </div>
           </form>
         </div>
-        </div>
-        <div id = 'footer-div' class ='navbar'>
+      </div>
+        <div id = 'footer-div' class ='card navbar'>
       <ul class = 'nav'>
         <li class = 'nav-item'>
           <p id = 'modificationNotice'></p>
