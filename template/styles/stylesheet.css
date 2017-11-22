@@ -36,7 +36,7 @@ formating for the body div
 	padding:10px; margin:20px; width:150px
 }
 div.body-div {
-	 background-color:rgba(0, 0, 0, 0.2); height:3000px; width:100%; margin-top:60px; margin-bottom:25px;
+	 background-color:rgba(0, 0, 0); height:3000px; width:100%; margin-top:60px; margin-bottom:25px;
 	
 }
 div.form-div {
