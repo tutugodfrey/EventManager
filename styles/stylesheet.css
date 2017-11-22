@@ -1,6 +1,6 @@
 body  {
 	background-color:rgba(0, 0, 0);
-	/*background-image:url(./../avatar/images9.jpg); */ height:auto; width:1000px;  
+	/*background-image:url(./../avatar/images9.jpg); */ width:1000px;  
 		width:1000px; height:1000px; margin:2px;
 }
 
@@ -19,10 +19,10 @@ formating for the navigation area
 
 div#header-div {
 	 background-color:rgba(0, 0, 0, 0.7); padding:8px; width:100%;
-	 margin:-2px; height:65px; position:fixed; Z-index:1;
+	 margin:-2px; height:65px; position:fixed; Z-index:1; top:0px;
 }
 div.form-div form {
-	background-color:rgba(0, 0, 0, 0.3); margin-top:25px; width:25rem; position:relative;left:40%;
+	background-color:rgba(0, 0, 0, 0.3); margin-top:25px; width:25rem; position:relative; left:50%;
 }
 
 #modificationNotice {
@@ -36,8 +36,11 @@ formating for the body div
 	padding:10px; margin:20px; width:150px
 }
 div.body-div {
-	 background-color:rgba(0, 0, 0, 0.2); height:3000px; width:100%; margin-top:60px; margin-bottom:25px; padding-bottom:100px;
+	 background-color:rgba(0, 0, 0, 0.2); height:3000px; width:100%; margin-top:60px; margin-bottom:25px;
 	
+}
+div.form-div {
+	position:relative; width:100%;
 }
 
 img.background-images {
@@ -49,7 +52,7 @@ img.background-images {
 footing for the the footers area
 ***/
 div#footer-div {
-	  width:100%; padding:8px; margin:-2px; /*position:fixed;*/ bottom:0px; background-color:rgba(0, 0, 0, 0.7);  height:50px;  padding:8px;
+	  width:100%; padding:8px; margin:-2px; position:fixed; bottom:0px; background-color:rgba(0, 0, 0, 0.7);  height:50px;  padding:8px;
 	 margin:-2px; 
 }
 
