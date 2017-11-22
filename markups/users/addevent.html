@@ -4,11 +4,11 @@
     <meta charset = 'UTF-8'/>
     <meta http-equiv = 'X--Compatible' content = 'IE=edge' />
     <meta name = 'viewport' content= 'width= device-width, initial-scale =1' />
-  	<title>
-  		Add Event
-  	</title>
+    <title>
+      Event Centers
+    </title>
     <link rel = 'stylesheet' type = 'text/css' href = './../../styles/css/bootstrap.min.css' />
-  	<link rel = 'stylesheet' type = 'text/css' href = './../../styles/stylesheet.css' />
+    <link rel = 'stylesheet' type = 'text/css' href = './../../styles/stylesheet.css' />
   </head>
   <body>
     <div id = 'header-div'>
@@ -20,12 +20,12 @@
             </a>
           </li>
           <li class = 'nav-item'>
-            <a href = './addevent.html' class = 'nav-link active'>
+            <a href = './addevent.html' class = 'nav-link'>
             Book an Event
             </a>
           </li>
           <li class = 'nav-item'>
-            <a href = './eventcenters.html' class = 'nav-link'>
+            <a href = './eventcenters.html' class = 'nav-link active'>
               Event Centers
             </a>
           </li>
@@ -58,7 +58,7 @@
               </a>
             </li>
             <li class = 'nav-item'>
-              <a href = './../userprofile.html' class = 'nav-link'>
+              <a href = './userprofile.html' class = 'nav-link'>
                 <span>Profile</span>
                 <img id = 'profile-pix' class = 'img-fuild rounded' src = './../../avatar/sam_3264.jpg' alt = 'profile pix' />
               </a>
@@ -67,8 +67,8 @@
         </div>
       </div>
     </div>
-    <div class = 'body-div'>
-      <div class = 'form-div container'>
+    <div id = 'body-div'>
+        <div class = 'container'>
         <form id ='add-event-form' method = 'POST' action = 'route/to/addcenter/controller'>
           <p id = 'validationNotice'> The fields marked below are required</p>
           <h4 class = 'form-description'>
