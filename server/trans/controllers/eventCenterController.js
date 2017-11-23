@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -26,124 +26,124 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var functs = new _funcs2.default();
 
 var EventCenterController = function () {
-	function EventCenterController() {
-		_classCallCheck(this, EventCenterController);
+  function EventCenterController() {
+    _classCallCheck(this, EventCenterController);
 
-		this.eventCenters = _eventCentersModel2.default;
-	}
-	// add a new event center
+    this.eventCenters = _eventCentersModel2.default;
+  }
+  // add a new event center
 
 
-	_createClass(EventCenterController, [{
-		key: 'addEventCenter',
-		value: function addEventCenter(req, res) {
-			var id = functs.getId(_eventCentersModel2.default);
-			var newEventCenter = {
-				id: id,
-				centerName: req.body.centerName,
-				location: req.body.location,
-				facilities: req.body.facilities,
-				cost: req.body.cost
-			};
-			_eventCentersModel2.default.push(newEventCenter);
-			res.status(201).send(newEventCenter);
-		}
-		//  return all event centers
+  _createClass(EventCenterController, [{
+    key: 'addEventCenter',
+    value: function addEventCenter(req, res) {
+      var id = functs.getId(_eventCentersModel2.default);
+      var newEventCenter = {
+        id: id,
+        centerName: req.body.centerName,
+        location: req.body.location,
+        facilities: req.body.facilities,
+        cost: req.body.cost
+      };
+      _eventCentersModel2.default.push(newEventCenter);
+      res.status(201).send(newEventCenter);
+    }
+    //  return all event centers
 
-	}, {
-		key: 'getEventCenters',
-		value: function getEventCenters(req, res) {
-			res.status(200).send(_eventCentersModel2.default);
-		}
-		// an event center given its it id is present
+  }, {
+    key: 'getEventCenters',
+    value: function getEventCenters(req, res) {
+      res.status(200).send(_eventCentersModel2.default);
+    }
+    // an event center given its it id is present
 
-	}, {
-		key: 'getEventCenter',
-		value: function getEventCenter(req, res) {
-			var centerId = parseInt(req.params.centerId);
-			var getEventCenterId = functs.verifyId(_eventCentersModel2.default, centerId);
-			var _iteratorNormalCompletion = true;
-			var _didIteratorError = false;
-			var _iteratorError = undefined;
+  }, {
+    key: 'getEventCenter',
+    value: function getEventCenter(req, res) {
+      var centerId = parseInt(req.params.centerId);
+      var getEventCenterId = functs.verifyId(_eventCentersModel2.default, centerId);
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
 
-			try {
-				for (var _iterator = _eventCentersModel2.default[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-					var eventCenter = _step.value;
+      try {
+        for (var _iterator = _eventCentersModel2.default[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var eventCenter = _step.value;
 
-					if (eventCenter['id'] === centerId) {
-						res.status(200).send(eventCenter);
-					} else {
-						res.status(404).send('Center not Found');
-					}
-				}
-			} catch (err) {
-				_didIteratorError = true;
-				_iteratorError = err;
-			} finally {
-				try {
-					if (!_iteratorNormalCompletion && _iterator.return) {
-						_iterator.return();
-					}
-				} finally {
-					if (_didIteratorError) {
-						throw _iteratorError;
-					}
-				}
-			}
-		}
-	}, {
-		key: 'updateEventCenter',
-		value: function updateEventCenter(req, res) {
-			var centerId = parseInt(req.params.centerId);
-			var getEventCenterId = functs.verifyId(_eventCentersModel2.default, centerId);
-			var newEventCenter = void 0;
-			var _iteratorNormalCompletion2 = true;
-			var _didIteratorError2 = false;
-			var _iteratorError2 = undefined;
+          if (eventCenter.id === centerId) {
+            res.status(200).send(eventCenter);
+          } else {
+            res.status(404).send('Center not Found');
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    }
+  }, {
+    key: 'updateEventCenter',
+    value: function updateEventCenter(req, res) {
+      var centerId = parseInt(req.params.centerId);
+      var getEventCenterId = functs.verifyId(_eventCentersModel2.default, centerId);
+      var newEventCenter = void 0;
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
 
-			try {
-				for (var _iterator2 = _eventCentersModel2.default[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-					var eventCenter = _step2.value;
+      try {
+        for (var _iterator2 = _eventCentersModel2.default[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var eventCenter = _step2.value;
 
-					if (eventCenter.id === centerId) {
-						var centerName = req.body.centerName || eventCenter[centerName];
-						var location = req.body.location || eventCenter[location];
-						var facilities = req.body.facilities || eventCenter[facilities];
-						var cost = req.body.cost || eventCenter[cost];
-						newEventCenter = {
-							centerId: centerId,
-							centerName: centerName,
-							facilities: facilities,
-							cost: cost,
-							location: location
-						};
-					}
-				}
-			} catch (err) {
-				_didIteratorError2 = true;
-				_iteratorError2 = err;
-			} finally {
-				try {
-					if (!_iteratorNormalCompletion2 && _iterator2.return) {
-						_iterator2.return();
-					}
-				} finally {
-					if (_didIteratorError2) {
-						throw _iteratorError2;
-					}
-				}
-			}
+          if (eventCenter.id === centerId) {
+            var centerName = req.body.centerName || eventCenter[centerName];
+            var location = req.body.location || eventCenter[location];
+            var facilities = req.body.facilities || eventCenter[facilities];
+            var cost = req.body.cost || eventCenter[cost];
+            newEventCenter = {
+              centerId: centerId,
+              centerName: centerName,
+              facilities: facilities,
+              cost: cost,
+              location: location
+            };
+          }
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
 
-			eventCenterPos = indexOf(newEventCenter);
-			if (_eventCentersModel2.default[eventCenterPos] = newEventCenter) {
-				res.status(200).send(newEventCenter);
-			} else {
-				res.status(404).send('Not Found');
-			}
-		}
-	}]);
+      eventCenterPos = indexOf(newEventCenter);
+      if (_eventCentersModel2.default[eventCenterPos] = newEventCenter) {
+        res.status(200).send(newEventCenter);
+      } else {
+        res.status(404).send('Not Found');
+      }
+    }
+  }]);
 
-	return EventCenterController;
+  return EventCenterController;
 }();
 exports.default = EventCenterController;
 //# sourceMappingURL=eventCenterController.js.map

@@ -8,7 +8,9 @@
     "lint": "eslint --fix src",
     "build": "babel src -s -d trans",
     "builds": "babel src -s -d trans",
-    "test": "npm run build && mocha trans/test/test.js"
+    "test": "npm run build && mocha trans/test/test.js",
+    "integrate1": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./trans/test/*",
+    "integrate": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./trans/test/* && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "author": "",
   "license": "ISC",
@@ -19,13 +21,15 @@
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
+    "coveralls": "^3.0.0",
     "eslint": "^4.11.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "istanbul": "^0.4.5",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "mocha-lcov-reporter": "^1.3.0"
   },
   "dependencies": {
     "body-parser": "^1.18.2",

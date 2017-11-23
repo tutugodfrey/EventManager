@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -28,32 +28,32 @@ var eventCenter = new _eventCenterController2.default();
 var events = new _eventController2.default();
 
 var Routes = function () {
-	function Routes() {
-		_classCallCheck(this, Routes);
-	}
+  function Routes() {
+    _classCallCheck(this, Routes);
+  }
 
-	_createClass(Routes, [{
-		key: 'routes',
-		value: function routes(app) {
-			app.get('/', function (req, res) {
-				res.status(200).send('Welcom to Eventmanager');
-			});
+  _createClass(Routes, [{
+    key: 'routes',
+    value: function routes(app) {
+      app.get('/', function (req, res) {
+        res.status(200).send('Welcom to Eventmanager');
+      });
 
-			// Route controllers for Event Centers
-			app.post('/api/centers', eventCenter.addEventCenter);
-			app.get('/api/centers', eventCenter.getEventCenters);
-			app.get('/api/centers/:centerId', eventCenter.getEventCenter);
-			app.put('/api/centers/:centerId', eventCenter.updateEventCenter);
+      // Route controllers for Event Centers
+      app.post('/api/centers', eventCenter.addEventCenter);
+      app.get('/api/centers', eventCenter.getEventCenters);
+      app.get('/api/centers/:centerId', eventCenter.getEventCenter);
+      app.put('/api/centers/:centerId', eventCenter.updateEventCenter);
 
-			// route controllers for events
-			app.post('/api/events', events.addEvent);
-			app.put('/api/events/:eventId', events.updateEvent);
-			app.delete('/api/events/:eventId', events.deleteEvent);
-			app.get('/api/events/:eventId', events.getEvents);
-		}
-	}]);
+      // route controllers for events
+      app.post('/api/events', events.addEvent);
+      app.put('/api/events/:eventId', events.updateEvent);
+      app.delete('/api/events/:eventId', events.deleteEvent);
+      app.get('/api/events/:eventId', events.getEvents);
+    }
+  }]);
 
-	return Routes;
+  return Routes;
 }();
 
 exports.default = Routes;

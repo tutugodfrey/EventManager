@@ -21,8 +21,6 @@ class Server {
     this.app = this.express();
     this.app.use(this.bodyParser.urlencoded({ extended: false }));
     this.app.use(this.bodyParser.json());
-    //  this.app.set('port', 8080)
-    // return this.app;
     this.app.get('/', (req, res) => {
       res.status(200).send({
         message: 'hello world',
@@ -33,8 +31,4 @@ class Server {
     return this.app;
   }
 }
-
-// let app = new Server();
-// app = app.expressServer();
-// export default app
 export default Server;

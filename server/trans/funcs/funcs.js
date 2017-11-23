@@ -10,7 +10,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**
 this file will export a class of functions
-**/
+* */
 var Functs = function () {
   function Functs() {
     _classCallCheck(this, Functs);
@@ -24,10 +24,10 @@ var Functs = function () {
       var newUserId = lastUserId + 1;
       return newUserId;
     }
+    // function to verify that the field exist
+
   }, {
     key: "verifyId",
-
-    // function to verify that the field exist
     value: function verifyId(arrayOfObject, idToVerify) {
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -39,9 +39,8 @@ var Functs = function () {
 
           if (objCollection[idToVerify]) {
             return objCollection[idToVerify];
-          } else {
-            return false;
           }
+          return false;
         }
       } catch (err) {
         _didIteratorError = true;
@@ -65,9 +64,8 @@ var Functs = function () {
     value: function getField(objCollector, field) {
       if (objCollector[field]) {
         return objCollector[field];
-      } else {
-        return null;
       }
+      return null;
     }
   }]);
 
