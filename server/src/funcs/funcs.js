@@ -1,10 +1,6 @@
-
-
 /**
 this file will export a class of functions
 **/
-
-
 const Functs = class {
 
   getId(usersList) {

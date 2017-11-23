@@ -2,18 +2,18 @@
 
 const  eventCenters = [
 	{
-		id:1,
-		Location:'Lagos',
-		eventCenterName:'D cubicle event center',
-		eventCenterFacilities: ['Catering', 'Projecter', 'Air conditioning system', ],
-		eventCenterCost: 45,
+		id:'1',
+		location:'Lagos',
+		centerName:'D cubicle event center',
+		facilities: ['Catering', 'Projecter', 'Air conditioning system', ],
+		cost: 45,
 	},
 	{
-		id:2,
-		Location:'Location',
-		eventCenterName:'Queens Tower',
-		eventCenterFacilities: ['Catering', 'Projecter', 'Air conditioning system' ],
-		eventCenterCost: 45
+		id:'2',
+		location:'Location',
+		centerName:'Queens Tower',
+		facilities: ['Catering', 'Projecter', 'Air conditioning system' ],
+		cost: 45
 	}
 ]
 

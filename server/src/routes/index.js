@@ -15,7 +15,8 @@ import express from 'express';
       });
 		app.post('/api/centers', eventCenter.addEventCenter);
 		app.get('/api/centers', eventCenter.getEventCenters);
-		app.get('/api/centers/:id', eventCenter.getEventCenter);
+		app.get('/api/centers/:centerId', eventCenter.getEventCenter);
+		app.put('/api/centers/:centerId', eventCenter.updateEventCenter);
 	}
 }
 

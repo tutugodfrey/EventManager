@@ -11,11 +11,11 @@ const EventCenterController = class {
 	}
 		// add a new event center
 	addEventCenter(req, res){
-		const  eventCenterId = functs.getId(eventCenters);
+		const  id = functs.getId(eventCenters);
 		const newEventCenter = {
-			id:eventCenterId,
-			eventCenterName:req.body.center,
-			eventCenterLocatioon:req.body.place,
+		  	id:id,
+			centerName:req.body.centerName,
+			location:req.body.location,
 			facilities:req.body.facilities,
 			cost:req.body.cost
 		}
@@ -28,16 +28,41 @@ const EventCenterController = class {
 	}
 	// an event center given its it id is present
 	getEventCenter(req, res) {
-		const eventCenterId = req.params.id;
-		const getEventCenterId = functs.verifyId(eventCenters, eventCenterId);
+		const centerId = req.params.centerId;
+		const getEventCenterId = functs.verifyId(eventCenters, centerId);
 		for(let eventCenter of eventCenters) {
-			if(eventCenter[getEventCenterId] === eventCenterId){
+			if(eventCenter[getEventCenterId] === centerId){
 				res.status(200).send(eventCenter);
 			} else {
-				res.status(404).send(eventCenter);
+				res.status(404).send('Center not Found');
 			}
 		}
+	}
 
+	updateEventCenter(req, res) {
+		const centerId = req.params.centerId;
+		const getEventCenterId = functs.verifyId(eventCenters, centerId);
+		let newEventCenter;
+		for(let eventCenter of eventCenters) {
+			if(eventCenter.id === centerId){
+				  const centerName = req.body.centerName || eventCenter[centerName];
+					const location = req.body.location || eventCenter[location];
+					const facilities = req.body.facilities || eventCenter[facilities];
+					const cost = req.body.cost || eventCenter[cost];
+				newEventCenter = {
+					centerId,
+					centerName,
+					facilities,
+					cost,
+					location
+				} 
+			} 
+		}
+		if(newEventCenter){
+			res.status(200).send(newEventCenter);
+		} else {
+			res.status(404).send('Not Found')
+		}
 	}
 }
 
