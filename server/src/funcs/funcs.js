@@ -27,17 +27,6 @@ const Functs = class {
       return null;
     }
   };
-
-
 }
-const obj = {
-  username:'godfrey',
-  lastname:'tutu',
-  firstname:'esanye'
-}
-
-const functs = new Functs();
-console.log(functs.getField(obj, 'firstname'));
-
 
 export default Functs;

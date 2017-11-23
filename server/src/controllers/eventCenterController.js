@@ -45,26 +45,25 @@ const EventCenterController = class {
 		let newEventCenter;
 		for(let eventCenter of eventCenters) {
 			if(eventCenter.id === centerId){
-				  const centerName = req.body.centerName || eventCenter[centerName];
-					const location = req.body.location || eventCenter[location];
-					const facilities = req.body.facilities || eventCenter[facilities];
-					const cost = req.body.cost || eventCenter[cost];
-				newEventCenter = {
-					centerId,
-					centerName,
-					facilities,
-					cost,
-					location
-				} 
-			} 
-		}
-		if(newEventCenter){
+			  const centerName = req.body.centerName || eventCenter[centerName];
+				const location = req.body.location || eventCenter[location];
+				const facilities = req.body.facilities || eventCenter[facilities];
+				const cost = req.body.cost || eventCenter[cost];
+			  newEventCenter = {
+				centerId,
+				centerName,
+				facilities,
+				cost,
+				location
+		    } 
+	  	} 
+	  }
+	  eventCenterPos = indexOf(newEventCenter)
+		if(eventCenters[eventCenterPos] = newEventCenter){
 			res.status(200).send(newEventCenter);
 		} else {
-			res.status(404).send('Not Found')
+			res.status(404).send('Not Found');
 		}
-	}
+  }
 }
-
-
-export default EventCenterController;
+export default EventCenterController

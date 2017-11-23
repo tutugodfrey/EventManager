@@ -2,11 +2,14 @@
 
  const events = [
 {
-	eventId:1,
-	dateOfEvent:'12/12/2017',
-	typeOfEvent:'Wedding',
-	facilities:['projector', 'Catering'],
-	eventOwnerIsd:1
+	id:1,
+	centerName:'Queens\' tower',
+	location:'Delta',
+	facilities: ['projector', 'Catering'],
+	typeOfEvent: 'Wedding',
+	dateOfEvent: '12/12/2017',
+	centerId: 2,
+	ownerId:1
 }
 ]
 
