@@ -65,7 +65,20 @@ const EventsController = class {
 
 	// controller to delete
 	deleteEvent(req, res){
-			res.send('update event');
+		const eventId = req.body.eventId;
+		const getEventId = functs.verifyId(events, eventId);
+		let eventPos;
+		for(let event of events){
+			if(event[getEventId] === eventId){
+				eventPos = events.indexOf(event);
+		  }
+		}
+		if(eventPos){
+			delete events[eventPos];
+			res.status(200).send('deleted');
+		} else {
+			res.status(404).send('Not Found: no action taken');
+		}
 	}
 }
 
