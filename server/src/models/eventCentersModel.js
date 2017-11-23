@@ -2,7 +2,7 @@
 
 const  eventCenters = [
 	{
-		id:2,
+		id:1,
 		Location:'Lagos',
 		eventCenterName:'D cubicle event center',
 		eventCenterFacilities: ['Catering', 'Projecter', 'Air conditioning system', ],

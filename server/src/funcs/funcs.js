@@ -14,6 +14,16 @@ const Functs = class {
     return newUserId;
   };
 
+  verifyId(arrayOfObject, idToVerify){
+  	for(let objCollection of arrayOfObject){
+  		if(objCollection[idToVerify]){
+  			return objCollection[idToVerify];
+  		} else {
+  			return false;
+  		}
+  	}
+  }
+
 }
 
 export default Functs;

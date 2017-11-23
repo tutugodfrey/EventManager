@@ -9,7 +9,7 @@ const EventCenterController = class {
 	constructor() {
 		this.eventCenters = eventCenters;
 	}
-
+		// add a new event center
 	addEventCenter(req, res){
 		const  eventCenterId = functs.getId(eventCenters);
 		const newEventCenter = {
@@ -22,8 +22,22 @@ const EventCenterController = class {
 		eventCenters.push(newEventCenter);
 		res.status(201).send(newEventCenter);
 	}
-	getEventCenter(req, res) {
+	//  return all event centers
+	getEventCenters(req, res) {
 		res.status(200).send(eventCenters);
+	}
+	// an event center given its it id is present
+	getEventCenter(req, res) {
+		const eventCenterId = req.params.id;
+		const getEventCenterId = functs.verifyId(eventCenters, eventCenterId);
+		for(let eventCenter of eventCenters) {
+			if(eventCenter[getEventCenterId] === eventCenterId){
+				res.status(200).send(eventCenter);
+			} else {
+				res.status(404).send(eventCenter);
+			}
+		}
+
 	}
 }
 
