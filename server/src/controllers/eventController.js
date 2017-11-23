@@ -62,6 +62,21 @@ const EventsController = class {
 		}
   }
 
+  // controller to get an event
+  getEvents(req, res){
+  	const ownerId = req.params.ownerId;
+  	let eventCollector = [];
+  	for(let event of events){
+  		if(event[ownerId] === ownerId){
+  			eventCollector.push(event);
+  		}
+  	}
+  	if(eventCollector.length >= 1){
+  		res.status(200).send(eventCollector);
+  	} else {
+  		res.status(404).send('Not Found');
+  	}
+  }
 
 	// controller to delete
 	deleteEvent(req, res){

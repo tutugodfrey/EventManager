@@ -26,6 +26,7 @@ import express from 'express';
 		app.post('/api/events', events.addEvent);
 		app.put('/api/events/:eventId', events.updateEvent);
 		app.delete('/api/events/:eventId', events.deleteEvent);
+		app.get('/api/events/:eventId', events.getEvents);
 
 	}
 }
