@@ -9,7 +9,7 @@ const Functs = class {
     const newUserId = lastUserId + 1;
     return newUserId;
   };
-
+  // function to verify that the field exist
   verifyId(arrayOfObject, idToVerify){
   	for(let objCollection of arrayOfObject){
   		if(objCollection[idToVerify]){
@@ -19,7 +19,25 @@ const Functs = class {
   		}
   	}
   }
+  // funtion to get fields value of an object
+  getField(objCollector, field) {
+      if(objCollector[field]){
+      return objCollector[field];
+    } else {
+      return null;
+    }
+  };
+
 
 }
+const obj = {
+  username:'godfrey',
+  lastname:'tutu',
+  firstname:'esanye'
+}
+
+const functs = new Functs();
+console.log(functs.getField(obj, 'firstname'));
+
 
 export default Functs;
