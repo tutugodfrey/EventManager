@@ -28,10 +28,10 @@ const EventCenterController = class {
 	}
 	// an event center given its it id is present
 	getEventCenter(req, res) {
-		const centerId = req.params.centerId;
+		const centerId = parseInt(req.params.centerId);
 		const getEventCenterId = functs.verifyId(eventCenters, centerId);
 		for(let eventCenter of eventCenters) {
-			if(eventCenter[getEventCenterId] === centerId){
+			if(eventCenter['id'] === centerId){
 				res.status(200).send(eventCenter);
 			} else {
 				res.status(404).send('Center not Found');
@@ -40,7 +40,7 @@ const EventCenterController = class {
 	}
 
 	updateEventCenter(req, res) {
-		const centerId = req.params.centerId;
+		const centerId = parseInt(req.params.centerId);
 		const getEventCenterId = functs.verifyId(eventCenters, centerId);
 		let newEventCenter;
 		for(let eventCenter of eventCenters) {
