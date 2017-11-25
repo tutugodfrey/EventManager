@@ -4,7 +4,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import Routes from './routes/index';
-
 const route = new Routes();
 
 // setup server class
@@ -13,7 +12,6 @@ class Server {
     this.http = http;
     this.express = express;
     this.bodyParser = bodyParser;
-
     this.logger = morgan;
     this.route = route;
   }
@@ -21,14 +19,9 @@ class Server {
     this.app = this.express();
     this.app.use(this.bodyParser.urlencoded({ extended: false }));
     this.app.use(this.bodyParser.json());
-    this.app.get('/', (req, res) => {
-      res.status(200).send({
-        message: 'hello world',
-      });
-    });
-
     this.route.routes(this.app);
     return this.app;
   }
 }
+
 export default Server;

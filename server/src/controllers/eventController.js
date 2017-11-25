@@ -12,16 +12,16 @@ const EventsController = class {
 
   // controller to add event
   addEvent(req, res) {
-    const id = functs.getId(events);
+   const eventId = functs.getField(events, 'eventId') + 1;
     const newEvent = {
-		  id,
+		  eventId,
 		  centerName: req.body.centerName,
       location: req.body.location,
 		  facilities: req.body.facilities,
 		  typeOfEvent: req.body.typeOfEvent,
       dateOfEvent: req.body.cost,
       centerId: req.body.centerId,
-      ownerId: req.body.ownerId,
+      ownerId: req.body.ownerId
     };
     events.push(newEvent);
     res.status(201).send(newEvent);
@@ -29,13 +29,15 @@ const EventsController = class {
 
   // controll to update event
   updateEvent(req, res) {
-    const eventId = parseInt(req.params.eventId);
-    const getEventId = functs.verifyId(events, eventId);
+    const id = parseInt(req.params.eventId);
+    const getEvent = functs.getObject(events, id);
     let newEvent;
-    for (const event of events) {
-      if (event.id === eventId) {
-        const id = eventId;
-			  const centerName = req.body.centerId || event[centerName];
+    let eventHolder;
+    for (let event of events) {
+      if (event.eventId === id) {
+        eventHolder = event;
+        const eventId = id;
+			  const centerName = req.body.centerName || event[centerName];
         const location = req.body.location || event[location];
         const facilities = req.body.facilities || event[facilities];
         const typeOfEvent = req.body.typeOfEvent || event[typeOfEvent];
@@ -43,7 +45,7 @@ const EventsController = class {
         const centerId = req.body.centerId || event[centerId];
         const ownerId = req.body.ownerId || event[ownerId];
         newEvent = {
-          id,
+          eventId,
           centerName,
           location,
           facilities,
@@ -54,46 +56,77 @@ const EventsController = class {
         };
       }
     }
-    const eventPos = events.indexOf(newEvent);
+    const eventPos = events.indexOf(eventHolder);
     if (events[eventPos] = newEvent) {
       res.status(200).send(newEvent);
     } else {
-      res.status(404).send('Not Found: no action taken');
+      res.status(404).send({ message: 'Not Found: no action taken' });
     }
   }
 
-  // controller to get an event
+  // controller to get all events given the centerId
+  getCenterEvents(req, res) {
+    const centerId = parseInt(req.params.centerId);
+    const eventsCollector = [];
+    for(let event of events) {
+      if(event['centerId'] === centerId) {
+        eventsCollector.push(event);
+      }
+    }
+    if(eventsCollector.length > 0) {
+      res.status(200).send(eventsCollector);
+    } else {
+      res.status(404).send({ message: 'No event found' });
+    }
+  }
+
+  // controller to get all events given a ownerId 
   getEvents(req, res) {
-  	const ownerId = req.params.ownerId;
+  	const ownerId = parseInt(req.params.ownerId);
   	const eventCollector = [];
-  	for (const event of events) {
-  		if (event[ownerId] === ownerId) {
+  	for (let event of events) {
+  		if (event['ownerId'] === ownerId) {
   			eventCollector.push(event);
   		}
   	}
-  	if (eventCollector.length >= 1) {
+  	if (eventCollector.length > 0) {
   		res.status(200).send(eventCollector);
   	} else {
-  		res.status(404).send('Not Found');
+  		res.status(404).send({ message: 'Event not found'});
   	}
+  }
+  // controller to get all events
+  getEvents(req, res) {
+    if(events){
+      res.status(200).send(events);
+    } else {
+      res.status(404).send({ message:'Not found'});
+    }
+  } 
+
+   // controller to get an events given the event id
+  getEvent(req, res) {
+    const eventId = parseInt(req.params.eventId);
+    for(let event of events) {
+      if(event['eventId'] === eventId){
+        res.status(200).send(event);
+        break;
+      } 
+    } 
+    res.status(404).send({ message:'Not found'} );
   }
 
   // controller to delete
   deleteEvent(req, res) {
-    const eventId = req.body.eventId;
-    const getEventId = functs.verifyId(events, eventId);
-    let eventPos;
-    for (const event of events) {
-      if (event[getEventId] === eventId) {
-        eventPos = events.indexOf(event);
-		  }
+   const eventId = parseInt(req.params.eventId);
+    for (let event of events) {
+      if (event['eventId'] === eventId) {
+        delete events[event];
+        res.status(200).send({ message: 'deleted'});
+        break;
+      }
     }
-    if (eventPos) {
-      delete events[eventPos];
-      res.status(200).send('deleted');
-    } else {
-      res.status(404).send('Not Found: no action taken');
-    }
+    res.status(404).send({ message:'Event not found, no action taken' });
   }
 };
 
