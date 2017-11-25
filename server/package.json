@@ -9,6 +9,7 @@
     "build": "babel src -s -d trans",
     "builds": "babel src -s -d trans",
     "test": "npm run build && mocha trans/test/test.js",
+    "test-travis":"mocha trans/test/test.js",
     "integrate1": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./trans/test/*",
     "integrate": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./trans/test/* && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
