@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon ./bin/dev",
-    "lint": "eslint --fix src",
+    "lint": "eslint src/controllers/eventController.js",
     "build": "babel src -s -d trans",
     "builds": "babel src -s -d trans",
     "test": "npm run build && mocha trans/test/test.js",

@@ -2,23 +2,22 @@
 this file will export a class of functions
 * */
 const Functs = class {
-  getId(usersList) {
-    const totalUsers = usersList.length;
-    const lastUserId = usersList[totalUsers - 1].id;
-    const newUserId = lastUserId + 1;
-    return newUserId;
+  getField(listOfObj, fieldToGet ) {
+    const total = listOfObj.length - 1;
+    const lastObj = listOfObj[total];
+    const fieldValue = lastObj[fieldToGet];
+    return fieldValue;
   }
-  // function to verify that the field exist
-  verifyId(arrayOfObject, idToVerify) {
-  	for (const objCollection of arrayOfObject) {
-  		if (objCollection[idToVerify]) {
-  			return objCollection[idToVerify];
-  		}
-  			return false;
+  // function to get an object from a list of object
+  getObject(arrayOfObject, objectRef) {
+  	for (let objCollection of arrayOfObject) {
+  		if (objCollection[objectRef]) {
+        return objCollection;
+    	}
   	}
   }
   // funtion to get fields value of an object
-  getField(objCollector, field) {
+  getFields(objCollector, field) {
     if (objCollector[field]) {
       return objCollector[field];
     }

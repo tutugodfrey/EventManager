@@ -38,9 +38,9 @@ var EventsController = function () {
   _createClass(EventsController, [{
     key: 'addEvent',
     value: function addEvent(req, res) {
-      var id = functs.getId(_eventsModel2.default);
+      var eventId = functs.getField(_eventsModel2.default, 'eventId') + 1;
       var newEvent = {
-        id: id,
+        eventId: eventId,
         centerName: req.body.centerName,
         location: req.body.location,
         facilities: req.body.facilities,
@@ -58,9 +58,10 @@ var EventsController = function () {
   }, {
     key: 'updateEvent',
     value: function updateEvent(req, res) {
-      var eventId = parseInt(req.params.eventId);
-      var getEventId = functs.verifyId(_eventsModel2.default, eventId);
+      var id = parseInt(req.params.eventId);
+      var getEvent = functs.getObject(_eventsModel2.default, id);
       var newEvent = void 0;
+      var eventHolder = void 0;
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -69,9 +70,10 @@ var EventsController = function () {
         for (var _iterator = _eventsModel2.default[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var event = _step.value;
 
-          if (event.id === eventId) {
-            var id = eventId;
-            var centerName = req.body.centerId || event[centerName];
+          if (event.eventId === id) {
+            eventHolder = event;
+            var eventId = id;
+            var centerName = req.body.centerName || event[centerName];
             var location = req.body.location || event[location];
             var facilities = req.body.facilities || event[facilities];
             var typeOfEvent = req.body.typeOfEvent || event[typeOfEvent];
@@ -79,7 +81,7 @@ var EventsController = function () {
             var centerId = req.body.centerId || event[centerId];
             var ownerId = req.body.ownerId || event[ownerId];
             newEvent = {
-              id: id,
+              eventId: eventId,
               centerName: centerName,
               location: location,
               facilities: facilities,
@@ -105,21 +107,21 @@ var EventsController = function () {
         }
       }
 
-      var eventPos = _eventsModel2.default.indexOf(newEvent);
+      var eventPos = _eventsModel2.default.indexOf(eventHolder);
       if (_eventsModel2.default[eventPos] = newEvent) {
         res.status(200).send(newEvent);
       } else {
-        res.status(404).send('Not Found: no action taken');
+        res.status(404).send({ message: 'Not Found: no action taken' });
       }
     }
 
-    // controller to get an event
+    // controller to get all events given the centerId
 
   }, {
-    key: 'getEvents',
-    value: function getEvents(req, res) {
-      var ownerId = req.params.ownerId;
-      var eventCollector = [];
+    key: 'getCenterEvents',
+    value: function getCenterEvents(req, res) {
+      var centerId = parseInt(req.params.centerId);
+      var eventsCollector = [];
       var _iteratorNormalCompletion2 = true;
       var _didIteratorError2 = false;
       var _iteratorError2 = undefined;
@@ -128,8 +130,8 @@ var EventsController = function () {
         for (var _iterator2 = _eventsModel2.default[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
           var event = _step2.value;
 
-          if (event[ownerId] === ownerId) {
-            eventCollector.push(event);
+          if (event['centerId'] === centerId) {
+            eventsCollector.push(event);
           }
         }
       } catch (err) {
@@ -147,21 +149,20 @@ var EventsController = function () {
         }
       }
 
-      if (eventCollector.length >= 1) {
-        res.status(200).send(eventCollector);
+      if (eventsCollector.length > 0) {
+        res.status(200).send(eventsCollector);
       } else {
-        res.status(404).send('Not Found');
+        res.status(404).send({ message: 'No event found' });
       }
     }
 
-    // controller to delete
+    // controller to get all events given a ownerId 
 
   }, {
-    key: 'deleteEvent',
-    value: function deleteEvent(req, res) {
-      var eventId = req.body.eventId;
-      var getEventId = functs.verifyId(_eventsModel2.default, eventId);
-      var eventPos = void 0;
+    key: 'getEvents',
+    value: function getEvents(req, res) {
+      var ownerId = parseInt(req.params.ownerId);
+      var eventCollector = [];
       var _iteratorNormalCompletion3 = true;
       var _didIteratorError3 = false;
       var _iteratorError3 = undefined;
@@ -170,8 +171,8 @@ var EventsController = function () {
         for (var _iterator3 = _eventsModel2.default[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
           var event = _step3.value;
 
-          if (event[getEventId] === eventId) {
-            eventPos = _eventsModel2.default.indexOf(event);
+          if (event['ownerId'] === ownerId) {
+            eventCollector.push(event);
           }
         }
       } catch (err) {
@@ -189,12 +190,97 @@ var EventsController = function () {
         }
       }
 
-      if (eventPos) {
-        delete _eventsModel2.default[eventPos];
-        res.status(200).send('deleted');
+      if (eventCollector.length > 0) {
+        res.status(200).send(eventCollector);
       } else {
-        res.status(404).send('Not Found: no action taken');
+        res.status(404).send({ message: 'Event not found' });
       }
+    }
+    // controller to get all events
+
+  }, {
+    key: 'getEvents',
+    value: function getEvents(req, res) {
+      if (_eventsModel2.default) {
+        res.status(200).send(_eventsModel2.default);
+      } else {
+        res.status(404).send({ message: 'Not found' });
+      }
+    }
+
+    // controller to get an events given the event id
+
+  }, {
+    key: 'getEvent',
+    value: function getEvent(req, res) {
+      var eventId = parseInt(req.params.eventId);
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
+
+      try {
+        for (var _iterator4 = _eventsModel2.default[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          var event = _step4.value;
+
+          if (event['eventId'] === eventId) {
+            res.status(200).send(event);
+            break;
+          }
+        }
+      } catch (err) {
+        _didIteratorError4 = true;
+        _iteratorError4 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion4 && _iterator4.return) {
+            _iterator4.return();
+          }
+        } finally {
+          if (_didIteratorError4) {
+            throw _iteratorError4;
+          }
+        }
+      }
+
+      res.status(404).send({ message: 'Not found' });
+    }
+
+    // controller to delete
+
+  }, {
+    key: 'deleteEvent',
+    value: function deleteEvent(req, res) {
+      var eventId = parseInt(req.params.eventId);
+      var _iteratorNormalCompletion5 = true;
+      var _didIteratorError5 = false;
+      var _iteratorError5 = undefined;
+
+      try {
+        for (var _iterator5 = _eventsModel2.default[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+          var event = _step5.value;
+
+          if (event['eventId'] === eventId) {
+            delete _eventsModel2.default[event];
+            res.status(200).send({ message: 'deleted' });
+            break;
+          }
+        }
+      } catch (err) {
+        _didIteratorError5 = true;
+        _iteratorError5 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion5 && _iterator5.return) {
+            _iterator5.return();
+          }
+        } finally {
+          if (_didIteratorError5) {
+            throw _iteratorError5;
+          }
+        }
+      }
+
+      res.status(404).send({ message: 'Event not found, no action taken' });
     }
   }]);
 

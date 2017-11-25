@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">47.92% </span>
+        <span class="strong">48.94% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>23/48</span>
+        <span class='fraction'>23/47</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">30% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>6/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">28.13% </span>
+        <span class="strong">29.03% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/32</span>
+        <span class='fraction'>9/31</span>
       </div>
     </div>
   </div>
@@ -117,8 +117,7 @@
 72
 73
 74
-75
-76</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+75</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -160,7 +159,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -212,18 +210,18 @@ var Functs = function () {
   }
 &nbsp;
   _createClass(Functs, [{
-    key: "getId",
-    value: <span class="fstat-no" title="function not covered" >function getId(usersList) {</span>
-<span class="cstat-no" title="statement not covered" >      var totalUsers = usersList.length;</span>
-<span class="cstat-no" title="statement not covered" >      var lastUserId = usersList[totalUsers - 1].id;</span>
-<span class="cstat-no" title="statement not covered" >      var newUserId = lastUserId + 1;</span>
-<span class="cstat-no" title="statement not covered" >      return newUserId;</span>
+    key: "getField",
+    value: <span class="fstat-no" title="function not covered" >function getField(listOfObj, fieldToGet) {</span>
+<span class="cstat-no" title="statement not covered" >      var total = listOfObj.length - 1;</span>
+<span class="cstat-no" title="statement not covered" >      var lastObj = listOfObj[total];</span>
+<span class="cstat-no" title="statement not covered" >      var fieldValue = lastObj[fieldToGet];</span>
+<span class="cstat-no" title="statement not covered" >      return fieldValue;</span>
     }
-    // function to verify that the field exist
+    // function to get an object from a list of object
 &nbsp;
   }, {
-    key: "verifyId",
-    value: <span class="fstat-no" title="function not covered" >function verifyId(arrayOfObject, idToVerify) {</span>
+    key: "getObject",
+    value: <span class="fstat-no" title="function not covered" >function getObject(arrayOfObject, objectRef) {</span>
 <span class="cstat-no" title="statement not covered" >      var _iteratorNormalCompletion = true;</span>
 <span class="cstat-no" title="statement not covered" >      var _didIteratorError = false;</span>
 <span class="cstat-no" title="statement not covered" >      var _iteratorError = undefined;</span>
@@ -232,10 +230,9 @@ var Functs = function () {
 <span class="cstat-no" title="statement not covered" >        for (var _iterator = arrayOfObject[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {</span>
 <span class="cstat-no" title="statement not covered" >          var objCollection = _step.value;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >          if (objCollection[idToVerify]) {</span>
-<span class="cstat-no" title="statement not covered" >            return objCollection[idToVerify];</span>
+<span class="cstat-no" title="statement not covered" >          if (objCollection[objectRef]) {</span>
+<span class="cstat-no" title="statement not covered" >            return objCollection;</span>
           }
-<span class="cstat-no" title="statement not covered" >          return false;</span>
         }
       } catch (err) {
 <span class="cstat-no" title="statement not covered" >        _didIteratorError = true;</span>
@@ -255,8 +252,8 @@ var Functs = function () {
     // funtion to get fields value of an object
 &nbsp;
   }, {
-    key: "getField",
-    value: <span class="fstat-no" title="function not covered" >function getField(objCollector, field) {</span>
+    key: "getFields",
+    value: <span class="fstat-no" title="function not covered" >function getFields(objCollector, field) {</span>
 <span class="cstat-no" title="statement not covered" >      if (objCollector[field]) {</span>
 <span class="cstat-no" title="statement not covered" >        return objCollector[field];</span>
       }
@@ -274,7 +271,7 @@ exports.default = Functs;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Nov 23 2017 18:17:24 GMT+0100 (W. Central Africa Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Nov 25 2017 15:25:53 GMT+0100 (W. Central Africa Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

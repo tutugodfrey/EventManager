@@ -17,18 +17,18 @@ var Functs = function () {
   }
 
   _createClass(Functs, [{
-    key: "getId",
-    value: function getId(usersList) {
-      var totalUsers = usersList.length;
-      var lastUserId = usersList[totalUsers - 1].id;
-      var newUserId = lastUserId + 1;
-      return newUserId;
+    key: "getField",
+    value: function getField(listOfObj, fieldToGet) {
+      var total = listOfObj.length - 1;
+      var lastObj = listOfObj[total];
+      var fieldValue = lastObj[fieldToGet];
+      return fieldValue;
     }
-    // function to verify that the field exist
+    // function to get an object from a list of object
 
   }, {
-    key: "verifyId",
-    value: function verifyId(arrayOfObject, idToVerify) {
+    key: "getObject",
+    value: function getObject(arrayOfObject, objectRef) {
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -37,10 +37,9 @@ var Functs = function () {
         for (var _iterator = arrayOfObject[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var objCollection = _step.value;
 
-          if (objCollection[idToVerify]) {
-            return objCollection[idToVerify];
+          if (objCollection[objectRef]) {
+            return objCollection;
           }
-          return false;
         }
       } catch (err) {
         _didIteratorError = true;
@@ -60,8 +59,8 @@ var Functs = function () {
     // funtion to get fields value of an object
 
   }, {
-    key: "getField",
-    value: function getField(objCollector, field) {
+    key: "getFields",
+    value: function getFields(objCollector, field) {
       if (objCollector[field]) {
         return objCollector[field];
       }

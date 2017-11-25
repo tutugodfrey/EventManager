@@ -42,7 +42,6 @@ var Server = function () {
     this.http = _http2.default;
     this.express = _express2.default;
     this.bodyParser = _bodyParser2.default;
-
     this.logger = _morgan2.default;
     this.route = route;
   }
@@ -53,14 +52,6 @@ var Server = function () {
       this.app = this.express();
       this.app.use(this.bodyParser.urlencoded({ extended: false }));
       this.app.use(this.bodyParser.json());
-      //  this.app.set('port', 8080)
-      // return this.app;
-      this.app.get('/', function (req, res) {
-        res.status(200).send({
-          message: 'hello world'
-        });
-      });
-
       this.route.routes(this.app);
       return this.app;
     }
@@ -68,11 +59,6 @@ var Server = function () {
 
   return Server;
 }();
-
-// let app = new Server();
-// app = app.expressServer();
-// export default app
-
 
 exports.default = Server;
 //# sourceMappingURL=app.js.map

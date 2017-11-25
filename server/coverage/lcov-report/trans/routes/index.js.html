@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">73.33% </span>
+        <span class="strong">93.75% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>33/45</span>
+        <span class='fraction'>45/48</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">71.43% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>10/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">77.78% </span>
+        <span class="strong">88.89% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>7/9</span>
+        <span class='fraction'>8/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">64.29% </span>
+        <span class="strong">96.77% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>18/28</span>
+        <span class='fraction'>30/31</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -102,7 +102,9 @@
 57
 58
 59
-60</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+60
+61
+62</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -130,7 +132,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -139,21 +140,24 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -189,7 +193,6 @@ function _classCallCheck(instance, Constructor) { <span class="missing-if-branch
 &nbsp;
 var eventCenter = new _eventCenterController2.default();
 var events = new _eventController2.default();
-&nbsp;
 var Routes = function () {
   function Routes() {
     _classCallCheck(this, Routes);
@@ -197,22 +200,25 @@ var Routes = function () {
 &nbsp;
   _createClass(Routes, [{
     key: 'routes',
-    value: <span class="fstat-no" title="function not covered" >function routes(app) {</span>
-<span class="cstat-no" title="statement not covered" >      app.get('/', <span class="fstat-no" title="function not covered" >function (req, res) {</span></span>
+    value: function routes(app) {
+      app.get('/', <span class="fstat-no" title="function not covered" >function (req, res) {</span>
 <span class="cstat-no" title="statement not covered" >        res.status(200).send('Welcom to Eventmanager');</span>
       });
 &nbsp;
       // Route controllers for Event Centers
-<span class="cstat-no" title="statement not covered" >      app.post('/api/centers', eventCenter.addEventCenter);</span>
-<span class="cstat-no" title="statement not covered" >      app.get('/api/centers', eventCenter.getEventCenters);</span>
-<span class="cstat-no" title="statement not covered" >      app.get('/api/centers/:centerId', eventCenter.getEventCenter);</span>
-<span class="cstat-no" title="statement not covered" >      app.put('/api/centers/:centerId', eventCenter.updateEventCenter);</span>
+      app.post('/api/centers', eventCenter.addEventCenter);
+      app.get('/api/centers', eventCenter.getEventCenters);
+      app.get('/api/centers/:centerId', eventCenter.getEventCenter);
+      app.put('/api/centers/:centerId', eventCenter.updateEventCenter);
 &nbsp;
       // route controllers for events
-<span class="cstat-no" title="statement not covered" >      app.post('/api/events', events.addEvent);</span>
-<span class="cstat-no" title="statement not covered" >      app.put('/api/events/:eventId', events.updateEvent);</span>
-<span class="cstat-no" title="statement not covered" >      app.delete('/api/events/:eventId', events.deleteEvent);</span>
-<span class="cstat-no" title="statement not covered" >      app.get('/api/events/:eventId', events.getEvents);</span>
+      app.post('/api/events', events.addEvent);
+      app.put('/api/events/:eventId', events.updateEvent);
+      app.get('/api/events', events.getEvents);
+      app.get('/api/events/centers/:centerId', events.getCenterEvents);
+      app.get('/api/events/users/:eventId', events.getEvent);
+      app.delete('/api/events/:eventId', events.deleteEvent);
+      app.get('/api/events/:ownerId', events.getEvents);
     }
   }]);
 &nbsp;
@@ -226,7 +232,7 @@ exports.default = Routes;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Nov 23 2017 18:17:24 GMT+0100 (W. Central Africa Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Nov 25 2017 15:25:53 GMT+0100 (W. Central Africa Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

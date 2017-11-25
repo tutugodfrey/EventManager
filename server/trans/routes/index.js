@@ -8,10 +8,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 // import controllers
 
 
-var _express = require('express');
-
-var _express2 = _interopRequireDefault(_express);
-
 var _eventCenterController = require('./../controllers/eventCenterController');
 
 var _eventCenterController2 = _interopRequireDefault(_eventCenterController);
@@ -26,7 +22,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var eventCenter = new _eventCenterController2.default();
 var events = new _eventController2.default();
-
 var Routes = function () {
   function Routes() {
     _classCallCheck(this, Routes);
@@ -48,8 +43,11 @@ var Routes = function () {
       // route controllers for events
       app.post('/api/events', events.addEvent);
       app.put('/api/events/:eventId', events.updateEvent);
+      app.get('/api/events', events.getEvents);
+      app.get('/api/events/centers/:centerId', events.getCenterEvents);
+      app.get('/api/events/users/:eventId', events.getEvent);
       app.delete('/api/events/:eventId', events.deleteEvent);
-      app.get('/api/events/:eventId', events.getEvents);
+      app.get('/api/events/:ownerId', events.getEvents);
     }
   }]);
 

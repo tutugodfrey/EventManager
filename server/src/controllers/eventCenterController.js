@@ -11,9 +11,9 @@ const EventCenterController = class {
   }
   // add a new event center
   addEventCenter(req, res) {
-    const id = functs.getId(eventCenters);
+    const centerId = functs.getField(eventCenters, 'centerId') + 1;
     const newEventCenter = {
-		  	id,
+		  centerId,
       centerName: req.body.centerName,
       location: req.body.location,
       facilities: req.body.facilities,
@@ -29,22 +29,29 @@ const EventCenterController = class {
   // an event center given its it id is present
   getEventCenter(req, res) {
     const centerId = parseInt(req.params.centerId);
-    const getEventCenterId = functs.verifyId(eventCenters, centerId);
-    for (const eventCenter of eventCenters) {
-      if (eventCenter.id === centerId) {
+   // const getEventCenter = functs.getObject(eventCenters, centerId);
+    for (let eventCenter of eventCenters) {
+      if (eventCenter['centerId'] === centerId) {
+       // centerCollector = eventCenter
         res.status(200).send(eventCenter);
-      } else {
-        res.status(404).send('Center not Found');
-      }
+        break;
+      } 
     }
+    //  if(eventCenterCollector.length > 0){
+    //    res.status(200).send(eventCenterCollector)
+    //  } else {
+        res.status(404).send('Center not Found');
+    //  }
   }
 
   updateEventCenter(req, res) {
     const centerId = parseInt(req.params.centerId);
-    const getEventCenterId = functs.verifyId(eventCenters, centerId);
+    // const getEventCenterId = functs.getObject(eventCenters, 'centerId');
     let newEventCenter;
-    for (const eventCenter of eventCenters) {
-      if (eventCenter.id === centerId) {
+    let centerHolder;
+  for (let eventCenter of eventCenters) {
+      if (eventCenter['centerId'] === centerId) {
+        centerHolder = eventCenter;
 			  const centerName = req.body.centerName || eventCenter[centerName];
         const location = req.body.location || eventCenter[location];
         const facilities = req.body.facilities || eventCenter[facilities];
@@ -57,8 +64,9 @@ const EventCenterController = class {
           location,
 		    };
 	  	}
-	  }
-	  eventCenterPos = indexOf(newEventCenter);
+
+	 }
+	  let eventCenterPos = eventCenters.indexOf(centerHolder);
     if (eventCenters[eventCenterPos] = newEventCenter) {
       res.status(200).send(newEventCenter);
     } else {
