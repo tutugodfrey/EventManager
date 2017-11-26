@@ -159,8 +159,8 @@ var EventsController = function () {
     // controller to get all events given a ownerId 
 
   }, {
-    key: 'getEvents',
-    value: function getEvents(req, res) {
+    key: 'getUsersEvents',
+    value: function getUsersEvents(req, res) {
       var ownerId = parseInt(req.params.ownerId);
       var eventCollector = [];
       var _iteratorNormalCompletion3 = true;

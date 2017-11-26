@@ -47,7 +47,7 @@ var Routes = function () {
       app.get('/api/events/centers/:centerId', events.getCenterEvents);
       app.get('/api/events/users/:eventId', events.getEvent);
       app.delete('/api/events/:eventId', events.deleteEvent);
-      app.get('/api/events/:ownerId', events.getEvents);
+      app.get('/api/events/:ownerId', events.getUsersEvents);
     }
   }]);
 

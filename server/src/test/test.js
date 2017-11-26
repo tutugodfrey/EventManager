@@ -22,7 +22,7 @@ describe('Server', () => {
       expect(server).to.be.an.instanceOf(Server);
     });
   });
-  describe('API endpoints', () => {
+  describe('API endpoints: Valid cases', () => {
     // test for events endpoints
     describe('API endpoint /api/events', () => {
       it('should create an events', () => {
@@ -30,6 +30,8 @@ describe('Server', () => {
         .post('/api/events')
         .then((res) => {
           expect(res).to.have.status(201);
+          expect(res).to.be.json;
+          expect(res.body).to.be.an('object');
         })
       });
 
@@ -38,6 +40,8 @@ describe('Server', () => {
         .get('/api/events/1')
         .then((res) => {
           expect(res).to.have.status(200);
+          expect(res).to.be.json;
+          expect(res.body).to.be.an('array');
         })
       })
 
@@ -46,6 +50,8 @@ describe('Server', () => {
         .put('/api/events/1')
         .then((res) => {
           expect(res).to.have.status(200);
+          expect(res).to.be.json;
+          expect(res.body).to.be.an('object');
         })
       });
 
@@ -54,6 +60,8 @@ describe('Server', () => {
         .get('/api/events/users/1')
         .then((res) => {
           expect(res).to.have.status(200);
+          expect(res).to.be.json;
+          expect(res.body).to.be.an('object');
         })
       });
 
@@ -62,15 +70,19 @@ describe('Server', () => {
           .get('/api/events')
           .then((res) => {
           expect(res).to.have.status(200);
+          expect(res).to.be.json;
+          expect(res.body).to.be.an('array');
         })
       });
 
       // handle case to get all event given the center Id
-      it('should get all events irrespective of its id', () => {
+      it('should get all events irrespective of given its center id', () => {
           return chai.request(app)
           .get('/api/events/centers/2')
           .then((res) => {
           expect(res).to.have.status(200);
+          expect(res).to.be.json;
+          expect(res.body).to.be.an('array');
         })
       });
      
@@ -79,6 +91,8 @@ describe('Server', () => {
           .delete('/api/events/1')
           .then((res) => {
           expect(res).to.have.status(200);
+          expect(res).to.be.json;
+          expect(res.body).to.be.an('object');
         })
       });
     })
@@ -90,6 +104,8 @@ describe('Server', () => {
         .post('/api/centers')
         .then((res) => {
           expect(res).to.have.status(201);
+          expect(res).to.be.json;
+          expect(res.body).to.be.an('object');
         })
       });
 
@@ -98,6 +114,8 @@ describe('Server', () => {
         .get('/api/centers/1')
         .then((res) => {
           expect(res).to.have.status(200);
+          expect(res).to.be.json;
+          expect(res.body).to.be.an('object');
         })
       });
 
@@ -106,9 +124,101 @@ describe('Server', () => {
         .get('/api/centers')
         .then((res) => {
           expect(res).to.have.status(200);
+          expect(res).to.be.json;
+          expect(res.body).to.be.an('array');
         })
       })
-      
     })
   })
+  // Handle invalid cases
+  describe('API endpoints: Invalid paths', () => {
+    describe('Event', () => {
+    it('should not get an event belonging to a user given the event id', () => {
+      return chai.request(app)
+      .get('/api/events/user/5')
+      .then((res) => {
+        throw new Error('Invalid Path');
+      })
+      .catch((err) => {
+        expect(err).to.have.status(404);
+      })
+    });
+    it('should not get all events irrespective of its id', () => {
+     return chai.request(app)
+       .get('/api/event/')
+       .then((res) => {
+         throw new Error('Invalid Path');
+        })
+        .catch((err) => {
+          expect(err).to.have.status(404);
+        })
+      });
+    it('should not get all events irrespective of its id', () => {
+        return chai.request(app)
+      .get('/api/events/center/8')
+      .then((res) => {
+       throw new Error('Invalid Path');
+      })
+      .catch((err) => {
+        expect(err).to.have.status(404);
+      })
+    });
+    it('should not delete an events given its id', () => {
+      return chai.request(app)
+      .delete('/api/event/')
+      .then((res) => {
+       throw new Error('Invalid Path');
+      })
+      .catch((err) => {
+        expect(err).to.have.status(404);
+      })
+    });
+    it('should not update an event given its id', () => {
+      return chai.request(app)
+      .put('/api/event/6')
+      .then((res) => {
+       throw new Error('Invalid Path');
+      })
+      .catch((err) => {
+        expect(err).to.have.status(404);
+      })
+    }); 
+  });
+  
+describe('eventCenters', () => {
+      it('should not create event Center', () => {
+        return chai.request(app)
+        .post('/api/center')
+        .then((res) => {
+          throw new Error('Invalid Path');
+        })
+        .catch((err) => {
+          expect(err).to.have.status(404);
+        })
+      });
+
+      it('should not get a single events center given its id', () => {
+        return chai.request(app)
+        .get('/api/center/1')
+        .then((res) => {
+          throw new Error('Invalid Path');
+        })
+        .catch((err) => {
+         expect(err).to.have.status(404);
+        })
+       });
+
+      it('should not get all event centers', () => {
+        return chai.request(app)
+        .get('/api/center')
+        .then((res) => {
+          throw new Error('Invalid Path');
+        })
+        .catch((err) => {
+          expect(err).to.have.status(404);
+        })
+      })
+    })
+  })
+  
 });

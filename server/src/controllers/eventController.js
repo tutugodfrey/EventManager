@@ -81,7 +81,7 @@ const EventsController = class {
   }
 
   // controller to get all events given a ownerId 
-  getEvents(req, res) {
+  getUsersEvents(req, res) {
   	const ownerId = parseInt(req.params.ownerId);
   	const eventCollector = [];
   	for (let event of events) {
