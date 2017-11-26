@@ -1,1 +1,2 @@
-require('./../trans/app')
+require('babel-register');
+require('./www')
