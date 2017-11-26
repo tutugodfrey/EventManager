@@ -15,6 +15,7 @@ const Routes = class {
     app.post('/api/centers', eventCenter.addEventCenter);
     app.get('/api/centers', eventCenter.getEventCenters);
     app.get('/api/centers/:centerId', eventCenter.getEventCenter);
+    app.get('/api/centers/name/:centerName', eventCenter.getCenterByName);
     app.put('/api/centers/:centerId', eventCenter.updateEventCenter);
 
     // route controllers for events
