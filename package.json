@@ -9,10 +9,14 @@
     "build": "babel server/src -s -d server/trans",
     "tests":"mocha server/trans/test/",
     "test": "npm run build && mocha server/trans/test/",
-    "production": "npm run build && node ./server/bin/production",
+    "start": "npm run build && node ./server/bin/production",
     "integrate1": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./server/trans/test/*",
-    "integrate": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./server/trans/test/* && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "integrate": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./server/trans/test/* && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "engine":{
+      "node":"6.10.3"
+    }
   },
+
   "author": "",
   "license": "ISC",
   "devDependencies": {
