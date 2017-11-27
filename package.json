@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon ./bin/dev",
-    "lint": "eslint src/funcs/funcs.js",
-    "build": "babel src -s -d trans",
-    "tests":"mocha trans/test/",
-    "test": "npm run build && mocha trans/test/",
-    "production": "npm run build && node ./bin/production",
-    "integrate1": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./trans/test/*",
-    "integrate": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./trans/test/* && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "start:dev": "nodemon ./server/bin/dev",
+    "lint": "eslint server/src/funcs/funcs.js",
+    "build": "babel server/src -s -d server/trans",
+    "tests":"mocha server/trans/test/",
+    "test": "npm run build && mocha server/trans/test/",
+    "production": "npm run build && node ./server/bin/production",
+    "integrate1": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./server/trans/test/*",
+    "integrate": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./server/trans/test/* && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "author": "",
   "license": "ISC",
