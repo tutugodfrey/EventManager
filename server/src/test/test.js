@@ -2,8 +2,8 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import Server from './../app';
-import EventCenters from './../models/eventCentersmodel';
-import events from './../models/eventsmodel';
+// import EventCenters from './../models/eventCentersmodel';
+// import events from './../models/eventsmodel';
 const assert = chai.assert;
 const server = new Server();
 const expect = chai.expect;
