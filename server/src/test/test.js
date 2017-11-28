@@ -1,6 +1,6 @@
 
 import chai from 'chai';
-import chaiHttp from 'chai-Http';
+import chaiHttp from 'chai-http';
 import Server from './../app';
 import EventCenters from './../models/eventCentersmodel';
 import events from './../models/eventsmodel';
