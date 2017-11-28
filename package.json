@@ -7,16 +7,13 @@
     "start:dev": "nodemon ./server/bin/dev",
     "lint": "eslint server/src/funcs/funcs.js",
     "build": "babel server/src -s -d server/trans",
-    "tests":"mocha server/trans/test/",
+    "tests": "mocha server/trans/test/",
     "test": "npm run build && mocha server/trans/test/",
     "start": "npm run build && node ./server/bin/production",
+    "remove-trans":"rm -rf ./server/trans",
     "integrate1": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./server/trans/test/*",
-    "integrate": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./server/trans/test/* && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "engine":{
-      "node":"6.10.3"
-    }
+    "integrate": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./server/trans/test/* && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
-
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -37,9 +34,13 @@
     "mocha-lcov-reporter": "^1.3.0"
   },
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "morgan": "^1.9.0",
-    "nodemon": "^1.12.1"
+    "nodemailer": "^4.4.0",
+    "nodemon": "^1.12.1",
+    "pg": "^7.1.2",
+    "pg-hstore": "^2.3.2"
   }
 }
