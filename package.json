@@ -10,7 +10,7 @@
     "tests": "mocha server/trans/test/",
     "test": "npm run build && mocha server/trans/test/",
     "start": "npm run build && node ./server/bin/production",
-    "remove-trans":"rm -rf ./server/trans",
+    "remove-trans": "rm -rf ./server/trans",
     "integrate1": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./server/trans/test/*",
     "integrate": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./server/trans/test/* && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
@@ -40,7 +40,6 @@
     "morgan": "^1.9.0",
     "nodemailer": "^4.4.0",
     "nodemon": "^1.12.1",
-    "pg": "^7.1.2",
     "pg-hstore": "^2.3.2"
   }
 }

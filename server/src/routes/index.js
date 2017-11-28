@@ -2,16 +2,22 @@
 // import controllers
 import EventCenterController from './../controllers/eventCenterController';
 import EventsController from './../controllers/eventController';
+import UsersController from './../controllers/usersController';
 
 const eventCenter = new EventCenterController();
 const events = new EventsController();
+const users = new UsersController();
 const Routes = class {
   routes(app) {
     app.get('/', (req, res) => {
       res.status(200).send('Welcom to Eventmanager');
     });
 
-    // Route controllers for Event Centers
+    // route for users signup and signin
+    app.post('/api/signup', users.signup );
+    app.post('/api/signin', users.signin);
+
+    // route controllers for Event Centers
     app.post('/api/centers', eventCenter.addEventCenter);
     app.get('/api/centers', eventCenter.getEventCenters);
     app.get('/api/centers/:centerId', eventCenter.getEventCenter);
