@@ -4,7 +4,7 @@ var _chai = require('chai');
 
 var _chai2 = _interopRequireDefault(_chai);
 
-var _chaiHttp = require('chai-Http');
+var _chaiHttp = require('chai-http');
 
 var _chaiHttp2 = _interopRequireDefault(_chaiHttp);
 
@@ -12,16 +12,10 @@ var _app = require('./../app');
 
 var _app2 = _interopRequireDefault(_app);
 
-var _eventCentersmodel = require('./../models/eventCentersmodel');
-
-var _eventCentersmodel2 = _interopRequireDefault(_eventCentersmodel);
-
-var _eventsmodel = require('./../models/eventsmodel');
-
-var _eventsmodel2 = _interopRequireDefault(_eventsmodel);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import EventCenters from './../models/eventCentersmodel';
+// import events from './../models/eventsmodel';
 var assert = _chai2.default.assert;
 var server = new _app2.default();
 var expect = _chai2.default.expect;

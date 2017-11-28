@@ -1,6 +1,6 @@
 
 import http from 'http';
-import Server from './../trans/app';
+import Server from './../src/app';
 let app = new Server();
 app = app.expressServer();
 const port = parseInt(process.env.PORT)|| 8080;

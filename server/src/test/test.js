@@ -1,9 +1,9 @@
 
 import chai from 'chai';
-import chaiHttp from 'chai-Http';
+import chaiHttp from 'chai-http';
 import Server from './../app';
-import EventCenters from './../models/eventCentersmodel';
-import events from './../models/eventsmodel';
+// import EventCenters from './../models/eventCentersmodel';
+// import events from './../models/eventsmodel';
 const assert = chai.assert;
 const server = new Server();
 const expect = chai.expect;
@@ -25,14 +25,14 @@ describe('Server', () => {
   describe('API endpoints: Valid cases', () => {
     // test for events endpoints
     describe('API endpoint /api/events', () => {
-      it('should create an events', () => {
+     it('should create an events', () => {
         return chai.request(app)
         .post('/api/events')
         .then((res) => {
           expect(res).to.have.status(201);
           expect(res).to.be.json;
           expect(res.body).to.be.an('object');
-        })
+        });
       });
 
       it('should get all events given owner id', () => {
@@ -42,7 +42,7 @@ describe('Server', () => {
           expect(res).to.have.status(200);
           expect(res).to.be.json;
           expect(res.body).to.be.an('array');
-        })
+        });
       })
 
       it('should update an event given its id', () => {
@@ -52,7 +52,7 @@ describe('Server', () => {
           expect(res).to.have.status(200);
           expect(res).to.be.json;
           expect(res.body).to.be.an('object');
-        })
+        });
       });
 
       it('should get an event belonging to a user given the event id', () => {
@@ -62,7 +62,7 @@ describe('Server', () => {
           expect(res).to.have.status(200);
           expect(res).to.be.json;
           expect(res.body).to.be.an('object');
-        })
+        });
       });
 
       it('should get all events irrespective of its id', () => {
@@ -72,10 +72,10 @@ describe('Server', () => {
           expect(res).to.have.status(200);
           expect(res).to.be.json;
           expect(res.body).to.be.an('array');
-        })
+        });
       });
 
-      // handle case to get all event given the center Id
+     // handle case to get all event given the center Id
       it('should get all events irrespective of given its center id', () => {
           return chai.request(app)
           .get('/api/events/centers/2')

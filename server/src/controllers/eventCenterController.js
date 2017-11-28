@@ -43,7 +43,16 @@ const EventCenterController = class {
         res.status(404).send('Center not Found');
     //  }
   }
-
+  getCenterByName(req, res) {
+    const centerName = req.params.centerName;
+    for(let eventCenter of eventCenters)  {
+      if(eventCenter['centerName'] === centerName) {
+        res.status(200).send(eventCenter);
+        break;
+      }
+    }
+    res.status(404).send({ message: 'Not found'});
+  }
   updateEventCenter(req, res) {
     const centerId = parseInt(req.params.centerId);
     // const getEventCenterId = functs.getObject(eventCenters, 'centerId');

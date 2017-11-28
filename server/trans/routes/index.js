@@ -16,12 +16,17 @@ var _eventController = require('./../controllers/eventController');
 
 var _eventController2 = _interopRequireDefault(_eventController);
 
+var _usersController = require('./../controllers/usersController');
+
+var _usersController2 = _interopRequireDefault(_usersController);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var eventCenter = new _eventCenterController2.default();
 var events = new _eventController2.default();
+var users = new _usersController2.default();
 var Routes = function () {
   function Routes() {
     _classCallCheck(this, Routes);
@@ -34,10 +39,15 @@ var Routes = function () {
         res.status(200).send('Welcom to Eventmanager');
       });
 
-      // Route controllers for Event Centers
+      // route for users signup and signin
+      app.post('/api/signup', users.signup);
+      app.post('/api/signin', users.signin);
+
+      // route controllers for Event Centers
       app.post('/api/centers', eventCenter.addEventCenter);
       app.get('/api/centers', eventCenter.getEventCenters);
       app.get('/api/centers/:centerId', eventCenter.getEventCenter);
+      app.get('/api/centers/name/:centerName', eventCenter.getCenterByName);
       app.put('/api/centers/:centerId', eventCenter.updateEventCenter);
 
       // route controllers for events
