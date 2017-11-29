@@ -16,7 +16,11 @@ const eventCenters = (sequelize, DataTypes) => {
     cost:{
       type: DataTypes.INTEGER,
       allowNull: false,
-      },
+    },
+    centerImgUrl:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     facilities: {
       type: DataTypes.ARRAY(Sequelize.STRING),
       allowNull: false,

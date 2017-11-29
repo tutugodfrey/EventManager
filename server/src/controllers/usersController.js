@@ -9,7 +9,7 @@ const UsersController = class {
 		return users
 		.find({
 			where: {
-				username: req.body.username,
+				username: req.body.username
 			}
 		})
 		.then(user => {

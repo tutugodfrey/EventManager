@@ -12,7 +12,9 @@ const EventCenterController = class {
     return eventCenters
     .find(
       {
-        where: req.body.centerName
+        where: {
+          centerName: req.body.centerName
+        }
       }
     )
     .then(eventCenter => {
@@ -68,7 +70,9 @@ const EventCenterController = class {
     return eventCenters
     .find(
       {
-        where: req.params.centerName
+        where:{ 
+          centerName: req.params.centerName
+        }
       }
     )
     .then(eventCenter => {
@@ -85,7 +89,9 @@ const EventCenterController = class {
     return eventCenters
     .find(
       {
-        where: req.params.location
+        where: {
+          location: req.params.location
+        }
       }
     )
     .then(eventCenters => {
@@ -102,8 +108,10 @@ const EventCenterController = class {
     return eventCenters
     .findById(
       {
-        where: req.body.id
+        where: {
+          id: req.body.id
       }
+    }
     )
     .then(eventCenter => {
       if(eventCenter){

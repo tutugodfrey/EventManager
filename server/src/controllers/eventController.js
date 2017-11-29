@@ -6,71 +6,98 @@ const functs = new Functs();
 
 
 const EventsController = class {
-  constructor() {
-    this.events = events;
-  }
-
   // controller to add event
   addEvent(req, res) {
-  
+    return eventCenters
+    .findById({
+      where: { 
+        id: req.body.centerId
+      }
+    })
+    .then(eventCenter => {
+      if(!eventCenter){
+        return events
+        .create({
+          typeOfEvent: req.body.typeOfEvent,
+          dateOfEvent: req.body.dateOfEvent,
+          facilities: req.body.facilities,
+          centerId: req.body.centerId,
+          userId: req.body.userId
+        })
+        .then(event => res.status(201).send(event))
+      } else {
+        res.status(404).send({ message:'Event Center does not exist'});
+      }
+    })
+    .catch(error => res.status(500).send(error));
   }
 
   // controll to update event
   updateEvent(req, res) {
-    
+    return events
+    .findById({
+      where: {
+        id = res.params.id
+      }
+    })
+    .then(event => {
+      return event
+      .update({
+        id,
+        typeOfEvent: req.body.typeOfEvent || event[typeOfEvent],
+        dateOfEvent: req.body.dateOfEvent || event[dateOfEvent],
+        facilities: req.body.facilities || event[facilities],
+        centerId: req.body.centerId || event[centerId],
+        userId: req.body.userId || event[userId]
+      })
+      .then(updatedEvent => res.status(201).send(updatedEvent))
+    })
+    .catch(error => res.status(500).send(error)); 
   }
 
   // controller to get all events given the centerId
   getCenterEvents(req, res) {
+    return eventCenters
+    .findById({
+      where: {
+        id: req.params.centerId
+      }
+    })
+    .then(eventCenter => {
+      if(eventCenter){
+        return events
+        .find({
+          where: {
+            centerId: req.params.centerId
+          }
+        })
+        .then(events => {
+          if(events){
+            res.status(201).send(events);
+          } else {
+            res.status(404).send({message: 'No event found for this center'})
+          }
+        })
+      }
+    })
+    .catch(error => res.status(404).send({ message: 'Center does not exist'}));
   }
 
   // controller to get all events given a ownerId 
   getUsersEvents(req, res) {
-  	const ownerId = parseInt(req.params.ownerId);
-  	const eventCollector = [];
-  	for (let event of events) {
-  		if (event['ownerId'] === ownerId) {
-  			eventCollector.push(event);
-  		}
-  	}
-  	if (eventCollector.length > 0) {
-  		res.status(200).send(eventCollector);
-  	} else {
-  		res.status(404).send({ message: 'Event not found'});
-  	}
+  	
   }
   // controller to get all events
   getEvents(req, res) {
-    if(events){
-      res.status(200).send(events);
-    } else {
-      res.status(404).send({ message:'Not found'});
-    }
   } 
 
    // controller to get an events given the event id
   getEvent(req, res) {
-    const eventId = parseInt(req.params.eventId);
-    for(let event of events) {
-      if(event['eventId'] === eventId){
-        res.status(200).send(event);
-        break;
-      } 
-    } 
-    res.status(404).send({ message:'Not found'} );
+
   }
 
   // controller to delete
   deleteEvent(req, res) {
-   const eventId = parseInt(req.params.eventId);
-    for (let event of events) {
-      if (event['eventId'] === eventId) {
-        delete events[event];
-        res.status(200).send({ message: 'deleted'});
-        break;
-      }
-    }
-    res.status(404).send({ message:'Event not found, no action taken' });
   }
 };
 
