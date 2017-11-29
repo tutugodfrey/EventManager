@@ -43,7 +43,8 @@ const Routes = class {
    this.securedApi.post('/centers', this.eventCenter.addEventCenter);
    this.securedApi.get('/centers', this.eventCenter.getEventCenters);
    this.securedApi.get('/centers/:centerId', this.eventCenter.getEventCenter);
-   this.securedApi.get('/centers/name/:centerName', eventCenter.getCenterByName);
+   this.securedApi.get('/centers/centername/:centerName', eventCenter.getCenterByName);
+   this.securedApi.get('/centers/location/:location', eventCenter.getCenterByLocation);
    this.securedApi.put('/centers/:centerId', this.eventCenter.updateEventCenter);
 
     // route controllers for events

@@ -49,13 +49,84 @@ const EventCenterController = class {
   }
   // an event center given its it id is present
   getEventCenter(req, res) {
-    res.status(200).send({ message: 'respond with a resource'})  
+    return eventCenters
+    .findById(
+      {
+        where: req.params.id
+      }
+    )
+    .then(eventCenter => {
+      if(eventCenter){
+        res.status(200).send(eventCenter);
+      }
+    } )
+    .catch(error => res.status(204).send({
+      message: 'No center is found matching this Id'
+    }))
   }
+
+  // get an event center by name
   getCenterByName(req, res) {
-    res.status(200).send({ message: 'respond with a resource'})
+    return eventCenters
+    .find(
+      {
+        where: req.params.centerName
+      }
+    )
+    .then(eventCenter => {
+      if(eventCenter){
+        res.status(200).send(eventCenter);
+      }
+    } )
+    .catch(error => res.status(204).send({
+      message: 'No center is found matching this Id'
+    }))
   }
+   // get an event center by location
+   getCenterByLocation(req, res) {
+    return eventCenters
+    .find(
+      {
+        where: req.params.location
+      }
+    )
+    .then(eventCenters => {
+      if(eventCenters){
+        res.status(200).send(eventCenters);
+      }
+    } )
+    .catch(error => res.status(204).send({
+      message: 'No center is found matching this Id'
+    }))
+  }
+
   updateEventCenter(req, res) {
-    res.status(200).send({ message: 'respond with a resource'})
+    return eventCenters
+    .findById(
+      {
+        where: req.body.id
+      }
+    )
+    .then(eventCenter => {
+      if(eventCenter){
+        return eventCenter
+        .update({
+          centerName: req.body.centerName || eventCenter.centerName,
+          location:req.body.location || eventCenter.location,
+          sits: req.body.sits || eventCenter.sits,
+          cost: req.body.cost || eventCenter.cost,
+          facilities: req.body.facilities || eventCenter.facilities
+        })
+        .then(updatedCenter => {
+          res.status(201).send(updatedCenter)
+        })
+      } else {
+        res.status(404).send({message: 'Event center not found'});
+      }
+    })
+    .catch(error => {
+      res.status(500).send(error)
+    })
   }
 };
 export default EventCenterController;
