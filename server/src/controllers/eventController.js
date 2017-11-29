@@ -34,7 +34,7 @@ const EventsController = class {
     return events
     .findById({
       where: {
-        id = res.params.id
+        id: res.params.id
       }
     })
     .then(event => {
