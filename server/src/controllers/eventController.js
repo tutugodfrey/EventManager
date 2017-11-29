@@ -1,9 +1,6 @@
 import events from './../models/events';
 import eventCenters from './../models/eventCenters';
-import Functs from './../funcs/funcs';
-// import EventCenterController from './'
-const functs = new Functs();
-
+import users from './../models/users'
 
 const EventsController = class {
   // controller to add event
@@ -83,9 +80,28 @@ const EventsController = class {
     .catch(error => res.status(404).send({ message: 'Center does not exist'}));
   }
 
-  // controller to get all events given a ownerId 
+  // controller to get all events given a userId 
   getUsersEvents(req, res) {
-  	
+    return users
+    .findById({
+      where: {
+        id: req.params.userId
+      }
+    })
+    .then(user => {
+      if(user){
+        return events
+        .find({
+          where: {
+            userId: req.params.userId
+          }
+        })
+        .then(userEvents => res.status(200).send(userEvents))
+      } else {
+        res.status(404).send({ message: 'No event found for this user'});
+      }
+    })
+    .catch(error => res.status(404).send({ message: 'User not found'}));
   }
   // controller to get all events
   getEvents(req, res) {
