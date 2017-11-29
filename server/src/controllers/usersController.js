@@ -108,7 +108,7 @@ const UsersController = class {
 			}
 		})
 		.then(user => res.status(201).send(user))
-		.catch(error => res.status(201).send(error));
+		.catch(error => res.status(404).send(error));
 	}
 	
 
