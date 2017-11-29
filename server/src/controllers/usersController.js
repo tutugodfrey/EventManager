@@ -31,8 +31,10 @@ const UsersController = class {
 						email: req.body.email,
 						username: req.body.username,
 						gender: req.body.gender,
-						imageurl: req.body.imageurl,
-						usertype: req.body.usertype
+						imageUrl: req.body.imageUrl,
+						usertype: req.body.usertype,
+						securedQtn: req.body.securedQtn,
+						securedAns: req.body.securedAns
 					})
 					.then(signup => res.status(201).send(signup))
 					.catch(error => res.status(400).send(error));
@@ -84,6 +86,30 @@ const UsersController = class {
 		})
 		.catch(error => res.status(200).send(error));
 	} 
+
+	updateUsers (req, res) {
+		return users
+		.find({
+			where: {
+				id: req.params.userId,
+			},
+		})
+		.then(user => {
+			if(user) {
+				return user
+				.update({
+				firstname: req.body.firstname || user.firstname,
+				lastname: req.body.lastname || user.lastname,
+				username: req.body.username || user.username,
+				email: req.body.email || user.email,
+				gender: req.body.gender || user.gender,
+				imageUrl: req.body.imageUrl || user.imageUrl
+				})
+			}
+		})
+		.then(user => res.status(201).send(user))
+		.catch(error => res.status(201).send(error));
+	}
 	
 
 }

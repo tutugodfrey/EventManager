@@ -39,7 +39,7 @@ const Routes = class {
         res.send('Please send a token');
       }
     });   
-
+   this.securedApi.put('/users', this.users.updateUsers)
    this.securedApi.post('/centers', this.eventCenter.addEventCenter);
    this.securedApi.get('/centers', this.eventCenter.getEventCenters);
    this.securedApi.get('/centers/:centerId', this.eventCenter.getEventCenter);
