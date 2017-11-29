@@ -1,132 +1,150 @@
-import events from './../models/eventsModel';
-import eventCenters from './../models/eventCentersModel';
-import Functs from './../funcs/funcs';
-// import EventCenterController from './'
-const functs = new Functs();
-
+import events from './../models/events';
+import eventCenters from './../models/eventCenters';
+import users from './../models/users'
 
 const EventsController = class {
-  constructor() {
-    this.events = events;
-  }
-
   // controller to add event
   addEvent(req, res) {
-   const eventId = functs.getField(events, 'eventId') + 1;
-    const newEvent = {
-		  eventId,
-		  centerName: req.body.centerName,
-      location: req.body.location,
-		  facilities: req.body.facilities,
-		  typeOfEvent: req.body.typeOfEvent,
-      dateOfEvent: req.body.cost,
-      centerId: req.body.centerId,
-      ownerId: req.body.ownerId
-    };
-    events.push(newEvent);
-    res.status(201).send(newEvent);
+    return eventCenters
+    .findById({
+      where: { 
+        id: req.body.centerId
+      }
+    })
+    .then(eventCenter => {
+      if(!eventCenter){
+        return events
+        .create({
+          typeOfEvent: req.body.typeOfEvent,
+          dateOfEvent: req.body.dateOfEvent,
+          facilities: req.body.facilities,
+          centerId: req.body.centerId,
+          userId: req.body.userId
+        })
+        .then(event => res.status(201).send(event))
+      } else {
+        res.status(404).send({ message:'Event Center does not exist'});
+      }
+    })
+    .catch(error => res.status(500).send(error));
   }
 
   // controll to update event
   updateEvent(req, res) {
-    const id = parseInt(req.params.eventId);
-    const getEvent = functs.getObject(events, id);
-    let newEvent;
-    let eventHolder;
-    for (let event of events) {
-      if (event.eventId === id) {
-        eventHolder = event;
-        const eventId = id;
-			  const centerName = req.body.centerName || event[centerName];
-        const location = req.body.location || event[location];
-        const facilities = req.body.facilities || event[facilities];
-        const typeOfEvent = req.body.typeOfEvent || event[typeOfEvent];
-        const dateOfEvent = req.body.dateOfEvent || event[dateOfEvent];
-        const centerId = req.body.centerId || event[centerId];
-        const ownerId = req.body.ownerId || event[ownerId];
-        newEvent = {
-          eventId,
-          centerName,
-          location,
-          facilities,
-          typeOfEvent,
-          dateOfEvent,
-          centerId,
-          ownerId,
-        };
+    return events
+    .findById({
+      where: {
+        id: res.params.id
       }
-    }
-    const eventPos = events.indexOf(eventHolder);
-    if (events[eventPos] = newEvent) {
-      res.status(200).send(newEvent);
-    } else {
-      res.status(404).send({ message: 'Not Found: no action taken' });
-    }
+    })
+    .then(event => {
+      return event
+      .update({
+        id,
+        typeOfEvent: req.body.typeOfEvent || event[typeOfEvent],
+        dateOfEvent: req.body.dateOfEvent || event[dateOfEvent],
+        facilities: req.body.facilities || event[facilities],
+        centerId: req.body.centerId || event[centerId],
+        userId: req.body.userId || event[userId]
+      })
+      .then(updatedEvent => res.status(201).send(updatedEvent))
+    })
+    .catch(error => res.status(500).send(error)); 
   }
 
   // controller to get all events given the centerId
   getCenterEvents(req, res) {
-    const centerId = parseInt(req.params.centerId);
-    const eventsCollector = [];
-    for(let event of events) {
-      if(event['centerId'] === centerId) {
-        eventsCollector.push(event);
+    return eventCenters
+    .findById({
+      where: {
+        id: req.params.centerId
       }
-    }
-    if(eventsCollector.length > 0) {
-      res.status(200).send(eventsCollector);
-    } else {
-      res.status(404).send({ message: 'No event found' });
-    }
+    })
+    .then(eventCenter => {
+      if(eventCenter){
+        return events
+        .find({
+          where: {
+            centerId: req.params.centerId
+          }
+        })
+        .then(events => {
+          if(events){
+            res.status(201).send(events);
+          } else {
+            res.status(404).send({message: 'No event found for this center'})
+          }
+        })
+      }
+    })
+    .catch(error => res.status(404).send({ message: 'Center does not exist'}));
   }
 
-  // controller to get all events given a ownerId 
+  // controller to get all events given a userId 
   getUsersEvents(req, res) {
-  	const ownerId = parseInt(req.params.ownerId);
-  	const eventCollector = [];
-  	for (let event of events) {
-  		if (event['ownerId'] === ownerId) {
-  			eventCollector.push(event);
-  		}
-  	}
-  	if (eventCollector.length > 0) {
-  		res.status(200).send(eventCollector);
-  	} else {
-  		res.status(404).send({ message: 'Event not found'});
-  	}
+    return users
+    .findById({
+      where: {
+        id: req.params.userId
+      }
+    })
+    .then(user => {
+      if(user){
+        return events
+        .find({
+          where: {
+            userId: req.params.userId
+          }
+        })
+        .then(userEvents => res.status(200).send(userEvents))
+      } else {
+        res.status(404).send({ message: 'No event found for this user'});
+      }
+    })
+    .catch(error => res.status(404).send({ message: 'User not found'}));
   }
   // controller to get all events
   getEvents(req, res) {
-    if(events){
-      res.status(200).send(events);
-    } else {
-      res.status(404).send({ message:'Not found'});
-    }
+    return events
+    .findAll()
+    .then(events => {
+      if(events) {
+        res.status(200).send(events);
+      } else {
+        res.status(404).send({message: 'No event found'})
+      }
+    })
+    .catch(error => res.status(500).send())
   } 
 
    // controller to get an events given the event id
   getEvent(req, res) {
-    const eventId = parseInt(req.params.eventId);
-    for(let event of events) {
-      if(event['eventId'] === eventId){
+    return events
+    .findById({
+      where: {
+        id: res.params.eventId
+      }
+    })
+    .then(event => {
+      if(event){
         res.status(200).send(event);
-        break;
-      } 
-    } 
-    res.status(404).send({ message:'Not found'} );
+      } else {
+        res.status(404).send({ message: 'Event not found'});
+      }
+    })
+    .catch(error => res.status(500).send(error));
   }
 
   // controller to delete
   deleteEvent(req, res) {
-   const eventId = parseInt(req.params.eventId);
-    for (let event of events) {
-      if (event['eventId'] === eventId) {
-        delete events[event];
-        res.status(200).send({ message: 'deleted'});
-        break;
+    return events
+    .destroy({
+      where: {
+        id: req.params.eventId
       }
-    }
-    res.status(404).send({ message:'Event not found, no action taken' });
+    })
+    .then(event => res.status(200).send({message: `${event} has ben deleted`}))
+    .catch(error => res.status(500).send(error));
   }
 };
 

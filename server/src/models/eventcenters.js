@@ -1,6 +1,6 @@
-'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var eventCenters = sequelize.define('eventCenters', {
+
+const eventCenters = (sequelize, DataTypes) => {
+  const eventCenters = sequelize.define('eventCenters', {
     centerName:{
       type: DataTypes.STRING,
       allowNull: false,e
@@ -16,20 +16,22 @@ module.exports = function(sequelize, DataTypes) {
     cost:{
       type: DataTypes.INTEGER,
       allowNull: false,
-      },
+    },
+    centerImgUrl:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     facilities: {
-      type: DataTypes.ARRAY[],
+      type: DataTypes.ARRAY(Sequelize.STRING),
       allowNull: false,
     }
-  }, {
-    classMethods: {
-      associate: models => {
-        eventCenters.hasMany(models.events, {
-          foreignkey : "centerId",
-          onDelete : "CASCADE",
-        });
-      }
-    }
   });
+  eventCenters.associate = (models) => {
+    eventCenters.hasMany(models.events, {
+      foreignKey: 'centerId',
+      as: 'events'
+    });
+  };
   return eventCenters;
 };
+export default eventCenters;

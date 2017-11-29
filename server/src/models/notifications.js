@@ -1,6 +1,6 @@
-'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var notifications = sequelize.define('notifications', {
+
+const notifications = (sequelize, DataTypes) => {
+  const notifications = sequelize.define('notifications', {
     message:{
       type: DataTypes.STRING,
       allowNull: false,
@@ -9,15 +9,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     }
-  }, {
-    classMethods: {
-      associate: models => {
-        notifications.belongsTo(models.users, {
-          foreignkey : "notificationId",
-          onDelete : "CASCADE",
-        });
-      }
-    }
-  });
+  })
+  notifications.associate = (models) => {
+    notifications.belongsTo(models.users, {
+      foreignKey: 'userId',
+      as: 'users'
+    });
+  };
   return notifications;
 };
+
+export default notifications;

@@ -1,6 +1,6 @@
-'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var events = sequelize.define('events', {
+
+const events= (sequelize, DataTypes) => {
+  const events = sequelize.define('events', {
     typeOfEvent: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       },
     facilities: {
-      type: DataTypes.ARRAY[],
+      type: DataTypes.ARRAY(Sequelize.STRING),
       allowNull: false,
     },
     centerId: {
@@ -21,15 +21,21 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
     }
-  }, {
-    classMethods: {
-      associate: models => {
-        events.belongsTo(models.users, {
-          foreignkey : "userId",
-          onDelete : "CASCADE",
-        });
-      }
-    }
   });
+  
+  events.associate = (models) => {
+    events.belongsTo(models.eventCenters, {
+      foreignKey: 'centerId',
+      onDelete: 'CASCADE'
+    });
+  };
+  events.associate = (models) => {
+    events.hasOne(models.users, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE'
+    });
+  };
   return events;
 };
+
+export default events;
