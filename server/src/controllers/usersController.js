@@ -84,7 +84,7 @@ const UsersController = class {
 				}
 			}
 		})
-		.catch(error => res.status(200).send(error));
+		.catch(error => console.log(error, 'MEEEE'));
 	} 
 
 	updateUsers (req, res) {
