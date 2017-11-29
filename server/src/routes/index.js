@@ -1,11 +1,12 @@
 
 // import controllers
+import express from 'express';
 import jwt from 'jsonwebtoken';
 import EventCenterController from './../controllers/eventCenterController';
 import EventsController from './../controllers/eventController';
 import UsersController from './../controllers/usersController';
 
-const eventCenter = new EventCenterController();
+const eventCenters = new EventCenterController();
 const events = new EventsController();
 const users = new UsersController();
 const Routes = class {
@@ -40,12 +41,12 @@ const Routes = class {
       }
     });   
    this.securedApi.put('/users', this.users.updateUsers)
-   this.securedApi.post('/centers', this.eventCenter.addEventCenter);
-   this.securedApi.get('/centers', this.eventCenter.getEventCenters);
-   this.securedApi.get('/centers/:centerId', this.eventCenter.getEventCenter);
-   this.securedApi.get('/centers/centername/:centerName', eventCenter.getCenterByName);
-   this.securedApi.get('/centers/location/:location', eventCenter.getCenterByLocation);
-   this.securedApi.put('/centers/:centerId', this.eventCenter.updateEventCenter);
+   this.securedApi.post('/centers', this.eventCenters.addEventCenter);
+   this.securedApi.get('/centers', this.eventCenters.getEventCenters);
+   this.securedApi.get('/centers/:centerId', this.eventCenters.getEventCenter);
+   this.securedApi.get('/centers/centername/:centerName', eventCenters.getCenterByName);
+   this.securedApi.get('/centers/location/:location', eventCenters.getCenterByLocation);
+   this.securedApi.put('/centers/:centerId', this.eventCenters.updateEventCenter);
 
     // route controllers for events
     this.securedApi.post('/events', this.events.addEvent);

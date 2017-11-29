@@ -1,6 +1,6 @@
 // controller for users signup and signin
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bycrypt';
+import bcrypt from 'bcrypt';
 import users from './../models/users';
 
 const UsersController = class {

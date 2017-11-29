@@ -1,10 +1,8 @@
 
-import events from './../models/eventsModel';
-import eventCenters from './../models/eventCentersModel';
-import Functs from './../funcs/funcs';
-// import EventCenterController from './'
-const functs = new Functs();
+import events from './../models/events';
+import eventCenters from './../models/eventCenters';
 
+// import EventCenterController from './'
 const EventCenterController = class {
   constructor() {
     this.eventCenters = eventCenters;
