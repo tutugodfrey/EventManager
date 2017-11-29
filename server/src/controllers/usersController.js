@@ -51,28 +51,40 @@ const UsersController = class {
 
   // controllers for users signin
   signin(req, res) {
-
 		return users
 		.find({
 			where: {
-			username: req.body.username,
-			password: req.body.password,
+			username: req.body.username
 			}	
 		})
-		.then(signin => {
-			if(!signin) {
-			return res.status(400).send({
-			message: 'user does not exist',
-		});
-		}
-
-		return user
-		.all()
-		.then(signin => res.status(201).send(signin))
-		.catch(error => res.status(400).send(error));
-
-	});
-	}
+		.then(user => {
+			if(user){
+				const password = req.body.password;
+				bcrypt.compare(Password, hash, function(err, res) {
+					const passwordConfirmed = res
+				});
+				if(passwordConfirmed) {
+					// sign the user with username and password
+					const authenKey = {
+						username:user[username],
+						email:user[email]
+					}
+					const token = jwt.sign(authenKey, process.env.SECRET_KEY, {
+						expiresIn: 4000
+					});
+					res.json({
+							success:true,
+							token:token
+				 });
+		
+				} else {
+				 res.status(201).send( {message: 'password is not correct'});
+				}
+			}
+		})
+		.catch(error => res.status(200).send(error));
+	} 
+	
 
 }
 
