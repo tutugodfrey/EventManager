@@ -1,5 +1,5 @@
-'use strict';
-const users = function(sequelize, DataTypes) {
+
+const users = (sequelize, DataTypes) => {
   var users = sequelize.define('users', {
     firstname:{
       type: DataTypes.STRING,
@@ -43,16 +43,19 @@ const users = function(sequelize, DataTypes) {
       type: DataTypes.STRING.ENUM('admin', 'reqular'),
       defaultValue:'regular'
     }
-  }, {
-    classMethods: {
-      associate: models => {
-        users.hasMany(models.events, {
-          foreignkey : "userId",
-          onDelete : "CASCADE",
-        });
-      }
-    },
-  });
+  })
+  users.associate = (models) => {
+    users.hasMany(model.events, {
+      foriegnKey: 'userId',
+      as: 'events'
+    });
+  };
+  users.associate = (models) => {
+    users.hasMany(model.notifications, {
+      foriegnKey: 'userId',
+      as: 'events'
+    });
+  };
   return users;
 };
 

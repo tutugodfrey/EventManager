@@ -10,6 +10,8 @@
     "tests": "mocha server/trans/test/",
     "test": "npm run build && mocha server/trans/test/",
     "start": "npm run build && node ./server/bin/production",
+    "migrate": "node_modules/.bin/sequelize db:migrate",
+    "undo:migrate": "node_modules/.bin/sequelize db:migrate:undo:all",
     "remove-trans": "rm -rf ./server/trans",
     "integrate1": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./server/trans/test/*",
     "integrate": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./server/trans/test/* && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
@@ -43,6 +45,7 @@
     "nodemon": "^1.12.1",
     "pg": "^7.4.0",
     "pg-hstore": "^2.3.2",
+    "sequelize": "^4.23.1",
     "sequelize-cli": "^3.1.0"
   }
 }
