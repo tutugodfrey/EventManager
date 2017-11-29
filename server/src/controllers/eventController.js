@@ -119,11 +119,32 @@ const EventsController = class {
 
    // controller to get an events given the event id
   getEvent(req, res) {
-
+    return events
+    .findById({
+      where: {
+        id: res.params.eventId
+      }
+    })
+    .then(event => {
+      if(event){
+        res.status(200).send(event);
+      } else {
+        res.status(404).send({ message: 'Event not found'});
+      }
+    })
+    .catch(error => res.status(500).send(error));
   }
 
   // controller to delete
   deleteEvent(req, res) {
+    return events
+    .destroy({
+      where: {
+        id: req.params.eventId
+      }
+    })
+    .then(event => res.status(200).send({message: `${event} has ben deleted`}))
+    .catch(error => res.status(500).send(error));
   }
 };
 
