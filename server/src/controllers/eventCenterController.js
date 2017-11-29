@@ -36,7 +36,16 @@ const EventCenterController = class {
   }
   //  return all event centers
   getEventCenters(req, res) {
-    res.status(200).send({ message: 'respond with a resource'})
+    return eventCenters
+    .findAll()
+    then(eventCenters => {
+      if(eventCenters){
+        res.status(200).send(eventCenters)
+      }
+    })
+    .catch(error => res.status(404).send({
+      message: 'No event center found'
+    }))
   }
   // an event center given its it id is present
   getEventCenter(req, res) {
