@@ -35,6 +35,9 @@ div.form-div form {
 /***
 formating for the body div 
 ***/
+#index-heading {
+	text-align:center; font-size:60px;
+}
 .card {
 	padding:10px; margin:20px; width:150px
 }
