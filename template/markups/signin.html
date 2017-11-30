@@ -1,17 +1,32 @@
 <!DOCTYPE html>
-<html>
+ <html>
   <head>
-    <meta charset = 'UTF-8'/>
-    <meta http-equiv = 'X--Compatible' content = 'IE=edge' />
-    <meta name = 'viewport' content= 'width= device-width, initial-scale =1' />
-  	<title>
-  		Login
-  	</title>
-     <link rel = 'stylesheet' type = 'text/css' href = '../styles/css/bootstrap.min.css' />
-  	<link rel = 'stylesheet' type = 'text/css' href = '../styles/stylesheet.css'/>
+    <title>
+      signin
+    </title>
+    <link rel = "stylesheet" type = "text/css" href = "./../styles/css/bootstrap.min.css" />
+    <link rel = "stylesheet" type = "text/css" href = "./../styles/stylesheet.css" /> 
   </head>
   <body>
-    <div id = 'header-div' >
+    <div id = 'header-div'>
+      <div class = 'navbar' >
+        
+       <div class = 'sub-menu rounded-top'> 
+          <ul class = 'nav'>
+            <li class = 'nav-item'>
+              <a href = './signup.html' class = 'nav-link'>
+                signup
+              </a>
+            </li>
+            <li class = 'nav-item'>
+              <a href = './signin.html' class = 'nav-link'>
+                logout
+              </a>
+            </li>
+          </ul>
+        </div> 
+      </div>
+    </div>
     <div class = 'body-div'>
       <div class = 'form-div col-sm-4'>
         <form class = 'form-class' method = 'POST' action = 'route/to/login/controller'>
@@ -59,7 +74,7 @@
         </li>
       </ul>
     </div>
-  	<script src = './../scripts/dist/bundle.js'>
-  	</script>
+    <script src = './../scripts/dist/bundle.js'>
+    </script>
   </body>
 </html>
