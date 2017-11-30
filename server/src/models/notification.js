@@ -1,9 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var events = sequelize.define('events', {
-    type: DataTypes.STRING,
-    date: DataTypes.DATE,
-    centerid: DataTypes.INTEGER,
+  var notification = sequelize.define('notification', {
+    message: DataTypes.TEXT,
     userid: DataTypes.INTEGER
   }, {
     classMethods: {
@@ -12,5 +10,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return events;
+  return notification;
 };

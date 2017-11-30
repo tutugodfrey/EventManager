@@ -1,18 +1,23 @@
 
+
+require('dotenv').config();
+// console.log('what is happening');
 const fs        = require('fs');
 const path      = require('path');
 const Sequelize = require('sequelize');
 const basename  = path.basename(module.filename);
 const env       = process.env.NODE_ENV || 'development';
-var config = (`${__dirname}/../config/config.json`)[env];
+const config = (`${__dirname}/../config/config.json`)[env];
 const db        = {};
 let sequelize;
+// console.log("env =" + env);
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable]);
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  // sequelize = new Sequelize(process.env["DATABASE_URL"]);
 } else {
-    sequelize = new Sequelize(config.database, config.username, config.password, config);
-
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
+
 fs
   .readdirSync(__dirname)
   .filter(function(file) {
