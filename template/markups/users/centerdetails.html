@@ -11,17 +11,17 @@
   	<link rel = 'stylesheet' type = 'text/css' href = './../../styles/stylesheet.css' />
   </head>
   <body>
- <div id = 'header-div'>
+    <div id = 'header-div'>
       <div class = 'navbar' >
         <ul id = 'main-menu' class = 'nav nav-tabs'>
           <li class = 'nav-item'>
-            <a href = './index.html' class = 'nav-link'>
+            <a href = './../index.html' class = 'nav-link active'>
               Home
             </a>
           </li>
           <li class = 'nav-item'>
-            <a href = './addcenter.html' class = 'nav-link'>
-            Add Event Center
+            <a href = './addevent.html' class = 'nav-link'>
+            Book an Event
             </a>
           </li>
           <li class = 'nav-item'>
@@ -30,8 +30,13 @@
             </a>
           </li>
           <li class = 'nav-item'>
-            <a href = './eventcenters.html' class = 'nav-link active'>
-             Center Detail
+            <a href = './viewevents.html' class = 'nav-link'>
+              Events
+            </a>
+          </li>
+          <li class = 'nav-item'>
+            <a href = './viewevents.html' class = 'nav-link'>
+              Delete an Event
             </a>
           </li>
           <li class = 'nav-item' >
@@ -53,7 +58,7 @@
               </a>
             </li>
             <li class = 'nav-item'>
-              <a href = './userprofile.html' class = 'nav-link'>
+              <a href = 'userprofile.html' class = 'nav-link'>
                 <span>Profile</span>
                 <img id = 'profile-pix' class = 'img-fuild rounded' src = './../../avatar/sam_3264.jpg' alt = 'profile pix' />
               </a>
@@ -62,8 +67,8 @@
         </div>
       </div>
     </div>
-    <div class = 'body-div' >
-      <div class = 'container'>
+    <div class = 'body-div content-area' >
+       <div class = 'container'>
       <div class = 'row no-gutters'>
         <div class = 'card col eventCenter-d'>
           <img class = 'cardimg-top' src = './../../avatar/images14.jpg' style = 'height:250px' />
@@ -78,7 +83,8 @@
             <p>Catering</p>
             <p>Decoration</p>
             <p>Lodging</p>
-            <a href = './../users/addevent.html'>Upcoming Events</a>
+            <a href = './addevent.html'>Bood An Event</a>
+            <a href = './bookeddates.html'>Upcoming Events</a>
           </div>
         </div> 
       </div>
