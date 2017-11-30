@@ -1,14 +1,14 @@
 body  {
 	background-color:rgba(0, 0, 0);
 	/*background-image:url(./../avatar/images9.jpg); */ width:1000px;  
-		width:1000px; height:1000px; margin:2px;
+		width:1000px; height:4000px; margin:2px;
 }
 
 h1#home-page-description {
 	font-size:35px; text-align:center;
 }
-div#sub-menu {
-	 position:relative; left:75%; top:-50px; width:280px;
+div.sub-menu {
+	 position:relative; left:75%; top:10px; width:280px;
 }
 img#profile-pix {
 	height:30px; width:30px;
@@ -36,7 +36,7 @@ formating for the body div
 	padding:10px; margin:20px; width:150px
 }
 div.body-div {
-	 background-color:rgba(0, 0, 0); height:3000px; width:100%; margin-top:60px; margin-bottom:25px;
+	 background-color:rgba(0, 0, 0); position:absolute; top:200px; height:3000px; width:100%; margin-top:60px; margin-bottom:25px;
 	
 }
 div.form-div {
