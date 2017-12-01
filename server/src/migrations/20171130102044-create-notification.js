@@ -12,14 +12,6 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
       userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
@@ -28,6 +20,14 @@ module.exports = {
           key: 'id',
           as: 'userId',
         },
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     });
   },

@@ -1,14 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var notification = sequelize.define('notification', {
-    message: DataTypes.TEXT,
-    userid: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
+    message:{
+      type: DataTypes.TEXT,
+      allowNull:false
     }
   });
+  notification.associate = (models) => {
+    notification.belongsTo(models.users, {
+        foreignKey: 'userId',
+        as: 'users',
+      });
+    };
   return notification;
 };

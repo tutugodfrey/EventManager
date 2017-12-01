@@ -28,6 +28,7 @@ const UsersController = class {
 						fullname: req.body.fullname,
 						email: req.body.email,
 						username: req.body.username,
+						userType:req.body.userType 
 					})
 					.then(signup => res.status(201).send(signup))
 					.catch(error => res.status(400).send(error));
@@ -57,50 +58,58 @@ const UsersController = class {
 		})
 		.then(user => {
 			if(user){
-				let passwordConfirmed;
+				let passwordConfirmed = false;
 				const hashedPassword = user.password;
-				console.log(hashedPassword)
 				const password = req.body.password;
-				bcrypt.compare(password, hashedPassword, function(err, res) {
-					passwordConfirmed = res;
-					if(passwordConfirmed) {
-					// sign the user with username and password
-
+		   passwordConfirmed =	bcrypt.compareSync(password, hashedPassword);
+			  if(passwordConfirmed){
 					const authenKey = user['username'];
-					const token = jwt.sign(authenKey, process.env.SECRET_KEY, {
-						expiresIn:4000
-					});
-					res.json({
-						success:true,
-						token:token
-				  });
+					const token = jwt.sign({authenKey}, process.env.SECRET_KEY, {	expiresIn:'48h'	});
+					res.status(200).send({token: token});
 				} else {
-				 res.status(201).send( {message: 'password is not correct'});
+					res.status(201).send( {message: 'password is not correct'});
 				}
-			});
-
+			} else {
+				res.status(201).send( {message: 'Your username is not correct'});
 			}
 		})
-		.catch(error => console.log(error, 'MEEEE'));
+		.catch(error => res.status(500).send(error));
 	} 
+	// get user by id
+	getUser(req,res){
+		const userId = parseInt(req.params.userId);
+		return users
+		.findById({
+			where:{
+				id:userId
+			}
+		})
+		.then(user => {
+			if(user){
+				res.status(200).send(user);
+			} else {
+				res.status(404).send({ message: 'User not found'})
+			}
+		})
+		.catch(error => res.status(500).send(error));
+
+	}
 
 	updateUsers (req, res) {
+		const userId = parseInt(req.params.userId);
 		return users
 		.find({
 			where: {
-				id: req.params.userId,
+				id: userId
 			},
 		})
 		.then(user => {
 			if(user) {
 				return user
 				.update({
-				firstname: req.body.firstname || user.firstname,
-				lastname: req.body.lastname || user.lastname,
+				fullname: req.body.fullname || user.fullname,
 				username: req.body.username || user.username,
-				email: req.body.email || user.email,
-				gender: req.body.gender || user.gender,
-				imageUrl: req.body.imageUrl || user.imageUrl
+				email: req.body.email || user.email
 				})
 			}
 		})

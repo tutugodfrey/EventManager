@@ -1,8 +1,9 @@
 import notifications from './../models/notification';
 import users from './../models/users';
 
-const notifications = class {
+const Notifications = class {
   createNoticification(req, res) {
     
+   
   }
 }

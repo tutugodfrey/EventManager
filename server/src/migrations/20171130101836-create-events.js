@@ -16,14 +16,6 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
       centerId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
@@ -41,7 +33,16 @@ module.exports = {
           key: 'id',
           as: 'userId',
         }
-      }
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+     
     });
   },
   down: (queryInterface, Sequelize) => {

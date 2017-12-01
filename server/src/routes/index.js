@@ -27,7 +27,9 @@ const Routes = class {
     app.use('/api', this.securedApi);
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
+      console.log(req.header.token)
       const token = req.body.token || req.header['token'];
+      console.log(token)
       if(token){
         jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
           if(err) {
@@ -40,13 +42,14 @@ const Routes = class {
         res.send('Please send a token');
       }
     });   
-   this.securedApi.put('/users', this.users.updateUsers)
-   this.securedApi.post('/centers', this.eventCenters.addEventCenter);
-   this.securedApi.get('/centers', this.eventCenters.getEventCenters);
-   this.securedApi.get('/centers/:centerId', this.eventCenters.getEventCenter);
-   this.securedApi.get('/centers/centername/:centerName', eventCenters.getCenterByName);
-   this.securedApi.get('/centers/location/:location', eventCenters.getCenterByLocation);
-   this.securedApi.put('/centers/:centerId', this.eventCenters.updateEventCenter);
+    this.securedApi.get('/users/userId', this.users.getUser)
+    this.securedApi.put('/users/userId', this.users.updateUsers)
+    this.securedApi.post('/centers', this.eventCenters.addEventCenter);
+    this.securedApi.get('/centers', this.eventCenters.getEventCenters);
+    this.securedApi.get('/centers/:centerId', this.eventCenters.getEventCenter);
+    this.securedApi.get('/centers/centername/:centerName', eventCenters.getCenterByName);
+    this.securedApi.get('/centers/location/:location', eventCenters.getCenterByLocation);
+    this.securedApi.put('/centers/:centerId', this.eventCenters.updateEventCenter);
 
     // route controllers for events
     this.securedApi.post('/events', this.events.addEvent);
