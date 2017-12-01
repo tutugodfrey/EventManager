@@ -31,6 +31,15 @@ const Routes = class {
     app.get('/centers/location/:location', eventCenters.getCenterByLocation);
     app.put('/centers/:centerId', this.eventCenters.updateEventCenter);
 
+
+    app.post('/events', this.events.addEvent);
+    app.put('/events/:eventId/userId', this.events.updateEvent);
+    app.get('/events', this.events.getEvents);
+    app.get('/events/centers/:centerId', this.events.getCenterEvents);
+    app.get('/events/users/:eventId', this.events.getEvent);
+    app.delete('/events/:eventId', this.events.deleteEvent);
+    app.get('/events/:userId', this.events.getUsersEvents);
+
     app.use('/api', this.securedApi);
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
