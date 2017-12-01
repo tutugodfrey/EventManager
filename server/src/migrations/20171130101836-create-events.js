@@ -18,21 +18,12 @@ module.exports = {
       },
       centerId: {
         type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'centers',
-          key: 'id',
-          as: 'centerId',
-        },
+        allowNull: false
+
       },
       userId: {
         type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'users',
-          key: 'id',
-          as: 'userId',
-        }
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

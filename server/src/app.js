@@ -21,6 +21,7 @@ class Server {
     
     this.app.use(this.bodyParser.urlencoded({ extended: false }));
     this.app.use(this.bodyParser.json());
+    // this.app.use(this.logger);
     this.route.routes(this.app);
     return this.app;
   }

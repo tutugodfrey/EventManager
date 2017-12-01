@@ -1,46 +1,46 @@
 
-import events from './../models/events';
-import eventCenters from './../models/centers';
+import models from './../models';
 
-// import EventCenterController from './'
+const centers = models.centers;
+
 const EventCenterController = class {
-  constructor() {
-    this.eventCenters = eventCenters;
-  }
   // add a new event center
   addEventCenter(req, res) {
-    return eventCenters
+    return centers
     .find(
       {
         where: {
-          centerName: req.body.centerName
+          name: req.body.name
         }
       }
     )
     .then(eventCenter => {
       if(!eventCenter){
-        return eventCenter
+        console.log(eventCenter)
+        return centers
         .create({
-          centerName: req.body.centerName,
-          location:req.body.location,
+          name: req.body.name,
+          location: req.body.location,
           sits: req.body.sits,
           cost: req.body.cost,
           facilities: req.body.facilities
         })
-        .then(eventCenter => res.status(201).send(eventCenter))
+        .then(center => res.status(201).send(center))
+        .catch(error => res.status(404).send(error));
+      } else {
+        res.status(200).send({ message: 'a center with this name already exist'})
       }
     })
-    .catch(error => res.status(404).send({
-      message:'A center with this already exist'
-    }))
+    .catch(error => res.status(404).send({message: 'something went wrong'}))
   }
+
   //  return all event centers
   getEventCenters(req, res) {
-    return eventCenters
+    return centers
     .findAll()
-    then(eventCenters => {
-      if(eventCenters){
-        res.status(200).send(eventCenters)
+    .then(eventCenter => {
+      if(eventCenter){
+        res.status(200).send(eventCenter)
       }
     })
     .catch(error => res.status(404).send({
@@ -49,10 +49,13 @@ const EventCenterController = class {
   }
   // an event center given its it id is present
   getEventCenter(req, res) {
-    return eventCenters
-    .findById(
+    const centerId = parseInt(req.params.centerId)
+    return centers
+    .find(
       {
-        where: req.params.id
+        where:{
+          id: centerId
+        }
       }
     )
     .then(eventCenter => {
@@ -67,17 +70,19 @@ const EventCenterController = class {
 
   // get an event center by name
   getCenterByName(req, res) {
-    return eventCenters
+    return centers
     .find(
       {
         where:{ 
-          centerName: req.params.centerName
+          name: req.params.name
         }
       }
     )
     .then(eventCenter => {
       if(eventCenter){
         res.status(200).send(eventCenter);
+      } else {
+        res.status(404).send({ message: 'No center found for this name'});
       }
     } )
     .catch(error => res.status(204).send({
@@ -86,7 +91,7 @@ const EventCenterController = class {
   }
    // get an event center by location
    getCenterByLocation(req, res) {
-    return eventCenters
+    return centers
     .find(
       {
         where: {
@@ -105,11 +110,12 @@ const EventCenterController = class {
   }
 
   updateEventCenter(req, res) {
-    return eventCenters
-    .findById(
+    const centerId = parseInt(req.params.centerId)
+    return centers
+    .find(
       {
         where: {
-          id: req.body.id
+          id: centerId
       }
     }
     )
@@ -117,7 +123,7 @@ const EventCenterController = class {
       if(eventCenter){
         return eventCenter
         .update({
-          centerName: req.body.centerName || eventCenter.centerName,
+          name: req.body.name || eventCenter.name,
           location:req.body.location || eventCenter.location,
           sits: req.body.sits || eventCenter.sits,
           cost: req.body.cost || eventCenter.cost,

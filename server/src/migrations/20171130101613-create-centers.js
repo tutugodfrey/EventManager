@@ -25,8 +25,8 @@ module.exports = {
         allowNull: false
       },
       facilities:{
-        type:Sequelize.ARRAY(Sequelize.STRING),
-        allowNull:false
+        type:Sequelize.STRING,
+        allowNull:true
        },
       createdAt: {
         allowNull: false,

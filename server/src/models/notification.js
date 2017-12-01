@@ -1,16 +1,14 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
-  var notification = sequelize.define('notification', {
+
+export default (sequelize, DataTypes) => {
+  const  notification = sequelize.define('notification', {
     message:{
       type: DataTypes.TEXT,
       allowNull:false
+    },
+    userId:{
+      type: DataTypes.INTEGER,
+      allowNull:false
     }
   });
-  notification.associate = (models) => {
-    notification.belongsTo(models.users, {
-        foreignKey: 'userId',
-        as: 'users',
-      });
-    };
   return notification;
 };

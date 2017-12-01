@@ -1,14 +1,19 @@
-import events from './../models/events';
-import eventCenters from './../models/centers';
-import users from './../models/users'
+// import events from './../models/events';
+// import eventCenters from './../models/centers';
+// import users from './../models/users'
+import models from './../models';
+const events = models.events;
+const centers = models.centers;
+const users = models.users;
 
 const EventsController = class {
   // controller to add event
   addEvent(req, res) {
-    return eventCenters
-    .findById({
+    const centerId = parseInt(req.params.centerId)
+    return centers
+    .find({
       where: { 
-        id: req.body.centerId
+        id: centerId
       }
     })
     .then(eventCenter => {
@@ -31,41 +36,64 @@ const EventsController = class {
 
   // controll to update event
   updateEvent(req, res) {
-    return events
-    .findById({
+    const userId = parseInt(req.params.userId)
+    return users
+    .find({
       where: {
-        id: res.params.id
+        id: userId
       }
     })
-    .then(event => {
-      return event
-      .update({
-        id,
-        typeOfEvent: req.body.typeOfEvent || event[typeOfEvent],
-        dateOfEvent: req.body.dateOfEvent || event[dateOfEvent],
-        facilities: req.body.facilities || event[facilities],
-        centerId: req.body.centerId || event[centerId],
-        userId: req.body.userId || event[userId]
-      })
-      .then(updatedEvent => res.status(201).send(updatedEvent))
+    .then(user => {
+      const eventId = parseInt(req.params.eventId)
+      if(user){
+        return events
+        .find({
+          where: {
+            id: eventId,
+            userId:userId
+          }
+        })
+        .then(event => {
+          if(event){
+            return event
+            .update({
+              id:eventId,
+              typeOfEvent: req.body.typeOfEvent || event[typeOfEvent],
+              dateOfEvent: req.body.dateOfEvent || event[dateOfEvent],
+              facilities: req.body.facilities || event[facilities],
+              centerId: req.body.centerId || event[centerId],
+              userId: req.body.userId || event[userId]
+            })
+            .then(updatedEvent => res.status(201).send(updatedEvent))
+            .catch(error => res.status(500).send(error)); 
+          } else {
+            res.status(404).send({ message: 'You have not added any event'});
+          }
+        })
+        .catch(error => res.status(500).send(error));  
+      } else {
+        res.status(404).send({ message: 'Your are not a registered user'});
+      }
     })
     .catch(error => res.status(500).send(error)); 
   }
 
   // controller to get all events given the centerId
   getCenterEvents(req, res) {
-    return eventCenters
-    .findById({
+    const centerId = parseInt(req.params.centerId)
+    return centers
+    .find({
       where: {
-        id: req.params.centerId
+        id: centerId
       }
     })
     .then(eventCenter => {
+      const centerId = parseInt(req.params.centerId)
       if(eventCenter){
         return events
-        .find({
+        .findAll({
           where: {
-            centerId: req.params.centerId
+            centerId:centerId
           }
         })
         .then(events => {
@@ -82,10 +110,11 @@ const EventsController = class {
 
   // controller to get all events given a userId 
   getUsersEvents(req, res) {
+    const userId = parseInt(req.params.userId);
     return users
-    .findById({
+    .find({
       where: {
-        id: req.params.userId
+        id: userId
       }
     })
     .then(user => {
@@ -93,7 +122,7 @@ const EventsController = class {
         return events
         .find({
           where: {
-            userId: req.params.userId
+            userId: userId
           }
         })
         .then(userEvents => res.status(200).send(userEvents))
@@ -119,10 +148,11 @@ const EventsController = class {
 
    // controller to get an events given the event id
   getEvent(req, res) {
+    const eventId = parseInt(req.params.eventId);
     return events
-    .findById({
+    .find({
       where: {
-        id: res.params.eventId
+        id: eventId
       }
     })
     .then(event => {
@@ -137,10 +167,11 @@ const EventsController = class {
 
   // controller to delete
   deleteEvent(req, res) {
+    const eventId = parseInt(req.params.eventId)
     return events
     .destroy({
       where: {
-        id: req.params.eventId
+        id: eventId
       }
     })
     .then(event => res.status(200).send({message: `${event} has ben deleted`}))

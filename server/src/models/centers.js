@@ -1,8 +1,7 @@
-import { StringDecoder } from "string_decoder";
 
 
-module.exports = (sequelize, DataTypes) => {
-  var centers = sequelize.define('centers', {
+export default  (sequelize, DataTypes) => {
+  const centers = sequelize.define('centers', {
     name: {
       type:DataTypes.STRING,
       allowNull:false
@@ -20,15 +19,10 @@ module.exports = (sequelize, DataTypes) => {
        allowNull:false
       },
     facilities:{
-      type:DataTypes.ARRAY(DataTypes.STRING),
+      type:DataTypes.STRING,
       allowNull:false
      }
   });
-  centers.associate = (models) => {
-  centers.hasMany(models.events, {
-      foreignKey: 'eventId',
-      as: 'events',
-    });
-  };
+ 
   return centers;
 };
