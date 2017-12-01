@@ -21,16 +21,13 @@ const UsersController = class {
 				if(passwd1 === passwd1) {
 					bcrypt.genSalt(10, function(err, salt) {
 						bcrypt.hash(passwd1, salt, function(err, hash) {
-
-							passwd = hash;
-							console.log(passwd)
+						passwd = hash;
 						return users
 						.create({
 						password: passwd,
 						fullname: req.body.fullname,
 						email: req.body.email,
 						username: req.body.username,
-		
 					})
 					.then(signup => res.status(201).send(signup))
 					.catch(error => res.status(400).send(error));

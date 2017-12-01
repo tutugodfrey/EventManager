@@ -17,12 +17,6 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull:false
       }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
   return users;
 };
