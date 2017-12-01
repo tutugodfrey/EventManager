@@ -82,7 +82,7 @@ const EventsController = class {
   getCenterEvents(req, res) {
     const centerId = parseInt(req.params.centerId)
     return centers
-    .find({
+    .findAll({
       where: {
         id: centerId
       }
