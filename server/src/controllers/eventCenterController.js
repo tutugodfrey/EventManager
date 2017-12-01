@@ -1,6 +1,6 @@
 
 import events from './../models/events';
-import eventCenters from './../models/eventcenters';
+import eventCenters from './../models/centers';
 
 // import EventCenterController from './'
 const EventCenterController = class {
