@@ -1,4 +1,4 @@
-![](https://travis-ci.org/tutugodfrey/EventManager.svg?branch=master)
+![](https://www.travis-ci.org/tutugodfrey/EventManager.svg?branch=feature%2Fnotifications)
 
 # EventManager
 EventManager is an application that allows administrator manage event centers and control booking of event centers they administer. T
