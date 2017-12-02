@@ -1,0 +1,24 @@
+{
+  "development": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "tutug",
+    "password": "1",
+    "database": "eventmn",
+    "host": "127.0.0.1",
+    "port":5432,
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "tutug",
+    "password": "1",
+    "port":5432,
+    "database": "eventmn",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
+
+20171127151351-create-users
