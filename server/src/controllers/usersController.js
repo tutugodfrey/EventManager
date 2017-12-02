@@ -1,8 +1,10 @@
 // controller for users signup and signin
+import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import models from './../models';
 const users = models.users;
+dotenv.config();
 
 const UsersController = class {
   // controller for users signup
