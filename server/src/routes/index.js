@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import EventCenterController from './../controllers/eventCenterController';
 import EventsController from './../controllers/eventController';
 import UsersController from './../controllers/usersController';
-import Notifications from './../controllers/notificationscontroller'
+import Notifications from './../controllers/notificationsController'
 
 const eventCenters = new EventCenterController();
 const events = new EventsController();
