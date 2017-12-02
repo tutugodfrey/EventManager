@@ -1,6 +1,7 @@
 ![](https://www.travis-ci.org/tutugodfrey/EventManager.svg?branch=feature%2Fnotifications)
-
 [![Coverage Status](https://coveralls.io/repos/github/tutugodfrey/EventManager/badge.svg?branch=master)](https://coveralls.io/github/tutugodfrey/EventManager?branch=master)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/82a0d53b05a153bb40e2/test_coverage)](https://codeclimate.com/github/tutugodfrey/EventManager/test_coverage)
+<a href="https://codeclimate.com/github/tutugodfrey/EventManager/maintainability"><img src="https://api.codeclimate.com/v1/badges/82a0d53b05a153bb40e2/maintainability" /></a>
 
 # EventManager
 EventManager is an application that allows administrator manage event centers and control booking of event centers they administer. T
