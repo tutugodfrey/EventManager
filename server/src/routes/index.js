@@ -1,12 +1,13 @@
 
 // import controllers
+import dotenv from 'dotenv';
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import EventCenterController from './../controllers/eventCenterController';
 import EventsController from './../controllers/eventController';
 import UsersController from './../controllers/usersController';
 import Notifications from './../controllers/notificationsController'
-
+dotenv.config();
 const eventCenters = new EventCenterController();
 const events = new EventsController();
 const users = new UsersController();
