@@ -24,6 +24,8 @@ const Routes = class {
     // route for users signup and signin
     app.post('/users/signup', this.users.signup );
     app.post('/users/signin', this.users.signin);
+
+/*
     app.post('/centers', this.eventCenters.addEventCenter);
     app.get('/centers', this.eventCenters.getEventCenters);
     app.get('/centers/:centerId', this.eventCenters.getEventCenter);
@@ -32,14 +34,14 @@ const Routes = class {
     app.put('/centers/:centerId', this.eventCenters.updateEventCenter);
 
 
-    app.post('/events', this.events.addEvent);
-    app.put('/events/:eventId/userId', this.events.updateEvent);
-    app.get('/events', this.events.getEvents);
+    app.post('/events', this.events.addEvent); */
+    app.put('/events/:eventId/:userId', this.events.updateEvent);
+  /*  app.get('/events', this.events.getEvents);
     app.get('/events/centers/:centerId', this.events.getCenterEvents);
     app.get('/events/users/:eventId', this.events.getEvent);
     app.delete('/events/:eventId', this.events.deleteEvent);
     app.get('/events/:userId', this.events.getUsersEvents);
-
+*/
     app.use('/api', this.securedApi);
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
@@ -58,7 +60,7 @@ const Routes = class {
         res.send('Please send a token');
       }
     });   
-    /*
+    
     this.securedApi.get('/users/userId', this.users.getUser)
     this.securedApi.put('/users/userId', this.users.updateUsers)
     this.securedApi.post('/centers', this.eventCenters.addEventCenter);
@@ -70,13 +72,13 @@ const Routes = class {
 
     // route controllers for events
     this.securedApi.post('/events', this.events.addEvent);
-    this.securedApi.put('/events/:eventId/userId', this.events.updateEvent);
+   // this.securedApi.put('/events/:eventId/:userId', this.events.updateEvent);
     this.securedApi.get('/events', this.events.getEvents);
     this.securedApi.get('/events/centers/:centerId', this.events.getCenterEvents);
     this.securedApi.get('/events/users/:eventId', this.events.getEvent);
     this.securedApi.delete('/events/:eventId', this.events.deleteEvent);
     this.securedApi.get('/events/:userId', this.events.getUsersEvents);
-    */
+    
   }
 };
 
