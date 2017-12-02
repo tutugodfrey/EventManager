@@ -12,7 +12,8 @@ const UsersController = class {
 		return users
 		.find({
 			where: {
-				username: req.body.username
+				username: req.body.username,
+				email:req.body.email
 			}
 		})
 		.then(user => {
@@ -43,7 +44,7 @@ const UsersController = class {
 				}
 			} else {
 				// username already exist
-				res.status(201).send(`A user with this ${req.body.username} already exist`)
+				res.status(201).send(`user already exist`)
 			}
 		})
 		.catch(error => res.status(200).send(error));
