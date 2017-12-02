@@ -1,0 +1,20 @@
+{
+  "development": {
+    "username": "nfczitgk",
+    "password":"ckIc2xRq3EgZassSiUcGXuY0dXGX3JDZ",
+    "database": "nfczitgk",
+    "port":5432,
+    "host": "baasu.db.elephantsql.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "post",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "dialect": ""
+  }
+}
