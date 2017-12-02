@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+ <html>
+  <head>
+    <title>
+      signin
+    </title>
+    <link rel = "stylesheet" type = "text/css" href = "./../styles/css/bootstrap.min.css" />
+    <link rel = "stylesheet" type = "text/css" href = "./../styles/stylesheet.css" /> 
+  </head>
+  <body>
+    <div id = 'header-div'>
+      <div class = 'navbar' >
+        
+       <div class = 'sub-menu rounded-top'> 
+          <ul class = 'nav'>
+            <li class = 'nav-item'>
+              <a href = './signup.html' class = 'nav-link'>
+                signup
+              </a>
+            </li>
+            <li class = 'nav-item'>
+              <a href = './signin.html' class = 'nav-link'>
+                logout
+              </a>
+            </li>
+          </ul>
+        </div> 
+      </div>
+    </div>
+    <div class = 'body-div'>
+      <div class = 'form-div'>
+        <form class = 'form-class' method = 'POST' action = 'route/to/login/controller'>
+          <p id = 'validationNotice'> The fields marked below are required</p>
+          <h4 class = 'form-description'>
+            Login
+          </h4>
+          <fieldset  class = 'form-group'>
+              <span class = 'requiredFields'>*</span>
+            <input type = 'text' id = 'username' class = 'requiredFields form-control' name = 'username' placeholder = 'Username or  email' />
+            </fieldset>
+          <fieldset  class = 'form-group'>
+            <input type = 'password' id = 'password' class = 'requiredFields form-control' name = 'password' placeholder = 'Password' />
+          </fieldset>
+          <fieldset  class = 'form-group'>
+          <input type = 'submit' id = 'signin' class = 'submitForm form-control' name = 'signin' value = 'SignIn' />
+          </fieldset>
+          <div class ='form-div-append'>
+            <p>I do no have an <a href = 'signup.html'> SignUp</a></p><br />
+            <a href = 'forget-password.html'>Forgot password?</a>
+            <p>I want to <a href = 'change-password.html'> Change password</a></p>
+          </div>
+        </form>
+      </div> 
+    </div>
+    <div id = 'footer-div' class ='navbar'>
+      <ul class = 'nav'>
+        <li class = 'nav-item'>
+          <p id = 'modificationNotice'></p>
+        </li>
+        <li class = 'nav-item'>
+          <a href = './contactus.html' class = 'nav-link'>
+            Contact us
+          </a>
+        </li>
+        <li class = 'nav-item'>
+          <a href = './about-us.html' class = 'nav-link'>
+            About us
+          </a>
+        </li>
+        <li class = 'nav-item'>
+          <a href = './terms-of-use.html' class = 'nav-link'>
+            Terms of use
+          </a>
+        </li>
+      </ul>
+    </div>
+    <script src = './../scripts/dist/bundle.js'>
+    </script>
+  </body>
+</html>
