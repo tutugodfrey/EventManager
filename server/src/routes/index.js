@@ -5,10 +5,12 @@ import jwt from 'jsonwebtoken';
 import EventCenterController from './../controllers/eventCenterController';
 import EventsController from './../controllers/eventController';
 import UsersController from './../controllers/usersController';
+import Notifications from './../controllers/notificationscontroller'
 
 const eventCenters = new EventCenterController();
 const events = new EventsController();
 const users = new UsersController();
+const notifications = new Notifications()
 const Routes = class {
   constructor() {
     this.users = users;
@@ -27,9 +29,7 @@ const Routes = class {
     app.use('/api', this.securedApi);
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
-      console.log(req.header.token)
-      const token = req.body.token || req.header['token'];
-      console.log(token)
+      const token = req.body.token || req.header.token;
       if(token){
         jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
           if(err) {
@@ -60,6 +60,9 @@ const Routes = class {
     this.securedApi.get('/events/users/:eventId', this.events.getEvent);
     this.securedApi.delete('/events/:eventId', this.events.deleteEvent);
     this.securedApi.get('/events/:userId', this.events.getUsersEvents);
+
+    // route controllers for notifications
+    app.post('/notification', notifications.createNotification);
     
   }
 };
