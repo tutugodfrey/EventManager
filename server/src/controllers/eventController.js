@@ -9,7 +9,7 @@ const users = models.users;
 const EventsController = class {
   // controller to add event
   addEvent(req, res) {
-    const centerId = parseInt(req.params.centerId)
+    const centerId = parseInt(req.body.centerId)
     return centers
     .find({
       where: { 
@@ -17,14 +17,14 @@ const EventsController = class {
       }
     })
     .then(eventCenter => {
-      if(!eventCenter){
+      if(eventCenter){
         return events
         .create({
-          typeOfEvent: req.body.typeOfEvent,
-          dateOfEvent: req.body.dateOfEvent,
-          facilities: req.body.facilities,
-          centerId: req.body.centerId,
-          userId: req.body.userId
+          type: req.body.type,
+          date: req.body.date,
+
+          centerId: parseInt(req.body.centerId, 10),
+          userId: parseInt(req.body.userId, 10)
         })
         .then(event => res.status(201).send(event))
       } else {
@@ -36,7 +36,8 @@ const EventsController = class {
 
   // controll to update event
   updateEvent(req, res) {
-    const userId = parseInt(req.params.userId)
+    const userId = parseInt(req.params.userId);
+    const eventId = parseInt(req.params.eventId);
     return users
     .find({
       where: {
@@ -44,7 +45,6 @@ const EventsController = class {
       }
     })
     .then(user => {
-      const eventId = parseInt(req.params.eventId)
       if(user){
         return events
         .find({
@@ -54,15 +54,12 @@ const EventsController = class {
           }
         })
         .then(event => {
+         // console.log(event)
           if(event){
             return event
             .update({
-              id:eventId,
-              typeOfEvent: req.body.typeOfEvent || event[typeOfEvent],
-              dateOfEvent: req.body.dateOfEvent || event[dateOfEvent],
-              facilities: req.body.facilities || event[facilities],
-              centerId: req.body.centerId || event[centerId],
-              userId: req.body.userId || event[userId]
+              type: req.body.type || event.type,
+              date: req.body.date || event.date
             })
             .then(updatedEvent => res.status(201).send(updatedEvent))
             .catch(error => res.status(500).send(error)); 
@@ -103,6 +100,7 @@ const EventsController = class {
             res.status(404).send({message: 'No event found for this center'})
           }
         })
+        .catch(error => res.status(404).send({ message: 'No event found for this center'}));
       }
     })
     .catch(error => res.status(404).send({ message: 'Center does not exist'}));
@@ -120,7 +118,7 @@ const EventsController = class {
     .then(user => {
       if(user){
         return events
-        .find({
+        .findAll({
           where: {
             userId: userId
           }
