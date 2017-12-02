@@ -5,10 +5,12 @@ import jwt from 'jsonwebtoken';
 import EventCenterController from './../controllers/eventCenterController';
 import EventsController from './../controllers/eventController';
 import UsersController from './../controllers/usersController';
+import Notifications from './../controllers/notificationsController'
 
 const eventCenters = new EventCenterController();
 const events = new EventsController();
 const users = new UsersController();
+const notifications = new Notifications()
 const Routes = class {
   constructor() {
     this.users = users;
@@ -23,31 +25,11 @@ const Routes = class {
 
     // route for users signup and signin
     app.post('/users/signup', this.users.signup );
-    app.post('/users/signin', this.users.signin);
-
-/*
-    app.post('/centers', this.eventCenters.addEventCenter);
-    app.get('/centers', this.eventCenters.getEventCenters);
-    app.get('/centers/:centerId', this.eventCenters.getEventCenter);
-    app.get('/centers/centername/:name', eventCenters.getCenterByName);
-    app.get('/centers/location/:location', eventCenters.getCenterByLocation);
-    app.put('/centers/:centerId', this.eventCenters.updateEventCenter);
-
-
-    app.post('/events', this.events.addEvent); */
-    app.put('/events/:eventId/:userId', this.events.updateEvent);
-  /*  app.get('/events', this.events.getEvents);
-    app.get('/events/centers/:centerId', this.events.getCenterEvents);
-    app.get('/events/users/:eventId', this.events.getEvent);
-    app.delete('/events/:eventId', this.events.deleteEvent);
-    app.get('/events/:userId', this.events.getUsersEvents);
-*/
+    app.post('/users/signin', this.users.signin);  
     app.use('/api', this.securedApi);
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
-      console.log(req.header.token)
-      const token = req.body.token || req.header['token'];
-      console.log(token)
+      const token = req.body.token || req.header.token;
       if(token){
         jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
           if(err) {
@@ -72,12 +54,15 @@ const Routes = class {
 
     // route controllers for events
     this.securedApi.post('/events', this.events.addEvent);
-   // this.securedApi.put('/events/:eventId/:userId', this.events.updateEvent);
+    this.securedApi.put('/events/:eventId/:userId', this.events.updateEvent);
     this.securedApi.get('/events', this.events.getEvents);
     this.securedApi.get('/events/centers/:centerId', this.events.getCenterEvents);
     this.securedApi.get('/events/users/:eventId', this.events.getEvent);
     this.securedApi.delete('/events/:eventId', this.events.deleteEvent);
     this.securedApi.get('/events/:userId', this.events.getUsersEvents);
+
+    // route controllers for notifications
+    app.post('/notification', notifications.createNotification);
     
   }
 };
