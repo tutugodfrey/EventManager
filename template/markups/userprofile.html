@@ -42,7 +42,7 @@
             </a>
           </li>
         </ul>
-          <div id = 'sub-menu2' class = 'rounded-top'>
+          <div class = 'sub-menu2 rounded-top'>
           <ul class = 'nav'>
             <li class = 'nav-item'>
               <a href = './signup.html' class = 'nav-link'>
@@ -63,20 +63,15 @@
           </ul>
         </div>
       </div>
-        <div class = 'page-header' id = 'site-name'>
-          <h1>
-            EventManager
-          </h1>
-        </div>
     </div>
-    <div class = 'body-div'>
+    <div class = 'body-div' id = 'profile-page'>
       <h3>
         Your Profile
       </h3><br />
       <div>
          <img id = 'profile-pix' class = 'image-large img-fuild rounded' src = './../avatar/sam_3264.jpg' alt = 'profile pix' />
       </div>
-      <dl class = 'userprofile'>
+      <dl class = 'body-div'>
             <dt class = 'list-term'>
               Lastname:
             </dt>
@@ -104,8 +99,9 @@
       </dl>
       <form method = 'PUT' action = 'path/to/editProfile/controller' >
         <input type = 'hidden' value = '2' name = 'userId' />
-        <input type = 'submit' name = 'editProfile' />
+        <input type = 'submit' class = 'btn' name = 'editProfile' />
       </form>
+    </div>
     <div id = 'footer-div' class ='navbar'>
       <ul class = 'nav'>
         <li class = 'nav-item'>

@@ -69,12 +69,12 @@
     </div>
     <div class = 'body-div'>
         <div class = 'container'>
-        <form id ='add-event-form' method = 'POST' action = 'route/to/addcenter/controller'>
+        <form id ='add-event-form form-class' method = 'POST' action = 'route/to/addcenter/controller'>
           <p id = 'validationNotice'> The fields marked below are required</p>
           <h4 class = 'form-description'>
             Submit Request for an Event
           </h4>
-          <div  class = 'form-group'>
+          <fieldset  class = 'form-group'>
             <label for = 'event-type' class="col-xs-3 col-form-label mr-2">Event Type
               <span class = 'requiredFields'>*</span>
             </label>
@@ -86,11 +86,9 @@
               <option>Book Launching</option>
             </select>
             </div>
-          </div>
-          <div  class = 'form-group'>
-            <label for = 'location' class="col-xs-3 col-form-label mr-2">Location
+          </fieldset>
+          <fieldset  class = 'form-group'>
             <span class = 'requiredFields'>*</span>
-            </label>
           <div class = 'col-xs-9'>
             <select id = 'location' class = 'requiredFields form-control' name = 'location'>
               <option value = 'select' selected = 'selected'>Select</option>
@@ -132,8 +130,8 @@
               <option>FCT</option>
             </select>
             </div>
-          </div>
-          <div  class = 'form-group'>
+          </fieldset>
+          <fieldset  class = 'form-group'>
             <label for = 'location' class="col-xs-3 col-form-label mr-2">Event Centers
             <span class = 'requiredFields'>*</span>
             </label>
@@ -145,11 +143,10 @@
               <option>Queen's Tower</option>
             </select>
             </div>
-          </div>
-          <div class = 'form-group'>
-            <label for = 'event-date' class = "col-xs-3 col-form-label mr-2">Date
+          </fieldset>
+         <fieldset  class = 'form-group'>
             <span class = 'requiredFields'>*</span>
-            </label>
+          </fieldset>
           <div class = 'col-xs-9'>
             <select id = 'event-day' name = 'eventDay'>
               <option value = "select" selected= "selected">
@@ -310,7 +307,7 @@
               </option>
             </select>
             </div>
-          </div>
+          </fieldset>
           <legend> Facilities  <span class = 'requiredFields'>*</span></legend>
           <fieldset  class = 'form-group'>
               <label for = 'aircondition' class = 'col-xs-3 col-form-label' > Air Condition </label>
