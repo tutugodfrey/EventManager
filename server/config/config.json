@@ -15,6 +15,11 @@
     "dialect": "postgres"
   },
   "production": {
-    "dialect": ""
+    "username": "nfczitgk",
+    "password":"ckIc2xRq3EgZassSiUcGXuY0dXGX3JDZ",
+    "database": "nfczitgk",
+    "port":5432,
+    "host": "baasu.db.elephantsql.com",
+    "dialect": "postgres"
   }
 }
