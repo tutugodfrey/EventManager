@@ -1,5 +1,7 @@
 ![](https://www.travis-ci.org/tutugodfrey/EventManager.svg?branch=feature%2Fnotifications)
 
+[![Coverage Status](https://coveralls.io/repos/github/tutugodfrey/EventManager/badge.svg?branch=master)](https://coveralls.io/github/tutugodfrey/EventManager?branch=master)
+
 # EventManager
 EventManager is an application that allows administrator manage event centers and control booking of event centers they administer. T
 
