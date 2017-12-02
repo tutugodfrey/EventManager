@@ -30,7 +30,8 @@ const Routes = class {
     app.use('/api', this.securedApi);
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
-      const token = req.body.token || req.header.token;
+      const token = req.body.token || req.header['token'];
+      console.log(token);
       if(token){
         jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
           if(err) {
@@ -63,7 +64,8 @@ const Routes = class {
     this.securedApi.get('/events/:userId', this.events.getUsersEvents);
 
     // route controllers for notifications
-    app.post('/notification', notifications.createNotification);
+    app.post('/notifications', notifications.createNotification);
+    app.get('/notifications/:userId', notifications.getNotifications);
     
   }
 };

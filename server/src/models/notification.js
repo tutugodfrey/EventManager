@@ -1,6 +1,6 @@
 
 export default (sequelize, DataTypes) => {
-  const  notification = sequelize.define('notification', {
+  const  notifications = sequelize.define('notifications', {
     message:{
       type: DataTypes.TEXT,
       allowNull:false
@@ -10,5 +10,5 @@ export default (sequelize, DataTypes) => {
       allowNull:false
     }
   });
-  return notification;
+  return notifications;
 };

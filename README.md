@@ -40,7 +40,16 @@ To update a particular events given its id use. This will be the event created b
 #### put /events/:eventId
 
 To get all events add by a user
-### get /events/users/userId
+#### get /events/users/userId
+
+## Notifications
+Admin can post notifications if a users event will not be fulfilled for any reason
+#### /api/notifications
+
+Users can get notification if their events are cancelled through email or when they login to app
+/api/notifications/:userId
+
+
 
 
 

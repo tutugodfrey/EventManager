@@ -1,6 +1,4 @@
-// import events from './../models/events';
-// import eventCenters from './../models/centers';
-// import users from './../models/users'
+
 import models from './../models';
 const events = models.events;
 const centers = models.centers;
@@ -19,16 +17,31 @@ const EventsController = class {
     .then(eventCenter => {
       if(eventCenter){
         return events
-        .create({
-          type: req.body.type,
-          date: req.body.date,
-
-          centerId: parseInt(req.body.centerId, 10),
-          userId: parseInt(req.body.userId, 10)
+        .find({
+          where:{
+            date:req.body.date,
+            centerId:req.body.centerId
+          }
         })
-        .then(event => res.status(201).send(event))
-      } else {
-        res.status(404).send({ message:'Event Center does not exist'});
+        .then(eventFound => {
+          if(!eventFound){
+            return events
+            .create({
+              type: req.body.type,
+              date: req.body.date,
+              centerId: parseInt(req.body.centerId),
+              userId: parseInt(req.body.userId)
+            })
+            .then(event => res.status(201).send(event))
+            .catch(error => res.status(500).send(error));
+          } else{
+            res.status(200).send({ message:`An event is already booked you choose. 
+            pleasee center the field for upcomming event and centers before choosing you date`});
+          }
+        })
+        .catch(error => res.status(500).send(error));
+      }  else {
+          res.status(404).send({ message: 'Center not found'})
       }
     })
     .catch(error => res.status(500).send(error));
@@ -54,7 +67,6 @@ const EventsController = class {
           }
         })
         .then(event => {
-         // console.log(event)
           if(event){
             return event
             .update({

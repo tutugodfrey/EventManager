@@ -1,4 +1,3 @@
-s
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('notifications', {
