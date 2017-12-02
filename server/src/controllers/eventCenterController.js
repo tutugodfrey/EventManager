@@ -16,7 +16,6 @@ const EventCenterController = class {
     )
     .then(eventCenter => {
       if(!eventCenter){
-        console.log(eventCenter)
         return centers
         .create({
           name: req.body.name,
@@ -43,10 +42,9 @@ const EventCenterController = class {
         res.status(200).send(eventCenter)
       }
     })
-    .catch(error => res.status(404).send({
-      message: 'No event center found'
-    }))
+    .catch(error => res.status(404).send({ message: 'No event center found'}))
   }
+  
   // an event center given its it id is present
   getEventCenter(req, res) {
     const centerId = parseInt(req.params.centerId)
