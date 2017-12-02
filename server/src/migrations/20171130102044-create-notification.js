@@ -1,6 +1,6 @@
 
 module.exports = {
-  up: (queryInterface, Sequelize) =>{
+  up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('notifications', {
       id: {
         allowNull: false,
@@ -8,13 +8,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      message:{
-        types:Sequelize.STRING,
-        allowNull:false
-        },
+      message: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
       userId: {
-        types:Sequelize.STRING,
-        allowNull:false
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -23,15 +23,6 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      nodificationId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'notifications',
-          key: 'id',
-          as: 'notificatinId',
-        },
       }
     });
   },

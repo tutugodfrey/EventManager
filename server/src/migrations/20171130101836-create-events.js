@@ -8,25 +8,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      typeOfEvent: {
-        types:Sequelize.STRING,
-        allowNull:false
+      type: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      dateOfEvent:{
-        types:Sequelize.DATE,
-        allowNull:false
-        },
-      facilities: {
-        type:Sequelize.ARRAY(Sequelize.STRING),
-        allowNull:false
+      date: {
+        type: Sequelize.DATE,
+        allowNull: false
       },
       centerId: {
-        types:Sequelize.INTEGER,
-        allowNull:false
+        type: Sequelize.INTEGER,
+        allowNull: false
+
       },
       userId: {
-        types:Sequelize.INTEGER,
-        allowNull:false
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -36,15 +33,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      eventId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'events',
-          key: 'id',
-          as: 'eventId',
-        },
-      }
+     
     });
   },
   down: (queryInterface, Sequelize) => {

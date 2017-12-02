@@ -1,41 +1,26 @@
 
-const events= (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const events = sequelize.define('events', {
-    typeOfEvent: {
+    type:{
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    dateOfEvent:{
-      type: DataTypes.DATE,
-      allowNull: false,
+      allowNull:false
       },
-    facilities: {
-      type: DataTypes.ARRAY(Sequelize.STRING),
-      allowNull: false,
+    date:{
+       type:DataTypes.DATE,
+       allowNull:false
     },
-    centerId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+    facilities:{
+      type:DataTypes.STRING,
+      allowNull:false
     },
-    userId: {
+    centerId:{
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull:false
+    },
+    userId:{
+      type: DataTypes.INTEGER,
+      allowNull:false
     }
   });
-  
-  events.associate = (models) => {
-    events.belongsTo(models.eventCenters, {
-      foreignKey: 'centerId',
-      onDelete: 'CASCADE'
-    });
-  };
-  events.associate = (models) => {
-    events.hasOne(models.users, {
-      foreignKey: 'userId',
-      onDelete: 'CASCADE'
-    });
-  };
   return events;
 };
-
-export default events;
