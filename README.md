@@ -4,15 +4,26 @@
 <a href="https://codeclimate.com/github/tutugodfrey/EventManager/maintainability"><img src="https://api.codeclimate.com/v1/badges/82a0d53b05a153bb40e2/maintainability" /></a>
 
 # EventManager
-EventManager is an application that allows administrator manage event centers and control booking of event centers they administer. T
+EventManager is an application that allows administrator manage event centers and control booking of event centers they administer.
 
 ## Running basic Oporations
+To run app in development
 ### npm run start:dev
-To app in development
-## npm run start 
-will transpile the es6 file in src directory file to es5 in a trans directory
 
-## Administrator interface
+## npm run start:dev
+wWill transpile the es6 file in src directory file to es5 in a trans directory
+
+## User
+Users signup 
+#### post /users/signup 
+
+Users signin
+#### post /users/signin
+To get user given the userId 
+
+#### get /users/1
+
+## Administrators
 An adminstrator can add event centers through the 
 
 #### post /centers 
@@ -29,18 +40,37 @@ To get a center by its id use the
 To get all upcomming events in a given center use
 #### get /centers/events/:centerId 
 
+To get all event 
+#### get /events
 
-Basic operation that can be performed by registered users include:
+To delete an event given its id
+#### delete /events/:eventId
+
+## Users Operations
 
 User can make booking for an event
 #### post /events
 
-To update a particular events given its id use. This will be the event created by the the user performing the action
+To update a particular events given its id use. This will be the event created by the the user performing the operation
+#### put /events/:eventId/:userId
 
-#### put /events/:eventId
+To get all events added by a user
+#### get /events/users/"userId
 
-To get all events add by a user
-### get /events/users/userId
+To get all events given the user id
+#### get /events/users/
+
+ To get all events in a given center
+ #### get /events/centers/:centerId
+
+## Notifications
+Admin can post notifications if a users event will not be fulfilled for any reason
+#### post /api/notifications
+
+Users can get notification if their events are cancelled through email or when they login to app
+#### get /notifications/:userId
+
+
 
 
 

@@ -12,13 +12,13 @@ const Notifications = class {
   		return users
   		.find({
   			where: {
-  				id: userId
+					id: userId,
+					userType:'regular'
   			}
   		})
   		.then(user => {
   			if(user){
-					console.log(user)
-  				// const userEmail = user.email;
+				const userEmail = user.email;
   			return notifications
   				.create({
   					message:message,
@@ -34,6 +34,30 @@ const Notifications = class {
   	}
   }
 
+	getNotifications (req, res) {
+		const userId = parseInt(req.params.userId);
+		return users
+		.find({
+			where:{
+				id:userId
+			}
+		})
+		.then(user => {
+			if(user){
+				return notifications
+				.findAll({
+					where: {
+						userId: userId
+					}
+				})
+				.then(notifications => res.status(200).send(notifications))
+				.catch(error => res.status(404).send({message: 'No new notification'}));
+			} else {
+				res.status(404).send({message: 'Not a registered user'});
+			}
+		})
+		.catch(error => res.status(500).send(error));
+	}
   // get notification
 }
 

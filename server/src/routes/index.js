@@ -26,11 +26,28 @@ const Routes = class {
 
     // route for users signup and signin
     app.post('/users/signup', this.users.signup );
-    app.post('/users/signin', this.users.signin);  
+    app.post('/users/signin', this.users.signin); 
+     app.get('/users/userId', this.users.getUser)
+    app.get('/centers', this.eventCenters.getEventCenters);
+    app.get('/centers/:centerId', this.eventCenters.getEventCenter);
+    app.get('/centers/centername/:name', eventCenters.getCenterByName);
+    app.get('/centers/location/:location', eventCenters.getCenterByLocation);
+    
+    // route controllers for events
+    app.get('/events', this.events.getEvents);
+    app.get('/events/centers/:centerId', this.events.getCenterEvents);
+    app.get('/events/users/:eventId', this.events.getEvent);
+    app.delete('/events/:eventId', this.events.deleteEvent);
+    app.get('/events/:userId', this.events.getUsersEvents);
+
+    // route controllers for notifications
+    app.get('/notifications/:userId', notifications.getNotifications);
+     
     app.use('/api', this.securedApi);
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
-      const token = req.body.token || req.header.token;
+      const token = req.body.token || req.header['token'];
+      console.log(token);
       if(token){
         jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
           if(err) {
@@ -44,27 +61,12 @@ const Routes = class {
       }
     });   
     
-    this.securedApi.get('/users/userId', this.users.getUser)
-    this.securedApi.put('/users/userId', this.users.updateUsers)
     this.securedApi.post('/centers', this.eventCenters.addEventCenter);
-    this.securedApi.get('/centers', this.eventCenters.getEventCenters);
-    this.securedApi.get('/centers/:centerId', this.eventCenters.getEventCenter);
-    this.securedApi.get('/centers/centername/:name', eventCenters.getCenterByName);
-    this.securedApi.get('/centers/location/:location', eventCenters.getCenterByLocation);
+    this.securedApi.put('/users/userId', this.users.updateUsers);
     this.securedApi.put('/centers/:centerId', this.eventCenters.updateEventCenter);
-
-    // route controllers for events
     this.securedApi.post('/events', this.events.addEvent);
     this.securedApi.put('/events/:eventId/:userId', this.events.updateEvent);
-    this.securedApi.get('/events', this.events.getEvents);
-    this.securedApi.get('/events/centers/:centerId', this.events.getCenterEvents);
-    this.securedApi.get('/events/users/:eventId', this.events.getEvent);
-    this.securedApi.delete('/events/:eventId', this.events.deleteEvent);
-    this.securedApi.get('/events/:userId', this.events.getUsersEvents);
-
-    // route controllers for notifications
-    app.post('/notification', notifications.createNotification);
-    
+    app.post('/notifications', notifications.createNotification);
   }
 };
 
