@@ -12,8 +12,8 @@
     "migrate": "node_modules/.bin/sequelize db:migrate",
     "undo:migrate": "node_modules/.bin/sequelize db:migrate:undo:all",
     "remove-trans": "rm -rf ./server/trans",
-    "integrate1": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./server/trans/test/",
-    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./server/trans/test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "integrate1": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./server/trans/test/  --exit",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./server/trans/test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage  --exit"
   },
   "author": "",
   "license": "ISC",
