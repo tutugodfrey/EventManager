@@ -47,7 +47,6 @@ const Routes = class {
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
       const token = req.body.token || req.header['token'];
-      console.log(token);
       if(token){
         jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
           if(err) {

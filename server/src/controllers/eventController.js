@@ -107,7 +107,7 @@ const EventsController = class {
         })
         .then(events => {
           if(events){
-            res.status(201).send(events);
+            res.status(200).send(events);
           } else {
             res.status(404).send({message: 'No event found for this center'})
           }

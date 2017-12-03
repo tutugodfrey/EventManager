@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">45.16% </span>
+        <span class="strong">56.45% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>28/62</span>
+        <span class='fraction'>35/62</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">30.56% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>9/36</span>
+        <span class='fraction'>11/36</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">39.29% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>7/28</span>
+        <span class='fraction'>11/28</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">28.89% </span>
+        <span class="strong">44.44% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/45</span>
+        <span class='fraction'>20/45</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -260,9 +260,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -274,14 +274,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -418,10 +418,10 @@ var EventCenterController = function () {
 &nbsp;
   }, {
     key: 'getEventCenters',
-    value: <span class="fstat-no" title="function not covered" >function getEventCenters(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >      return centers.findAll().then(<span class="fstat-no" title="function not covered" >function (eventCenter) {</span></span>
-<span class="cstat-no" title="statement not covered" >        if (eventCenter) {</span>
-<span class="cstat-no" title="statement not covered" >          res.status(200).send(eventCenter);</span>
+    value: function getEventCenters(req, res) {
+      return centers.findAll().then(function (eventCenter) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (eventCenter) {
+          res.status(200).send(eventCenter);
         }
       }).catch(<span class="fstat-no" title="function not covered" >function (error) {</span>
 <span class="cstat-no" title="statement not covered" >        return res.status(404).send({ message: 'No event center found' });</span>
@@ -432,15 +432,15 @@ var EventCenterController = function () {
 &nbsp;
   }, {
     key: 'getEventCenter',
-    value: <span class="fstat-no" title="function not covered" >function getEventCenter(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >      var centerId = parseInt(req.params.centerId);</span>
-<span class="cstat-no" title="statement not covered" >      return centers.find({</span>
+    value: function getEventCenter(req, res) {
+      var centerId = parseInt(req.params.centerId);
+      return centers.find({
         where: {
           id: centerId
         }
-      }).then(<span class="fstat-no" title="function not covered" >function (eventCenter) {</span>
-<span class="cstat-no" title="statement not covered" >        if (eventCenter) {</span>
-<span class="cstat-no" title="statement not covered" >          res.status(200).send(eventCenter);</span>
+      }).then(function (eventCenter) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (eventCenter) {
+          res.status(200).send(eventCenter);
         }
       }).catch(<span class="fstat-no" title="function not covered" >function (error) {</span>
 <span class="cstat-no" title="statement not covered" >        return res.status(204).send({</span>
@@ -526,7 +526,7 @@ exports.default = EventCenterController;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Dec 03 2017 22:32:21 GMT+0100 (W. Central Africa Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 04 2017 00:49:23 GMT+0100 (W. Central Africa Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
