@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">48.31% </span>
+        <span class="strong">58.43% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>43/89</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>12/36</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">35.9% </span>
-        <span class="quiet">Functions</span>
-        <span class='fraction'>14/39</span>
+        <span class='fraction'>52/89</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">38.89% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>14/36</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">48.72% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>19/39</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">51.39% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>28/72</span>
+        <span class='fraction'>37/72</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -417,19 +417,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -459,14 +459,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -643,20 +643,20 @@ var EventsController = function () {
 &nbsp;
   }, {
     key: 'getUsersEvents',
-    value: <span class="fstat-no" title="function not covered" >function getUsersEvents(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >      var userId = parseInt(req.params.userId);</span>
-<span class="cstat-no" title="statement not covered" >      return users.find({</span>
+    value: function getUsersEvents(req, res) {
+      var userId = parseInt(req.params.userId);
+      return users.find({
         where: {
           id: userId
         }
-      }).then(<span class="fstat-no" title="function not covered" >function (user) {</span>
-<span class="cstat-no" title="statement not covered" >        if (user) {</span>
-<span class="cstat-no" title="statement not covered" >          return events.findAll({</span>
+      }).then(function (user) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (user) {
+          return events.findAll({
             where: {
               userId: userId
             }
-          }).then(<span class="fstat-no" title="function not covered" >function (userEvents) {</span>
-<span class="cstat-no" title="statement not covered" >            return res.status(200).send(userEvents);</span>
+          }).then(function (userEvents) {
+            return res.status(200).send(userEvents);
           });
         } else {
 <span class="cstat-no" title="statement not covered" >          res.status(404).send({ message: 'No event found for this user' });</span>
@@ -685,15 +685,15 @@ var EventsController = function () {
 &nbsp;
   }, {
     key: 'getEvent',
-    value: <span class="fstat-no" title="function not covered" >function getEvent(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >      var eventId = parseInt(req.params.eventId);</span>
-<span class="cstat-no" title="statement not covered" >      return events.find({</span>
+    value: function getEvent(req, res) {
+      var eventId = parseInt(req.params.eventId);
+      return events.find({
         where: {
           id: eventId
         }
-      }).then(<span class="fstat-no" title="function not covered" >function (event) {</span>
-<span class="cstat-no" title="statement not covered" >        if (event) {</span>
-<span class="cstat-no" title="statement not covered" >          res.status(200).send(event);</span>
+      }).then(function (event) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (event) {
+          res.status(200).send(event);
         } else {
 <span class="cstat-no" title="statement not covered" >          res.status(404).send({ message: 'Event not found' });</span>
         }
@@ -730,7 +730,7 @@ exports.default = EventsController;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 04 2017 00:49:23 GMT+0100 (W. Central Africa Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 04 2017 14:06:49 GMT+0100 (W. Central Africa Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

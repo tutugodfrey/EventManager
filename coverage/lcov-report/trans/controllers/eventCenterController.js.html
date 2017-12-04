@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">56.45% </span>
+        <span class="strong">66.13% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>35/62</span>
+        <span class='fraction'>41/62</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">30.56% </span>
+        <span class="strong">36.11% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>11/36</span>
+        <span class='fraction'>13/36</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">39.29% </span>
+        <span class="strong">53.57% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>11/28</span>
+        <span class='fraction'>15/28</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">44.44% </span>
+        <span class="strong">57.78% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>20/45</span>
+        <span class='fraction'>26/45</span>
       </div>
     </div>
   </div>
@@ -295,25 +295,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -321,8 +311,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -453,14 +453,14 @@ var EventCenterController = function () {
 &nbsp;
   }, {
     key: 'getCenterByName',
-    value: <span class="fstat-no" title="function not covered" >function getCenterByName(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >      return centers.find({</span>
+    value: function getCenterByName(req, res) {
+      return centers.find({
         where: {
           name: req.params.name
         }
-      }).then(<span class="fstat-no" title="function not covered" >function (eventCenter) {</span>
-<span class="cstat-no" title="statement not covered" >        if (eventCenter) {</span>
-<span class="cstat-no" title="statement not covered" >          res.status(200).send(eventCenter);</span>
+      }).then(function (eventCenter) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (eventCenter) {
+          res.status(200).send(eventCenter);
         } else {
 <span class="cstat-no" title="statement not covered" >          res.status(404).send({ message: 'No center found for this name' });</span>
         }
@@ -474,14 +474,14 @@ var EventCenterController = function () {
 &nbsp;
   }, {
     key: 'getCenterByLocation',
-    value: <span class="fstat-no" title="function not covered" >function getCenterByLocation(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >      return centers.find({</span>
+    value: function getCenterByLocation(req, res) {
+      return centers.find({
         where: {
           location: req.params.location
         }
-      }).then(<span class="fstat-no" title="function not covered" >function (eventCenters) {</span>
-<span class="cstat-no" title="statement not covered" >        if (eventCenters) {</span>
-<span class="cstat-no" title="statement not covered" >          res.status(200).send(eventCenters);</span>
+      }).then(function (eventCenters) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (eventCenters) {
+          res.status(200).send(eventCenters);
         }
       }).catch(<span class="fstat-no" title="function not covered" >function (error) {</span>
 <span class="cstat-no" title="statement not covered" >        return res.status(204).send({</span>
@@ -526,7 +526,7 @@ exports.default = EventCenterController;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 04 2017 00:49:23 GMT+0100 (W. Central Africa Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 04 2017 14:06:49 GMT+0100 (W. Central Africa Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

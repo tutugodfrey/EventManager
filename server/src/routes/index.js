@@ -27,7 +27,7 @@ const Routes = class {
     // route for users signup and signin
     app.post('/users/signup', this.users.signup );
     app.post('/users/signin', this.users.signin); 
-    app.get('/users/userId', this.users.getUser)
+    app.get('/users/:userId', this.users.getUser)
     app.get('/centers', this.eventCenters.getEventCenters);
     app.get('/centers/:centerId', this.eventCenters.getEventCenter);
     app.get('/centers/centername/:name', eventCenters.getCenterByName);

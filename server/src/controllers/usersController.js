@@ -82,7 +82,7 @@ const UsersController = class {
 	getUser(req,res){
 		const userId = parseInt(req.params.userId);
 		return users
-		.findById({
+		.find({
 			where:{
 				id:userId
 			}
