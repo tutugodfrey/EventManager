@@ -31,6 +31,8 @@ const UsersController = class {
 						fullname: req.body.fullname,
 						email: req.body.email,
 						username: req.body.username,
+						gender: req.body.gender,
+						imgUrl: req.body.imgUrl,
 						userType:req.body.userType 
 					})
 					.then(signup => res.status(201).send(signup))
@@ -68,12 +70,15 @@ const UsersController = class {
 			  if(passwordConfirmed){
 					const authenKey = user['username'];
 					const token = jwt.sign({authenKey}, process.env.SECRET_KEY, {	expiresIn:'48h'	});
-					res.status(200).send({token: token});
+					res.status(200).send({
+						success: true,
+						token: token
+					});
 				} else {
-					res.status(201).send( {message: 'password is not correct'});
+					res.status(402).send( {message: 'password is not correct'});
 				}
 			} else {
-				res.status(201).send( {message: 'Your username is not correct'});
+				res.status(402).send( {message: 'Your username is not correct'});
 			}
 		})
 		.catch(error => res.status(500).send(error));
@@ -96,14 +101,26 @@ const UsersController = class {
 		})
 		.catch(error => res.status(500).send(error));
 	}
-
+	
+	getUsers(req,res){
+		return users
+		.findAll()
+		.then(user => {
+			if(user){
+				res.status(200).send(user);
+			} else {
+				res.status(404).send({ message: 'User not found'})
+			}
+		})
+		.catch(error => res.status(500).send(error));
+	}
 	updateUsers (req, res) {
 		const userId = parseInt(req.params.userId);
 		return users
 		.find({
 			where: {
 				id: userId
-			},
+			}
 		})
 		.then(user => {
 			if(user) {
@@ -111,7 +128,9 @@ const UsersController = class {
 				.update({
 				fullname: req.body.fullname || user.fullname,
 				username: req.body.username || user.username,
-				email: req.body.email || user.email
+				email: req.body.email || user.email,
+				gender: req.body.gender || user.gender,
+				imgUrl: req.body.imgUrl || user.imgUrl
 				})
 			}
 		})

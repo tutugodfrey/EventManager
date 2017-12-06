@@ -25,6 +25,10 @@ module.exports = {
         allowNull: false
       },
       facilities:{
+        type:Sequelize.ARRAY(Sequelize.STRING),
+        allowNull:true
+       },
+       imgUrl:{
         type:Sequelize.STRING,
         allowNull:true
        },

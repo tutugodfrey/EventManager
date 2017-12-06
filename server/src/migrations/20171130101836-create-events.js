@@ -16,10 +16,13 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false
       },
+      facilities:{
+        type:Sequelize.ARRAY(Sequelize.STRING),
+        allowNull:true
+       },
       centerId: {
         type: Sequelize.INTEGER,
         allowNull: false
-
       },
       userId: {
         type: Sequelize.INTEGER,

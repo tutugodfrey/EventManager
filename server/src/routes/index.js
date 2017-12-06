@@ -27,6 +27,7 @@ const Routes = class {
     // route for users signup and signin
     app.post('/users/signup', this.users.signup );
     app.post('/users/signin', this.users.signin); 
+    app.get('/users', this.users.getUsers); 
     app.get('/users/:userId', this.users.getUser)
     app.get('/centers', this.eventCenters.getEventCenters);
     app.get('/centers/:centerId', this.eventCenters.getEventCenter);
@@ -46,7 +47,7 @@ const Routes = class {
     app.use('/api', this.securedApi);
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
-      const token = req.body.token || req.header['token'];
+      const token = req.body.token || req.headers.token;
       if(token){
         jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
           if(err) {
@@ -61,7 +62,7 @@ const Routes = class {
     });   
     
     this.securedApi.post('/centers', this.eventCenters.addEventCenter);
-    this.securedApi.put('/users/userId', this.users.updateUsers);
+    this.securedApi.put('/users/:userId', this.users.updateUsers);
     this.securedApi.put('/centers/:centerId', this.eventCenters.updateEventCenter);
     this.securedApi.post('/events', this.events.addEvent);
     this.securedApi.put('/events/:eventId/:userId', this.events.updateEvent);
