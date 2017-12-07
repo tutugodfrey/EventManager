@@ -9,6 +9,10 @@ export default (sequelize, DataTypes) => {
        type:DataTypes.DATE,
        allowNull:false
     },
+    facilities:{
+      type:DataTypes.ARRAY(DataTypes.STRING),
+      allowNull:true
+   },
     centerId:{
       type: DataTypes.INTEGER,
       allowNull:false
