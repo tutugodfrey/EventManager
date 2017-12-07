@@ -21,7 +21,7 @@ module.exports = {
         allowNull:true
        },
       confirm: {
-        type:Sequelize.ENUM(pending, true, false),
+        type:Sequelize.ENUM('pending', true, false),
         defaultValue:'pending'
       },
       centerId: {

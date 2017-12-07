@@ -14,7 +14,7 @@ export default (sequelize, DataTypes) => {
         allowNull:true
     },
     confirm: {
-      type:DataTypes.ENUM(pending, true, false),
+      type:DataTypes.ENUM('pending', true, false),
       defaultValue:'pending'
     },
     centerId:{

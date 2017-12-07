@@ -64,8 +64,9 @@ const Routes = class {
      this.securedApi.get('/events/:userId', this.events.getUsersEvents); 
     
      // route controllers for notifications
-     this.securedApi.get('/notifications/:userId', notifications.getNotifications);
     this.securedApi.post('/notifications', notifications.createNotification);
+    this.securedApi.get('/notifications', notifications.getAllNotifications);
+    this.securedApi.get('/notifications/:userId', notifications.getNotifications);
   }
 };
 
