@@ -28,7 +28,7 @@ const EventCenterController = class {
             imgUrl: req.body.imgUrl
           })
           .then(center => res.status(201).send(center))
-          .catch(error => res.status(404).send(error));
+          .catch(error => res.status(400).send(error));
         } else {
           res.status(200).send({ message: 'a center with this name already exist'})
         }

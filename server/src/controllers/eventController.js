@@ -8,7 +8,6 @@ const EventsController = class {
   // controller to add event
   addEvent(req, res) {
     const centerId = parseInt(req.body.centerId);
-    console.log(centerId)
     return centers
     .find({
       where: { 
@@ -35,7 +34,7 @@ const EventsController = class {
               userId: parseInt(req.body.userId)
             })
             .then(event => res.status(201).send(event))
-            .catch(error => res.status(500).send(error));
+            .catch(error => res.status(400).send(error));
           } else{
             res.status(200).send({ message:`An event is already booked you choose. 
             pleasee center the field for upcomming event and centers before choosing you date`});

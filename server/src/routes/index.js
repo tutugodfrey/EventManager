@@ -21,7 +21,7 @@ const Routes = class {
 }
   routes(app) {
     app.get('/', (req, res) => {
-      res.status(200).send('Welcom to Eventmanager');
+      res.status(200).send({message: 'Welcom to Eventmanager'});
     });
 
     // route for users signup and signin

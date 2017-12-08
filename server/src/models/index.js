@@ -1,12 +1,13 @@
-
+import dotenv from 'dotenv';
 import fs   from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';
+dotenv.config();
 const basename  = path.basename(__filename);
 const env       = process.env.NODE_ENV || 'development';
+// const env = process.env.TEST;
 // json file not transpiled by babel redirector out of the src dir
 const config    = require(path.join(__dirname, '../..', 'config', 'config.json'))[env];
-
 
 const db        = {};
 let sequelize

@@ -46,10 +46,10 @@ const UsersController = class {
 				}
 			} else {
 				// username already exist
-				res.status(201).send(`user already exist`)
+				res.status(200).send(`user already exist`)
 			}
 		})
-		.catch(error => res.status(200).send(error));
+		.catch(error => res.status(500).send(error));
 	}
 
 
@@ -75,10 +75,10 @@ const UsersController = class {
 						token: token
 					});
 				} else {
-					res.status(402).send( {message: 'password is not correct'});
+					res.status(400).send( {message: 'password is not correct'});
 				}
 			} else {
-				res.status(402).send( {message: 'Your username is not correct'});
+				res.status(400).send( {message: 'Your username is not correct'});
 			}
 		})
 		.catch(error => res.status(500).send(error));
