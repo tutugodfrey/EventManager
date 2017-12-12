@@ -1,11 +1,12 @@
 // controller for users signup and signin
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
+import multer from 'multer';
 import bcrypt from 'bcrypt';
 import models from './../models';
+const uploadDir = multer({dest: './../../../public/users-photo'})
 const users = models.users;
 dotenv.config();
-
 const UsersController = class {
   // controller for users signup
   signup(req, res) {
@@ -18,6 +19,9 @@ const UsersController = class {
 		})
 		.then(user => {
 			if(!user){
+				// handle uploaded profile pix
+				const photo = req.file;
+				uploadDir.single('profile-pix');
 			const passwd1 = req.body.passwd1;
 			const passwd2 = req.body.passwd2;
 			let passwd;
@@ -32,7 +36,7 @@ const UsersController = class {
 						email: req.body.email,
 						username: req.body.username,
 						gender: req.body.gender,
-						imgUrl: req.body.imgUrl,
+						imgUrl: uploadDir,
 						userType:req.body.userType 
 					})
 					.then(signup => res.status(201).send(signup))

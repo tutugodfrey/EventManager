@@ -27,7 +27,6 @@ const Routes = class {
     // route for users signup and signin
     app.post('/users/signup', this.users.signup );
     app.post('/users/signin', this.users.signin); 
-    
     app.use('/api', this.securedApi);
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
