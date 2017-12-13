@@ -3,6 +3,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import jwt from 'jsonwebtoken';
+import path from 'path';
 import EventCenterController from './../controllers/eventCenterController';
 import EventsController from './../controllers/eventController';
 import UsersController from './../controllers/usersController';
@@ -21,7 +22,7 @@ const Routes = class {
 }
   routes(app) {
     app.get('/', (req, res) => {
-      res.status(200).send({message: 'Welcom to Eventmanager'});
+      res.status(200).sendFile(path.join(__dirname, './../../../client/index.html'));
     });
 
     // route for users signup and signin

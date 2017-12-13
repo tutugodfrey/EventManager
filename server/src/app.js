@@ -16,7 +16,7 @@ class Server {
   }
   expressServer() {
     this.app = this.express();
-    this.app.use(this.bodyParser.urlencoded({ extended: false }));
+    this.app.use(this.bodyParser.urlencoded({ extended: true }));
     this.app.use(this.bodyParser.json());
     this.route.routes(this.app);
     return this.app;

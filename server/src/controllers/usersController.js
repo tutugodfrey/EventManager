@@ -4,7 +4,8 @@ import jwt from 'jsonwebtoken';
 import multer from 'multer';
 import bcrypt from 'bcrypt';
 import models from './../models';
-const uploadDir = multer({dest: './../../../public/users-photo'})
+const destination = './../../../public/users-photo';
+const uploadDir = multer({dest: destination })
 const users = models.users;
 dotenv.config();
 const UsersController = class {
@@ -36,7 +37,7 @@ const UsersController = class {
 						email: req.body.email,
 						username: req.body.username,
 						gender: req.body.gender,
-						imgUrl: uploadDir,
+						imgUrl: destination,
 						userType:req.body.userType 
 					})
 					.then(signup => res.status(201).send(signup))
