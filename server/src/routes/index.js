@@ -2,12 +2,20 @@
 // import controllers
 import dotenv from 'dotenv';
 import express from 'express';
+import multer from 'multer';
 import jwt from 'jsonwebtoken';
 import path from 'path';
 import EventCenterController from './../controllers/eventCenterController';
 import EventsController from './../controllers/eventController';
 import UsersController from './../controllers/usersController';
-import Notifications from './../controllers/notificationsController'
+import Notifications from './../controllers/notificationsController';
+const usersDest = './public/users-photo/';
+const centersDest = './public/centers-photo/';
+const eventsDest = './public/events-photo/';
+const usersUpload = multer({dest: usersDest});
+const centersUpload = multer({dest: centersDest});
+const eventsUpload = multer({dest: eventsDest});
+// console.log(upload);
 dotenv.config();
 const eventCenters = new EventCenterController();
 const events = new EventsController();
@@ -26,8 +34,9 @@ const Routes = class {
     });
 
     // route for users signup and signin
-    app.post('/users/signup', this.users.signup );
+    app.post('/users/signup', usersUpload.single('users-pix'), this.users.signup );
     app.post('/users/signin', this.users.signin); 
+    app.delete('/users/:userId', this.users.deleteUser); 
     app.use('/api', this.securedApi);
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
@@ -48,14 +57,14 @@ const Routes = class {
     this.securedApi.get('/users', this.users.getUsers); 
     this.securedApi.get('/users/:userId', this.users.getUser);
     this.securedApi.put('/users/:userId', this.users.updateUsers);
+    this.securedApi.post('/centers', centersUpload.single('centers-pix'), this.eventCenters.addEventCenter);
     this.securedApi.get('/centers', this.eventCenters.getEventCenters);
     this.securedApi.get('/centers/:centerId', this.eventCenters.getEventCenter);
     this.securedApi.get('/centers/centername/:name', eventCenters.getCenterByName);
     this.securedApi.get('/centers/location/:location', eventCenters.getCenterByLocation);
-    this.securedApi.post('/centers', this.eventCenters.addEventCenter);
     this.securedApi.put('/centers/:centerId', this.eventCenters.updateEventCenter);
      // route controllers for events
-     this.securedApi.post('/events', this.events.addEvent);
+     this.securedApi.post('/events', eventsUpload.single('events-pix'), this.events.addEvent);
      this.securedApi.put('/events/:eventId', this.events.updateEvent);
      this.securedApi.get('/events', this.events.getEvents);
      this.securedApi.get('/events/centers/:centerId', this.events.getCenterEvents);

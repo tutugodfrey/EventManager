@@ -24,7 +24,7 @@ export default  (sequelize, DataTypes) => {
      },
      imgUrl:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:true
      }
   });
  

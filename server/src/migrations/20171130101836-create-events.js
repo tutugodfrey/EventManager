@@ -20,6 +20,10 @@ module.exports = {
         type:Sequelize.ARRAY(Sequelize.STRING),
         allowNull:true
        },
+       imgUrl: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       confirm: {
         type:Sequelize.ENUM('pending', true, false),
         defaultValue:'pending'

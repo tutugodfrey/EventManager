@@ -13,6 +13,10 @@ export default (sequelize, DataTypes) => {
         type:DataTypes.ARRAY(DataTypes.STRING),
         allowNull:true
     },
+    imgUrl:{
+      type:DataTypes.STRING,
+      allowNull:true
+     },
     confirm: {
       type:DataTypes.ENUM('pending', true, false),
       defaultValue:'pending'

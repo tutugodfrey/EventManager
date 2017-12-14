@@ -1,11 +1,9 @@
 // controller for users signup and signin
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
-import multer from 'multer';
 import bcrypt from 'bcrypt';
 import models from './../models';
-const destination = './../../../public/users-photo';
-const uploadDir = multer({dest: destination })
+const destination = './public/users-photo/';
 const users = models.users;
 dotenv.config();
 const UsersController = class {
@@ -21,8 +19,8 @@ const UsersController = class {
 		.then(user => {
 			if(!user){
 				// handle uploaded profile pix
-				const photo = req.file;
-				uploadDir.single('profile-pix');
+			const photo = req.file.originalname;
+			console.log(photo);
 			const passwd1 = req.body.passwd1;
 			const passwd2 = req.body.passwd2;
 			let passwd;
@@ -141,6 +139,33 @@ const UsersController = class {
 		})
 		.then(user => res.status(201).send(user))
 		.catch(error => res.status(404).send(error));
+	}
+
+	// delete user by id
+	deleteUser(req,res){
+		const userId = parseInt(req.params.userId);
+		return users
+		.find({
+			where:{
+				id:userId
+			}
+		})
+		.then(user => {
+			if(user) {
+			return user
+			.destroy({
+				where:{
+					id:userId
+				}
+			})
+			.then(deleted => res.status(200).send({ message: `${user.fullname} has been deleted`}))
+			.catch(error => res.status(500).send(error));
+			} else {
+        res.status(500).send({ message: 'user not found'});
+			}
+
+		})
+		.catch(error => res.status(500).send(error));
 	}
 	
 
