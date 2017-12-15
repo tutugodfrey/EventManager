@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import models from './../models';
-const destination = './public/users-photo/';
+// const destination = './public/users-photo/';
 const users = models.users;
 dotenv.config();
 const UsersController = class {
@@ -18,9 +18,9 @@ const UsersController = class {
 		})
 		.then(user => {
 			if(!user){
-				// handle uploaded profile pix
-			const photo = req.file.originalname;
-			console.log(photo);
+			// handle uploaded profile pix
+			//const photo = req.file.originalname;
+			const destination = req.file.path;
 			const passwd1 = req.body.passwd1;
 			const passwd2 = req.body.passwd2;
 			let passwd;

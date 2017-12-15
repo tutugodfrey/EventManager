@@ -15,6 +15,15 @@ const eventsDest = './public/events-photo/';
 const usersUpload = multer({dest: usersDest});
 const centersUpload = multer({dest: centersDest});
 const eventsUpload = multer({dest: eventsDest});
+const storage = multer.diskStorage({
+  destination: './public/users-photo/',
+  filename: function (req, file, cb) {
+   cb(null, file.originalname)
+  }
+})
+
+const upload = multer({ storage: storage })
+
 // console.log(upload);
 dotenv.config();
 const eventCenters = new EventCenterController();
@@ -34,7 +43,8 @@ const Routes = class {
     });
 
     // route for users signup and signin
-    app.post('/users/signup', usersUpload.single('users-pix'), this.users.signup );
+    // app.post('/users/signup', usersUpload.single('users-pix'), this.users.signup );
+    app.post('/users/signup', upload.single('users-pix'), this.users.signup );
     app.post('/users/signin', this.users.signin); 
     app.delete('/users/:userId', this.users.deleteUser); 
     app.use('/api', this.securedApi);
