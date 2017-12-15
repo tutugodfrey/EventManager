@@ -10,7 +10,7 @@ body  {
 }
 
 #showCase {
-	background-image:url(./../../public/center-photo/images3.jpg);
+	background-image:url(./../centers-photo/images3.jpg);
 	background-repeat:no-repeat; 
 	background-size:cover;
 	background-position: center;
