@@ -2,6 +2,9 @@
  import ReactDom from 'react-dom';
  import SignupForm from './components/signup.js';
  import SigninForm from './components/signin.js';
+ import ForgetPasswordForm from './components/forgetPassword.js';
+ import ChangePassword from './components/changePassword.js';
+ import ContinueForgetPassword from './components/continueForgetPassword.js';
  //import Image from './components/image.js';
 
   class Header extends React.Component {
@@ -36,6 +39,9 @@
         </div>
         <SignupForm />
         <SigninForm />
+        <ForgetPasswordForm />
+        <ChangePassword />
+        <ContinueForgetPassword />
       </div> 
   ); 
   }
