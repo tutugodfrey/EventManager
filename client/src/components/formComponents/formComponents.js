@@ -1,6 +1,7 @@
 
 import React from 'react';
 import ReactDom from 'react-dom';
+import FormOptions from './formOptions';
 
  class FormInput extends React.Component {
  render() {
@@ -13,4 +14,17 @@ import ReactDom from 'react-dom';
  }
 }
 
+class FormSelect extends React.Component {
+  render() {
+    return (
+      <select className = {this.props.inputClass}>
+        <FormOptions options = {this.props.options} />
+      </select>
+    )
+  }
+}
+
 export default FormInput;
+export {
+  FormSelect
+}
