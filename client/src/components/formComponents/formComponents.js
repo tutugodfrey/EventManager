@@ -1,15 +1,16 @@
-/*
+
 import React from 'react';
 import ReactDom from 'react-dom';
 
-// const Head = React.createClass ({
- class formInput extends React.Component {
+ class FormInput extends React.Component {
  render() {
    return ( 
-    <input type ={this.props.type} className = {this.props.className} name = {this.props.name} placeholder = {this.props.placeholder} value = {this.props.value} />
+    <div className = {this.props.divClass}>
+    <label htmlFor = {this.props.id}>{this.props.labelValue}</label>  
+    <input type ={this.props.type} id = {this.props.id} className = {this.props.inputClass} name = {this.props.name} placeholder = {this.props.placeholder} value = {this.props.value} />
+    </div>
      )
  }
 }
 
-export default formInput;
-*/
+export default FormInput;

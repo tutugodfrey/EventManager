@@ -1,31 +1,16 @@
  import React from 'react';
  import ReactDom from 'react-dom';
-// import formInput  from './components/formComponents/formComponents.js';
- // import SignupForm from './components/signup.js';
+ import SignupForm from './components/signup.js';
+ import SigninForm from './components/signin.js';
  //import Image from './components/image.js';
-/*
- class SignupForm extends React.Component {
-  render () {
-    return ( 
-      <form>
-        <innput type = 'text' name = 'fullname' placeholder = 'fullname' />
-        <input type = 'text' name = 'email' placeholder = 'Email' />
-        <input type = 'text' name = 'username' placeholder = 'Username' />
-        <input type = 'submit' class = 'btn btn-primary' value = 'Signup' />
-      </form>
-    )
-  } 
-}
-*/
 
-// const Head = React.createClass ({
   class Header extends React.Component {
   render() {
     return ( 
       <nav className = 'navbar navbar-inverse'> 
         <ul id = 'hp-nav' className = 'nav'>
           <li className = 'nav-items' >
-            <a href = '#' className = 'nav-link' onClick = {SignupForm}>Signup </a>
+            <a href = '#' className = 'nav-link'>Signup </a>
           </li>
           
           <li>
@@ -49,6 +34,8 @@
            your guest is our priority. You know!
           </p>
         </div>
+        <SignupForm />
+        <SigninForm />
       </div> 
   ); 
   }
