@@ -18,6 +18,7 @@ const EventCenterController = class {
       )
       .then(eventCenter => {
         if(!eventCenter){
+          const destination = req.file.path;
           return centers
           .create({
             name: req.body.name,
@@ -25,7 +26,7 @@ const EventCenterController = class {
             sits: req.body.sits,
             cost: req.body.cost,
             facilities: req.body.facilities,
-            imgUrl: req.body.imgUrl
+            imgUrl: destination
           })
           .then(center => res.status(201).send(center))
           .catch(error => res.status(400).send(error));

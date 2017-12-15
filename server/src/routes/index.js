@@ -9,20 +9,35 @@ import EventCenterController from './../controllers/eventCenterController';
 import EventsController from './../controllers/eventController';
 import UsersController from './../controllers/usersController';
 import Notifications from './../controllers/notificationsController';
+/**
+the below is the alternative way to direct upload and multer will generate a random file 
+name for you without an extentions
 const usersDest = './public/users-photo/';
-const centersDest = './public/centers-photo/';
-const eventsDest = './public/events-photo/';
-const usersUpload = multer({dest: usersDest});
-const centersUpload = multer({dest: centersDest});
-const eventsUpload = multer({dest: eventsDest});
-const storage = multer.diskStorage({
+const usersUpload = multer({dest: usersDest}); 
+*/
+const UsersStorage = multer.diskStorage({
   destination: './public/users-photo/',
   filename: function (req, file, cb) {
    cb(null, file.originalname)
   }
-})
+});
+const centersStorage = multer.diskStorage({
+  destination: './public/centers-photo/',
+  filename: function (req, file, cb) {
+   cb(null, file.originalname)
+  }
+});
+const eventsStorage = multer.diskStorage({
+  destination: './public/events-photo/',
+  filename: function (req, file, cb) {
+   cb(null, file.originalname)
+  }
+});
 
-const upload = multer({ storage: storage })
+
+const usersUpload = multer({ storage: UsersStorage });
+const centersUpload = multer({ storage: centersStorage  });
+const eventsUpload = multer({ storage: eventsStorage })
 
 // console.log(upload);
 dotenv.config();
@@ -43,8 +58,8 @@ const Routes = class {
     });
 
     // route for users signup and signin
+    app.post('/users/signup', usersUpload.single('users-pix'), this.users.signup );
     // app.post('/users/signup', usersUpload.single('users-pix'), this.users.signup );
-    app.post('/users/signup', upload.single('users-pix'), this.users.signup );
     app.post('/users/signin', this.users.signin); 
     app.delete('/users/:userId', this.users.deleteUser); 
     app.use('/api', this.securedApi);
