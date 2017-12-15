@@ -25,11 +25,13 @@ const EventsController = class {
         })
         .then(eventFound => {
           if(!eventFound){
+            const destination = req.file.path;
             return events
             .create({
               type: req.body.type,
               date: req.body.date,
               facilities:req.body.facilities,
+              imgUrl:destination,
               centerId: parseInt(req.body.centerId),
               userId: parseInt(req.body.userId)
             })
