@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import Routes from './routes/index';
 const route = new Routes();
-
+  
 // setup server class
 class Server {
   constructor() {
@@ -16,7 +16,7 @@ class Server {
   }
   expressServer() {
     this.app = this.express();
-   // this.app.use(this.express.static(__dirname, 'public'));
+    this.app.use(this.express.static('public'));
     this.app.use(this.bodyParser.urlencoded({ extended: true }));
     this.app.use(this.bodyParser.json());
     this.route.routes(this.app);

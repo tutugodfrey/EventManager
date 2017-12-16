@@ -10,7 +10,7 @@
     "test": "npm run build && mocha  server/trans/test/  --timeout 10000 --exit",
     "start": "npm run build && node ./server/bin/production",
     "start:react": "webpack -w -d",
-    "dev":"webpack-dev-server content-base /client/src --inline --hot",
+    "dev": "webpack-dev-server content-base /client/src --inline --hot",
     "migrate": "node_modules/.bin/sequelize db:migrate",
     "undo:migrate": "node_modules/.bin/sequelize db:migrate:undo:all",
     "remove-trans": "rm -rf ./server/trans",
@@ -64,6 +64,7 @@
     "redux-devtools": "^3.4.1",
     "sequelize": "^4.23.1",
     "sequelize-cli": "^3.1.0",
+    "superagent": "^3.8.2",
     "webpack-dev-server": "^2.9.7"
   }
 }

@@ -5,9 +5,10 @@
  import ForgetPasswordForm from './components/forgetPassword.js';
  import ChangePassword from './components/changePassword.js';
  import ContinueForgetPassword from './components/continueForgetPassword.js';
- //import Image from './components/image.js';
+  // import Image from './components/image.js';
 
   class Header extends React.Component {
+
   render() {
     return ( 
       <nav className = 'navbar navbar-inverse'> 
