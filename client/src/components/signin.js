@@ -6,7 +6,7 @@ class SigninForm extends React.Component {
   render () {
     return ( 
       <div> 
-        <form>
+        <form method = 'post' action = '/users/signin'>
           <h1> Signin to your Accunt </h1>
           <FormInput type = 'text' id ='username' labelValue = 'username/ Email' divClass = 'form-group' inputClass = 'requiredFields form-control' name = 'username' placeholder = 'username/ Email' />
           <FormInput type = 'text' id ='password' labelValue = 'password' divClass = 'form-group' inputClass = 'requiredFields form-control' name = 'password' placeholder = 'password' />
