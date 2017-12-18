@@ -30,7 +30,7 @@ class SignupForm extends React.Component {
           <FormInput type = 'submit' inputClass = 'btn btn-primary' value = 'Signup' />
         </form>
         <div>
-          <Link hrefLink = '#' hrefId = 'signBtn' hrefText = 'Signin' hrefClass = 'btn btn-primary' /> <br />
+          <Link hrefLink = '#' hrefId = 'signBtn' hrefContent = 'Signin' hrefClass = 'btn btn-primary' /> <br />
         </div>
       </div>
     )
