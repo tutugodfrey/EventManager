@@ -8,6 +8,7 @@
  import AddCenterForm from './components/addCenter';
  import ModifyCenterForm from './components/ModifyCenter';
  import AddEventForm from './components/AddEvent';
+ import ModifyEventForm from './components/ModifyEvent';
  
   // import Image from './components/image.js';
 
@@ -50,6 +51,7 @@
         <AddCenterForm />
         <ModifyCenterForm />
         <AddEventForm />
+        <ModifyEventForm />
       </div> 
   ); 
   }
