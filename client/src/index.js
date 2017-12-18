@@ -6,6 +6,7 @@
  import ChangePassword from './components/changePassword.js';
  import ContinueForgetPassword from './components/continueForgetPassword.js';
  import AddCenterForm from './components/addCenter';
+ import ModifyCenterForm from './components/ModifyCenter';
  
   // import Image from './components/image.js';
 
@@ -46,6 +47,7 @@
         <ChangePassword />
         <ContinueForgetPassword />
         <AddCenterForm />
+        <ModifyCenterForm />
       </div> 
   ); 
   }
