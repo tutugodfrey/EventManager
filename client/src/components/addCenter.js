@@ -1,9 +1,8 @@
 
 import React from 'react';
 import ReactDom from 'react-dom';
-import { FormInput, CheckBox  }  from './formComponents/formComponents.js';
-// import CheckBox  from './formComponents/formComponents.js';
-import Links from './links';
+import { FormInput, CheckBox  }  from './formComponents/formInputs';
+import Link from './elementComponents/Link';
 
 class AddCenterForm extends React.Component {
   constructor () {
@@ -39,7 +38,7 @@ class AddCenterForm extends React.Component {
           <FormInput type = 'submit' inputClass = 'btn btn-primary' value = 'Add Center' />
         </form>
         <div>
-          <Links hrefLink = '#' hrefId = 'viewCenters' hrefText = 'View Center' hrefClass = 'btn btn-primary' /> <br />
+          <Link hrefLink = '#' hrefId = 'viewCenters' hrefText = 'View Center' hrefClass = 'btn btn-primary' /> <br />
         </div>
       </div>
     )

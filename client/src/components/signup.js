@@ -1,8 +1,8 @@
 
 import React from 'react';
 import ReactDom from 'react-dom';
-import { FormInput, FormSelect }  from './formComponents/formComponents.js';
-import Links from './links';
+import { FormInput, FormSelect }  from './formComponents/formInputs.js';
+import Link from './elementComponents/Link';
 
 class SignupForm extends React.Component {
   constructor () {
@@ -30,7 +30,7 @@ class SignupForm extends React.Component {
           <FormInput type = 'submit' inputClass = 'btn btn-primary' value = 'Signup' />
         </form>
         <div>
-          <Links hrefLink = '#' hrefId = 'signBtn' hrefText = 'Signin' hrefClass = 'btn btn-primary' /> <br />
+          <Link hrefLink = '#' hrefId = 'signBtn' hrefText = 'Signin' hrefClass = 'btn btn-primary' /> <br />
         </div>
       </div>
     )

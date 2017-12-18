@@ -1,0 +1,9 @@
+import React from 'react';
+
+class Image extends React.Component {
+  render () {
+    return  <img id = {this.props.imgId } className = {this.props.imgClass} ImgSrc = {this.props.src} alt = {this.props.alt}  />
+  } 
+}
+
+export default Image;

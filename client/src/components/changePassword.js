@@ -1,6 +1,6 @@
 import React from 'react';
-import { FormInput }  from './formComponents/formComponents.js';
-import Links from './links';
+import { FormInput }  from './formComponents/formInputs';
+import Link from './elementComponents/Link';
 
 class ChangePassword extends React.Component {
   render () {
@@ -16,7 +16,7 @@ class ChangePassword extends React.Component {
         </form>
         <br />
         <div>
-          <Links hrefLink = '#' hrefId = 'signinBtn' hrefText = 'Signin' hrefClass = 'btn btn-primary' /> <br />
+          <Link hrefLink = '#' hrefId = 'signinBtn' hrefText = 'Signin' hrefClass = 'btn btn-primary' /> <br />
         </div>
       </div>
     )

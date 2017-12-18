@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormInput } from './formComponents.js';
+import { FormInput } from './formInputs.js';
 
 
 class Checkbox extends React.Component {
