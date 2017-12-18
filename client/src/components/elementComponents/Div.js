@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Divs extends React.Component {
+class Div extends React.Component {
   render () {
     return ( 
         <div id =  {this.props.divId} className = {this.props.divClass}>
@@ -10,4 +10,4 @@ class Divs extends React.Component {
   } 
 }
 
-export default Divs;
+export default Div;

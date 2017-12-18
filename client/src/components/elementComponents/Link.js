@@ -1,14 +1,14 @@
 import React from 'react';
 
 
-class Links extends React.Component {
+class Link extends React.Component {
   render () {
     return  (
-    <a href = {this.props.href} id = {this.props.hrefId} className = {this.props.hrefClass}>
-      {this.props.content}
+    <a href = {this.props.hrefLink} id = {this.props.hrefId} className = {this.props.hrefClass}>
+      {this.props.hrefContent}
     </a>
   )
   } 
 }
 
-export default Links;
+export default Link;
