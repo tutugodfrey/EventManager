@@ -5,6 +5,8 @@
  import ForgetPasswordForm from './components/forgetPassword.js';
  import ChangePassword from './components/changePassword.js';
  import ContinueForgetPassword from './components/continueForgetPassword.js';
+ import AddCenterForm from './components/addCenter';
+ 
   // import Image from './components/image.js';
 
   class Header extends React.Component {
@@ -43,6 +45,7 @@
         <ForgetPasswordForm />
         <ChangePassword />
         <ContinueForgetPassword />
+        <AddCenterForm />
       </div> 
   ); 
   }

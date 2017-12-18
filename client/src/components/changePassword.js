@@ -1,5 +1,5 @@
 import React from 'react';
-import FormInput  from './formComponents/formComponents.js';
+import { FormInput }  from './formComponents/formComponents.js';
 import Links from './links';
 
 class ChangePassword extends React.Component {

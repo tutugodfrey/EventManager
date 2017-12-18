@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import FormOptions from './formOptions';
+import CheckBoxes from './CheckBox';
 
  class FormInput extends React.Component {
  render() {
@@ -24,7 +25,18 @@ class FormSelect extends React.Component {
   }
 }
 
-export default FormInput;
+class CheckBox extends React.Component {
+  render () {
+    return ( 
+      <fieldset className ='form-group' >
+        <CheckBoxes checkBoxData = { this.props.checkBoxData } />
+      </fieldset>
+    )
+  } 
+}
+
 export {
-  FormSelect
+  FormInput,
+  FormSelect,
+  CheckBox
 }

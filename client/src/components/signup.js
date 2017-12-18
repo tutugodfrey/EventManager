@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ReactDom from 'react-dom';
-import FormInput, {FormSelect}  from './formComponents/formComponents.js';
+import { FormInput, FormSelect }  from './formComponents/formComponents.js';
 import Links from './links';
 
 class SignupForm extends React.Component {
@@ -21,7 +21,7 @@ class SignupForm extends React.Component {
           <FormInput type = 'text' id ='email' labelValue = 'Email' divClass = 'form-group' inputClass = 'requiredFields form-control' name = 'email' placeholder = 'Email' /><br />
           <FormInput type = 'text' id ='username' labelValue = 'Username' divClass = 'form-group' inputClass = 'requiredFields form-control' name = 'username' placeholder = 'Username' /><br />
           <FormInput type = 'text' id ='gender' labelValue = 'Gender' divClass = 'form-group' inputClass = 'requiredFields form-control' name = 'gender' placeholder = 'gender' /><br />
-          <FormInput type = 'file' id ='photo' labelValue = 'Photo' inputClass = 'form-group' name = 'uers-pix' /><br />
+          <FormInput type = 'file' id ='photo' labelValue = 'Photo' inputClass = 'form-group' name = 'users-pix' /><br />
           <FormInput type = 'password' id ='passwd1' labelValue = 'password' divClass = 'form-group' inputClass = 'requiredFields form-control' name = 'passwd1' placeholder = 'password' /><br />
           <FormInput type = 'password' id ='passwd2' labelValue = 'Retype password' divClass = 'form-group' inputClass = 'requiredFields form-control' name = 'passwd2' placeholder = 'confirmPassword' /><br />
           <FormSelect inputClass = 'requiredFields form-control' options = {this.state.options} />
