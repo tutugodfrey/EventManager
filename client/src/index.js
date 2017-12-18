@@ -7,6 +7,7 @@
  import ContinueForgetPassword from './components/continueForgetPassword.js';
  import AddCenterForm from './components/addCenter';
  import ModifyCenterForm from './components/ModifyCenter';
+ import AddEventForm from './components/AddEvent';
  
   // import Image from './components/image.js';
 
@@ -48,6 +49,7 @@
         <ContinueForgetPassword />
         <AddCenterForm />
         <ModifyCenterForm />
+        <AddEventForm />
       </div> 
   ); 
   }

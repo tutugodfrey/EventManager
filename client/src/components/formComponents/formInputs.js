@@ -18,8 +18,8 @@ import CheckBoxes from './CheckBox';
 class FormSelect extends React.Component {
   render() {
     return (
-      <select className = {this.props.inputClass}>
-        <FormOptions options = {this.props.options} />
+      <select className = { this.props.inputClass } name = { this.props.name } >
+        <FormOptions options = { this.props.options } />
       </select>
     )
   }
@@ -29,7 +29,8 @@ class CheckBox extends React.Component {
   render () {
     return ( 
       <fieldset className ='form-group' >
-        <CheckBoxes checkBoxData = { this.props.checkBoxData } />
+        <legend>{this.props.checkBoxData.name}</legend>
+        <CheckBoxes checkBoxData = { this.props.checkBoxData } /><br />
       </fieldset>
     )
   } 
