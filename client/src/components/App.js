@@ -10,22 +10,11 @@ class App extends React.Component {
      
     }
   }
-  
+ 
  render() {
-
-  console.log(this.props.store.getState)
-  console.log('i am here')
+  console.log(this.props.store)
    return (
-     <div>
        <Header store = {this.props.store } />
-       <div id = 'showCase'>
-         <h1 id = 'welcomeMsg'> welcome to eventmanager app </h1>
-         <p id = 'welcomeNote'> At Authentic Events Center the satisfication of
-          your guest is our priority. You know!
-         </p>
-       </div>
-       { this.state.views }
-     </div> 
  ); 
  }
 }

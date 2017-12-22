@@ -1,8 +1,7 @@
 
 export default function reducer(state, action) {
   switch(action.type) {
-    case 'DISPLAY_SIGNUP':
-    // console.log(action.value)
+    case 'DISPLAY_PAGES':
      return Object.assign({}, state, {
         views:action.value
       })

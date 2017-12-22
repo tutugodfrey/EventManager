@@ -1,9 +1,9 @@
-import React from 'react'
+
 const actions = {
-  displaySignup: (signupForm) => {
+  displayPage: (page) => {
     return {
-      type:'DISPLAY_SIGNUP',
-      value:signupForm
+      type:'DISPLAY_PAGES',
+      value:page
         }
   }
 }
