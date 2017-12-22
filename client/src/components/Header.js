@@ -13,6 +13,7 @@ class Header extends React.Component {
       views:<Home />
     }
   }
+  
   homeClick(e) {
     e.preventDefault
     this.props.store.dispatch(actions.displayPage(Home))

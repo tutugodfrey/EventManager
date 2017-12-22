@@ -12,9 +12,8 @@ class App extends React.Component {
   }
  
  render() {
-  console.log(this.props.store)
    return (
-       <Header store = {this.props.store } />
+    <Header store = {this.props.store } />
  ); 
  }
 }

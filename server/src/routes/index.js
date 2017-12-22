@@ -58,10 +58,12 @@ const Routes = class {
     });
 
     // route for users signup and signin
-    app.post('/users/signup', usersUpload.single('users-pix'), this.users.signup );
+    app.post('/users/signup', this.users.signup );
+    // app.post('/users/signup', usersUpload.single('usersPix'), this.users.signup );
     // app.post('/users/signup', usersUpload.single('users-pix'), this.users.signup );
     app.post('/users/signin', this.users.signin); 
     app.delete('/users/:userId', this.users.deleteUser); 
+    app.get('/users', this.users.getUsers); 
     app.use('/api', this.securedApi);
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
@@ -79,7 +81,7 @@ const Routes = class {
       }
     });   
     
-    this.securedApi.get('/users', this.users.getUsers); 
+    // this.securedApi.get('/users', this.users.getUsers); 
     this.securedApi.get('/users/:userId', this.users.getUser);
     this.securedApi.put('/users/:userId', this.users.updateUsers);
     this.securedApi.post('/centers', centersUpload.single('centers-pix'), this.eventCenters.addEventCenter);
