@@ -10,7 +10,7 @@
     "test": "npm run build && mocha  server/trans/test/  --timeout 10000 --exit",
     "start": "npm run build && node ./server/bin/production",
     "start:react": "webpack -w -d",
-    "dev": "webpack-dev-server content-base /client/src --inline --hot",
+    "webpack:dev": "webpack-dev-server --hot --inline",
     "migrate": "node_modules/.bin/sequelize db:migrate",
     "undo:migrate": "node_modules/.bin/sequelize db:migrate:undo:all",
     "remove-trans": "rm -rf ./server/trans",
