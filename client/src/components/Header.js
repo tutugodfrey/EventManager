@@ -2,13 +2,14 @@ import React from 'react';
 import Link from './elementComponents/Link';
 import actions from './../redux/actions'
 import SignupForm from './signup'
+import SigninForm from './signin'
 // import store from './../redux/store';
 
 class Header extends React.Component {
   constructor () {
     super();
     this.state = {
-        views: ''
+      views:<SigninForm />
     }
   }
   handleClick(e) {
