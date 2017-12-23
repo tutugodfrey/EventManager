@@ -13,7 +13,7 @@ class Header extends React.Component {
       views:<Home />
     }
   }
-  
+
   homeClick(e) {
     e.preventDefault
     this.props.store.dispatch(actions.displayPage(Home))
@@ -35,7 +35,7 @@ class Header extends React.Component {
     this.props.store.dispatch(actions.displayPage(SigninForm))
     this.newState = this.props.store.getState()
     this.setState({
-     views:<this.newState.views />
+     views:<this.newState.views store = {this.props.store} />
     })
   }
   
