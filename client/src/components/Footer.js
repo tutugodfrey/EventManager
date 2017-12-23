@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from './elementComponents/Link';
 import actions from './../redux/actions'
-import SignupForm from './signup'
-import SigninForm from './signin'
-import Home from './Home'
+import AboutUs from './footerComponents/AboutUs'
+import ContactUs from './footerComponents/ContactUs'
+import TermsOfUse from './footerComponents/TermsOfUse'
 
 class Footer extends React.Component {
   constructor () {
@@ -13,17 +13,17 @@ class Footer extends React.Component {
     }
   }
 
-  homeClick(e) {
+  aboutUsClick(e) {
     e.preventDefault
-    this.props.store.dispatch(actions.displayPage(Home))
+    this.props.store.dispatch(actions.displayPage(AboutUs))
   }
-  signupClick(e) {
+  contactUsClick(e) {
     e.preventDefault
-    this.props.store.dispatch(actions.displayPage(SignupForm))
+    this.props.store.dispatch(actions.displayPage(ContactUs))
   }
-  signinClick(e) {
+  termsOfUseClick(e) {
     e.preventDefault
-    this.props.store.dispatch(actions.displayPage(SigninForm))
+    this.props.store.dispatch(actions.displayPage(TermsOfUse))
 
   }
   
@@ -33,15 +33,15 @@ render() {
       <nav className = 'navbar navbar-inverse'> 
         <ul main-menu = 'hp-nav' className = 'nav'>
           <li className = 'nav-items' >
-            <Link hrefId = 'home' dispatch = { this.props.dispatch } clicked = {this.homeClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Home'/>
+            <Link hrefId = 'bout-us' dispatch = { this.props.dispatch } clicked = {this.aboutUsClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'About Us '/>
           </li>
         </ul>
         <ul id = 'hp-nav' className = 'nav'>
           <li className = 'nav-items' >
-          <Link hrefId = 'signup'  dispatch = { this.props.dispatch } clicked = {this.signupClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Signup'/>
+          <Link hrefId = 'contact-us'  dispatch = { this.props.dispatch } clicked = {this.contactUsClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Contact Us'/>
           </li>
           <li>
-          <Link hrefId = 'signin' dispatch = { this.props.dispatch } clicked = {this.signinClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Signin'/>
+          <Link hrefId = 'terms-of-use' dispatch = { this.props.dispatch } clicked = {this.termsOfUseClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Terms of Use'/>
           </li>
         </ul>
       </nav>
