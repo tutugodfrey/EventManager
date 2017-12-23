@@ -78,7 +78,8 @@ const UsersController = class {
 					const token = jwt.sign({authenKey}, process.env.SECRET_KEY, {	expiresIn:'48h'	});
 					res.status(200).send({
 						success: true,
-						token: token
+						token: token,
+						userType: user.userType
 					});
 				} else {
 					res.status(400).send( {message: 'password is not correct'});
