@@ -2,8 +2,10 @@ import React from 'react';
 import { FormInput } from './formComponents/formInputs.js';
 import Link from './elementComponents/Link';
 import Form from './elementComponents/Form';
+import SigninSucced from './SigninSucced';
 import Div from './elementComponents/Div';
-import actions from './../redux/actions'
+import actions from './../redux/actions';
+
 class SigninForm extends React.Component {
   constructor () {
     super();
@@ -44,10 +46,9 @@ class SigninForm extends React.Component {
         token:data.token
       })
       this.props.store.dispatch(actions.setToken(data.token))
+      this.props.store.dispatch(actions.displayPage(SigninSucced))
       const newState = this.props.store.getState()
-      console.log(newState)
     })
-    // .catch(error => console.log(error)
   }
   handleSignin(event) {
   event.preventDefault()
@@ -56,7 +57,6 @@ class SigninForm extends React.Component {
     username:this.state.username,
   }
  this.signin(userdata)
-   // console.log(this.refs.fullname.value)
   }
 
   form() {
@@ -74,7 +74,6 @@ class SigninForm extends React.Component {
   }
   
   render () {
-    console.log(this.props)
     return (
       <div> 
       <Div divClass = 'card' divContent = {this.form()} /> 

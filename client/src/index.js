@@ -18,6 +18,7 @@ import store from './redux/store';
 const initialState = 'welcome to eventmanager';
 // const store = configureStore(initialState)
 // console.log(store)
+
 ReactDom.render(
   <Provider store = {store } >
   <App store = {store } />

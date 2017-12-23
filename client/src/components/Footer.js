@@ -5,7 +5,7 @@ import SignupForm from './signup'
 import SigninForm from './signin'
 import Home from './Home'
 
-class Header extends React.Component {
+class Footer extends React.Component {
   constructor () {
     super();
     this.state = {
@@ -50,4 +50,4 @@ render() {
   }
 }
 
-export default Header;
+export default Footer;
