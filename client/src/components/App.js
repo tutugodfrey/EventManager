@@ -11,7 +11,7 @@ class App extends React.Component {
     super();
     this.state = {
       mainView:Home,
-      token: '',
+      userData: {},
       header:'',
       footer:''
     }
@@ -20,7 +20,7 @@ class App extends React.Component {
  componentWillMount() {
   this.setState({
     header: this.props.store.getState().header,
-    token:this.props.store.getState().token,
+    userData:this.props.store.getState().userData,
     mainView: this.props.store.getState().mainView,
     footer: this.props.store.getState().footer
   })

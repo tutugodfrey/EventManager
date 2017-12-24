@@ -17,9 +17,9 @@ export default function reducer(state= initialState, action) {
      return Object.assign({}, state, {
       mainView:action.value
       })
-    case 'SET_TOKEN':
+    case 'SET_USER_DATA':
       return Object.assign({}, state, {
-        token:action.value
+        userData:action.value
       })
     case 'DISPLAY_FOOTER':
     return Object.assign({}, state, {

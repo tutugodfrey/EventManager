@@ -2,7 +2,7 @@
 const actions = {
   displayHeader: (header) => {
     return {
-      type : 'SET_TOKEN',
+      type : 'SET_HEADER',
       value: header
     }
   },
@@ -14,14 +14,14 @@ const actions = {
   },
   displayFooter: (footer) => {
     return {
-      type : 'SET_TOKEN',
+      type : 'SET_FOOTER',
       value: footer
     }
   },
-  setToken: (token) => {
+  setUserData: (data) => {
     return {
-      type : 'SET_TOKEN',
-      value: token
+      type : 'SET_USER_DATA',
+      value: data
     }
   }
 }

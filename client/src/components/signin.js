@@ -45,7 +45,7 @@ class SigninForm extends React.Component {
       this.setState({
         token:data.token
       })
-      this.props.store.dispatch(actions.setToken(data.token))
+      this.props.store.dispatch(actions.setUserData(data))
       this.props.store.dispatch(actions.displayPage(SigninSucced))
       const newState = this.props.store.getState()
     })
