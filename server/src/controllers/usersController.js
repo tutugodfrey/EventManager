@@ -79,7 +79,8 @@ const UsersController = class {
 					res.status(200).send({
 						success: true,
 						token: token,
-						userType: user.userType
+						userType: user.userType,
+						userId:user.id
 					});
 				} else {
 					res.status(400).send( {message: 'password is not correct'});
