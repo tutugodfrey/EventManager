@@ -3,7 +3,8 @@ import { FormInput } from './formComponents/formInputs.js';
 import Link from './elementComponents/Link';
 import Form from './elementComponents/Form';
 import SigninSucced from './SigninSucced';
-import AdminHeader from './AdminHeader'
+import AdminHeader from './AdminHeader';
+import UserHeader from './userHeader'
 import Div from './elementComponents/Div';
 import actions from './../redux/actions';
 
@@ -54,7 +55,7 @@ class SigninForm extends React.Component {
       } else if (data.userType === 'regular') {
         this.props.store.dispatch(actions.setUserData(data));
         this.props.store.dispatch(actions.displayPage(SigninSucced));
-        // this.props.store.dispatch(actions.displayPage(SigninSucced))
+        this.props.store.dispatch(actions.displayHeader(UserHeader))
       }
       // const newState = this.props.store.getState()
     })

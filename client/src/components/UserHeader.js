@@ -1,11 +1,13 @@
 import React from 'react';
 import Link from './elementComponents/Link';
 import actions from './../redux/actions'
-import SignupForm from './signup'
-import SigninForm from './signin'
+import AddEvent from './AddEvent'
+import ModifyEvent from './ModifyEvent';
+import ViewEvents from './ViewEvents';
+import SigninForm from './signin';
 import Home from './Home'
 
-class Header extends React.Component {
+class userHeader extends React.Component {
   constructor () {
     super();
     this.state = {
@@ -17,14 +19,21 @@ class Header extends React.Component {
     e.preventDefault
     this.props.store.dispatch(actions.displayPage(Home))
   }
-  signupClick(e) {
+  addEventClick(e) {
     e.preventDefault
-    this.props.store.dispatch(actions.displayPage(SignupForm))
+    this.props.store.dispatch(actions.displayPage(AddEvent))
   }
-  signinClick(e) {
+  modifyEventClick(e) {
+    e.preventDefault
+    this.props.store.dispatch(actions.displayPage(ModifyEvent))
+  }
+  viewEventClick(e) {
+    e.preventDefault
+    this.props.store.dispatch(actions.displayPage(ViewEvents))
+  }
+  logoutClick(e) {
     e.preventDefault
     this.props.store.dispatch(actions.displayPage(SigninForm))
-
   }
   
 render() {
@@ -35,13 +44,19 @@ render() {
           <li className = 'nav-items' >
             <Link hrefId = 'home' dispatch = { this.props.dispatch } clicked = {this.homeClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Home'/>
           </li>
-        </ul>
-        <ul id = 'hp-nav' className = 'nav'>
           <li className = 'nav-items' >
-          <Link hrefId = 'signup'  dispatch = { this.props.dispatch } clicked = {this.signupClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Signup'/>
+          <Link hrefId = 'add-center'  dispatch = { this.props.dispatch } clicked = {this.addEventClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Add Event'/>
           </li>
           <li>
-          <Link hrefId = 'signin' dispatch = { this.props.dispatch } clicked = {this.signinClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Signin'/>
+          <Link hrefId = 'modify-center' dispatch = { this.props.dispatch } clicked = {this.modifyEventClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Modify Event'/>
+          </li>
+          <li>
+          <Link hrefId = 'view-centers' dispatch = { this.props.dispatch } clicked = {this.viewEventClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Events'/>
+          </li>
+        </ul>
+        <ul id = 'hp-nav' className = 'nav'>
+        <li>
+          <Link hrefId = 'logout' dispatch = { this.props.dispatch } clicked = {this.logoutClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Logout' />
           </li>
         </ul>
       </nav>
@@ -50,4 +65,4 @@ render() {
   }
 }
 
-export default Header;
+export default userHeader;
