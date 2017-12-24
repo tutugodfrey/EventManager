@@ -9,7 +9,7 @@ const initialState = {
 }
 export default function reducer(state= initialState, action) {
   switch(action.type) {
-    case 'DISPLAY_HEADER':
+    case 'SET_HEADER':
     return Object.assign({}, state, {
       header:action.value
     })
@@ -21,7 +21,7 @@ export default function reducer(state= initialState, action) {
       return Object.assign({}, state, {
         userData:action.value
       })
-    case 'DISPLAY_FOOTER':
+    case 'SET_FOOTER':
     return Object.assign({}, state, {
       footer:action.value
     })
