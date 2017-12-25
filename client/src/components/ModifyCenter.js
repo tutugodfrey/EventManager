@@ -79,15 +79,15 @@ class ModifyCenterForm extends React.Component {
       body:JSON.stringify(data)
     }
 
-    fetch(`http://localhost:8080/api/centers/ ${this.state.centerId}`, options)
-    .then(res => res.json())
-    .then(data => { 
-      if(this.state.userType === 'admin') {
+    if(this.state.userType === 'admin') {
+      fetch(`http://localhost:8080/api/centers/ ${this.state.centerId}`, options)
+      .then(res => res.json())
+      .then(data => { 
         this.props.store.dispatch(actions.displayPage(ViewCenters));
-      } else if (data.userType === 'regular') {
-        console.log('you are not allowed to perform this action')
-      }
-    })
+      })
+    } else if (data.userType === 'regular') {
+      console.log('you are not allowed to perform this action')
+    }
   }
 
   modifyCenter(event) {
