@@ -84,7 +84,8 @@ const Routes = class {
     // this.securedApi.get('/users', this.users.getUsers); 
     this.securedApi.get('/users/:userId', this.users.getUser);
     this.securedApi.put('/users/:userId', this.users.updateUsers);
-    this.securedApi.post('/centers', centersUpload.single('centers-pix'), this.eventCenters.addEventCenter);
+    this.securedApi.post('/centers', this.eventCenters.addEventCenter);
+    // this.securedApi.post('/centers', centersUpload.single('centers-pix'), this.eventCenters.addEventCenter);
     this.securedApi.get('/centers', this.eventCenters.getEventCenters);
     this.securedApi.get('/centers/:centerId', this.eventCenters.getEventCenter);
     this.securedApi.get('/centers/centername/:name', eventCenters.getCenterByName);

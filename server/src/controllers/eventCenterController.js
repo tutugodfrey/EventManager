@@ -18,7 +18,8 @@ const EventCenterController = class {
       )
       .then(eventCenter => {
         if(!eventCenter){
-          const destination = req.file.path;
+          // const destination = req.file.path;
+          const destination = 'path-to-photo';
           return centers
           .create({
             name: req.body.name,
