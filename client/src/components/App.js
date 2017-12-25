@@ -28,6 +28,7 @@ class App extends React.Component {
  
  render() {
   let unsubscribe = this.props.store.subscribe(() => {
+   // console.log(this.props.store.getState());
    this.setState({
     header: this.props.store.getState().header,
     token:this.props.store.getState().token,

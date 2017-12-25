@@ -29,6 +29,12 @@ const actions = {
       type : 'SET_CENTERS',
       value: data
     }
+  },
+  setCenterId: (id) => {
+    return {
+      type: 'SET_CENTER_ID',
+      value:id
+  }
   }
 }
 

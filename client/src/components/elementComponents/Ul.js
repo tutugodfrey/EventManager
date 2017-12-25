@@ -3,7 +3,7 @@ import React from 'react';
 class Li extends React.Component {
   render () {
     let items;
-    items = this.props.listItems.map(item => <li>{item}</li>)
+    items = this.props.listItems.map(item => <li key = {item}>{item}</li>)
     return (
       items
     )

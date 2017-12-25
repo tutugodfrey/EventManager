@@ -35,13 +35,11 @@ render() {
           <li className = 'nav-items' >
             <Link hrefId = 'bout-us' dispatch = { this.props.dispatch } clicked = {this.aboutUsClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'About Us '/>
           </li>
-        </ul>
-        <ul id = 'hp-nav' className = 'nav'>
           <li className = 'nav-items' >
-          <Link hrefId = 'contact-us'  dispatch = { this.props.dispatch } clicked = {this.contactUsClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Contact Us'/>
+            <Link hrefId = 'contact-us'  dispatch = { this.props.dispatch } clicked = {this.contactUsClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Contact Us'/>
           </li>
-          <li>
-          <Link hrefId = 'terms-of-use' dispatch = { this.props.dispatch } clicked = {this.termsOfUseClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Terms of Use'/>
+          <li className = 'nav-items' >
+            <Link hrefId = 'terms-of-use' dispatch = { this.props.dispatch } clicked = {this.termsOfUseClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Terms of Use'/>
           </li>
         </ul>
       </nav>
