@@ -150,5 +150,39 @@ const EventCenterController = class {
       res.status(402).send({ message: 'You are allowed to perform this action'})
     }
   }
+  deleteEventCenter(req, res) {
+    if(req.body.userType === 'admin') {
+      const centerId = parseInt(req.params.centerId)
+      return centers
+      .find(
+        {
+          where: {
+            id: centerId
+        }
+      }
+      )
+      .then(eventCenter => {
+        if(eventCenter){
+          return eventCenter
+          .destroy({
+            where:{
+              id:centerId
+            }
+          })
+          .then(updatedCenter => {
+            res.status(200).send({ message: 'center has been deleted'})
+          })
+        } else {
+          res.status(404).send({message: 'Event center not found'});
+        }
+      })
+      .catch(error => {
+        res.status(500).send(error)
+      })
+    } else {
+      res.status(402).send({ message: 'You are allowed to perform this action'})
+    }
+  }
+
 };
 export default EventCenterController;

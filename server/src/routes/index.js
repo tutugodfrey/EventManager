@@ -91,6 +91,7 @@ const Routes = class {
     this.securedApi.get('/centers/centername/:name', eventCenters.getCenterByName);
     this.securedApi.get('/centers/location/:location', eventCenters.getCenterByLocation);
     this.securedApi.put('/centers/:centerId', this.eventCenters.updateEventCenter);
+    this.securedApi.delete('/centers/:centerId', this.eventCenters.deleteEventCenter);
      // route controllers for events
      this.securedApi.post('/events', eventsUpload.single('events-pix'), this.events.addEvent);
      this.securedApi.put('/events/:eventId', this.events.updateEvent);
