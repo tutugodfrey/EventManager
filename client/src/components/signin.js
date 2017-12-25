@@ -47,7 +47,6 @@ class SigninForm extends React.Component {
       this.setState({
         token:data.token
       })
-       
       if(data.userType === 'admin') {
         this.props.store.dispatch(actions.setUserData(data));
         this.props.store.dispatch(actions.displayPage(SigninSucced));

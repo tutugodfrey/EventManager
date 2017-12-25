@@ -23,6 +23,12 @@ const actions = {
       type : 'SET_USER_DATA',
       value: data
     }
+  },
+  setCenters: (data) => {
+    return {
+      type : 'SET_CENTERS',
+      value: data
+    }
   }
 }
 

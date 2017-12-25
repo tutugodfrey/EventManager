@@ -25,6 +25,10 @@ export default function reducer(state= initialState, action) {
     return Object.assign({}, state, {
       footer:action.value
     })
+    case 'SET_CENTERS':
+    return Object.assign({}, state, {
+      centers:action.value
+    })
     default:
       return state;
   }
