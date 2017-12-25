@@ -17,6 +17,8 @@ class Center extends React.Component {
       <p> {this.props.cost} </p>
       <p> {this.props.sits} </p>
       <Ul listItems = {this.props.listItem} />
+      <Link hrefLink = '#' hrefContent = 'View Events' />
+      <Link hrefLink = '#' hrefContent = 'Delete Center' />
       <Link hrefLink = '#' hrefContent = 'Modify Center' />
       </div>
     )
