@@ -21,7 +21,6 @@ class AddEventForm extends React.Component {
         location:'Warri',
         facilities:['Air Condition', 'Catering', 'Projector'],
         cost: 23,
-        sits:560
       },
      user: {
         id:2,
@@ -41,6 +40,48 @@ class AddEventForm extends React.Component {
       }
     })
   }
+
+ eventTypeChange(event) {
+    event.preventDefault()
+    this.setState({
+      eventType:event.target.value
+    })
+  }
+  eventDayChange(event) {
+    event.preventDefault()
+    this.setState({
+      day:event.target.value
+    })
+  }
+  eventMonthChange(event) {
+    event.preventDefault()
+    this.setState({
+      month:event.target.value
+    })
+  }
+  eventYearChange(event) {
+    event.preventDefault()
+    this.setState({
+      year:event.target.value
+    })
+  }
+  eventPixChange(event) {
+    event.preventDefault()
+    this.setState({
+      eventPix:event.target.value
+    })
+  }
+  facilitiesChange(event) {
+    event.preventDefault()
+    this.setState({
+      gender:event.target.value
+    })
+  }
+  addEvent(event) {
+    event.preventDefault();
+    console.log(this.props.store.getState().userData.token)
+    console.log('add event')
+  }
   form(){
    return <Form formId = 'addCenterForm' method = 'post' action = '/api/events' formControls = {this.content()} />
   }
@@ -48,16 +89,60 @@ class AddEventForm extends React.Component {
    return ( 
     <div> 
         <h1> Add Event </h1>
-        <FormInput type = 'text' id ='type-of-event' labelValue = 'Type of Event' divClass = 'form-group' inputClass = 'requiredFields form-control' ref = 'name' name = 'type' placeholder = 'Type of Event' /><br />
-        <FormSelect inputClass = 'requiredFields form-control' name = 'day' options = {this.state.days} />
-        <FormSelect inputClass = 'requiredFields form-control' name = 'month' options = {this.state.months} />
-        <FormSelect inputClass = 'requiredFields form-control' name = 'year' options = {this.state.years} />
-        <FormInput type = 'hidden' id ='centerId' name = 'centerId' value = {this.state.center.id} /><br />
-        <FormInput type = 'hidden' id ='userId' name = 'userId' value = {this.state.user.id} /><br />
-        <FormInput type = 'file' id ='photo' labelValue = 'Photo' inputClass = 'form-group' name = 'centers-pix' /><br />
-        <FormInput type = 'text' id ='sits' labelValue = 'Sits' divClass = 'form-group' inputClass = 'requiredFields form-control' ref = 'sits' name = 'sits' placeholder = 'Sits' /><br />
-        <CheckBox checkBoxData = {this.state.checkBoxData} />
-        <FormInput type = 'submit' inputClass = 'btn btn-primary' value = 'Add Center' />
+        <FormInput 
+        type = 'text'
+          id ='type-of-event'
+          labelValue = 'Type of Event' 
+          divClass = 'form-group' 
+          inputClass = 'requiredFields form-control' 
+          ref = 'name' 
+          onChange = {this.eventTypeChange.bind(this)}
+          name = 'type' 
+          placeholder = 'Type of Event' 
+        /><br />
+        <FormSelect 
+          inputClass = 'requiredFields form-control' 
+          onChange = {this.eventDayChange.bind(this)}
+          name = 'day' 
+          options = {this.state.days} 
+        />
+        <FormSelect 
+          inputClass = 'requiredFields form-control' 
+          onChange = {this.eventMonthChange.bind(this)} 
+          name = 'month' 
+          options = {this.state.months} 
+        />
+        <FormSelect 
+          inputClass = 'requiredFields form-control' 
+          onChange = {this.eventYearChange.bind(this)}
+          name = 'year' 
+          options = {this.state.years} 
+        />
+        <FormInput 
+        type = 'hidden' 
+        id ='centerId' 
+        name = 'centerId' 
+        value = {this.state.center.id} 
+        /><br />
+        <FormInput 
+          type = 'hidden' 
+          id ='userId' 
+          name = 'userId' 
+          value = {this.state.user.id} 
+        /><br />
+        <FormInput 
+          type = 'file' 
+          id ='photo' 
+          labelValue = 'Photo' 
+          inputClass = 'form-group' 
+          name = 'centers-pix' 
+          onChange = {this.eventPixChange.bind(this)}
+        /><br />
+        <CheckBox 
+          checkBoxData = {this.state.checkBoxData}
+          onChange = {this.facilitiesChange.bind(this)} 
+        />
+        <FormInput type = 'submit' inputClass = 'btn btn-primary' click = {this.addEvent.bind(this)} value = 'Add Center' />
       </div>
     )
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import Link from './elementComponents/Link';
 import Ul from './elementComponents/Ul';
 import Image from './elementComponents/image';
-import ModifyCenterForm from './ModifyCenter';
+import AddEvent from './AddEvent';
 import ViewCenters from './ViewCenters';
 import actions from './../redux/actions'
 
@@ -48,7 +48,7 @@ class UserCenter extends React.Component {
 
       handleAddEvent(event) { 
         event.preventDefault()
-        this.props.store.dispatch(actions.displayPage(ModifyCenterForm))
+        this.props.store.dispatch(actions.displayPage(AddEvent))
         this.props.store.dispatch(actions.setCenterId(this.props.centerId))
         }
   render () {

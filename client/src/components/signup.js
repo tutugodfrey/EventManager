@@ -86,21 +86,7 @@ class SignupForm extends React.Component {
      usersPix:event.target.value
     })
   }
-  /*
-  async signup2(data) {
-    const header =  new Headers();
-    headers.append('Content-Type', 'application/json');
-    const options = {
-      method:'POST',
-      headers,
-      body:JSON.stringtify(data)
-    }
-    const request = new Request('users/signup', options)
-    const response = await fetch(request);
-    const status = await response.status
-      console.log(status)
-  }
-  */
+
   signup(data) {
     const headers =  new Headers();
     headers.append('Content-Type', 'application/json');
