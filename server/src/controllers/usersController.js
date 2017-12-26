@@ -24,13 +24,11 @@ const UsersController = class {
 		//	const destination = req.file.path;
 			const passwd1 = req.body.passwd1;
 			const passwd2 = req.body.passwd2;
-			console.log(passwd1)
 			let passwd;
 				if(passwd1 === passwd1) {
 					bcrypt.genSalt(10, function(err, salt) {
 						bcrypt.hash(passwd1, salt, function(err, hash) {
 						passwd = hash;
-						console.log('i got here')
 						return users
 						.create({
 						password: passwd,
@@ -39,7 +37,9 @@ const UsersController = class {
 						username: req.body.username,
 						gender: req.body.gender,
 						imgUrl: destination,
-						userType:req.body.userType 
+						userType:req.body.userType,
+						securityQtn: req.body.securityQtn,
+						securityAns:req.body.securityAns
 					})
 					.then(signup => res.status(201).send(signup))
 					.catch(error => res.status(400).send(error));

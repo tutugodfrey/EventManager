@@ -21,6 +21,14 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull:false
      },
+     securityQtn: {
+      type: DataTypes.STRING,
+      allowNull:false
+     },
+     securityAns: {
+      type: DataTypes.STRING,
+      allowNull:false
+     },
      imgUrl: {
       type: DataTypes.STRING,
       allowNull:true

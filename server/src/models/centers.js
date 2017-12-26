@@ -2,7 +2,7 @@
 
 export default  (sequelize, DataTypes) => {
   const centers = sequelize.define('centers', {
-    name: {
+    centerName: {
       type:DataTypes.STRING,
       allowNull:false
     },

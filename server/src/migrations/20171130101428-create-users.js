@@ -30,6 +30,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      securityQtn: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      securityAns: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       imgUrl: {
         type: Sequelize.STRING,
         allowNull: true

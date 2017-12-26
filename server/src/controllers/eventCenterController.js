@@ -11,7 +11,7 @@ const EventCenterController = class {
       .find(
         {
           where: {
-            name: req.body.name,
+            centerName: req.body.centerName,
             location:req.body.location
           }
         }
@@ -22,7 +22,7 @@ const EventCenterController = class {
           const destination = 'path-to-photo';
           return centers
           .create({
-            name: req.body.name,
+            centerName: req.body.centerName,
             location: req.body.location,
             sits: req.body.sits,
             cost: req.body.cost,
@@ -130,7 +130,7 @@ const EventCenterController = class {
         if(eventCenter){
           return eventCenter
           .update({
-            name: req.body.name || eventCenter.name,
+            name: req.body.centerName || eventCenter.centerName,
             location:req.body.location || eventCenter.location,
             sits: req.body.sits || eventCenter.sits,
             cost: req.body.cost || eventCenter.cost,

@@ -19,16 +19,17 @@ const EventsController = class {
         return events
         .find({
           where:{
-            date:req.body.date,
+            eventDate:req.body.eventDate,
             centerId:centerId
           }
         })
         .then(eventFound => {
           if(!eventFound){
-            const destination = req.file.path;
+            const destination = 'req.file.path;'
+            // const destination = req.file.path;
             return events
             .create({
-              type: req.body.type,
+              eventType: req.body.eventType,
               date: req.body.date,
               facilities:req.body.facilities,
               imgUrl:destination,
@@ -73,8 +74,8 @@ const EventsController = class {
           if(event){
             return event
             .update({
-              type: req.body.type || event.type,
-              date: req.body.date || event.date,
+              eventType: req.body.type || event.eventType,
+              eventDate: req.body.date || event.eventDate,
               facilities: req.body.facilities || event.facilities
             })
             .then(updatedEvent => res.status(201).send(updatedEvent))

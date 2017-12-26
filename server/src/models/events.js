@@ -1,17 +1,17 @@
 
 export default (sequelize, DataTypes) => {
   const events = sequelize.define('events', {
-      type:{
-        type: DataTypes.STRING,
-        allowNull:false
-      },
-      date:{
-        type:DataTypes.DATE,
-        allowNull:false
-      },
-      facilities:{
-        type:DataTypes.ARRAY(DataTypes.STRING),
-        allowNull:true
+    eventType:{
+      type: DataTypes.STRING,
+      allowNull:false
+    },
+    eventDate:{
+      type:DataTypes.DATE,
+      allowNull:false
+    },
+    facilities:{
+      type:DataTypes.ARRAY(DataTypes.STRING),
+      allowNull:true
     },
     imgUrl:{
       type:DataTypes.STRING,
