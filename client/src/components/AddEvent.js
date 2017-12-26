@@ -11,20 +11,13 @@ class AddEventForm extends React.Component {
     super();
     this.date = new Date();
     this.state = {
+      facilities:[],
       days:['day', 1,2, 3, 4, 5, ,6 ,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 2, 23, 24, 25, 6, 27, 28, 29, 30,],
       months: ['month', 1, 2, 3,4, 5, 6, 7,8, 9, 10, 11, 12],
       years:['year',  this.date.getFullYear(), this.date.getFullYear()+ 1, this.date.getFullYear() + 2, this.date.getFullYear() + 3],
       checkBoxData: {},
-      center: {
-        id:2,
-        name:'queens Tower',
-        location:'Warri',
-        facilities:['Air Condition', 'Catering', 'Projector'],
-        cost: 23,
-      },
-     user: {
-        id:2,
-      }
+     userId: '',
+     centerId: ''
     }
   }
 
@@ -73,14 +66,20 @@ class AddEventForm extends React.Component {
   }
   facilitiesChange(event) {
     event.preventDefault()
-    this.setState({
-      gender:event.target.value
-    })
+    this.state.facilities.push(event.target.value);
   }
   addEvent(event) {
     event.preventDefault();
+    const newState = this.props.store.getState();
+    const eventDetails = {
+      eventType: this.state.eventType,
+      eventDate: `${this.state.day}-${this.state.month}-${this.state.year}`,
+      facilities: this.state.facilities,
+      userId: newState.userData.userId,
+      centerId: newState.centerId
+    }
     console.log(this.props.store.getState().userData.token)
-    console.log('add event')
+    console.log(eventDetails)
   }
   form(){
    return <Form formId = 'addCenterForm' method = 'post' action = '/api/events' formControls = {this.content()} />
@@ -98,7 +97,8 @@ class AddEventForm extends React.Component {
           ref = 'name' 
           onChange = {this.eventTypeChange.bind(this)}
           name = 'type' 
-          placeholder = 'Type of Event' 
+          placeholder = 'Type of Event'
+          value = {this.state.eventType}
         /><br />
         <FormSelect 
           inputClass = 'requiredFields form-control' 
@@ -122,13 +122,13 @@ class AddEventForm extends React.Component {
         type = 'hidden' 
         id ='centerId' 
         name = 'centerId' 
-        value = {this.state.center.id} 
+        value = {this.state.centerId} 
         /><br />
         <FormInput 
           type = 'hidden' 
           id ='userId' 
           name = 'userId' 
-          value = {this.state.user.id} 
+          value = {this.state.userId} 
         /><br />
         <FormInput 
           type = 'file' 
