@@ -33,6 +33,14 @@ export default function reducer(state= initialState, action) {
     return Object.assign({}, state, {
       centerId:action.value
     })
+    case 'SET_USER_EVENTS':
+    return Object.assign({}, state, {
+      userEvents:action.value
+    })
+    case 'SET_CENTER_EVENTS':
+    return Object.assign({}, state, {
+      centerEvents:action.value
+    })
     default:
       return state;
   }

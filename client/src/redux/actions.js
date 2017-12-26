@@ -34,7 +34,19 @@ const actions = {
     return {
       type: 'SET_CENTER_ID',
       value:id
-  }
+    }
+  },
+  setUserEvents: (data) => {
+    return {
+      type : 'SET_USER_EVENTS',
+      value: data
+    }
+  },
+  setCenterEvents: (data) => {
+    return {
+      type : 'SET_CENTER_EVENTS',
+      value: data
+    }
   }
 }
 
