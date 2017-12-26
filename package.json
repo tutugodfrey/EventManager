@@ -64,6 +64,7 @@
     "redux-devtools": "^3.4.1",
     "sequelize": "^4.23.1",
     "sequelize-cli": "^3.1.0",
+    "sequelize-tools": "0.0.3",
     "superagent": "^3.8.2",
     "webpack-dev-server": "^2.9.7"
   }

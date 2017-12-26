@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from './elementComponents/Link';
 import Div from './elementComponents/Div';
-import Center from './Center'
+import Center from './Center';
+import UserCenter from './UserCenters'
 import actions from './../redux/actions'
 
 
@@ -35,11 +36,20 @@ class ViewCenters extends React.Component {
   }
 
   center() {
-    const centers = this.props.store.getState().centers;
+    const newState = this.props.store.getState();
+    const centers = newState.centers;
+    const userType = newState.userData.userType;
     let allCenters;
-    allCenters = centers.map(center => {
-      return <Center store = {this.props.store} key = {center.id} centerId = {center.id} name = {center.name} location = {center.location} sits = {center.sits} cost = {center.cost} listItem = {center.facilities} />        
-    })  
+    if(userType === 'admin') {
+      allCenters = centers.map(center => {
+        return <Center store = {this.props.store} key = {center.id} centerId = {center.id} name = {center.name} location = {center.location} sits = {center.sits} cost = {center.cost} listItem = {center.facilities} />        
+      }) 
+    } else if(userType === 'regular') {
+      allCenters = centers.map(center => {
+        return <UserCenter store = {this.props.store} key = {center.id} centerId = {center.id} name = {center.name} location = {center.location} sits = {center.sits} cost = {center.cost} listItem = {center.facilities} />        
+      }) 
+    }
+     
     this.setState({
       allCenters
     })

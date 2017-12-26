@@ -107,7 +107,6 @@ class ModifyCenterForm extends React.Component {
    return <Form formId = 'modify-center-form' method = 'put' action = '/api/centers/' formControls = {this.content()} />
   }
   content() {
-    
    return ( 
     <div> 
         <h1> Modify Center </h1>
