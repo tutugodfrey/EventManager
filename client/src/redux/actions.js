@@ -47,6 +47,12 @@ const actions = {
       type : 'SET_CENTER_EVENTS',
       value: data
     }
+  },
+  setWhichEvents: (data) => {
+    return {
+      type : 'SET_WHICH_EVENTS',
+      value: data
+    }
   }
 }
 
