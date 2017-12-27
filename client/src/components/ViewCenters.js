@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from './elementComponents/Link';
 import Div from './elementComponents/Div';
-import Center from './Center';
+import AdminCenter from './AdminCenter';
 import UserCenter from './UserCenters'
 import actions from './../redux/actions'
 
@@ -42,7 +42,7 @@ class ViewCenters extends React.Component {
     let allCenters;
     if(userType === 'admin') {
       allCenters = centers.map(center => {
-        return <Center store = {this.props.store} key = {center.id} centerId = {center.id} name = {center.name} location = {center.location} sits = {center.sits} cost = {center.cost} listItem = {center.facilities} />        
+        return <AdminCenter store = {this.props.store} key = {center.id} centerId = {center.id} name = {center.name} location = {center.location} sits = {center.sits} cost = {center.cost} listItem = {center.facilities} />        
       }) 
     } else if(userType === 'regular') {
       allCenters = centers.map(center => {
