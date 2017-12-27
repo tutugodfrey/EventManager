@@ -41,6 +41,10 @@ export default function reducer(state= initialState, action) {
     return Object.assign({}, state, {
       centerEvents:action.value
     })
+    case 'SET_ALL_EVENTS':
+    return Object.assign({}, state, {
+      allEvents:action.value
+    })
     case 'SET_WHICH_EVENTS':
     return Object.assign({}, state, {
       // expect user || center || all

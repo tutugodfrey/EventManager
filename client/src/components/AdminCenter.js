@@ -56,12 +56,12 @@ class Center extends React.Component {
   render () {
     return (
       <div>
-      <h1> {this.props.name} </h1>
+      <h1> { this.props.centerName } </h1>
       <Image imgSrc = '/centers-photo/images14.jpg' imgClass = '' />
-      <p> {this.props.location} </p>
-      <p> {this.props.cost} </p>
-      <p> {this.props.sits} </p>
-      <Ul listItems = {this.props.listItem} />
+      <p> { this.props.location } </p>
+      <p> { this.props.cost } </p>
+      <p> { this.props.sits } </p>
+      <Ul listItems = { this.props.listItems } />
       <Link hrefLink = '#' centerId = {this.props.centerId} clicked = {this.handleViewEvents.bind(this)} hrefContent = 'View Events' />
       <Link hrefLink = '#' centerId = {this.props.centerId} clicked = {this.handleDeleteCenter.bind(this)} hrefContent = 'Delete Center' />
       <Link hrefLink = '#' centerId = {this.props.centerId} clicked = {this.handleModifyCenter.bind(this)}  hrefContent = 'Modify Center' />

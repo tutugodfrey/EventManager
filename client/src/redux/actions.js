@@ -48,6 +48,12 @@ const actions = {
       value: data
     }
   },
+  setAllEvents: (data) => {
+    return {
+      type : 'SET_ALL_EVENTS',
+      value: data
+    }
+  },
   setWhichEvents: (data) => {
     return {
       type : 'SET_WHICH_EVENTS',

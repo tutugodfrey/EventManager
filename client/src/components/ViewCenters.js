@@ -42,11 +42,11 @@ class ViewCenters extends React.Component {
     let allCenters;
     if(userType === 'admin') {
       allCenters = centers.map(center => {
-        return <AdminCenter store = {this.props.store} key = {center.id} centerId = {center.id} name = {center.name} location = {center.location} sits = {center.sits} cost = {center.cost} listItem = {center.facilities} />        
+        return <AdminCenter store = {this.props.store} key = {center.id} centerId = {center.id} centerName = {center.centerName} location = {center.location} sits = {center.sits} cost = {center.cost} listItems = {center.facilities} />        
       }) 
     } else if(userType === 'regular') {
       allCenters = centers.map(center => {
-        return <UserCenter store = {this.props.store} key = {center.id} centerId = {center.id} name = {center.name} location = {center.location} sits = {center.sits} cost = {center.cost} listItem = {center.facilities} />        
+        return <UserCenter store = {this.props.store} key = {center.id} centerId = {center.id} centerName = { center.centerName } location = {center.location} sits = {center.sits} cost = {center.cost} listItems = {center.facilities} />        
       }) 
     }
      

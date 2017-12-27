@@ -52,7 +52,7 @@ class UserCenter extends React.Component {
   render () {
     return (
       <div>
-        <h1> {this.props.name} </h1>
+        <h1> {this.props.centerName} </h1>
         <Image imgSrc = '/centers-photo/images14.jpg' imgClass = '' />
         <p> {this.props.location} </p>
         <p> {this.props.cost} </p>
