@@ -16,76 +16,133 @@ class Event extends React.Component {
       center:{}
     }
   }
-   componentWillMount(){
-     this.getCenter()
-   }
+  componentWillMount(){
+    this.getCenter()
+  }
 
-    handleDeleteEvent(event) {
-      event.preventDefault()
-        const headers =  new Headers();
-        const newState = this.props.store.getState();
-        let body = {
-          userType: newState.userData.userType
-        }
-        headers.append('Content-Type', 'application/json');
-        headers.append('token', newState.userData.token)
-        const options = {
-          method:'DELETE',
-          headers,
-          body:JSON.stringify(body)
-        }
-    
-        if(newState.userData.userType === 'admin') {
-          fetch(`http://localhost:8080/api/events/ ${this.props.eventId}`, options)
-          .then(res => res.json())
-          .then(data => { 
-            this.props.store.dispatch(actions.displayPage(ViewEvent));
-          })
-        } else if (data.userType === 'regular') {
-          // require userId
-          fetch(`http://localhost:8080/api/events/ ${this.props.eventId}`, options)
-          .then(res => res.json())
-          .then(data => { 
-            this.props.store.dispatch(actions.displayPage(ViewEvent));
-          })
-        }
+  handleModifyEvent(event) {
+    console.log('Want to modify event?')
+  }
+
+  handleConfirmEvent(event) {
+    console.log('Want to confirm event?')
+  }
+
+  handleRejectEvent(event) {
+    console.log('Your are rejecting this events?')
+  }
+
+  handleDeleteEvent(event) {
+    event.preventDefault()
+    const headers =  new Headers();
+    const newState = this.props.store.getState();
+    let body = {
+      userType: newState.userData.userType
+    }
+    headers.append('Content-Type', 'application/json');
+    headers.append('token', newState.userData.token)
+    const options = {
+      method:'DELETE',
+      headers,
+      body:JSON.stringify(body)
+    }
+
+    if(newState.userData.userType === 'admin') {
+      fetch(`http://localhost:8080/api/events/ ${this.props.eventId}`, options)
+      .then(res => res.json())
+      .then(data => { 
+        this.props.store.dispatch(actions.displayPage(ViewEvents));
+      })
+    } else if ((newState.userData.userType === 'regular') && (newState.userData.userId === this.props.userId)) {
+      // require userId
+      fetch(`http://localhost:8080/api/events/ ${this.props.eventId}`, options)
+      .then(res => res.json())
+      .then(data => { 
+        this.props.store.dispatch(actions.displayPage(ViewEvents));
+      })
+    }
+  }
+  getCenter() {
+    const newState = this.props.store.getState();
+    const token = newState.userData.token;
+    const headers =  new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('token', token);
+    const options = {
+      method:'GET',
+      headers,
+    }
+    fetch(`http://localhost:8080/api/centers/${this.props.centerId}`, options)
+    .then(res => res.json())
+    .then(data => { 
+      if(data.centerName) {
+        this.setState({
+          center:data
+        })
+      } else {
+        console.log(data)
       }
-      getCenter() {
-        const newState = this.props.store.getState();
-        const token = newState.userData.token;
-        const headers =  new Headers();
-        headers.append('Content-Type', 'application/json');
-        headers.append('token', token);
-        const options = {
-          method:'GET',
-          headers,
-        }
-  
-        fetch(`http://localhost:8080/api/centers/${this.props.centerId}`, options)
-        .then(res => res.json())
-        .then(data => { 
-          if(data.centerName) {
-            this.setState({
-              center:data
-            })
-          } else {
-            console.log(data)
-          }
-        }) 
-        .catch(error => console.log(error))
-      }
+    }) 
+    .catch(error => console.log(error))
+  }
+
+  whichEvent() {
+    const userType = this.props.store.getState().userData.userType;
+    let actionLinks
+    if(userType === 'admin') {
+      actionLinks = <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleDeleteEvent.bind(this)} hrefContent = 'Reject' />
+
+    } else if(userType === 'regular') {
+      actionLinks = ''
+    }
+    const whichEvents = this.props.store.getState().whichEvents;
+    if(whichEvents === 'center') {
+      return (
+        <div>
+          <h1> {this.state.center.centerName} </h1>
+          <Image imgSrc = '/events-photo/images8.jpg' imgClass = '' />
+          <p> {this.props.eventType} </p><br/>
+          <p> {this.props.eventData} </p><br/>
+          <p> Status: {this.props.status} </p><br />
+          <Ul listItems = {this.props.listItem} />
+          <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleDeleteEvent.bind(this)} hrefContent = 'Delete Event' />
+          {actionLinks}
+        </div>
+      )
+    } else if (whichEvents === 'user') {
+      return (
+        <div>
+          <h1> {this.state.center.centerName} </h1>
+          <Image imgSrc = '/events-photo/images8.jpg' imgClass = '' />
+          <p> {this.props.eventType} </p><br/>
+          <p> {this.props.eventData} </p><br/>
+          <p> Status: {this.props.status} </p><br />
+          <Ul listItems = {this.props.listItem} />
+          <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleDeleteEvent.bind(this)} hrefContent = 'Delete Event' />
+          <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleModifyEvent.bind(this)} hrefContent = 'Modify Event' />
+        </div>
+      )
+    } else if(whichEvents === 'all') {
+      return (
+        <div>
+          <h1> {this.state.center.centerName} </h1>
+          <Image imgSrc = '/events-photo/images8.jpg' imgClass = '' />
+          <p> display event owner here </p><br />
+          <p> {this.props.eventType} </p><br/>
+          <p> {this.props.eventData} </p><br/>
+          <p> Status: {this.props.status} </p><br />
+          <Ul listItems = {this.props.listItem} />
+          <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleDeleteEvent.bind(this)} hrefContent = 'Delete Event' />
+          <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleConfirmEvent.bind(this)} hrefContent = 'Confirm' />
+          <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleRejectEvent.bind(this)} hrefContent = 'reject' />
+        </div>
+      )
+    }
+  }
 
   render () {
     return (
-      <div>
-        <h1> {this.state.center.centerName} </h1>
-        <Image imgSrc = '/events-photo/images8.jpg' imgClass = '' />
-        <p> {this.props.eventType} </p>
-        <p> {this.props.eventData} </p>
-        <p> {this.props.eventOwner} </p>
-        <Ul listItems = {this.props.listItem} />
-        <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleDeleteEvent.bind(this)} hrefContent = 'Delete Event' />
-      </div>
+       this.whichEvent() 
     )
   }
 }
