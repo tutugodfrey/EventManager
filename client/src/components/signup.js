@@ -104,10 +104,16 @@ class SignupForm extends React.Component {
 
     fetch('http://localhost:8080/users/signup', options)
     .then(res => res.json())
-    .then(data => this.props.store.dispatch(actions.displayPage(SigninForm)))
+    .then(data => {
+      if(data.username) {
+        this.props.store.dispatch(actions.displayPage(SigninForm))
+      } else {
+        console.log('error', data)
+      }
+    })
     .catch(error => console.log(error))
-  
   }
+
   handleSignup(event) {
     event.preventDefault()
     if(this.state.securityQtn === '' || this.state.securityQtn === 'select a question') {

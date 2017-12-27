@@ -14,7 +14,9 @@ class UserCenter extends React.Component {
    
   }
   handleViewEvents(event) {
-   this.props.store.dispatch(actions.displayPage(ViewEvents))
+    this.props.store.dispatch(actions.setCenterId(this.props.centerId))
+    this.props.store.dispatch(actions.setWhichEvents('center'))
+    this.props.store.dispatch(actions.displayPage(ViewEvents))
   }
     handleDeleteEvent(event) {
       event.preventDefault()

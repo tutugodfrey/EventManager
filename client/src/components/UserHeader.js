@@ -33,7 +33,8 @@ class userHeader extends React.Component {
     this.props.store.dispatch(actions.displayPage(ModifyEvent))
   }
   viewEventClick(e) {
-    e.preventDefault
+    e.preventDefault()
+    this.props.store.dispatch(actions.setWhichEvents('user'))
     this.props.store.dispatch(actions.displayPage(ViewEvents))
   }
   logoutClick(e) {
