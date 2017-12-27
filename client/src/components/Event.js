@@ -10,7 +10,15 @@ import actions from './../redux/actions'
 
 
 class Event extends React.Component {
-
+  constructor() {
+    super();
+    this.state = {
+      center:{}
+    }
+  }
+   componentWillMount(){
+     this.getCenter()
+   }
 
     handleDeleteEvent(event) {
       event.preventDefault()
@@ -42,12 +50,37 @@ class Event extends React.Component {
           })
         }
       }
+      getCenter() {
+        const newState = this.props.store.getState();
+        const token = newState.userData.token;
+        const headers =  new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('token', token);
+        const options = {
+          method:'GET',
+          headers,
+        }
+  
+        fetch(`http://localhost:8080/api/centers/${this.props.centerId}`, options)
+        .then(res => res.json())
+        .then(data => { 
+          if(data.centerName) {
+            this.setState({
+              center:data
+            })
+          } else {
+            console.log(data)
+          }
+        }) 
+        .catch(error => console.log(error))
+      }
 
   render () {
     return (
       <div>
-        <h1> {this.props.EventType} </h1>
+        <h1> {this.state.center.centerName} </h1>
         <Image imgSrc = '/events-photo/images8.jpg' imgClass = '' />
+        <p> {this.props.eventType} </p>
         <p> {this.props.eventData} </p>
         <p> {this.props.eventOwner} </p>
         <Ul listItems = {this.props.listItem} />

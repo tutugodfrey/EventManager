@@ -69,7 +69,7 @@ const EventCenterController = class {
         res.status(200).send(eventCenter);
       }
     } )
-    .catch(error => res.status(204).send({
+    .catch(error => res.status(404).send({
       message: 'No center is found matching this Id'
     }))
   }
