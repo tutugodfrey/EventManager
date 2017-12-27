@@ -3,6 +3,8 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { FormInput, FormSelect }  from './formComponents/formInputs.js';
 import Link from './elementComponents/Link';
+import SigninForm from './signin';
+import actions from './../redux/actions';
 
 class SignupForm extends React.Component {
   constructor () {
@@ -16,7 +18,6 @@ class SignupForm extends React.Component {
       passwd2:'',
       securityQtn: '',
       securityAns:'',
-      userType:'',
       usersPix: '',
       options:['select a question', 'What is the brand name of your first car?', 'What is the name of best teacher', 
       'How old are you when you got married?', 'What is the name of your favorite pet?', 'What is the name of your first school?']
@@ -77,6 +78,10 @@ class SignupForm extends React.Component {
       this.setState({
         userType:'admin'
       })
+    } else {
+      this.setState({
+        userType:''
+      })
     }
   }
   photoChange(event) {
@@ -99,7 +104,7 @@ class SignupForm extends React.Component {
 
     fetch('http://localhost:8080/users/signup', options)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => this.props.store.dispatch(actions.displayPage(SigninForm)))
     .catch(error => console.log(error))
   
   }

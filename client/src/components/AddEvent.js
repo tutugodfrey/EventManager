@@ -5,6 +5,8 @@ import { FormInput, FormSelect, CheckBox  }  from './formComponents/formInputs';
 import Div from './elementComponents/Div';
 import Form from './elementComponents/Form';
 import Link  from './elementComponents/Link';
+import ViewEvents from './ViewEvents';
+import actions from './../redux/actions';
 
 class AddEventForm extends React.Component {
   constructor () {
@@ -12,8 +14,8 @@ class AddEventForm extends React.Component {
     this.date = new Date();
     this.state = {
       facilities:[],
-      days:['day', 1,2, 3, 4, 5, ,6 ,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 2, 23, 24, 25, 6, 27, 28, 29, 30,],
-      months: ['month', 1, 2, 3,4, 5, 6, 7,8, 9, 10, 11, 12],
+      days:['day', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,],
+      months: ['month', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       years:['year',  this.date.getFullYear(), this.date.getFullYear()+ 1, this.date.getFullYear() + 2, this.date.getFullYear() + 3],
       checkBoxData: {},
      userId: '',
@@ -68,18 +70,44 @@ class AddEventForm extends React.Component {
     event.preventDefault()
     this.state.facilities.push(event.target.value);
   }
-  addEvent(event) {
+
+  addEvent(data) {
+    const headers =  new Headers();
+    const token = this.props.store.getState().userData.token;
+    headers.append('Content-Type', 'application/json');
+    headers.append('token', token);
+    const options = {
+      method:'POST',
+      enctype: 'multipath/form-data',
+      headers,
+      body:JSON.stringify(data)
+    }
+
+    fetch('http://localhost:8080/api/events', options)
+    .then(res => res.json())
+    .then(data => {
+      if(data.eventType){
+       // this.props.store.dispatch(actions.setUserEvents(data));
+        this.props.store.dispatch(actions.displayPage(ViewEvents))
+        console.log(data)
+      } else {
+        console.log(data)
+      }
+      
+    })
+    .catch(error => console.log(error))
+  }
+  handleAddEvent(event) {
     event.preventDefault();
     const newState = this.props.store.getState();
     const eventDetails = {
       eventType: this.state.eventType,
-      eventDate: `${this.state.day}-${this.state.month}-${this.state.year}`,
+      eventDate: `${this.state.year}-${this.state.month}-${this.state.day}`,
       facilities: this.state.facilities,
       userId: newState.userData.userId,
       centerId: newState.centerId
     }
-    console.log(this.props.store.getState().userData.token)
-    console.log(eventDetails)
+    this.addEvent(eventDetails);
   }
   form(){
    return <Form formId = 'addCenterForm' method = 'post' action = '/api/events' formControls = {this.content()} />
@@ -142,7 +170,7 @@ class AddEventForm extends React.Component {
           checkBoxData = {this.state.checkBoxData}
           onChange = {this.facilitiesChange.bind(this)} 
         />
-        <FormInput type = 'submit' inputClass = 'btn btn-primary' click = {this.addEvent.bind(this)} value = 'Add Center' />
+        <FormInput type = 'submit' inputClass = 'btn btn-primary' click = {this.handleAddEvent.bind(this)} value = 'Add Center' />
       </div>
     )
   }

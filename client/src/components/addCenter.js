@@ -5,6 +5,8 @@ import { FormInput, CheckBox  }  from './formComponents/formInputs';
 import Div from './elementComponents/Div';
 import Form from './elementComponents/Form';
 import Link  from './elementComponents/Link';
+import ViewCenters from './ViewCenters';
+import actions from './../redux/actions';
 
 class AddCenterForm extends React.Component {
   constructor () {
@@ -29,7 +31,7 @@ class AddCenterForm extends React.Component {
   centerNameChange(event) {
     event.preventDefault()
     this.setState({
-      name:event.target.value
+      centerName:event.target.value
     })
   }
   locationChange(event) {
@@ -52,7 +54,6 @@ class AddCenterForm extends React.Component {
   }
   facilitiesChange(event) {
     event.preventDefault()
-    console.log(event)
     if(event.target.checked) {
       this.state.facilities.push(event.target.value)
     } else {
@@ -76,14 +77,13 @@ class AddCenterForm extends React.Component {
 
     fetch('http://localhost:8080/api/centers', options)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => this.props.store.dispatch(actions.displayPage(ViewCenters)))
     .catch(error => console.log(error))
-  
   }
   handleAddCenter(event) {
     event.preventDefault()
      const centerData = {
-      name:this.state.name,
+      centerName:this.state.centerName,
       location:this.state.location,
       cost:this.state.cost,
       sits:this.state.sits,
@@ -100,7 +100,7 @@ class AddCenterForm extends React.Component {
    return ( 
     <div> 
         <h1> Add Center </h1>
-        <FormInput type = 'text' id ='name' labelValue = 'Center Name' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.centerNameChange.bind(this)} value = {this.state.centerName} ref = 'name' name = 'name' placeholder = 'name' /><br />
+        <FormInput type = 'text' id ='name' labelValue = 'Center Name' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.centerNameChange.bind(this)} value = {this.state.centerName} ref = 'name' name = 'centerName' placeholder = 'name' /><br />
         <FormInput type = 'text' id ='location' labelValue = 'Location' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.locationChange.bind(this)} value = {this.state.location} ref = 'location' name = 'location' placeholder = 'Location' /><br />
         <FormInput type = 'hidden' id ='userType' name = 'userType' value = {this.state.userType} /><br />
         <FormInput type = 'text' id ='cost' labelValue = 'Cost' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.costChange.bind(this)} value = {this.state.cost} ref = 'cost' name = 'cost' placeholder = 'Cost' /><br />
