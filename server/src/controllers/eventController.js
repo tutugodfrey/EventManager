@@ -30,7 +30,7 @@ const EventsController = class {
             return events
             .create({
               eventType: req.body.eventType,
-              date: req.body.date,
+              eventDate: req.body.eventDate,
               facilities:req.body.facilities,
               imgUrl:destination,
               centerId: parseInt(req.body.centerId),
