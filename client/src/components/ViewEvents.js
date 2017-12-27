@@ -1,22 +1,22 @@
 import React from 'react';
 import Link from './elementComponents/Link';
-import actions from './../redux/actions'
+import actions from './../redux/actions';
+import Event from './Event';
 
 
 class ViewEvents extends React.Component {
   constructor () {
     super();
+    this.state = {
+      allEvents:[]
+    }
   
   }
 
   componentWillMount(){
-    this.getEvents();
-    console.log('events', this.props.store.getState())
-   
+    this.getEvents();   
   }
-componentWillUpdate() {
-  this.getEvents();
-}
+
   getEvents() {
     const store = this.props.store.getState();
     const userId = store.userData.userId;
@@ -59,25 +59,30 @@ componentWillUpdate() {
     const newState = this.props.store.getState();
     const centers = newState.centers;
     const userType = newState.userData.userType;
-    /*
-    let allCenters;
-    if(userType === 'admin') {
-      allCenters = centers.map(center => {
-        return <Center store = {this.props.store} key = {center.id} centerId = {center.id} name = {center.name} location = {center.location} sits = {center.sits} cost = {center.cost} listItem = {center.facilities} />        
+    
+    let allEvents;
+    if(whichEvents === 'center') {
+      const events = newState.centerEvents;
+      allEvents = events.map(event => {
+        return <Event store = {this.props.store} key = {event.id} EventId = {event.id} eventType = {event.eventType} eventDate = {event.eventDate}  eventOwner = {event.eventOwner} listItem = {event.facilities} />        
       }) 
-    } else if(userType === 'regular') {
-      allCenters = centers.map(center => {
-        return <UserCenter store = {this.props.store} key = {center.id} centerId = {center.id} name = {center.name} location = {center.location} sits = {center.sits} cost = {center.cost} listItem = {center.facilities} />        
+    } else if(whichEvents === 'user') {
+      const events = newState.userEvents;
+      allEvents = events.map(event => {
+        return <Event store = {this.props.store} key = {event.id} EventId = {event.id} eventType = {event.eventType} eventDate = {event.eventDate}  eventOwner = {event.userId} listItem = {event.facilities} />        
       }) 
     }
-    */
+    
+    this.setState({
+      allEvents
+    })
   }
 
  
 render() {
   return ( 
     <div>
-      Show events
+      { this.state.allEvents }
     </div>
     )
   }
