@@ -22,14 +22,59 @@ class Event extends React.Component {
 
   handleModifyEvent(event) {
     console.log('Want to modify event?')
+    
+  }
+
+  modifyEvent(data) {
+    const headers =  new Headers();
+    const token = this.props.store.getState().userData.token;
+    headers.append('Content-Type', 'application/json');
+    headers.append('token', token);
+    const options = {
+      method:'PUT',
+      enctype: 'multipath/form-data',
+      headers,
+      body:JSON.stringify(data)
+    }
+    console.log(this.props.eventId)
+    fetch(`http://localhost:8080/api/events/${ this.props.eventId }`, options)
+    .then(res => res.json())
+    .then(data => {
+      if(data.eventType){
+        this.props.store.dispatch(actions.displayPage(ViewEvents))
+        console.log(data)
+      } else {
+        console.log(data)
+      }
+    })
+    .catch(error => console.log(error))
   }
 
   handleConfirmEvent(event) {
+    console.log(this.props.userId)
     console.log('Want to confirm event?')
+    const data = {
+      userId: this.props.userId,
+      confirm: 'true'
+    }
+    if(this.props.store.getState().userData.userType === 'admin'){
+      this.modifyEvent(data);
+    } else {
+      console.log('you are not allowed to perform this action')
+    }
   }
 
   handleRejectEvent(event) {
     console.log('Your are rejecting this events?')
+    const data = {
+      userId: this.props.userId,
+      confirm: 'false'
+    }
+    if(this.props.store.getState().userData.userType === 'admin'){
+      this.modifyEvent(data);
+    } else {
+      console.log('you are not allowed to perform this action')
+    }
   }
 
   handleDeleteEvent(event) {

@@ -64,17 +64,17 @@ class ViewEvents extends React.Component {
     if(whichEvents === 'center') {
       const events = newState.centerEvents;
       allEvents = events.map(event => {
-        return <Event store = {this.props.store} key = {event.id} EventId = {event.id} userId = {event.userId} centerId = {event.centerId} status = {event.confirm}  eventType = {event.eventType} eventDate = {event.eventDate}  listItem = {event.facilities} />        
+        return <Event store = {this.props.store} key = {event.id} eventId = {event.id} userId = {event.userId} centerId = {event.centerId} status = {event.confirm}  eventType = {event.eventType} eventDate = {event.eventDate}  listItem = {event.facilities} />        
       }) 
     } else if(whichEvents === 'user') {
       const events = newState.userEvents;
       allEvents = events.map(event => {
-        return <Event store = {this.props.store} key = {event.id} EventId = {event.id} userId = {event.userId} centerId = {event.centerId} status = {event.confirm}  eventType = {event.eventType} eventDate = {event.eventDate} listItem = {event.facilities} />        
+        return <Event store = {this.props.store} key = {event.id} eventId = {event.id} userId = {event.userId} centerId = {event.centerId} status = {event.confirm}  eventType = {event.eventType} eventDate = {event.eventDate} listItem = {event.facilities} />        
       }) 
     } else if (whichEvents == 'all') {
       const events = newState.allEvents;
       allEvents = events.map(event => {
-        return <Event store = {this.props.store} key = {event.id} EventId = {event.id} userId = {event.userId} centerId = {event.centerId} status = {event.confirm}  eventType = {event.eventType} eventDate = {event.eventDate} listItem = {event.facilities} />        
+        return <Event store = {this.props.store} key = {event.id} eventId = {event.id} userId = {event.userId} centerId = {event.centerId} status = {event.confirm}  eventType = {event.eventType} eventDate = {event.eventDate} listItem = {event.facilities} />        
       })
     }
     

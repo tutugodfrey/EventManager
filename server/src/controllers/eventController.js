@@ -74,9 +74,13 @@ const EventsController = class {
           if(event){
             return event
             .update({
-              eventType: req.body.type || event.eventType,
-              eventDate: req.body.date || event.eventDate,
-              facilities: req.body.facilities || event.facilities
+              eventType: req.body.eventType || event.eventType,
+              eventDate: req.body.eventDate || event.eventDate,
+              facilities: req.body.facilities || event.facilities,
+              imgUrl: req.body.imgUrl || event.imgUrl,
+              confirm: req.body.confirm || event.confirm,
+              userId: req.body.userId || event.userId,
+              centerId: req.body.centerId || event.centerId
             })
             .then(updatedEvent => res.status(201).send(updatedEvent))
             .catch(error => res.status(500).send(error)); 
