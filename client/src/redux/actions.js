@@ -54,6 +54,12 @@ const actions = {
       value: data
     }
   },
+  setEventId: (id) => {
+    return {
+      type: 'SET_EVENT_ID',
+      value: id
+    }
+  },
   setWhichEvents: (data) => {
     return {
       type : 'SET_WHICH_EVENTS',

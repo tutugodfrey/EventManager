@@ -57,7 +57,7 @@ class UserCenter extends React.Component {
         <p> {this.props.location} </p>
         <p> {this.props.cost} </p>
         <p> {this.props.sits} </p>
-        <Ul listItems = {this.props.listItem} />
+        <Ul listItems = { this.props.listItems } />
         <Link hrefLink = '#' centerId = {this.props.centerId} clicked = {this.handleViewEvents.bind(this)} hrefContent = 'View Events' />
         <Link hrefLink = '#' centerId = {this.props.centerId} clicked = {this.handleAddEvent.bind(this)} hrefContent = 'Add Event' />
       </div>

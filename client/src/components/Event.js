@@ -5,6 +5,7 @@ import Image from './elementComponents/image';
 import AddEvent from './AddEvent';
 import ViewCenters from './ViewCenters';
 import ViewEvents from './ViewEvents';
+import ModifyEvent from './ModifyEvent';
 import actions from './../redux/actions'
 
 
@@ -21,7 +22,9 @@ class Event extends React.Component {
   }
 
   handleModifyEvent(event) {
-    console.log('Want to modify event?')
+    console.log('Want to modify event?');
+    this.props.store.dispatch(actions.setEventId(this.props.eventId));
+    this.props.store.dispatch(actions.displayPage(ModifyEvent));
     
   }
 
@@ -81,15 +84,15 @@ class Event extends React.Component {
     event.preventDefault()
     const headers =  new Headers();
     const newState = this.props.store.getState();
-    let body = {
-      userType: newState.userData.userType
+    let data = {
+      userId: this.props.userId
     }
     headers.append('Content-Type', 'application/json');
     headers.append('token', newState.userData.token)
     const options = {
       method:'DELETE',
       headers,
-      body:JSON.stringify(body)
+      body:JSON.stringify(data)
     }
 
     if(newState.userData.userType === 'admin') {
@@ -104,7 +107,10 @@ class Event extends React.Component {
       .then(res => res.json())
       .then(data => { 
         this.props.store.dispatch(actions.displayPage(ViewEvents));
+        console.log('the event has been deleted')
       })
+    } else {
+      console.log('you are not allowed to perform this action');
     }
   }
   getCenter() {
@@ -133,12 +139,16 @@ class Event extends React.Component {
 
   whichEvent() {
     const userType = this.props.store.getState().userData.userType;
-    let actionLinks
+    let deleteLink = <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleDeleteEvent.bind(this)} hrefContent = 'Delete' />;
+    let rejectLink = <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleRejectEvent.bind(this)} hrefContent = 'Cancel' />;
+    let confirmLink = <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleConfirmEvent.bind(this)} hrefContent = 'Confirm' />;
+    let modifyLink = <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleModifyEvent.bind(this)} hrefContent = 'Modify Event' />;
     if(userType === 'admin') {
-      actionLinks = <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleDeleteEvent.bind(this)} hrefContent = 'Reject' />
-
+      modifyLink = '';
+      deleteLink =''; 
     } else if(userType === 'regular') {
-      actionLinks = ''
+      confirmLink = '';
+      rejectLink= ''; 
     }
     const whichEvents = this.props.store.getState().whichEvents;
     if(whichEvents === 'center') {
@@ -150,8 +160,10 @@ class Event extends React.Component {
           <p> {this.props.eventData} </p><br/>
           <p> Status: {this.props.status} </p><br />
           <Ul listItems = {this.props.listItem} />
-          <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleDeleteEvent.bind(this)} hrefContent = 'Delete Event' />
-          {actionLinks}
+          { modifyLink }
+          { deleteLink }
+          { confirmLink }
+          { rejectLink }
         </div>
       )
     } else if (whichEvents === 'user') {
@@ -163,8 +175,11 @@ class Event extends React.Component {
           <p> {this.props.eventData} </p><br/>
           <p> Status: {this.props.status} </p><br />
           <Ul listItems = {this.props.listItem} />
-          <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleDeleteEvent.bind(this)} hrefContent = 'Delete Event' />
-          <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleModifyEvent.bind(this)} hrefContent = 'Modify Event' />
+          { modifyLink }
+          { deleteLink }
+          { confirmLink }
+          { rejectLink }
+          
         </div>
       )
     } else if(whichEvents === 'all') {
@@ -177,9 +192,10 @@ class Event extends React.Component {
           <p> {this.props.eventData} </p><br/>
           <p> Status: {this.props.status} </p><br />
           <Ul listItems = {this.props.listItem} />
-          <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleDeleteEvent.bind(this)} hrefContent = 'Delete Event' />
-          <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleConfirmEvent.bind(this)} hrefContent = 'Confirm' />
-          <Link hrefLink = '#' eventId = {this.props.eventId} clicked = {this.handleRejectEvent.bind(this)} hrefContent = 'reject' />
+          { modifyLink }
+          { deleteLink }
+          { confirmLink }
+          { rejectLink }
         </div>
       )
     }
