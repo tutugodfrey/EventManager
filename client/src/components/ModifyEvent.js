@@ -28,6 +28,7 @@ class ModifyEventForm extends React.Component {
     const newState = this.props.store.getState();
     const eventId = newState.eventId;
     let event; 
+    let center;
     if(newState.userEvents) {
       event = helperFuncts.getObjectByField(newState.userEvents, 'id', eventId)
     } else if (newState.centerEvents) {
@@ -48,7 +49,15 @@ class ModifyEventForm extends React.Component {
       userId: event.userId,
       centerId: event.centerId
     })
-    console.log(this.props.store.getState())
+
+    if(newState.centers) {
+      center = helperFuncts.getObjectByField(newState.centers, 'id', event.centerId);
+      this.setState({
+        center
+      })
+    } else {
+      this.getCenters();
+    }
   }
   
   eventTypeChange(event) {
@@ -85,10 +94,29 @@ class ModifyEventForm extends React.Component {
     event.preventDefault()
     this.state.facilities.push(event.target.value);
   }
+  getCenters() {
+    const token = this.props.store.getState().userData.token;
+    const headers =  new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('token', token);
+    const options = {
+      method:'GET',
+      headers,
+    }
+
+    fetch('http://localhost:8080/api/centers', options)
+    .then(res => res.json())
+    .then(data => { 
+      this.props.store.dispatch(actions.setCenters(data)); 
+      const center = helperFuncts.getObjectByField(this.props.store.getState().centers, 'id', this.state.centerId);
+      this.setState({
+        center
+      })
+    })
+  }
 
   modify(data) {
     const newState = this.props.store.getState();
-    console.log(newState)
     const headers =  new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('token', newState.userData.token)
@@ -97,12 +125,10 @@ class ModifyEventForm extends React.Component {
       headers,
       body:JSON.stringify(data)
     }
-    console.log(newState.userData.userId, this.state.userId)
     if(newState.userData.userId === this.state.userId) {
       fetch(`http://localhost:8080/api/events/ ${this.state.eventId}`, options)
       .then(res => res.json())
       .then(data => { 
-        console.log(data);
         this.props.store.dispatch(actions.displayPage(ViewEvents));
       })
     } else {
@@ -119,7 +145,6 @@ class ModifyEventForm extends React.Component {
       userId: this.props.store.getState().userData.userId
     }
     this.modify(data)
-    console.log(data)
   }
 
   form(){
@@ -129,6 +154,7 @@ class ModifyEventForm extends React.Component {
    return ( 
     <div> 
         <h1> Modify Event </h1>
+        <h3> { this.state.center.centerName } </h3>
         <FormInput type = 'text' id ='type-of-event' labelValue = 'Type of Event' divClass = 'form-group' inputClass = 'requiredFields form-control' ref = 'name' onChange = {this.eventTypeChange.bind(this)} name = 'type' placeholder = 'Type of Event' value ={ this.state.eventType } /><br />
         <FormSelect inputClass = 'requiredFields form-control' onChange = { this.eventDayChange.bind(this) } name = 'day' options = {this.state.days} />
         <FormSelect inputClass = 'requiredFields form-control' onChange = { this.eventMonthChange.bind(this) } name = 'month' options = {this.state.months} />

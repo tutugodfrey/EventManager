@@ -22,10 +22,8 @@ class Event extends React.Component {
   }
 
   handleModifyEvent(event) {
-    console.log('Want to modify event?');
     this.props.store.dispatch(actions.setEventId(this.props.eventId));
-    this.props.store.dispatch(actions.displayPage(ModifyEvent));
-    
+    this.props.store.dispatch(actions.displayPage(ModifyEvent)); 
   }
 
   modifyEvent(data) {
@@ -39,13 +37,11 @@ class Event extends React.Component {
       headers,
       body:JSON.stringify(data)
     }
-    console.log(this.props.eventId)
     fetch(`http://localhost:8080/api/events/${ this.props.eventId }`, options)
     .then(res => res.json())
     .then(data => {
       if(data.eventType){
         this.props.store.dispatch(actions.displayPage(ViewEvents))
-        console.log(data)
       } else {
         console.log(data)
       }
@@ -54,8 +50,6 @@ class Event extends React.Component {
   }
 
   handleConfirmEvent(event) {
-    console.log(this.props.userId)
-    console.log('Want to confirm event?')
     const data = {
       userId: this.props.userId,
       confirm: 'true'
@@ -68,7 +62,6 @@ class Event extends React.Component {
   }
 
   handleRejectEvent(event) {
-    console.log('Your are rejecting this events?')
     const data = {
       userId: this.props.userId,
       confirm: 'false'
