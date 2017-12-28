@@ -29,8 +29,9 @@ class userHeader extends React.Component {
     this.props.store.dispatch(actions.displayPage(AddEvent))
   }
   modifyEventClick(e) {
-    e.preventDefault
-    this.props.store.dispatch(actions.displayPage(ModifyEvent))
+    e.preventDefaultthis
+    this.props.store.dispatch(actions.setWhichEvents('user'))
+    this.props.store.dispatch(actions.displayPage(ViewEvents))
   }
   viewEventClick(e) {
     e.preventDefault()
