@@ -1,5 +1,10 @@
 
 const actions = {
+  clearStore: () => {
+    return {
+      type: 'CLEAR_STORE'
+    }
+  },
   displayHeader: (header) => {
     return {
       type : 'SET_HEADER',

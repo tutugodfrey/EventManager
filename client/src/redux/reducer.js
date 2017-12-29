@@ -9,6 +9,8 @@ const initialState = {
 }
 export default function reducer(state= initialState, action) {
   switch(action.type) {
+    case 'CLEAR_STORE':
+    return Object.assign({}, initialState)
     case 'SET_HEADER':
     return Object.assign({}, state, {
       header:action.value

@@ -56,16 +56,35 @@ class SigninForm extends React.Component {
         this.props.store.dispatch(actions.displayPage(SigninSucced));
         this.props.store.dispatch(actions.displayHeader(UserHeader))
       }
-      // const newState = this.props.store.getState()
     })
   }
   handleSignin(event) {
-  event.preventDefault()
-   const userdata = {
-    password:this.state.password,
-    username:this.state.username,
-  }
- this.signin(userdata)
+    event.preventDefault()
+    const newState = this.props.store.getState();
+    if(newState.userData) {
+        if(this.state.username === newState.userData.username) {
+        if(newState.userData.userType === 'admin') {
+          this.props.store.dispatch(actions.displayPage(SigninSucced));
+          this.props.store.dispatch(actions.displayHeader(AdminHeader))
+        } else if(newState.userData.userType === 'regular') {
+          this.props.store.dispatch(actions.displayPage(SigninSucced));
+          this.props.store.dispatch(actions.displayHeader(UserHeader))
+        }
+      } else {
+        this.props.store.dispatch(actions.clearStore())
+        const userdata = {
+          password:this.state.password,
+          username:this.state.username,
+        }
+      this.signin(userdata)
+      }
+    } else { 
+      const userdata = {
+        password:this.state.password,
+        username:this.state.username,
+      }
+    this.signin(userdata)
+    }
   }
 
   form() {

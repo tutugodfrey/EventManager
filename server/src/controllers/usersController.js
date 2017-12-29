@@ -79,6 +79,7 @@ const UsersController = class {
 					res.status(200).send({
 						success: true,
 						token: token,
+						username:user.username,
 						userType: user.userType,
 						userId:user.id
 					});
