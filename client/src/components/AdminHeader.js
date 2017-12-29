@@ -27,7 +27,7 @@ class AdminHeader extends React.Component {
   }
   modifyCenterClick(e) {
     e.preventDefault
-    this.props.store.dispatch(actions.displayPage(ModifyCenter))
+    this.props.store.dispatch(actions.displayPage(ViewCenters))
   }
   viewCenterClick(e) {
     e.preventDefault
@@ -59,7 +59,7 @@ render() {
             <Link hrefId = 'modify-center' dispatch = { this.props.dispatch } clicked = {this.modifyCenterClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Modify Center'/>
           </li>
           <li>
-           <Link hrefId = 'view-centers' dispatch = { this.props.dispatch } clicked = {this.viewCenterClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Event Center'/>
+           <Link hrefId = 'view-centers' dispatch = { this.props.dispatch } clicked = {this.viewCenterClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Event Centers'/>
           </li>
           <li>
             <Link hrefId = 'view-centers' dispatch = { this.props.dispatch } clicked = {this.viewEventsClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Events'/>
