@@ -62,7 +62,7 @@ class SigninForm extends React.Component {
     event.preventDefault()
     const newState = this.props.store.getState();
     if(newState.userData) {
-        if(this.state.username === newState.userData.username) {
+      if(this.state.username === newState.userData.username) {
         if(newState.userData.userType === 'admin') {
           this.props.store.dispatch(actions.displayPage(SigninSucced));
           this.props.store.dispatch(actions.displayHeader(AdminHeader))

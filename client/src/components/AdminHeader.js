@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from './elementComponents/Link';
 import actions from './../redux/actions'
+import Header from './Header';
 import AddCenter from './AddCenter'
 import ModifyCenter from './ModifyCenter';
 import ViewCenters from './ViewCenters';
@@ -40,6 +41,7 @@ class AdminHeader extends React.Component {
   logoutClick(e) {
     e.preventDefault
     this.props.store.dispatch(actions.displayPage(SigninForm))
+    this.props.store.dispatch(actions.displayHeader(Header))
   }
   
 render() {

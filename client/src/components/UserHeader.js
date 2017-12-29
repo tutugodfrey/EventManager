@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from './elementComponents/Link';
-import actions from './../redux/actions'
+import actions from './../redux/actions';
+import Header from './Header';
 import AddEvent from './AddEvent'
 import ModifyEvent from './ModifyEvent';
 import ViewEvents from './ViewEvents';
@@ -41,6 +42,7 @@ class userHeader extends React.Component {
   logoutClick(e) {
     e.preventDefault
     this.props.store.dispatch(actions.displayPage(SigninForm))
+    this.props.store.dispatch(actions.displayHeader(Header))
   }
   
 render() {
