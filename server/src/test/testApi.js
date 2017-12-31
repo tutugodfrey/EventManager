@@ -1,3 +1,4 @@
+
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import Server from './../app';;
@@ -227,7 +228,6 @@ describe('API routes', () => {
         expect(res).to.have.status(200)
       });
     });
-
   });
 });
 
