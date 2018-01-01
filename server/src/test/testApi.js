@@ -1,7 +1,6 @@
-
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import Server from './../app';;
+import Server from './../app';
 const assert = chai.assert;
 const server = new Server();
 const expect = chai.expect;
@@ -10,18 +9,19 @@ chai.use(chaiHttp);
 const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoZW5LZXkiOiJndHV0dSIsImlhdCI6MTUxMjc1Mzg1NSwiZXhwIjoxNTEyOTI2NjU1fQ.S0NOV3_hTrxIwq8ooLGTI2XehLwgccLX5W7-gEuPFM0";
 const user = {
   fullname: "tut godfrey",
-  username: "tutu",
-  email:"me@yaho.com",
+  username: "gtut",
+  email:"meandyou@yaho.com",
   gender: "male",
-  imgUrl: "path-to-img",
   passwd1: "12345",
   passwd2:"12345",
-  userType:"regular"
+  userType:"regular",
+  securityQtn:'what isthe name of your best teacher?',
+  securityAns:'westley'
 }
 const center = {
   token,
   userType:"admin",
-  name: "gard park",
+  centerName: "gard park",
   location: "Abuja",
   cost: 240,
   sits: 500,
@@ -31,7 +31,7 @@ const center = {
 
 }
 const updateCenter = {
-  name: null,
+  centerName: null,
   location: null,
   cost: 250,
   sit: 500,
@@ -39,15 +39,15 @@ const updateCenter = {
 }
 const events = {
   token,
-  type:"wedding",
-  date:"2018-01-10",
+  eventType:"wedding",
+  eventDate:"2018-01-10",
   facilities: ["projector"],
   centerId: 1,
   userId: 1 
 }
 const updateEvent = {
-  type:"carnival",
-  date:null,
+  eventType:"carnival",
+  eventDate:null,
   facilities: null,
   centerId: 1,
   userId: 1

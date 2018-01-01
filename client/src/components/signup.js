@@ -19,6 +19,8 @@ class SignupForm extends React.Component {
       securityQtn: '',
       securityAns:'',
       usersPix: '',
+      file:'',
+      imagePreviewUrl: '',
       options:['select a question', 'What is the brand name of your first car?', 'What is the name of best teacher', 
       'How old are you when you got married?', 'What is the name of your favorite pet?', 'What is the name of your first school?']
     }
@@ -90,6 +92,16 @@ class SignupForm extends React.Component {
     this.setState({
      usersPix:event.target.value
     })
+
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result
+      });
+    }
+    reader.readAsDataURL(file)
   }
 
   signup(data) {
@@ -97,11 +109,11 @@ class SignupForm extends React.Component {
     headers.append('Content-Type', 'application/json');
     const options = {
       method:'POST',
-      enctype: 'multipath/form-data',
-      headers,
-      body:JSON.stringify(data)
+      body:data
     }
-
+    //  headers,
+    // body:JSON.stringify(data)
+    console.log('data', data)
     fetch('http://localhost:8080/users/signup', options)
     .then(res => res.json())
     .then(data => {
@@ -131,8 +143,21 @@ class SignupForm extends React.Component {
     securityAns: this.state.securityAns,
     userType: this.state.userType
   }
- this.signup(userdata)
-   // console.log(this.refs.fullname.value)
+  const signupFormData = new FormData();
+  signupFormData.append('fullname', this.state.fullname);
+  signupFormData.append('username', this.state.username);
+  signupFormData.append('email', this.state.email);
+  signupFormData.append('passwd1', this.state.passwd1);
+  signupFormData.append('passwd2', this.state.passwd2);
+  signupFormData.append('gender', this.state.gender);
+  signupFormData.append('securityQtn', this.state.securityQtn);
+  signupFormData.append('securityAns', this.state.securityAns);
+  signupFormData.append('userType', this.state.userType);
+  signupFormData.append('usersPix', this.state.file)
+  console.log(this.state.file)
+//  this.signup(userdata)
+this.signup(signupFormData)
+
   }
 
   render () {

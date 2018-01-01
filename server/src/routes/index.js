@@ -58,8 +58,8 @@ const Routes = class {
     });
 
     // route for users signup and signin
-    app.post('/users/signup', this.users.signup );
-    // app.post('/users/signup', usersUpload.single('usersPix'), this.users.signup );
+  // app.post('/users/signup', this.users.signup );
+  app.post('/users/signup', usersUpload.single('usersPix'), this.users.signup );
     // app.post('/users/signup', usersUpload.single('users-pix'), this.users.signup );
     app.post('/users/signin', this.users.signin); 
     app.delete('/users/:userId', this.users.deleteUser); 
