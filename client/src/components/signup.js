@@ -19,7 +19,7 @@ class SignupForm extends React.Component {
       securityQtn: '',
       securityAns:'',
       usersPix: '',
-      userType: null,
+      userType: '',
       file:'',
       imagePreviewUrl: '',
       options:['select a question', 'What is the brand name of your first car?', 'What is the name of best teacher', 
@@ -132,29 +132,30 @@ class SignupForm extends React.Component {
     if(this.state.securityQtn === '' || this.state.securityQtn === 'select a question') {
       console.log('Please select a security question')
     }
-   const userdata = {
-    fullname:this.state.fullname,
-    username:this.state.username,
-    email:this.state.email,
-    gender: this.state.gender,
-    usersPix:this.state.usersPix,
-    passwd1: this.state.passwd1,
-    passwd2: this.state.passwd2,
-    securityQtn: this.state.securityQtn,
-    securityAns: this.state.securityAns,
-    userType: this.state.userType
-  }
   const signupFormData = new FormData();
-  signupFormData.append('fullname', this.state.fullname);
-  signupFormData.append('username', this.state.username);
-  signupFormData.append('email', this.state.email);
-  signupFormData.append('passwd1', this.state.passwd1);
-  signupFormData.append('passwd2', this.state.passwd2);
-  signupFormData.append('gender', this.state.gender);
-  signupFormData.append('securityQtn', this.state.securityQtn);
-  signupFormData.append('securityAns', this.state.securityAns);
-  signupFormData.append('userType', this.state.userType);
-  signupFormData.append('userPix', this.state.file)
+  if(this.state.userType === '') {
+    signupFormData.append('fullname', this.state.fullname);
+    signupFormData.append('username', this.state.username);
+    signupFormData.append('email', this.state.email);
+    signupFormData.append('passwd1', this.state.passwd1);
+    signupFormData.append('passwd2', this.state.passwd2);
+    signupFormData.append('gender', this.state.gender);
+    signupFormData.append('securityQtn', this.state.securityQtn);
+    signupFormData.append('securityAns', this.state.securityAns);
+    signupFormData.append('userPix', this.state.file)
+  } else {
+    signupFormData.append('fullname', this.state.fullname);
+    signupFormData.append('username', this.state.username);
+    signupFormData.append('email', this.state.email);
+    signupFormData.append('passwd1', this.state.passwd1);
+    signupFormData.append('passwd2', this.state.passwd2);
+    signupFormData.append('gender', this.state.gender);
+    signupFormData.append('securityQtn', this.state.securityQtn);
+    signupFormData.append('securityAns', this.state.securityAns);
+    signupFormData.append('userType', this.state.userType);
+    signupFormData.append('userPix', this.state.file)
+  }
+  
   console.log(this.state.file)
 //  this.signup(userdata)
 this.signup(signupFormData)
