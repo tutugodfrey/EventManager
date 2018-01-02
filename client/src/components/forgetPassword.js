@@ -1,6 +1,8 @@
 import React from 'react';
 import { FormInput } from './formComponents/formInputs.js';
 import Link from './elementComponents/Link';
+import SigninForm from './signin';
+import actions from './../redux/actions';
 
 class ForgetPasswordForm extends React.Component {
   constructor() {
@@ -9,6 +11,15 @@ class ForgetPasswordForm extends React.Component {
       securityQtn:'What is the brand name of your first car?'
     }
   }
+  componentWillMount() {
+
+  }
+
+  handleSignin() {
+    event.preventDefault();
+    this.props.store.dispatch(actions.displayPage(SigninForm))
+  }
+
   render () {
     return ( 
       <div> 
@@ -21,7 +32,7 @@ class ForgetPasswordForm extends React.Component {
         </form>
         <br />
         <div>
-          <Link hrefLink = '#' hrefId = 'signinBtn' hrefText = 'Signin' hrefClass = 'btn btn-primary' /> <br />
+          <Link hrefLink = '#' hrefId = 'signinBtn' hrefContent = 'Signin' clicked = { this.handleSignin.bind(this) } hrefClass = 'btn btn-primary' /> <br />
         </div>
       </div>
     )

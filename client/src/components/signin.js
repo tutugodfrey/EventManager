@@ -7,6 +7,8 @@ import AdminHeader from './AdminHeader';
 import UserHeader from './userHeader'
 import Div from './elementComponents/Div';
 import actions from './../redux/actions';
+import ForgetPasswordForm from './ForgetPassword';
+import ChangePasswordForm from './ChangePassword';
 
 class SigninForm extends React.Component {
   constructor () {
@@ -17,6 +19,16 @@ class SigninForm extends React.Component {
       token:''
     }
   }
+  handleForgetPassword(event) {
+    event.preventDefault()
+    this.props.store.dispatch(actions.displayPage(ForgetPasswordForm))
+  }
+
+  handleChangePassword(event) {
+    event.preventDefault()
+    this.props.store.dispatch(actions.displayPage(ChangePasswordForm))
+  }
+
   usernameChange(event) {
     event.preventDefault()
     this.setState({
@@ -78,7 +90,7 @@ class SigninForm extends React.Component {
         }
       this.signin(userdata)
       }
-      
+
     } else { 
       const userdata = {
         password:this.state.password,
@@ -108,8 +120,8 @@ class SigninForm extends React.Component {
       <Div divClass = 'card' divContent = {this.form()} /> 
         <br />
           <Link hrefLink = '#' hrefId = 'signupBtn' hrefContent = 'Signup' hrefClass = 'btn btn-primary' /> <br />
-          <Link hrefLink = '#' hrefId = 'changePasswordBtn' hrefContent  = 'ChangePassword' hrefClass = 'btn btn-secondary' />
-          <Link hrefLink = '#' hrefId = 'forgetPasswordBtn' hrefContent = 'Forget Password' hrefClass = 'btn btn-secondary' />
+          <Link hrefLink = '#' hrefId = 'changePasswordBtn' clicked = {this.handleChangePassword.bind(this)} hrefContent  = 'ChangePassword' hrefClass = 'btn btn-secondary' />
+          <Link hrefLink = '#' hrefId = 'forgetPasswordBtn' clicked = {this.handleForgetPassword.bind(this)} hrefContent = 'Forget Password' hrefClass = 'btn btn-secondary' />
       </div>
     )
   } 

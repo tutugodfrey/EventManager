@@ -1,8 +1,14 @@
 import React from 'react';
 import { FormInput }  from './formComponents/formInputs';
 import Link from './elementComponents/Link';
+import SigninForm from './signin';
+import actions from './../redux/actions';
 
-class ChangePassword extends React.Component {
+class ChangePasswordForm extends React.Component {
+  handleSignin() {
+    event.preventDefault();
+    this.props.store.dispatch(actions.displayPage(SigninForm))
+  }
   render () {
     return ( 
       <div> 
@@ -16,11 +22,11 @@ class ChangePassword extends React.Component {
         </form>
         <br />
         <div>
-          <Link hrefLink = '#' hrefId = 'signinBtn' hrefText = 'Signin' hrefClass = 'btn btn-primary' /> <br />
+          <Link hrefLink = '#' hrefId = 'signinBtn' hrefContent = 'Signin' clicked = { this.handleSignin.bind(this)} hrefClass = 'btn btn-primary' /> <br />
         </div>
       </div>
     )
   } 
 }
 
-export default ChangePassword;
+export default ChangePasswordForm;
