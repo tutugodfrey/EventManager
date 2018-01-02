@@ -121,12 +121,12 @@ class AddEventForm extends React.Component {
     const eventFormData = new FormData();
     eventFormData.append('eventType', this.state.eventType);
     eventFormData.append('eventDate',  `${this.state.year}-${this.state.month}-${this.state.day}`);
-    eventFormData.append('facilities', this.state.facilities);
+    this.state.facilities.map(facility => {
+      eventFormData.append('facilities', facility);
+    })
     eventFormData.append('userId', newState.userData.userId);
     eventFormData.append('centerId', newState.centerId);
     eventFormData.append('eventPix', this.state.eventPix);
-   // eventFormData.append('token', newState.userData.token);
-  // Object.assign(eventFormData, eventDetails)
     this.addEvent(eventFormData);
   }
   form(){

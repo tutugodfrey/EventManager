@@ -1,5 +1,6 @@
 
 import models from './../models';
+import { getImgUrl } from './../../../public/funcs/HelperFuncts'
 const events = models.events;
 const centers = models.centers;
 const users = models.users;
@@ -26,9 +27,7 @@ const EventsController = class {
         .then(eventFound => {
           if(!eventFound){
             // const destination = 'req.file.path;'
-            const destination = req.file.path;
-            console.log(req.body)
-            console.log(destination)
+            const destination = getImgUrl(req.file.path);
             return events
             .create({
               eventType: req.body.eventType,
@@ -45,10 +44,7 @@ const EventsController = class {
             pleasee center the field for upcomming event and centers before choosing you date`});
           }
         })
-        .catch(error => {
-          console.log('what!');
-          res.status(500).send(error)
-        });
+        .catch(error => res.status(500).send(error));
       }  else {
           res.status(404).send({ message: 'Center not found'})
       }

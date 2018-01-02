@@ -148,7 +148,7 @@ class Event extends React.Component {
       return (
         <div>
           <h1> {this.state.center.centerName} </h1>
-          <Image imgSrc = '/events-photo/images8.jpg' imgClass = '' />
+          <Image imgSrc = {this.props.imgUrl} imgClass = '' />
           <p> {this.props.eventType} </p><br/>
           <p> {this.props.eventData} </p><br/>
           <p> Status: {this.props.status} </p><br />
@@ -163,7 +163,7 @@ class Event extends React.Component {
       return (
         <div>
           <h1> {this.state.center.centerName} </h1>
-          <Image imgSrc = '/events-photo/images8.jpg' imgClass = '' />
+          <Image imgSrc = {this.props.imgUrl} imgClass = '' />
           <p> {this.props.eventType} </p><br/>
           <p> {this.props.eventData} </p><br/>
           <p> Status: {this.props.status} </p><br />
@@ -179,7 +179,7 @@ class Event extends React.Component {
       return (
         <div>
           <h1> {this.state.center.centerName} </h1>
-          <Image imgSrc = '/events-photo/images8.jpg' imgClass = '' />
+          <Image imgSrc = {this.props.imgUrl} imgClass = '' />
           <p> display event owner here </p><br />
           <p> {this.props.eventType} </p><br/>
           <p> {this.props.eventData} </p><br/>
