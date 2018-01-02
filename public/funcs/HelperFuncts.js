@@ -35,4 +35,19 @@ const HelperFuncts = class {
   }
 };
 
+export const getImgUrl = function(path) {
+    if(typeof(path) !== 'string') {
+        return 'expected a string as argument'
+    } else {
+      const newPath = path.replace(/\\/g, '/')
+      if (newPath.indexOf('/') < 0) {
+        return `Cant resolve path ${ newPath }`
+      } else {
+        const indexOfPublic = newPath.indexOf('/');
+      const relPath = newPath.substr(indexOfPublic, newPath.length);
+      return relPath; 
+      }
+    }
+}
+
 export default HelperFuncts;
