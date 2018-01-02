@@ -59,7 +59,7 @@ const Routes = class {
 
     // route for users signup and signin
   // app.post('/users/signup', this.users.signup );
-  app.post('/users/signup', usersUpload.single('usersPix'), this.users.signup );
+  app.post('/users/signup', usersUpload.single('userPix'), this.users.signup );
     // app.post('/users/signup', usersUpload.single('users-pix'), this.users.signup );
     app.post('/users/signin', this.users.signin); 
     app.delete('/users/:userId', this.users.deleteUser); 
@@ -84,8 +84,8 @@ const Routes = class {
     // this.securedApi.get('/users', this.users.getUsers); 
     this.securedApi.get('/users/:userId', this.users.getUser);
     this.securedApi.put('/users/:userId', this.users.updateUsers);
-    this.securedApi.post('/centers', this.eventCenters.addEventCenter);
-    // this.securedApi.post('/centers', centersUpload.single('centers-pix'), this.eventCenters.addEventCenter);
+    // this.securedApi.post('/centers', this.eventCenters.addEventCenter);
+    this.securedApi.post('/centers', centersUpload.single('centerPix'), this.eventCenters.addEventCenter);
     this.securedApi.get('/centers', this.eventCenters.getEventCenters);
     this.securedApi.get('/centers/:centerId', this.eventCenters.getEventCenter);
     this.securedApi.get('/centers/centername/:name', eventCenters.getCenterByName);
@@ -94,8 +94,8 @@ const Routes = class {
     this.securedApi.delete('/centers/:centerId', this.eventCenters.deleteEventCenter);
     
      // route controllers for events
-     this.securedApi.post('/events', this.events.addEvent);
-    // this.securedApi.post('/events', eventsUpload.single('events-pix'), this.events.addEvent);
+     // this.securedApi.post('/events', this.events.addEvent);
+    this.securedApi.post('/events', eventsUpload.single('eventPix'), this.events.addEvent);
      this.securedApi.put('/events/:eventId', this.events.updateEvent);
      this.securedApi.get('/events', this.events.getEvents);
      this.securedApi.get('/events/centers/:centerId', this.events.getCenterEvents);

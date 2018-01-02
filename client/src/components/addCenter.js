@@ -46,6 +46,23 @@ class AddCenterForm extends React.Component {
       cost:event.target.value
     })
   }
+  centerPixChange(event) {
+    event.preventDefault()
+    console.log(event.target.value)
+    this.setState({
+      centerPix:event.target.value
+    })
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    reader.onloadend = () => {
+      this.setState({
+        centerPix: file,
+        imagePreviewUrl: reader.result
+      });
+    }
+    reader.readAsDataURL(file)
+    console.log(this.state.centerPix)
+  }
   sitsChange(event) {
     event.preventDefault()
     this.setState({
@@ -56,32 +73,34 @@ class AddCenterForm extends React.Component {
     event.preventDefault()
     if(event.target.checked) {
       this.state.facilities.push(event.target.value)
-    } else {
-      const value = event.target.value;
-      const index = this.state.facilities.indexOf(value);
-      this.state.facilities.pop()
     }
   }
 
   addCenter(data) {
     const headers =  new Headers();
     const token = this.props.store.getState().userData.token;
-    headers.append('Content-Type', 'application/json');
+    // headers.append('Content-Type', 'application/json');
     headers.append('token', token);
     const options = {
       method:'POST',
-      enctype: 'multipath/form-data',
       headers,
-      body:JSON.stringify(data)
+      body:data
     }
-
+    //  body:JSON.stringify(data)
     fetch('http://localhost:8080/api/centers', options)
     .then(res => res.json())
-    .then(data => this.props.store.dispatch(actions.displayPage(ViewCenters)))
+    .then(data => {
+      if(data.centerName) {
+        this.props.store.dispatch(actions.displayPage(ViewCenters))
+      } else {
+        console.log(data)
+      }
+    })
     .catch(error => console.log(error))
   }
   handleAddCenter(event) {
     event.preventDefault()
+    const centerFormData = new FormData();
      const centerData = {
       centerName:this.state.centerName,
       location:this.state.location,
@@ -90,7 +109,18 @@ class AddCenterForm extends React.Component {
       facilities:this.state.facilities,
       userType:this.props.store.getState().userData.userType
     }
-    this.addCenter(centerData)
+    centerFormData.append('centerName', this.state.centerName);
+    centerFormData.append('location', this.state.location);
+    centerFormData.append('cost', this.state.cost);
+    centerFormData.append('sits', this.state.sits);
+    this.state.facilities.forEach(facility => {
+      centerFormData.append('facilities', facility);
+    })
+    centerFormData.append('userType', this.props.store.getState().userData.userType);
+    centerFormData.append('userId', this.props.store.getState().userData.userId);
+    centerFormData.append('centerPix', this.state.centerPix);
+    this.addCenter(centerFormData)
+
     }
 
   form(){
@@ -104,7 +134,7 @@ class AddCenterForm extends React.Component {
         <FormInput type = 'text' id ='location' labelValue = 'Location' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.locationChange.bind(this)} value = {this.state.location} ref = 'location' name = 'location' placeholder = 'Location' /><br />
         <FormInput type = 'hidden' id ='userType' name = 'userType' value = {this.state.userType} /><br />
         <FormInput type = 'text' id ='cost' labelValue = 'Cost' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.costChange.bind(this)} value = {this.state.cost} ref = 'cost' name = 'cost' placeholder = 'Cost' /><br />
-        <FormInput type = 'file' id ='photo' labelValue = 'Photo' inputClass = 'form-group' name = 'centers-pix' /><br />
+        <FormInput type = 'file' id ='photo' labelValue = 'Photo' inputClass = 'form-group' onChange = {this.centerPixChange.bind(this)} name = 'centerPix' /><br />
         <FormInput type = 'text' id ='sits' labelValue = 'Sits' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.sitsChange.bind(this)} value = {this.state.sits} ref = 'sits' name = 'sits' placeholder = 'Sits' /><br />
         <CheckBox checkBoxData = {this.state.checkBoxData}  onChange = {this.facilitiesChange.bind(this)} />
         <FormInput type = 'submit' inputClass = 'btn btn-primary' click = {this.handleAddCenter.bind(this)}  value = 'Add Center' />

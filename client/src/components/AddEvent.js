@@ -65,6 +65,17 @@ class AddEventForm extends React.Component {
     this.setState({
       eventPix:event.target.value
     })
+
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    reader.onloadend = () => {
+      this.setState({
+        eventPix: file,
+        imagePreviewUrl: reader.result
+      });
+    }
+    reader.readAsDataURL(file)
+    console.log(this.state.eventPix)
   }
   facilitiesChange(event) {
     event.preventDefault()
@@ -74,13 +85,12 @@ class AddEventForm extends React.Component {
   addEvent(data) {
     const headers =  new Headers();
     const token = this.props.store.getState().userData.token;
-    headers.append('Content-Type', 'application/json');
+   // headers.append('Content-Type', 'application/json');
     headers.append('token', token);
     const options = {
       method:'POST',
-      enctype: 'multipath/form-data',
       headers,
-      body:JSON.stringify(data)
+      body:data
     }
 
     fetch('http://localhost:8080/api/events', options)
@@ -105,9 +115,19 @@ class AddEventForm extends React.Component {
       eventDate: `${this.state.year}-${this.state.month}-${this.state.day}`,
       facilities: this.state.facilities,
       userId: newState.userData.userId,
-      centerId: newState.centerId
-    }
-    this.addEvent(eventDetails);
+      centerId: newState.centerId,
+      eventPix: this.state.eventPix
+    } 
+    const eventFormData = new FormData();
+    eventFormData.append('eventType', this.state.eventType);
+    eventFormData.append('eventDate',  `${this.state.year}-${this.state.month}-${this.state.day}`);
+    eventFormData.append('facilities', this.state.facilities);
+    eventFormData.append('userId', newState.userData.userId);
+    eventFormData.append('centerId', newState.centerId);
+    eventFormData.append('eventPix', this.state.eventPix);
+   // eventFormData.append('token', newState.userData.token);
+  // Object.assign(eventFormData, eventDetails)
+    this.addEvent(eventFormData);
   }
   form(){
    return <Form formId = 'addCenterForm' method = 'post' action = '/api/events' formControls = {this.content()} />
@@ -170,7 +190,7 @@ class AddEventForm extends React.Component {
           checkBoxData = {this.state.checkBoxData}
           onChange = {this.facilitiesChange.bind(this)} 
         />
-        <FormInput type = 'submit' inputClass = 'btn btn-primary' click = {this.handleAddEvent.bind(this)} value = 'Add Center' />
+        <FormInput type = 'submit' inputClass = 'btn btn-primary' click = {this.handleAddEvent.bind(this)} value = 'Add Event' />
       </div>
     )
   }

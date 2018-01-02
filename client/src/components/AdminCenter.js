@@ -57,7 +57,7 @@ class Center extends React.Component {
     return (
       <div>
       <h1> { this.props.centerName } </h1>
-      <Image imgSrc = '/centers-photo/images14.jpg' imgClass = '' />
+      <Image imgSrc = {this.props.imgUrl} imgClass = '' />
       <p> { this.props.location } </p>
       <p> { this.props.cost } </p>
       <p> { this.props.sits } </p>

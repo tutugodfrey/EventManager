@@ -1,6 +1,6 @@
 
 import models from './../models';
-
+import { getImgUrl } from './../../../public/funcs/HelperFuncts'
 const centers = models.centers;
 
 const EventCenterController = class {
@@ -18,16 +18,17 @@ const EventCenterController = class {
       )
       .then(eventCenter => {
         if(!eventCenter){
-          // const destination = req.file.path;
-          const destination = 'path-to-photo';
+          const destination = getImgUrl(req.file.path);
+         // const destination = 'path-to-photo';
           return centers
           .create({
             centerName: req.body.centerName,
             location: req.body.location,
-            sits: req.body.sits,
-            cost: req.body.cost,
+            sits: parseInt(req.body.sits),
+            cost: parseInt(req.body.cost),
             facilities: req.body.facilities,
-            imgUrl: destination
+            imgUrl: destination,
+            userId: parseInt(req.body.userId)
           })
           .then(center => res.status(201).send(center))
           .catch(error => res.status(400).send(error));

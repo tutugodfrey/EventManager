@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false
       },
       eventDate: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false
       },
       facilities:{

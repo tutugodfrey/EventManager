@@ -19,6 +19,7 @@ class SignupForm extends React.Component {
       securityQtn: '',
       securityAns:'',
       usersPix: '',
+      userType: null,
       file:'',
       imagePreviewUrl: '',
       options:['select a question', 'What is the brand name of your first car?', 'What is the name of best teacher', 
@@ -153,7 +154,7 @@ class SignupForm extends React.Component {
   signupFormData.append('securityQtn', this.state.securityQtn);
   signupFormData.append('securityAns', this.state.securityAns);
   signupFormData.append('userType', this.state.userType);
-  signupFormData.append('usersPix', this.state.file)
+  signupFormData.append('userPix', this.state.file)
   console.log(this.state.file)
 //  this.signup(userdata)
 this.signup(signupFormData)
@@ -174,7 +175,7 @@ this.signup(signupFormData)
           <FormInput type = 'password' id ='passwd2' labelValue = 'Retype password' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.passwd2Change.bind(this)} ref = 'passwd2' name = 'passwd2' placeholder = 'confirmPassword' value = {this.state.passwd2} /><br />
           <FormSelect inputClass = 'requiredFields form-control' options = {this.state.options} onChange = {this.securityQtnChange.bind(this)} />
           <FormInput type = 'text' id ='securityAns' labelValue = 'Answer' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.securityAnsChange.bind(this)} ref = 'securityAns' name = 'securityAns' placeholder = 'Answer' value = {this.state.securityAns} /><br />
-          <FormInput type = 'checkbox' id ='userType' labelValue = 'Are you an admin? Click the checkbox!' divClass = 'form-group' inputClass = 'form-control' onChange = {this.userTypeChange.bind(this)} ref = 'userType' name = 'userType'  value = {this.state.userType} /><br />
+          <FormInput type = 'checkbox' id ='userType' labelValue = 'Are you an admin? Click the checkbox!' divClass = 'form-group' inputClass = 'form-control' onChange = {this.userTypeChange.bind(this)} ref = 'userType' name = 'userType'  value = 'admin' /><br />
           <FormInput type = 'submit' inputClass = 'btn btn-primary' click = {this.handleSignup.bind(this)} value = 'Signup' />
         </form>
         <div>

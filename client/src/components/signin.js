@@ -78,6 +78,7 @@ class SigninForm extends React.Component {
         }
       this.signin(userdata)
       }
+      
     } else { 
       const userdata = {
         password:this.state.password,
@@ -95,7 +96,7 @@ class SigninForm extends React.Component {
       <div>
       <h1> Signin to your Accunt </h1>
       <FormInput type = 'text' id ='username' labelValue = 'username/ Email' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.usernameChange.bind(this)} value = {this.state.username} name = 'username' placeholder = 'username/ Email' />
-      <FormInput type = 'text' id ='password' labelValue = 'password' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.passwordChange.bind(this)} value = {this.state.password} name = 'password' placeholder = 'password' />
+      <FormInput type = 'password' id ='password' labelValue = 'password' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.passwordChange.bind(this)} value = {this.state.password} name = 'password' placeholder = 'password' />
       <FormInput type = 'submit' inputClass = 'btn btn-primary' click = {this.handleSignin.bind(this)} value = 'Signin' />
     </div>
     )

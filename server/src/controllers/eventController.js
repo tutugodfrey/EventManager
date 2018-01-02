@@ -25,25 +25,30 @@ const EventsController = class {
         })
         .then(eventFound => {
           if(!eventFound){
-            const destination = 'req.file.path;'
-            // const destination = req.file.path;
+            // const destination = 'req.file.path;'
+            const destination = req.file.path;
+            console.log(req.body)
+            console.log(destination)
             return events
             .create({
               eventType: req.body.eventType,
               eventDate: req.body.eventDate,
-              facilities:req.body.facilities,
-              imgUrl:destination,
+              facilities: req.body.facilities,
+              imgUrl: destination,
               centerId: parseInt(req.body.centerId),
               userId: parseInt(req.body.userId)
             })
             .then(event => res.status(201).send(event))
-            .catch(error => res.status(400).send(error));
+            .catch(error => res.status(400).send({error}));
           } else{
             res.status(200).send({ message:`An event is already booked you choose. 
             pleasee center the field for upcomming event and centers before choosing you date`});
           }
         })
-        .catch(error => res.status(500).send(error));
+        .catch(error => {
+          console.log('what!');
+          res.status(500).send(error)
+        });
       }  else {
           res.status(404).send({ message: 'Center not found'})
       }
