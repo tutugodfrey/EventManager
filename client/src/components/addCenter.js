@@ -48,20 +48,16 @@ class AddCenterForm extends React.Component {
   }
   centerPixChange(event) {
     event.preventDefault()
-    console.log(event.target.value)
-    this.setState({
-      centerPix:event.target.value
-    })
+
     let reader = new FileReader();
     let file = event.target.files[0];
     reader.onloadend = () => {
       this.setState({
-        centerPix: file,
-        imagePreviewUrl: reader.result
+        centerPix: file
       });
     }
     reader.readAsDataURL(file)
-    console.log(this.state.centerPix)
+
   }
   sitsChange(event) {
     event.preventDefault()
@@ -101,14 +97,6 @@ class AddCenterForm extends React.Component {
   handleAddCenter(event) {
     event.preventDefault()
     const centerFormData = new FormData();
-     const centerData = {
-      centerName:this.state.centerName,
-      location:this.state.location,
-      cost:this.state.cost,
-      sits:this.state.sits,
-      facilities:this.state.facilities,
-      userType:this.props.store.getState().userData.userType
-    }
     centerFormData.append('centerName', this.state.centerName);
     centerFormData.append('location', this.state.location);
     centerFormData.append('cost', this.state.cost);

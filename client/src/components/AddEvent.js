@@ -62,20 +62,15 @@ class AddEventForm extends React.Component {
   }
   eventPixChange(event) {
     event.preventDefault()
-    this.setState({
-      eventPix:event.target.value
-    })
 
     let reader = new FileReader();
     let file = event.target.files[0];
     reader.onloadend = () => {
       this.setState({
-        eventPix: file,
-        imagePreviewUrl: reader.result
+        eventPix: file
       });
     }
     reader.readAsDataURL(file)
-    console.log(this.state.eventPix)
   }
   facilitiesChange(event) {
     event.preventDefault()
@@ -110,14 +105,6 @@ class AddEventForm extends React.Component {
   handleAddEvent(event) {
     event.preventDefault();
     const newState = this.props.store.getState();
-    const eventDetails = {
-      eventType: this.state.eventType,
-      eventDate: `${this.state.year}-${this.state.month}-${this.state.day}`,
-      facilities: this.state.facilities,
-      userId: newState.userData.userId,
-      centerId: newState.centerId,
-      eventPix: this.state.eventPix
-    } 
     const eventFormData = new FormData();
     eventFormData.append('eventType', this.state.eventType);
     eventFormData.append('eventDate',  `${this.state.year}-${this.state.month}-${this.state.day}`);

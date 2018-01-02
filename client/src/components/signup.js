@@ -89,7 +89,6 @@ class SignupForm extends React.Component {
   }
   photoChange(event) {
     event.preventDefault()
-    console.log(event.target.value)
     this.setState({
      usersPix:event.target.value
     })
@@ -99,7 +98,6 @@ class SignupForm extends React.Component {
     reader.onloadend = () => {
       this.setState({
         file: file,
-        imagePreviewUrl: reader.result
       });
     }
     reader.readAsDataURL(file)
@@ -112,9 +110,7 @@ class SignupForm extends React.Component {
       method:'POST',
       body:data
     }
-    //  headers,
-    // body:JSON.stringify(data)
-    console.log('data', data)
+ 
     fetch('http://localhost:8080/users/signup', options)
     .then(res => res.json())
     .then(data => {
@@ -155,11 +151,7 @@ class SignupForm extends React.Component {
     signupFormData.append('userType', this.state.userType);
     signupFormData.append('userPix', this.state.file)
   }
-  
-  console.log(this.state.file)
-//  this.signup(userdata)
-this.signup(signupFormData)
-
+    this.signup(signupFormData)
   }
 
   render () {
