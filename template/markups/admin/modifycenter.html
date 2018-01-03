@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = 'UTF-8'/>
+    <meta http-equiv = 'X--Compatible' content = 'IE=edge' />
+    <meta name = 'viewport' content= 'width= device-width, initial-scale =1' />
+  	<title>
+  		Modify Event Center
+  	</title>
+    <link rel = 'stylesheet' type = 'text/css' href = './../../styles/css/bootstrap.min.css' />
+  	<link rel = 'stylesheet' type = 'text/css' href = './../../styles/stylesheet.css' />
+  </head>
+  <body>
+    <div id = 'header-div'>
+      <div class = 'navbar' >
+        <ul id = 'main-menu' class = 'nav nav-tabs'>
+          <li class = 'nav-item'>
+            <a href = './../index.html' class = 'nav-link'>
+              Home
+            </a>
+          </li>
+          <li class = 'nav-item'>
+            <a href = './addcenter.html' class = 'nav-link'>
+            Add Event Center
+            </a>
+          </li>
+          <li class = 'nav-item'>
+            <a href = './eventcenters.html' class = 'nav-link'>
+              Event Centers
+            </a>
+          </li>
+          <li class = 'nav-item'>
+            <a href = './eventcenters.html' class = 'nav-link active'>
+              Modify Event Center
+            </a>
+          </li>
+          <li class = 'nav-item' >
+            <a href = './../contactus.html' class = 'nav-link'> 
+              Contact Us
+            </a>
+          </li>
+        </ul>
+          <div class = 'sub-menu2 rounded-top'>
+          <ul class = 'nav'>
+            <li class = 'nav-item'>
+              <a href = './../signup.html' class = 'nav-link'>
+                signup
+              </a>
+            </li>
+            <li class = 'nav-item'>
+              <a href = './../signin.html' class = 'nav-link'>
+                logout
+              </a>
+            </li>
+            <li class = 'nav-item'>
+              <a href = './userprofile.html' class = 'nav-link'>
+                <span>Profile</span>
+                <img id = 'profile-pix' class = 'img-fuild rounded' src = './../../avatar/sam_3264.jpg' alt = 'profile pix' />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class = 'body-div' class = 'content-area' >
+      <div class = 'form-div'>
+      <form id ='add-center-form' method = 'POST' action = 'route/to/addcenter/controller'>
+        <fieldset  class = 'form-group'>
+          <span class = 'requiredFields'>*</span>
+        <input type = 'text' id = 'center-name' class = 'form-control' name = 'centerName' placeholder = 'name' />
+        <div  class = 'form-group'>
+        </fieldset>
+        <fieldset  class = 'form-group'>
+          <span class = 'requiredFields'>*</span>
+        <input type = 'text' id = 'sitting-capacity' class = 'form-control' name = 'sittingCapacity' />
+        </fieldset>
+        <fieldset  class = 'form-group'>
+          <span class = 'requiredFields'>*</span>
+        <fieldset  class = 'form-group'>
+        <input type = 'text' id = 'price' class = 'form-control' name = 'Price' />
+        </fieldset>
+        <fieldset  class = 'form-group'>
+          <span class = 'requiredFields'>*</span>
+        <select id = 'location' class = 'form-control' name = 'location'>
+          <option value = 'select'>Select</option>
+          <option>Abia</option>
+          <option>Adamawa</option>
+          <option>Akwa Ibom</option>
+          <option>Anambra</option>
+          <option>Bauchi</option>
+          <option>Bayelsa</option>
+          <option>Benue</option>
+          <option>Bornu</option>
+          <option>Cross River</option>
+          <option>Delta</option>
+          <option>Ebonyi</option>
+          <option>Edo</option>
+          <option>Ekiti</option>
+          <option>Enugu</option>
+          <option>Gombe</option>
+          <option>Imo</option>
+          <option>Jigawa</option>
+          <option>Kaduna</option>
+          <option>Kano</option>
+          <option>Kastina</option>
+          <option>Kebbi</option>
+          <option>Kwara</option>
+          <option>Lagos</optiion>
+          <option>Nasarawa</option>
+          <option>Niger</option>
+          <option>Ogun</option>
+          <option>Ondo</option>
+          <option>Osun</option>
+          <option>Oyo</option>
+          <option>Plateau</option>
+          <option>River</option>
+          <option>Sokoto</option>
+          <option>Taraba</option>
+          <option>Yobe</option>
+          <option>Zamfara</option>
+          <option>FCT</option>
+        </select>
+        </fieldset>
+        <legend class = 'col-form-label'> Facilities
+          <span class = 'requiredFields'>*</span>
+        </legend>
+        <fieldset class = 'form-group'>
+          <label for = 'aircondition' class= 'col-sm-2 col-form-label mr-2' > Air Condition </label>
+          <input type = 'checkbox' id = 'aircondition' class = 'form-control centerfacilities' checked = 'checked' value = 'Air Condition' name = 'facilities' />
+          <label for = 'catering' class= 'col-sm-2 col-form-label mr-2'>Catering</label>
+          <input type = 'checkbox' id = 'catering' class = 'form-control centerfacilities'checked = 'checked' value = 'catering' name = 'facilities' />
+          <label for = 'decoration' class= 'col-sm-2 col-form-label mr-2'>Decoration </label>
+          <input type = 'checkbox' id = 'decoration' class = 'form-control centerfacilities' value = 'decoration' name = 'facilities' />
+          <label for = 'projector' class= 'col-sm-2 col-form-label mr-2'>Projector</label>
+          <input type = 'checkbox' id = 'projector' class = 'form-control centerfacilities' checked = 'checked' value = 'projector' name = 'projector' /> 
+          <label for = 'lodging' class= 'col-sm-2 col-form-label mr-2' >Lodging</label>
+          <input type = 'checkbox' id = 'lodging' class = 'form-control centerfacilities' value = 'lodging' name = 'facilities' />
+        </fieldset>
+        <input type = 'submit' id= 'add-center' class ='btn btn-default' name = 'addCenter' value = 'Add Center' />
+      </form>
+      </div> 
+      </div>
+      <div id = 'footer-div' class ='navbar'>
+      <ul class = 'nav'>
+        <li class = 'nav-item'>
+          <p id = 'modificationNotice'></p>
+        </li>
+        <li class = 'nav-item'>
+          <a href = './../contactus.html' class = 'nav-link'>
+            Contact us
+          </a>
+        </li>
+        <li class = 'nav-item'>
+          <a href = './../about-us.html' class = 'nav-link'>
+            About us
+          </a>
+        </li>
+        <li class = 'nav-item'>
+          <a href = './../terms-of-use.html' class = 'nav-link'>
+            Terms of use
+          </a>
+        </li>
+      </ul>
+    </div>
+  	<script src = './../../scripts/dist/bundle.js'>
+  	</script>
+  </body>
+</html>
