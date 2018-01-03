@@ -2,7 +2,7 @@
 
 export default  (sequelize, DataTypes) => {
   const centers = sequelize.define('centers', {
-    name: {
+    centerName: {
       type:DataTypes.STRING,
       allowNull:false
     },
@@ -19,8 +19,16 @@ export default  (sequelize, DataTypes) => {
        allowNull:false
       },
     facilities:{
+      type:DataTypes.ARRAY(DataTypes.STRING),
+      allowNull:true
+     },
+     imgUrl:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:true
+     },
+     userId:{
+      type:DataTypes.STRING,
+      allowNull: false
      }
   });
  

@@ -31,7 +31,9 @@ const Notifications = class {
   			}
   		})
   		.catch(error => res.status(500).send(error));
-  	}
+  	} else {
+			res.status(402).send({ message: 'Your are not allowed to perform this action'})
+		}
   }
 
 	getNotifications (req, res) {
@@ -58,7 +60,14 @@ const Notifications = class {
 		})
 		.catch(error => res.status(500).send(error));
 	}
-  // get notification
+	// get all notification
+	getAllNotifications (req, res) {
+		return notifications
+		.all()
+		.then(notifications => res.status(200).send(notifications))
+		.catch(error => res.status(404).send({message: 'No new notification'}));
+
+	}
 }
 
 export default Notifications;

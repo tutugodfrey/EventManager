@@ -3,9 +3,10 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import models from './../models';
+import { getImgUrl } from './../../../public/funcs/HelperFuncts'
+// const destination = './public/users-photo/';
 const users = models.users;
 dotenv.config();
-
 const UsersController = class {
   // controller for users signup
   signup(req, res) {
@@ -18,6 +19,10 @@ const UsersController = class {
 		})
 		.then(user => {
 			if(!user){
+				
+			// handle uploaded profile pix
+			//const photo = req.file.originalname;
+		  const destination = getImgUrl( req.file.path);
 			const passwd1 = req.body.passwd1;
 			const passwd2 = req.body.passwd2;
 			let passwd;
@@ -31,7 +36,11 @@ const UsersController = class {
 						fullname: req.body.fullname,
 						email: req.body.email,
 						username: req.body.username,
-						userType:req.body.userType 
+						gender: req.body.gender,
+						imgUrl: destination,
+						userType:req.body.userType,
+						securityQtn: req.body.securityQtn,
+						securityAns:req.body.securityAns
 					})
 					.then(signup => res.status(201).send(signup))
 					.catch(error => res.status(400).send(error));
@@ -44,10 +53,10 @@ const UsersController = class {
 				}
 			} else {
 				// username already exist
-				res.status(201).send(`user already exist`)
+				res.status(200).send(`user already exist`)
 			}
 		})
-		.catch(error => res.status(200).send(error));
+		.catch(error => res.status(500).send(error));
 	}
 
 
@@ -68,12 +77,18 @@ const UsersController = class {
 			  if(passwordConfirmed){
 					const authenKey = user['username'];
 					const token = jwt.sign({authenKey}, process.env.SECRET_KEY, {	expiresIn:'48h'	});
-					res.status(200).send({token: token});
+					res.status(200).send({
+						success: true,
+						token: token,
+						username:user.username,
+						userType: user.userType,
+						userId:user.id
+					});
 				} else {
-					res.status(201).send( {message: 'password is not correct'});
+					res.status(400).send( {message: 'password is not correct'});
 				}
 			} else {
-				res.status(201).send( {message: 'Your username is not correct'});
+				res.status(400).send( {message: 'Your username is not correct'});
 			}
 		})
 		.catch(error => res.status(500).send(error));
@@ -82,7 +97,7 @@ const UsersController = class {
 	getUser(req,res){
 		const userId = parseInt(req.params.userId);
 		return users
-		.findById({
+		.find({
 			where:{
 				id:userId
 			}
@@ -96,14 +111,26 @@ const UsersController = class {
 		})
 		.catch(error => res.status(500).send(error));
 	}
-
+	
+	getUsers(req,res){
+		return users
+		.findAll()
+		.then(user => {
+			if(user){
+				res.status(200).send(user);
+			} else {
+				res.status(404).send({ message: 'User not found'})
+			}
+		})
+		.catch(error => res.status(500).send(error));
+	}
 	updateUsers (req, res) {
 		const userId = parseInt(req.params.userId);
 		return users
 		.find({
 			where: {
 				id: userId
-			},
+			}
 		})
 		.then(user => {
 			if(user) {
@@ -111,12 +138,41 @@ const UsersController = class {
 				.update({
 				fullname: req.body.fullname || user.fullname,
 				username: req.body.username || user.username,
-				email: req.body.email || user.email
+				email: req.body.email || user.email,
+				gender: req.body.gender || user.gender,
+				imgUrl: req.body.imgUrl || user.imgUrl
 				})
 			}
 		})
 		.then(user => res.status(201).send(user))
 		.catch(error => res.status(404).send(error));
+	}
+
+	// delete user by id
+	deleteUser(req,res){
+		const userId = parseInt(req.params.userId);
+		return users
+		.find({
+			where:{
+				id:userId
+			}
+		})
+		.then(user => {
+			if(user) {
+			return user
+			.destroy({
+				where:{
+					id:userId
+				}
+			})
+			.then(deleted => res.status(200).send({ message: `${user.fullname} has been deleted`}))
+			.catch(error => res.status(500).send(error));
+			} else {
+        res.status(500).send({ message: 'user not found'});
+			}
+
+		})
+		.catch(error => res.status(500).send(error));
 	}
 	
 

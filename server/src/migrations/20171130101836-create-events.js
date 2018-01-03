@@ -8,18 +8,29 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      type: {
+      eventType: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      date: {
-        type: Sequelize.DATE,
+      eventDate: {
+        type: Sequelize.DATEONLY,
         allowNull: false
+      },
+      facilities:{
+        type:Sequelize.ARRAY(Sequelize.STRING),
+        allowNull:true
+       },
+       imgUrl: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      confirm: {
+        type:Sequelize.ENUM('pending', true, false),
+        defaultValue:'pending'
       },
       centerId: {
         type: Sequelize.INTEGER,
         allowNull: false
-
       },
       userId: {
         type: Sequelize.INTEGER,

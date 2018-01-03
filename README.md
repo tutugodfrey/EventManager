@@ -11,7 +11,7 @@ To run app in development
 ### npm run start:dev
 
 ## npm run start:dev
-wWill transpile the es6 file in src directory file to es5 in a trans directory
+Will transpile the es6 file in src directory file to es5 in a trans directory
 
 ## User
 Users signup 

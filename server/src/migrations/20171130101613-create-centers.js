@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      centerName: {
         type: Sequelize.STRING,
         allowNull: false
       },
@@ -24,9 +24,17 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      facilities:{
+      facilities: {
+        type:Sequelize.ARRAY(Sequelize.STRING),
+        allowNull:true
+       },
+       imgUrl:{
         type:Sequelize.STRING,
         allowNull:true
+       },
+       userId:{
+        type:Sequelize.STRING,
+        allowNull: false
        },
       createdAt: {
         allowNull: false,

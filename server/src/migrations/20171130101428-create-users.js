@@ -26,6 +26,22 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      gender: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      securityQtn: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      securityAns: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      imgUrl: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       userType: {
         type:Sequelize.ENUM("admin", "regular"),
         defaultValue:"regular"

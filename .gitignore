@@ -1,6 +1,7 @@
 node_modules
-
-npm-debug.log
+npm-debug.lo
+npm-debug.log*
 .env
-
-
+server/trans
+coverage
+.vscode
