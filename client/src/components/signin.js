@@ -53,7 +53,7 @@ class SigninForm extends React.Component {
       body:JSON.stringify(data)
     }
 
-    fetch('http://localhost:8080/users/signin', options)
+    fetch('/users/signin', options)
     .then(res => res.json())
     .then(data => { 
       this.setState({

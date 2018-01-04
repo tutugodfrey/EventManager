@@ -89,14 +89,14 @@ class Event extends React.Component {
     }
 
     if(newState.userData.userType === 'admin') {
-      fetch(`http://localhost:8080/api/events/ ${this.props.eventId}`, options)
+      fetch(`/api/events/ ${this.props.eventId}`, options)
       .then(res => res.json())
       .then(data => { 
         this.props.store.dispatch(actions.displayPage(ViewEvents));
       })
     } else if ((newState.userData.userType === 'regular') && (newState.userData.userId === this.props.userId)) {
       // require userId
-      fetch(`http://localhost:8080/api/events/ ${this.props.eventId}`, options)
+      fetch(`/api/events/ ${this.props.eventId}`, options)
       .then(res => res.json())
       .then(data => { 
         this.props.store.dispatch(actions.displayPage(ViewEvents));
@@ -116,7 +116,7 @@ class Event extends React.Component {
       method:'GET',
       headers,
     }
-    fetch(`http://localhost:8080/api/centers/${this.props.centerId}`, options)
+    fetch(`/api/centers/${this.props.centerId}`, options)
     .then(res => res.json())
     .then(data => { 
       if(data.centerName) {

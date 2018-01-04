@@ -83,7 +83,7 @@ class AddCenterForm extends React.Component {
       body:data
     }
     //  body:JSON.stringify(data)
-    fetch('http://localhost:8080/api/centers', options)
+    fetch('/api/centers', options)
     .then(res => res.json())
     .then(data => {
       if(data.centerName) {

@@ -32,21 +32,21 @@ class ViewEvents extends React.Component {
     }
     
     if(whichEvents === 'user') {
-      fetch(`http://localhost:8080/api/events/${userId}`, options)
+      fetch(`/api/events/${userId}`, options)
       .then(res => res.json())
       .then(data => { 
         this.props.store.dispatch(actions.setUserEvents(data)); 
         this.events(whichEvents)
       })
     } else if(whichEvents === 'center') {
-      fetch(`http://localhost:8080/api/events/centers/${centerId}`, options)
+      fetch(`/api/events/centers/${centerId}`, options)
       .then(res => res.json())
       .then(data => { 
         this.props.store.dispatch(actions.setCenterEvents(data)); 
         this.events(whichEvents)
       })
     } else if(whichEvents === 'all') {
-      fetch(`http://localhost:8080/api/events`, options)
+      fetch(`/api/events`, options)
       .then(res => res.json())
       .then(data => { 
         this.props.store.dispatch(actions.setAllEvents(data)); 

@@ -80,7 +80,7 @@ class ModifyCenterForm extends React.Component {
     }
 
     if(this.state.userType === 'admin') {
-      fetch(`http://localhost:8080/api/centers/ ${this.state.centerId}`, options)
+      fetch(`/api/centers/ ${this.state.centerId}`, options)
       .then(res => res.json())
       .then(data => { 
         this.props.store.dispatch(actions.displayPage(ViewCenters));
