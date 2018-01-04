@@ -111,7 +111,7 @@ class SignupForm extends React.Component {
       body:data
     }
  
-    fetch('http://localhost:8080/users/signup', options)
+    fetch('/users/signup', options)
     .then(res => res.json())
     .then(data => {
       if(data.username) {
