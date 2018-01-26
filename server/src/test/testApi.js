@@ -18,6 +18,7 @@ const user = {
   securityQtn:'what isthe name of your best teacher?',
   securityAns:'westley'
 }
+
 const center = {
   token,
   userType:"admin",
@@ -79,12 +80,21 @@ describe('API routes', () => {
     })
   });
    describe('Users', () => {
-
-
     it('should create a new user', () => {
       return chai.request(app)
       .post('/users/signup')
-      .send(user)
+      .set('Content-Type', 'multipart/form-data')
+      .field("fullname", "tut godfrey",)
+      .field("username", "gtut",)
+      .field("email","meandyou@yaho.com")
+      .field("gender", "male")
+      .field("passwd1", "12345")
+      .field("passwd2", "12345")
+      .field("userType", "regular")
+      .field("securityQtn", "what isthe name of your best teacher?")
+      .field("securityAns", "westle")
+     // .send(user)
+      .attach('userPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20150407_0001.png')
       .then((res) => {
         expect(res).to.have.status(201)
         expect(res.body).to.be.an('Object')
@@ -104,6 +114,7 @@ describe('API routes', () => {
     it('should create event Center', () => {
       return chai.request(app)
       .post('/api/centers')
+      .set('Content-Type', 'multipart/form-data')
       .send(center)
       .then((res) => {
         expect(res).to.have.status(201);
