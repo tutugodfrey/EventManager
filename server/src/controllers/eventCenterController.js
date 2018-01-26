@@ -1,6 +1,6 @@
 
 import models from './../models';
-import { getImgUrl } from './../../../public/funcs/HelperFuncts'
+import { getImgUrl } from './..//funcs/HelperFuncts'
 const centers = models.centers;
 
 const EventCenterController = class {

@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import models from './../models';
-import { getImgUrl } from './../../../public/funcs/HelperFuncts'
+import { getImgUrl } from './../funcs/HelperFuncts'
 // const destination = './public/users-photo/';
 const users = models.users;
 dotenv.config();
