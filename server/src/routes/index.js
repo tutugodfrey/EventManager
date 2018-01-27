@@ -68,16 +68,20 @@ const Routes = class {
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
       const token = req.body.token || req.headers.token;
+      // console.log(token)
       if(token){
         jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
           if(err) {
             res.status(500).send('Invalid Token');
+            console.log("invalid token provided")
           } else {
+            console.log("good to go")
             next();
           }
         })
       } else {
-        res.send('Please send a token');
+        res.status(402).send('Please send a token');
+        console.log("no token send")
       }
     });   
     

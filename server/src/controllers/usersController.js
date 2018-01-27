@@ -9,6 +9,7 @@ const users = models.users;
 dotenv.config();
 const UsersController = class {
   // controller for users signup
+
   signup(req, res) {
 		return users
 		.find({
@@ -124,6 +125,7 @@ const UsersController = class {
 		})
 		.catch(error => res.status(500).send(error));
 	}
+
 	updateUsers (req, res) {
 		const userId = parseInt(req.params.userId);
 		return users

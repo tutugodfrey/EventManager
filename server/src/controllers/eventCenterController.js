@@ -131,7 +131,7 @@ const EventCenterController = class {
         if(eventCenter){
           return eventCenter
           .update({
-            name: req.body.centerName || eventCenter.centerName,
+            centerName: req.body.centerName || eventCenter.centerName,
             location:req.body.location || eventCenter.location,
             sits: req.body.sits || eventCenter.sits,
             cost: req.body.cost || eventCenter.cost,
