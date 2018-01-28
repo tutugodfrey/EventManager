@@ -6,6 +6,7 @@ const Notifications = class {
 	// to post notification to db table as well send an email
   createNotification(req, res) {
   	const userType = req.body.userType;
+		console.log("got to notification")
   	if(userType === 'admin'){
   		const userId = parseInt(req.body.userId);
   		const message = req.body.message;

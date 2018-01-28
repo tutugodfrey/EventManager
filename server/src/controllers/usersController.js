@@ -3,12 +3,13 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import models from './../models';
-import { getImgUrl } from './../../../public/funcs/HelperFuncts'
+import { getImgUrl } from './../funcs/HelperFuncts'
 // const destination = './public/users-photo/';
 const users = models.users;
 dotenv.config();
 const UsersController = class {
   // controller for users signup
+
   signup(req, res) {
 		return users
 		.find({
@@ -124,6 +125,7 @@ const UsersController = class {
 		})
 		.catch(error => res.status(500).send(error));
 	}
+
 	updateUsers (req, res) {
 		const userId = parseInt(req.params.userId);
 		return users

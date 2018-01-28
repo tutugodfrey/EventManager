@@ -1,74 +1,47 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import Server from './../app';
+import models from './../models/index';
+const users = models.users;
+const events = models.events;
+const centers = models.centers;
+const notifications = models.notifications;
 const assert = chai.assert;
 const server = new Server();
 const expect = chai.expect;
 const app = server.expressServer();
 chai.use(chaiHttp);
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoZW5LZXkiOiJndHV0dSIsImlhdCI6MTUxMjc1Mzg1NSwiZXhwIjoxNTEyOTI2NjU1fQ.S0NOV3_hTrxIwq8ooLGTI2XehLwgccLX5W7-gEuPFM0";
-const user = {
-  fullname: "tut godfrey",
-  username: "gtut",
-  email:"meandyou@yaho.com",
-  gender: "male",
-  passwd1: "12345",
-  passwd2:"12345",
-  userType:"regular",
-  securityQtn:'what isthe name of your best teacher?',
-  securityAns:'westley'
-}
-const center = {
-  token,
-  userType:"admin",
-  centerName: "gard park",
-  location: "Abuja",
-  cost: 240,
-  sits: 500,
-  imgUrl: "path-to-img",
-  facilities: ["Air condition"]
-  
 
-}
-const updateCenter = {
-  centerName: null,
-  location: null,
-  cost: 250,
-  sit: 500,
-  facilities: null
-}
-const events = {
-  token,
-  eventType:"wedding",
-  eventDate:"2018-01-10",
-  facilities: ["projector"],
-  centerId: 1,
-  userId: 1 
-}
-const updateEvent = {
-  eventType:"carnival",
-  eventDate:null,
-  facilities: null,
-  centerId: 1,
-  userId: 1
-}
-const notification = {
-  token,
-  message: "your events is cancelled",
-  userType: "admin",
-  userId:1
-}
+const adminUser = {};
+const regularUser =  {};
+const signedInUser = {};
+const eventCenter = {};
+const event = {};
 
 describe('API routes', () => {
 
-   before(function() {
+  before('clear database', function()  { 
+    return centers.sync({ force: true })
+    .then(function(data) {
+      console.log("success creating table")
+      return notifications.sync({ force: true })
+    })
+    .then(function(data) {
+      console.log("success creating table")
+      return users.sync({ force: true })
+    })  
+    .then(function(data) {
+      console.log("success creating table")
+      return events.sync({ force: true })
+    }) 
+    .catch(function(error) { 
+      console.log('table sync error'); 
+      throw error;
+      done(); 
+    });
+  }); 
 
-   });
-
-   after(function() {
-
-   });
-  // test users
+  // test default route
   describe('Home', () => {
     it('should return welcome message', () => {
       return chai.request(app)
@@ -78,156 +51,199 @@ describe('API routes', () => {
       });
     })
   });
-   describe('Users', () => {
 
-
-    it('should create a new user', () => {
+  describe('Admin User', () => {
+    it('should create new admin user', () => {
       return chai.request(app)
       .post('/users/signup')
-      .send(user)
+      .set('Content-Type', 'multipart/form-data')
+      .field("fullname", "tutu godfrey",)
+      .field("username", "tutug",)
+      .field("email","meandyou@yahoo.com")
+      .field("gender", "male")
+      .field("passwd1", "12345")
+      .field("passwd2", "12345")
+      .field("userType", "admin")
+      .field("securityQtn", "what isthe name of your best teacher?")
+      .field("securityAns", "westle")
+     // .send(user)
+      .attach('userPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20150407_0001.png')
       .then((res) => {
+        const userInfo = res.body;
+        Object.assign(adminUser, res.body)
         expect(res).to.have.status(201)
         expect(res.body).to.be.an('Object')
       });
     })
-    it('should get a user by id', () => {
+
+    it('should signin a adminUser in and give a token', () => {
       return chai.request(app)
-      .get('/api/users/2')
+      .post('/users/signin')
+      .send({
+        username:adminUser.username,
+        password:"12345"
+      })
       .then((res) => {
+        Object.assign(signedInUser, res.body);
         expect(res).to.have.status(200)
         expect(res.body).to.be.an('Object')
       });
     })
-  });
-  
-  describe('Center', () => {
+
     it('should create event Center', () => {
       return chai.request(app)
       .post('/api/centers')
-      .send(center)
+      .set('Content-Type', 'multipart/form-data')
+      .set("token", signedInUser.token)
+      .field("userType", signedInUser.userType)
+      .field("centerName", "gard park")
+      .field("location", "Abuja")
+      .field("cost", 240)
+      .field("sits", 500)
+      .field("facilities", "Air condition")
+      .field("userId", signedInUser.userId)
+      .field("facilities", "projector")
+      .attach('centerPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20150309_0001.png')
+      .then((res) => {
+        Object.assign(eventCenter, res.body)
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an('object');
+      });
+    });
+
+    it('should update an event Center', () => {
+      const updateCenter = {
+        userType: signedInUser.userType,
+        centerName: "gard park",
+        location: "Abuja",
+        cost: 120,
+        sits: 520,
+        facilities: ["Air condition", "Catering"],
+        userId: signedInUser.userId
+      }
+      return chai.request(app)
+      .put(`/api/centers/${eventCenter.id}`)
+      .set('token', signedInUser.token)
+      .send(updateCenter)
       .then((res) => {
         expect(res).to.have.status(201);
         expect(res.body).to.be.an('object');
       });
     });
-    it('should update an event Center', () => {
-      return chai.request(app)
-      .put('/api/centers')
-      .send(updateCenter)
-      .then((res) => {
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-      });
-    });
-    it('should get all event centers', () => {
-      return chai.request(app)
-      .get('/api/centers')
-      .then((res) => {
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-      });
-    });
-    it('should get a single events center given its id', () => {
-      return chai.request(app)
-      .get('/api/centers/1')
-      .then((res) => {
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-      })
-    });
-    it('should get a center name', () => {
-      return chai.request(app)
-      .get('/api/centers/centername/bushbar')
-      .then((res) => {
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-      })
-    });
-    it('should get a center by location', () => {
-      return chai.request(app)
-      .get('/api/centers/location/Lagos')
-      .then((res) => {
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-      })
-    });
-  });
 
-  describe('Events', () => {
+  });  //end admin section
+  describe('regular Users', () => {
+    it('should create new regular user', () => {
+      return chai.request(app)
+      .post('/users/signup')
+      .set('Content-Type', 'multipart/form-data')
+      .field("fullname", "tut godfrey",)
+      .field("username", "gtutu",)
+      .field("email","allofus@yahoo.com")
+      .field("gender", "male")
+      .field("passwd1", "12345")
+      .field("passwd2", "12345")
+      .field("userType", "regular")
+      .field("securityQtn", "what isthe name of your best teacher?")
+      .field("securityAns", "westle")
+      .attach('userPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20140715_0001.png')
+      .then((res) => {
+        Object.assign(regularUser, res.body)
+        expect(res).to.have.status(201)
+        expect(res.body).to.be.an('Object')
+      });
+    })
+
+    it('should signin a regularUser in and give a token', () => {
+      return chai.request(app)
+      .post('/users/signin')
+      .send({
+        username:"gtutu",
+        password:"12345"
+      })
+      .then((res) => {
+        Object.assign(signedInUser, res.body);
+        expect(res).to.have.status(200)
+        expect(res.body).to.be.an('Object')
+      });
+    })
+
     it('should create event', () => {
      return chai.request(app)
-     .post('/api/events')
-     .send(events)
-     .then((res) => {
-       expect(res).to.have.status(201);
-       expect(res.body).to.be.an('object');
-     })
-   });
-  it('should update an event', () => {
-   return chai.request(app)
-   .put('/api/events/1')
-   .send(updateEvent)
-   .then((res) => {
-     expect(res).to.have.status(200);
-     expect(res.body).to.be.an('object');
-    })
-   });
-   it("should return the user info", function() {
-   return chai.request(app)
-   .get("/api/events")
-   .then(function(res) {
-     expect(res).to.have.status(200);
-   });
-  }); 
-   it('should get all events given its center id', () => {
-       return chai.request(app)
-       .get('/api/events/centers/2')
-       .then((res) => {
-       expect(res).to.have.status(200);
-       expect(res.body).to.be.an('object');
-     })
-   });
-   it('should get an event belonging to a user given the event id', () => {
-       return chai.request(app)
-       .get('/api/events/users/3')
-       .then((res) => {
-       expect(res).to.have.status(200);
-       expect(res).to.be.an('object');
-     })
-   });
-   it('should get all events belonging to a user given the userId id', () => {
-       return chai.request(app)
-       .get('/api/events/1')
-       .then((res) => {
-       expect(res).to.have.status(200);
-       expect(res.body).to.be.an('object');
-     })
-   });
-   it('should delete an events given its id', () => {
-       return chai.request(app)
-       .delete('/api/events/1')
-       .then((res) => {
-       expect(res).to.have.status(200);
-       expect(res.body).to.be.an('object');
-     })
-   });
- });
+      .post('/api/events')
+      .set("Content-Type", "multipart/form-data")
+      .set('token', signedInUser.token)
+      .field("eventType", "wedding")
+      .field("eventDate", "2018-02-10")
+      .field("facilities", eventCenter.facilities[0])
+      .field("facilities", eventCenter.facilities[1])
+      .field("centerId", eventCenter.id)
+      .field("userId", signedInUser.userId)
+      .attach('eventPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20150922_0001.png')
+      .then((res) => {
+        Object.assign(event, res.body)
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an('object');
+      })
+    });
+
+    it('should update an event', () => {
+      const updateEvent = {
+        eventType: "wedding anniversar",
+        centerId: event.centerId,
+        userId: signedInUser.userId
+      }
+      return chai.request(app)
+      .put(`/api/events/${event.id}`)
+      .set('token', signedInUser.token)
+      .send(updateEvent)
+      .then((res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an('object');
+      })
+    });
+
+  }); // end reuglar user
+  
   describe('Notifications', () => {
+    it('should signin a adminUser in and give a token', () => {
+      return chai.request(app)
+      .post('/users/signin')
+      .send({
+        username:adminUser.username,
+        password:"12345"
+      })
+      .then((res) => {
+        Object.assign(signedInUser, res.body);
+        expect(res).to.have.status(200)
+        expect(res.body).to.be.an('Object')
+      });
+    })
+
     it('Create new notification', () => {
+      const notification = {
+        message: "your events is cancelled",
+        userType: signedInUser.userType,
+        userId:regularUser.id
+      }
       return chai.request(app)
       .post('/api/notifications')
+      .set('token', signedInUser.token)
       .send(notification)
       .then((res) => {
         expect(res).to.have.status(201)
       });
     });
+
     it('Get notification', () => {
       return chai.request(app)
-      .get('/api/notifications/1')
+      .get(`/api/notifications/${regularUser.id}`)
+      .set('token', signedInUser.token)
       .then((res) => {
         expect(res).to.have.status(200)
       });
     });
-  });
+  }); //end notification
+
 });
 

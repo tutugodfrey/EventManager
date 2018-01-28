@@ -1,6 +1,6 @@
 
 import models from './../models';
-import { getImgUrl } from './../../../public/funcs/HelperFuncts'
+import { getImgUrl } from './../funcs/HelperFuncts'
 const events = models.events;
 const centers = models.centers;
 const users = models.users;

@@ -69,11 +69,24 @@ Admin can post notifications if a users event will not be fulfilled for any reas
 
 Users can get notification if their events are cancelled through email or when they login to app
 #### get /notifications/:userId
-
-
-
-
-
+#Testing
+## Using test database
+### Using before hook
+To work around sequelize error Cannot read property '0' of undefined, in your local node_modules/sequelize/lib/dialets/postgres/query.js, locate
+```
+  // const rows = queryResult.rows;
+  // const rowCount = queryResult.rowCount;
+```
+and replace with
+```
+  const rows = Array.isArray(queryResult) ? queryResult.reduce((rows, r) => rows.concat(r.rows), []) : queryResult.rows;
+  const rowCount = Array.isArray(queryResult) ? queryResult.reduce((rowCount, r) => rowCount + r.rowCount, 0) : queryResult.rowCount; 
+```
+### To switch to test_db, before running test on the commandline
+```export NODE_ENV=test
+or
+  set NODE_ENV=test
+```
 
 
 
