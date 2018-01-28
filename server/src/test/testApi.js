@@ -1,7 +1,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import Server from './../app';
-import models from './../models'
+import models from './../models/index';
+const users = models.users;
+const events = models.events;
+const centers = models.centers;
+const notifications = models.notifications;
 const assert = chai.assert;
 const server = new Server();
 const expect = chai.expect;
@@ -15,19 +19,29 @@ const eventCenter = {};
 const event = {};
 
 describe('API routes', () => {
-/*
-  before('clear database', done =>  { 
-      return models.sequelize.sync({ force: true })
-      .then(model => { console.log("table recreated")})
-      .catch(function(error) { 
-        console.log('table sync error'); 
-        throw error;
-        done(); 
-      });
-  }); */
-   after(function() {
-   });
-  // test users
+
+  before('clear database', function()  { 
+    return centers.sync({ force: true })
+    .then(function(data) {
+      console.log("success creating table")
+      return notifications.sync({ force: true })
+    })
+    .then(function(data) {
+      console.log("success creating table")
+      return users.sync({ force: true })
+    })  
+    .then(function(data) {
+      console.log("success creating table")
+      return events.sync({ force: true })
+    }) 
+    .catch(function(error) { 
+      console.log('table sync error'); 
+      throw error;
+      done(); 
+    });
+  }); 
+
+  // test default route
   describe('Home', () => {
     it('should return welcome message', () => {
       return chai.request(app)

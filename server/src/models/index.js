@@ -4,8 +4,8 @@ import Sequelize from 'sequelize';
 const basename  = path.basename(__filename);
 const env       = process.env.NODE_ENV || 'development';
 let config;
-//if( process.env.NODE_ENV === "test") {
-  console.log("got into this block")
+//if(env === "test") {
+ // console.log("got into this block")
   config    = require(path.join(__dirname, '../..', 'config', 'config.json'))["test"];
 //} else {
 //  config    = require(path.join(__dirname, '../..', 'config', 'config.json'))[env];
