@@ -7,7 +7,7 @@
     "start:dev": "nodemon ./server/bin/dev",
     "lint": "eslint server/src/funcs/funcs.js",
     "build": "babel server/src -s -d server/trans",
-    "test": "SET NODE_ENV=test && npm run build && mocha server/trans/test/ --timeout 10000 --exit",
+    "test": "npm run build && mocha server/trans/test/ --timeout 10000 --exit",
     "start": "npm run build && node ./server/bin/production",
     "start:react": "webpack -w -d",
     "webpack:dev": "webpack-dev-server --hot --inline",

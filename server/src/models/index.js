@@ -3,18 +3,9 @@ import path from 'path';
 import Sequelize from 'sequelize';
 const basename  = path.basename(__filename);
 const env       = process.env.NODE_ENV || 'development';
-let config;
-//if(env === "test") {
- // console.log("got into this block")
-  config    = require(path.join(__dirname, '../..', 'config', 'config.json'))["test"];
-//} else {
-//  config    = require(path.join(__dirname, '../..', 'config', 'config.json'))[env];
-//}
+const config    = require(path.join(__dirname, '../..', 'config', 'config.json'))[env];
 
 const db        = {};
-console.log(env)
-console.log(typeof env);
-console.log(config);
 let sequelize
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
