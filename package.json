@@ -73,6 +73,7 @@
     "sequelize-cli": "^3.1.0",
     "sequelize-tools": "0.0.3",
     "superagent": "^3.8.2",
+    "swagger-ui": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
   }
 }
