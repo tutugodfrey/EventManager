@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon ./server/bin/dev",
+    "start:dev": "nodemon ./server/src/bin/dev",
     "lint": "eslint server/src",
     "build": "babel server/src -s -d server/trans",
     "test": "mocha server/trans/test/ --timeout 25000 --exit",
-    "start": "npm run build && node ./server/bin/production",
+    "start": "node ./server/trans/bin/www",
     "start:react": "webpack -w -d",
     "webpack:dev": "webpack-dev-server --hot --inline",
     "migrate": "node_modules/.bin/sequelize db:migrate",
