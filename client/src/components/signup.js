@@ -156,9 +156,11 @@ class SignupForm extends React.Component {
 
   render () {
     return ( 
-      <div> 
-        <form>
-          <h1> Signup </h1>
+      <div className = 'row'>
+        <div className = 'py-1 card col-8 col-sm-6 col-md-3 offset-2 offset-sm-3 offset-md-4'>
+          <div className = 'card-body'>
+          <h1 className= 'card-title'> Signup </h1>
+          <form>
           <FormInput type = 'text' id ='fullname' labelValue = 'Fullname' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.fullnameChange.bind(this)} referred = 'fullname' name = 'fullname' placeholder = 'fullname' value = {this.state.fullname} /><br />
           <FormInput type = 'text' id ='email' labelValue = 'Email' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.emailChange.bind(this)} ref = 'email'name = 'email' placeholder = 'Email' value = {this.state.email} /><br />
           <FormInput type = 'text' id ='username' labelValue = 'Username' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.usernameChange.bind(this)} name = 'username' placeholder = 'Username' value = {this.state.username} /><br />
@@ -171,9 +173,11 @@ class SignupForm extends React.Component {
           <FormInput type = 'checkbox' id ='userType' labelValue = 'Are you an admin? Click the checkbox!' divClass = 'form-group' inputClass = 'form-control' onChange = {this.userTypeChange.bind(this)} ref = 'userType' name = 'userType'  value = 'admin' /><br />
           <FormInput type = 'submit' inputClass = 'btn btn-primary' click = {this.handleSignup.bind(this)} value = 'Signup' />
         </form>
+          </div>
         <div>
           <Link hrefLink = '#' hrefId = 'signBtn' hrefContent = 'Signin' hrefClass = 'btn btn-primary' /> <br />
         </div>
+        </div> 
       </div>
     )
   } 

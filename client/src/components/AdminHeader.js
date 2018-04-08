@@ -46,31 +46,40 @@ class AdminHeader extends React.Component {
   
 render() {
   return ( 
-    <div>
-      <nav className = 'navbar navbar-inverse'> 
-        <ul main-menu = 'hp-nav' className = 'nav'>
-          <li className = 'nav-items' >
-            <Link hrefId = 'home' dispatch = { this.props.dispatch } clicked = {this.homeClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Home'/>
-          </li>
-          <li className = 'nav-items' >
-            <Link hrefId = 'add-center'  dispatch = { this.props.dispatch } clicked = {this.addCenterClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Add Center'/>
-          </li>
-          <li>
-            <Link hrefId = 'modify-center' dispatch = { this.props.dispatch } clicked = {this.modifyCenterClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Modify Center'/>
-          </li>
-          <li>
-           <Link hrefId = 'view-centers' dispatch = { this.props.dispatch } clicked = {this.viewCenterClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Event Centers'/>
-          </li>
-          <li>
-            <Link hrefId = 'view-centers' dispatch = { this.props.dispatch } clicked = {this.viewEventsClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Events'/>
-          </li>
-        </ul>
+    <div className = 'header-div container-fluid'>
+      <div className = 'row'> 
         <ul id = 'hp-nav' className = 'nav'>
           <li>
             <Link hrefId = 'logout' dispatch = { this.props.dispatch } clicked = {this.logoutClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Logout' />
           </li>
         </ul>
-      </nav>
+      </div>
+      <div className = 'row'>
+        <nav className = 'navbar nav-tabs navbar-expand-sm navbar-light'> 
+          <button className = 'navbar-toggler navbar-toggler-right' data-toggle = 'collapse' data-target = '#nav-menu' type ='button' aria-controls="pry-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className ="navbar-toggler-icon"></span>
+          </button>
+          <div id = 'nav-menu'  className = 'collapse navbar-collapse'>
+          <ul main-menu = 'hp-nav' className = 'navbar-nav'>
+            <li className = 'nav-item' >
+              <Link hrefId = 'home' dispatch = { this.props.dispatch } clicked = {this.homeClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Home'/>
+            </li>
+            <li className = 'nav-item' >
+              <Link hrefId = 'add-center'  dispatch = { this.props.dispatch } clicked = {this.addCenterClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Add Center'/>
+            </li>
+            <li className = 'nav-item'>
+              <Link hrefId = 'modify-center' dispatch = { this.props.dispatch } clicked = {this.modifyCenterClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Modify Center'/>
+            </li>
+            <li>
+            <Link hrefId = 'view-centers' dispatch = { this.props.dispatch } clicked = {this.viewCenterClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Event Centers'/>
+            </li>
+            <li className = 'nav-item'>
+              <Link hrefId = 'view-centers' dispatch = { this.props.dispatch } clicked = {this.viewEventsClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Events'/>
+            </li>
+          </ul>
+          </div>
+        </nav>
+      </div>
     </div>
     )
   }
