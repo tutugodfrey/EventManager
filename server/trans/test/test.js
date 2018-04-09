@@ -14,11 +14,9 @@ var _app2 = _interopRequireDefault(_app);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var assert = _chai2.default.assert; // process.env.NODE_ENV = "test";
-
-var server = new _app2.default();
+var server = new _app2.default(); // process.env.NODE_ENV = "test";
 var expect = _chai2.default.expect;
-var app = server.expressServer();
+
 _chai2.default.use(_chaiHttp2.default);
 
 describe('Server', function () {

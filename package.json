@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon ./server/src/bin/dev",
-    "lint": "eslint server/src/test/test.js",
+    "lint": "eslint server/src/routes/index.js",
     "build": "babel server/src -s -d server/trans",
     "test": "nyc mocha server/trans/test/ --timeout 25000 --exit",
     "start": "node ./server/trans/bin/www",

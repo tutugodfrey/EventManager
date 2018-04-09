@@ -20,15 +20,15 @@ export default  (sequelize, DataTypes) => {
       },
     facilities:{
       type:DataTypes.ARRAY(DataTypes.STRING),
-      allowNull:true
+      allowNull:true,
      },
      imgUrl:{
       type:DataTypes.STRING,
-      allowNull:true
+      allowNull:true,
      },
      userId:{
       type:DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
      }
   });
  

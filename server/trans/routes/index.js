@@ -49,10 +49,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
-the below is the alternative way to direct upload and multer will generate a random file 
+the below is the alternative way to direct upload and multer will generate a random file
 name for you without an extentions
 const usersDest = './public/users-photo/';
-const usersUpload = multer({dest: usersDest}); 
+const usersUpload = multer({dest: usersDest});
 */
 var UsersStorage = _multer2.default.diskStorage({
   destination: './public/users-photo/',
@@ -113,22 +113,20 @@ var Routes = function () {
         var token = req.body.token || req.headers.token;
         // console.log(token)
         if (token) {
+          /* eslint-disable no-unused-vars */
           _jsonwebtoken2.default.verify(token, process.env.SECRET_KEY, function (err, decode) {
             if (err) {
               res.status(500).send('Invalid Token');
-              console.log("invalid token provided");
             } else {
-              console.log("good to go");
               next();
             }
           });
         } else {
           res.status(402).send('Please send a token');
-          console.log("no token send");
         }
       });
 
-      // this.securedApi.get('/users', this.users.getUsers); 
+      // this.securedApi.get('/users', this.users.getUsers);
       this.securedApi.get('/users/:userId', this.users.getUser);
       this.securedApi.put('/users/:userId', this.users.updateUsers);
       // this.securedApi.post('/centers', this.eventCenters.addEventCenter);
