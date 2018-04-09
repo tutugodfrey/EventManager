@@ -10,10 +10,6 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
-var _jsonwebtoken = require('jsonwebtoken');
-
-var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
-
 var _bodyParser = require('body-parser');
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
@@ -31,7 +27,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var route = new _index2.default();
-
 // setup server class
 
 var Server = function () {

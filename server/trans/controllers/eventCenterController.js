@@ -26,6 +26,7 @@ var EventCenterController = function () {
   _createClass(EventCenterController, [{
     key: 'addEventCenter',
 
+    /* eslint-disable class-methods-use-this */
     // add a new event center
     value: function addEventCenter(req, res) {
       if (req.body.userType === 'admin') {
@@ -37,29 +38,26 @@ var EventCenterController = function () {
         }).then(function (eventCenter) {
           if (!eventCenter) {
             var destination = (0, _HelperFuncts.getImgUrl)(req.file.path);
-            // const destination = 'path-to-photo';
             return centers.create({
               centerName: req.body.centerName,
               location: req.body.location,
-              sits: parseInt(req.body.sits),
-              cost: parseInt(req.body.cost),
+              sits: parseInt(req.body.sits, 10),
+              cost: parseInt(req.body.cost, 10),
               facilities: req.body.facilities,
               imgUrl: destination,
-              userId: parseInt(req.body.userId)
+              userId: parseInt(req.body.userId, 10)
             }).then(function (center) {
               return res.status(201).send(center);
             }).catch(function (error) {
               return res.status(400).send(error);
             });
-          } else {
-            res.status(200).send({ message: 'a center with this name already exist' });
           }
+          return res.status(200).send({ message: 'a center with this name already exist' });
         }).catch(function (error) {
-          return res.status(404).send({ message: 'something went wrong' });
+          return res.status(404).send(error);
         });
-      } else {
-        res.status(402).send({ message: 'You are not allowed to perform this action' });
       }
+      return res.status(402).send({ message: 'You are not allowed to perform this action' });
     }
 
     //  return all event centers
@@ -72,7 +70,10 @@ var EventCenterController = function () {
           res.status(200).send(eventCenter);
         }
       }).catch(function (error) {
-        return res.status(404).send({ message: 'No event center found' });
+        return res.status(404).send({
+          error: error,
+          message: 'No event center found'
+        });
       });
     }
 
@@ -81,7 +82,7 @@ var EventCenterController = function () {
   }, {
     key: 'getEventCenter',
     value: function getEventCenter(req, res) {
-      var centerId = parseInt(req.params.centerId);
+      var centerId = parseInt(req.params.centerId, 10);
       return centers.find({
         where: {
           id: centerId
@@ -92,6 +93,7 @@ var EventCenterController = function () {
         }
       }).catch(function (error) {
         return res.status(404).send({
+          error: error,
           message: 'No center is found matching this Id'
         });
       });
@@ -108,12 +110,12 @@ var EventCenterController = function () {
         }
       }).then(function (eventCenter) {
         if (eventCenter) {
-          res.status(200).send(eventCenter);
-        } else {
-          res.status(404).send({ message: 'No center found for this name' });
+          return res.status(200).send(eventCenter);
         }
+        return res.status(404).send({ message: 'No center found for this name' });
       }).catch(function (error) {
         return res.status(204).send({
+          error: error,
           message: 'No center is found matching this Id'
         });
       });
@@ -133,6 +135,7 @@ var EventCenterController = function () {
         }
       }).catch(function (error) {
         return res.status(204).send({
+          error: error,
           message: 'No center is found matching this Id'
         });
       });
@@ -141,7 +144,7 @@ var EventCenterController = function () {
     key: 'updateEventCenter',
     value: function updateEventCenter(req, res) {
       if (req.body.userType === 'admin') {
-        var centerId = parseInt(req.params.centerId);
+        var centerId = parseInt(req.params.centerId, 10);
         return centers.find({
           where: {
             id: centerId
@@ -155,23 +158,23 @@ var EventCenterController = function () {
               cost: req.body.cost || eventCenter.cost,
               facilities: req.body.facilities || eventCenter.facilities
             }).then(function (updatedCenter) {
-              res.status(201).send(updatedCenter);
+              return res.status(201).send(updatedCenter);
+            }).catch(function () {
+              return res.status(404).send({ message: 'update fail' });
             });
-          } else {
-            res.status(404).send({ message: 'Event center not found' });
           }
+          return res.status(404).send({ message: 'Event center not found' });
         }).catch(function (error) {
-          res.status(500).send(error);
+          return res.status(500).send(error);
         });
-      } else {
-        res.status(402).send({ message: 'You are allowed to perform this action' });
       }
+      return res.status(404).send({ message: 'Event center not found' });
     }
   }, {
     key: 'deleteEventCenter',
     value: function deleteEventCenter(req, res) {
       if (req.body.userType === 'admin') {
-        var centerId = parseInt(req.params.centerId);
+        var centerId = parseInt(req.params.centerId, 10);
         return centers.find({
           where: {
             id: centerId
@@ -182,18 +185,16 @@ var EventCenterController = function () {
               where: {
                 id: centerId
               }
-            }).then(function (updatedCenter) {
-              res.status(200).send({ message: 'center has been deleted' });
+            }).then(function () {
+              return res.status(200).send({ message: 'center has been deleted' });
             });
-          } else {
-            res.status(404).send({ message: 'Event center not found' });
           }
+          return res.status(404).send({ message: 'center not found' });
         }).catch(function (error) {
-          res.status(500).send(error);
+          return res.status(500).send(error);
         });
-      } else {
-        res.status(402).send({ message: 'You are allowed to perform this action' });
       }
+      return res.status(404).send({ message: 'you are not allowed to perform this action' });
     }
   }]);
 
