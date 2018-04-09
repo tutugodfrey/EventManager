@@ -1,9 +1,11 @@
+"use strict";
+
 config = {
   "development": {
     "username": "postgres",
-    "password":"53a80",
+    "password": "53a80",
     "database": "eventmn",
-    "port":5432,
+    "port": 5432,
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
@@ -17,10 +19,11 @@ config = {
   },
   "production": {
     "username": "nfczitgk",
-    "password":"ckIc2xRq3EgZassSiUcGXuY0dXGX3JDZ",
+    "password": "ckIc2xRq3EgZassSiUcGXuY0dXGX3JDZ",
     "database": "nfczitgk",
-    "port":5432,
+    "port": 5432,
     "host": "baasu.db.elephantsql.com",
     "dialect": "postgres"
   }
-}
+};
+//# sourceMappingURL=config.js.map

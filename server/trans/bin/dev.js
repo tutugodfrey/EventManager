@@ -1,5 +1,5 @@
 'use strict';
 
 require('babel-register');
-require('./www-prod');
+require('./www');
 //# sourceMappingURL=dev.js.map
