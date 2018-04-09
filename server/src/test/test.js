@@ -2,14 +2,13 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import Server from './../app';
-const assert = chai.assert;
+
 const server = new Server();
-const expect = chai.expect;
-const app = server.expressServer();
+const { expect } = chai.expect;
 chai.use(chaiHttp);
 
 describe('Server', () => {
-  describe('unit test', () => { 
+  describe('unit test', () => {
     it('should export a function', () => {
       expect(Server).to.be.a('function');
     });
@@ -21,4 +20,4 @@ describe('Server', () => {
       expect(server).to.be.an.instanceOf(Server);
     });
   });
-})
+});
