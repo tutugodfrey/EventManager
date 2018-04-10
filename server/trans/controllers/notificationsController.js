@@ -25,7 +25,7 @@ var Notifications = function () {
   _createClass(Notifications, [{
     key: 'createNotification',
 
-    /* eslint-disable class-methods-use-this */
+    /* eslint-disable class-methods-use-this, prefer-destructuring */
     // to post notification to db table as well send an email
     value: function createNotification(req, res) {
       var userType = req.body.userType;
@@ -47,15 +47,13 @@ var Notifications = function () {
             }).catch(function (error) {
               return res.status(500).send(error);
             });
-          } else {
-            return res.status(404).send({ message: 'User not found' });
           }
+          return res.status(404).send({ message: 'User not found' });
         }).catch(function (error) {
           return res.status(500).send(error);
         });
-      } else {
-        return res.status(402).send({ message: 'Your are not allowed to perform this action' });
       }
+      return res.status(402).send({ message: 'Your are not allowed to perform this action' });
     }
   }, {
     key: 'getNotifications',

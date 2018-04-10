@@ -25,7 +25,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _dotenv2.default.config();
 var basename = _path2.default.basename(__filename);
 var env = process.env.NODE_ENV || 'development';
+/* eslint-disable import/no-dynamic-require */
 var config = require(_path2.default.join(__dirname, '../..', 'config', 'config.json'))[env];
+/* eslint-disable no-console */
 console.log(env);
 var db = {};
 var sequelize = void 0;
@@ -37,6 +39,7 @@ if (config.use_env_variable) {
 _fs2.default.readdirSync(__dirname).filter(function (file) {
   return file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js';
 }).forEach(function (file) {
+  /* eslint-disable dot-notation */
   var model = sequelize['import'](_path2.default.join(__dirname, file));
   db[model.name] = model;
 });
