@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   version: v1
   title: eventmanager
-  description: bring event manager and host together
+  description: bring event manager and host together;
 host: localhost:8080
 paths:
   /users:

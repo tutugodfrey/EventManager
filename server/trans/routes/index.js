@@ -28,6 +28,14 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
+var _swaggerUiExpress = require('swagger-ui-express');
+
+var _swaggerUiExpress2 = _interopRequireDefault(_swaggerUiExpress);
+
+var _swagger = require('./../../../api/swagger/swagger.json');
+
+var _swagger2 = _interopRequireDefault(_swagger);
+
 var _eventCenterController = require('./../controllers/eventCenterController');
 
 var _eventCenterController2 = _interopRequireDefault(_eventCenterController);
@@ -77,7 +85,6 @@ var usersUpload = (0, _multer2.default)({ storage: UsersStorage });
 var centersUpload = (0, _multer2.default)({ storage: centersStorage });
 var eventsUpload = (0, _multer2.default)({ storage: eventsStorage });
 
-// console.log(upload);
 _dotenv2.default.config();
 var eventCenters = new _eventCenterController2.default();
 var events = new _eventController2.default();
@@ -99,19 +106,18 @@ var Routes = function () {
       app.get('/', function (req, res) {
         res.status(200).sendFile(_path2.default.join(__dirname, './../../../client/index.html'));
       });
+      app.use('/api/v1/docs', _swaggerUiExpress2.default.serve, _swaggerUiExpress2.default.setup(_swagger2.default));
 
       // route for users signup and signin
-      // app.post('/users/signup', this.users.signup );
-      app.post('/users/signup', usersUpload.single('userPix'), this.users.signup);
-      // app.post('/users/signup', usersUpload.single('users-pix'), this.users.signup );
-      app.post('/users/signin', this.users.signin);
-      app.delete('/users/:userId', this.users.deleteUser);
-      app.get('/users', this.users.getUsers);
-      app.use('/api', this.securedApi);
+      app.post('api/v1/users/signup', usersUpload.single('userPix'), this.users.signup);
+      app.post('api/v1/users/signin', this.users.signin);
+      app.delete('api/v1/users/:userId', this.users.deleteUser);
+      app.get('api/v1/users', this.users.getUsers);
+      app.use('api/v1/secure', this.securedApi);
+
       // route controllers for Event Centers
       this.securedApi.use(function (req, res, next) {
         var token = req.body.token || req.headers.token;
-        // console.log(token)
         if (token) {
           /* eslint-disable no-unused-vars */
           _jsonwebtoken2.default.verify(token, process.env.SECRET_KEY, function (err, decode) {
@@ -126,10 +132,8 @@ var Routes = function () {
         }
       });
 
-      // this.securedApi.get('/users', this.users.getUsers);
       this.securedApi.get('/users/:userId', this.users.getUser);
       this.securedApi.put('/users/:userId', this.users.updateUsers);
-      // this.securedApi.post('/centers', this.eventCenters.addEventCenter);
       this.securedApi.post('/centers', centersUpload.single('centerPix'), this.eventCenters.addEventCenter);
       this.securedApi.get('/centers', this.eventCenters.getEventCenters);
       this.securedApi.get('/centers/:centerId', this.eventCenters.getEventCenter);
@@ -139,7 +143,6 @@ var Routes = function () {
       this.securedApi.delete('/centers/:centerId', this.eventCenters.deleteEventCenter);
 
       // route controllers for events
-      // this.securedApi.post('/events', this.events.addEvent);
       this.securedApi.post('/events', eventsUpload.single('eventPix'), this.events.addEvent);
       this.securedApi.put('/events/:eventId', this.events.updateEvent);
       this.securedApi.get('/events', this.events.getEvents);
