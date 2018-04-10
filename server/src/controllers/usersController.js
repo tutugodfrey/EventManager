@@ -9,9 +9,9 @@ import { getImgUrl } from './../funcs/HelperFuncts';
 const { users } = models;
 dotenv.config();
 const UsersController = class {
-  /* eslint-disable class-methods-use-this */
+  /* eslint-disable class-methods-use-this, consistent-return */
   // controller for users signup
-	signup(req, res) {
+  signup(req, res) {
     return users
       .find({
         where: {
@@ -23,14 +23,14 @@ const UsersController = class {
         if (!user) {
           // handle uploaded profile pix
           const destination = getImgUrl(req.file.path);
-          const passwd1 = req.body.passwd1;
-          const passwd2 = req.body.passwd2;
+          const { passwd1, passwd2 } = req.body;
+          // const passwd2 = req.body.passwd2;
           let passwd;
           if (passwd1 === passwd2) {
             bcrypt.genSalt(10, (err, salt) => {
-              bcrypt.hash(passwd1, salt, (err, hash) => {
+              bcrypt.hash(passwd1, salt, (hashErr, hash) => {
                 passwd = hash;
-                return users
+                users
                   .create({
                     password: passwd,
                     fullname: req.body.fullname,
@@ -47,18 +47,16 @@ const UsersController = class {
               });
             });
           } else {
-						// password match fail
-						return res.status(400).send({ message: 'password does not match' });
-					}
+            // password match fail
+            return res.status(400).send({ message: 'password does not match' });
+          }
         } else {
-					// username already exist
-					return res.status(200).send({ message: 'user already exist' });
-				}
+          // username already exist
+          return res.status(200).send({ message: 'user already exist' });
+        }
       })
       .catch(error => res.status(500).send(error));
   }
-
-
 
   // controllers for users signin
   signin(req, res) {
@@ -72,7 +70,7 @@ const UsersController = class {
         if (user) {
           let passwordConfirmed = false;
           const hashedPassword = user.password;
-          const password = req.body.password;
+          const { password } = req.body;
           passwordConfirmed = bcrypt.compareSync(password, hashedPassword);
           if (passwordConfirmed) {
             const authenKey = user.username;
@@ -85,11 +83,11 @@ const UsersController = class {
               userId: user.id,
             });
           } else {
-						return res.status(400).send({ message: 'password is not correct' });
-					}
+            return res.status(400).send({ message: 'password is not correct' });
+          }
         } else {
-					return res.status(400).send({ message: 'Your username is not correct' });
-				}
+          return res.status(400).send({ message: 'Your username is not correct' });
+        }
       })
       .catch(error => res.status(500).send(error));
   }

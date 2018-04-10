@@ -1,5 +1,6 @@
 'use strict';
 
+/* eslint-disable no-unused-vars */
 module.exports = {
   up: function up(queryInterface, Sequelize) {
     return queryInterface.createTable('events', {
@@ -45,7 +46,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-
     });
   },
   down: function down(queryInterface, Sequelize) {

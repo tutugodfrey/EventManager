@@ -1,5 +1,6 @@
-"use strict";
+'use strict';
 
+/* eslint-disable no-unused-vars */
 module.exports = {
   up: function up(queryInterface, Sequelize) {
     return queryInterface.createTable('users', {
@@ -44,8 +45,8 @@ module.exports = {
         allowNull: true
       },
       userType: {
-        type: Sequelize.ENUM("admin", "regular"),
-        defaultValue: "regular"
+        type: Sequelize.ENUM('admin', 'regular'),
+        defaultValue: 'regular'
       },
       createdAt: {
         allowNull: false,

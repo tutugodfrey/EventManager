@@ -41,7 +41,7 @@ var UsersController = function () {
   _createClass(UsersController, [{
     key: 'signup',
 
-    /* eslint-disable class-methods-use-this */
+    /* eslint-disable class-methods-use-this, consistent-return */
     // controller for users signup
     value: function signup(req, res) {
       return users.find({
@@ -53,14 +53,17 @@ var UsersController = function () {
         if (!user) {
           // handle uploaded profile pix
           var destination = (0, _HelperFuncts.getImgUrl)(req.file.path);
-          var passwd1 = req.body.passwd1;
-          var passwd2 = req.body.passwd2;
+          var _req$body = req.body,
+              passwd1 = _req$body.passwd1,
+              passwd2 = _req$body.passwd2;
+          // const passwd2 = req.body.passwd2;
+
           var passwd = void 0;
           if (passwd1 === passwd2) {
             _bcrypt2.default.genSalt(10, function (err, salt) {
-              _bcrypt2.default.hash(passwd1, salt, function (err, hash) {
+              _bcrypt2.default.hash(passwd1, salt, function (hashErr, hash) {
                 passwd = hash;
-                return users.create({
+                users.create({
                   password: passwd,
                   fullname: req.body.fullname,
                   email: req.body.email,
@@ -104,6 +107,7 @@ var UsersController = function () {
           var passwordConfirmed = false;
           var hashedPassword = user.password;
           var password = req.body.password;
+
           passwordConfirmed = _bcrypt2.default.compareSync(password, hashedPassword);
           if (passwordConfirmed) {
             var authenKey = user.username;

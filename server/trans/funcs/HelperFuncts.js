@@ -8,9 +8,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/**
-this file will export a class of functions
-* */
+/*
+* export a class for working with objects
+*/
 var HelperFuncts = function () {
   function HelperFuncts() {
     _classCallCheck(this, HelperFuncts);
@@ -18,78 +18,59 @@ var HelperFuncts = function () {
 
   _createClass(HelperFuncts, [{
     key: 'getField',
+
+    /* eslint-disable class-methods-use-this */
+    /*
+    * helper class to uniquely assign get and assign integer value (id) to an object
+    * check the last element of the array of objects, get the value of the integer field
+    * if you are adding an other element to the array increment the value and use it as the
+    * the value for the field of the element you are adding
+    */
     value: function getField(listOfObj, fieldToGet) {
       var total = listOfObj.length - 1;
       var lastObj = listOfObj[total];
       var fieldValue = lastObj[fieldToGet];
       return fieldValue;
     }
-    // function to get an object from a list of object
+
+    /*
+    * check whether an object is present in a collection/array and return
+    * else return object not found
+    */
 
   }, {
     key: 'getObject',
-    value: function getObject(arrayOfObject, objectRef) {
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = arrayOfObject[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var objCollection = _step.value;
-
-          if (objCollection[objectRef]) {
-            return objCollection;
-          }
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
+    value: function getObject(arrayOfObjects, objectRef) {
+      if (arrayOfObjects[objectRef]) {
+        return arrayOfObjects[objectRef];
       }
+      return 'object not found';
     }
+
+    /*
+    * given an array of objects
+    * to get an object by checking the value of a field
+    * supply the array of objects, the field to check for and the value of the field
+    * return the object if the fieldValue match
+    * otherwise return error message
+    */
+
   }, {
     key: 'getObjectByField',
     value: function getObjectByField(arrayOfObjects, objectField, fieldValue) {
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
-
-      try {
-        for (var _iterator2 = arrayOfObjects[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var objCollection = _step2.value;
-
-          if (objCollection[objectField] === fieldValue) {
-            return objCollection;
-          }
+      arrayOfObjects.foreach(function (objCollection) {
+        if (objCollection[objectField] === fieldValue) {
+          return objCollection;
         }
-      } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return) {
-            _iterator2.return();
-          }
-        } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
-          }
-        }
-      }
-
-      return 'No object with field ' + objectField + ' found';
+        return 'No object with field ' + objectField + ' found';
+      });
     }
 
-    // funtion to get fields value of an object
+    /*
+    * get the value of a field in an object
+    * given the object and the field you wish to get the value
+    * return undefined if the field is not found
+    */
 
   }, {
     key: 'getFields',
@@ -97,7 +78,7 @@ var HelperFuncts = function () {
       if (objCollector[field]) {
         return objCollector[field];
       }
-      return null;
+      return undefined;
     }
   }]);
 
@@ -107,17 +88,14 @@ var HelperFuncts = function () {
 var getImgUrl = exports.getImgUrl = function getImgUrl(path) {
   if (typeof path !== 'string') {
     return 'expected a string as argument';
-  } else {
-    var newPath = path.replace(/\\/g, '/');
-    if (newPath.indexOf('/') < 0) {
-      return 'Cant resolve path ' + newPath;
-    } else {
-      var indexOfPublic = newPath.indexOf('/');
-      var relPath = newPath.substr(indexOfPublic, newPath.length);
-      return relPath;
-    }
   }
+  var newPath = path.replace(/\\/g, '/');
+  if (newPath.indexOf('/') < 0) {
+    return 'Cant resolve path ' + newPath;
+  }
+  var indexOfPublic = newPath.indexOf('/');
+  var relPath = newPath.substr(indexOfPublic, newPath.length);
+  return relPath;
 };
-
 exports.default = HelperFuncts;
 //# sourceMappingURL=HelperFuncts.js.map

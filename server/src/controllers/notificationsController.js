@@ -2,13 +2,13 @@ import models from './../models';
 
 const { notifications, users } = models;
 const Notifications = class {
-  /* eslint-disable class-methods-use-this, prefer-destructuring */
+  /* eslint-disable class-methods-use-this */
   // to post notification to db table as well send an email
   createNotification(req, res) {
-    const userType = req.body.userType;
+    const { userType } = req.body;
     if (userType === 'admin') {
       const userId = parseInt(req.body.userId, 10);
-      const message = req.body.message;
+      const { message } = req.body;
       return users
         .find({
           where: {

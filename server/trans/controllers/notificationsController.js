@@ -25,13 +25,15 @@ var Notifications = function () {
   _createClass(Notifications, [{
     key: 'createNotification',
 
-    /* eslint-disable class-methods-use-this, prefer-destructuring */
+    /* eslint-disable class-methods-use-this */
     // to post notification to db table as well send an email
     value: function createNotification(req, res) {
       var userType = req.body.userType;
+
       if (userType === 'admin') {
         var userId = parseInt(req.body.userId, 10);
         var message = req.body.message;
+
         return users.find({
           where: {
             id: userId,

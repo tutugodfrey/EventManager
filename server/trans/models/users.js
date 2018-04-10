@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -39,10 +39,9 @@ exports.default = function (sequelize, DataTypes) {
       allowNull: true
     },
     userType: {
-      type: DataTypes.ENUM("admin", "regular")
+      type: DataTypes.ENUM('admin', 'regular')
     }
   });
-
   return users;
 };
 //# sourceMappingURL=users.js.map

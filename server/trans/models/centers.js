@@ -35,7 +35,6 @@ exports.default = function (sequelize, DataTypes) {
       allowNull: false
     }
   });
-
   return centers;
 };
 //# sourceMappingURL=centers.js.map

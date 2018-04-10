@@ -1,5 +1,6 @@
 'use strict';
 
+/* eslint-disable no-unused-vars */
 module.exports = {
   up: function up(queryInterface, Sequelize) {
     return queryInterface.createTable('centers', {
