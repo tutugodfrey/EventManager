@@ -1,42 +1,41 @@
 
 export default (sequelize, DataTypes) => {
   const users = sequelize.define('users', {
-    fullname:{
-       type:DataTypes.STRING,
-       allowNull:false
-    },
-    username:{
+    fullname: {
       type: DataTypes.STRING,
-      allowNull:false
-      },
+      allowNull: false,
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     email: {
-     type: DataTypes.STRING,
-     allowNull:false
-    },
-    password:{
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     gender: {
       type: DataTypes.STRING,
-      allowNull:false
-     },
-     securityQtn: {
+      allowNull: false,
+    },
+    securityQtn: {
       type: DataTypes.STRING,
-      allowNull:false
-     },
-     securityAns: {
+      allowNull: false,
+    },
+    securityAns: {
       type: DataTypes.STRING,
-      allowNull:false
-     },
-     imgUrl: {
+      allowNull: false,
+    },
+    imgUrl: {
       type: DataTypes.STRING,
-      allowNull:true
-     },
+      allowNull: true,
+    },
     userType: {
-      type:DataTypes.ENUM("admin", "regular")
-    }
+      type: DataTypes.ENUM('admin', 'regular'),
+    },
   });
-  
   return users;
 };
