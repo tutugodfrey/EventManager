@@ -111,22 +111,22 @@ class SignupForm extends React.Component {
       body:data
     }
  
-    fetch('/users/signup', options)
+    fetch('/api/v1/users/signup', options)
     .then(res => res.json())
     .then(data => {
       if(data.username) {
-        this.props.store.dispatch(actions.displayPage(SigninForm))
+        this.props.store.dispatch(actions.displayPage(SigninForm));
       } else {
-        console.log('error', data)
+        console.log('error', data);
       }
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
   }
 
   handleSignup(event) {
-    event.preventDefault()
+    event.preventDefault();
     if(this.state.securityQtn === '' || this.state.securityQtn === 'select a question') {
-      console.log('Please select a security question')
+      console.log('Please select a security question');
     }
   const signupFormData = new FormData();
   if(this.state.userType === '') {

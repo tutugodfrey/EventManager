@@ -24,7 +24,7 @@ class ViewCenters extends React.Component {
       headers,
     }
 
-    fetch('/api/centers', options)
+    fetch('/api/v1/secure/centers', options)
     .then(res => res.json())
     .then(data => { 
       this.props.store.dispatch(actions.setCenters(data)); 

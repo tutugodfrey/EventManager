@@ -80,7 +80,7 @@ class ModifyCenterForm extends React.Component {
     }
 
     if(this.state.userType === 'admin') {
-      fetch(`/api/centers/ ${this.state.centerId}`, options)
+      fetch(`/api/v1/secure/centers/ ${this.state.centerId}`, options)
       .then(res => res.json())
       .then(data => { 
         this.props.store.dispatch(actions.displayPage(ViewCenters));
@@ -104,7 +104,7 @@ class ModifyCenterForm extends React.Component {
   }
 
   form(){
-   return <Form formId = 'modify-center-form' method = 'put' action = '/api/centers/' formControls = {this.content()} />
+   return <Form formId = 'modify-center-form' method = 'put' action = '/api/v1/secure/centers/' formControls = {this.content()} />
   }
   content() {
    return ( 

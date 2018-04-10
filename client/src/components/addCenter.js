@@ -83,7 +83,7 @@ class AddCenterForm extends React.Component {
       body:data
     }
     //  body:JSON.stringify(data)
-    fetch('/api/centers', options)
+    fetch('/api/v1/secure/centers', options)
     .then(res => res.json())
     .then(data => {
       if(data.centerName) {
@@ -112,7 +112,7 @@ class AddCenterForm extends React.Component {
     }
 
   form(){
-   return <Form formId = 'addCenterForm' method = 'post' action = '/api/centers' formControls = {this.content()} />
+   return <Form formId = 'addCenterForm' method = 'post' action = '/api/v1/secure/centers' formControls = {this.content()} />
   }
   content() {
    return ( 

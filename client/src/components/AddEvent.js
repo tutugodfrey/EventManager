@@ -88,7 +88,7 @@ class AddEventForm extends React.Component {
       body:data
     }
 
-    fetch('/api/events', options)
+    fetch('/api/v1/secure/events', options)
     .then(res => res.json())
     .then(data => {
       if(data.eventType){
@@ -117,7 +117,7 @@ class AddEventForm extends React.Component {
     this.addEvent(eventFormData);
   }
   form(){
-   return <Form formId = 'addCenterForm' method = 'post' action = '/api/events' formControls = {this.content()} />
+   return <Form formId = 'addCenterForm' method = 'post' action = '/api/v1/secure/events' formControls = {this.content()} />
   }
   content() {
    return ( 

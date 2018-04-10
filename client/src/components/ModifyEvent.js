@@ -104,7 +104,7 @@ class ModifyEventForm extends React.Component {
       headers,
     }
 
-    fetch('/api/centers', options)
+    fetch('/api/v1/secure/centers', options)
     .then(res => res.json())
     .then(data => { 
       this.props.store.dispatch(actions.setCenters(data)); 
@@ -126,7 +126,7 @@ class ModifyEventForm extends React.Component {
       body:JSON.stringify(data)
     }
     if(newState.userData.userId === this.state.userId) {
-      fetch(`/api/events/ ${this.state.eventId}`, options)
+      fetch(`/api/v1/secure/events/ ${this.state.eventId}`, options)
       .then(res => res.json())
       .then(data => { 
         this.props.store.dispatch(actions.displayPage(ViewEvents));
@@ -148,7 +148,7 @@ class ModifyEventForm extends React.Component {
   }
 
   form(){
-   return <Form formId = 'modify-event-Form' method = 'put' action = '/api/events' formControls = {this.content()} />
+   return <Form formId = 'modify-event-Form' method = 'put' action = '/api/v1/secure/events' formControls = {this.content()} />
   }
   content() {
    return ( 

@@ -53,7 +53,7 @@ class SigninForm extends React.Component {
       body:JSON.stringify(data)
     }
 
-    fetch('/users/signin', options)
+    fetch('/api/v1/users/signin', options)
     .then(res => res.json())
     .then(data => { 
       this.setState({
@@ -101,7 +101,7 @@ class SigninForm extends React.Component {
   }
 
   form() {
-   return <Form formId = 'signin-form' method = 'post' action = '/users/signin' formControls = {this.content()} />
+   return <Form formId = 'signin-form' method = 'post' action = '/api/v1/users/signin' formControls = {this.content()} />
   }
   content() {
     return (
