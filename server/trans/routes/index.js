@@ -109,11 +109,11 @@ var Routes = function () {
       app.use('/api/v1/docs', _swaggerUiExpress2.default.serve, _swaggerUiExpress2.default.setup(_swagger2.default));
 
       // route for users signup and signin
-      app.post('api/v1/users/signup', usersUpload.single('userPix'), this.users.signup);
-      app.post('api/v1/users/signin', this.users.signin);
-      app.delete('api/v1/users/:userId', this.users.deleteUser);
-      app.get('api/v1/users', this.users.getUsers);
-      app.use('api/v1/secure', this.securedApi);
+      app.post('/api/v1/users/signup', usersUpload.single('userPix'), this.users.signup);
+      app.post('/api/v1/users/signin', this.users.signin);
+      app.delete('/api/v1/users/:userId', this.users.deleteUser);
+      app.get('/api/v1/users', this.users.getUsers);
+      app.use('/api/v1/secure', this.securedApi);
 
       // route controllers for Event Centers
       this.securedApi.use(function (req, res, next) {

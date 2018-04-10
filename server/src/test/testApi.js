@@ -51,7 +51,7 @@ describe('API routes', () => {
   describe('Admin User', () => {
     it('should create new admin user', () => {
       return chai.request(app)
-        .post('/users/signup')
+        .post('/api/v1/users/signup')
         .set('Content-Type', 'multipart/form-data')
         .field('fullname', 'tutu godfrey')
         .field('username', 'tutug')
@@ -73,7 +73,7 @@ describe('API routes', () => {
 
     it('should signin a adminUser in and give a token', () => {
       return chai.request(app)
-        .post('/users/signin')
+        .post('/api/v1/users/signin')
         .send({
           username: adminUser.username,
           password: '12345',
@@ -87,7 +87,7 @@ describe('API routes', () => {
 
     it('should create event Center', () => {
       return chai.request(app)
-        .post('/api/centers')
+        .post('/api/v1/secure/centers')
         .set('Content-Type', 'multipart/form-data')
         .set('token', signedInUser.token)
         .field('userType', signedInUser.userType)
@@ -117,7 +117,7 @@ describe('API routes', () => {
         userId: signedInUser.userId,
       };
       return chai.request(app)
-        .put(`/api/centers/${eventCenter.id}`)
+        .put(`/api/v1/secure/centers/${eventCenter.id}`)
         .set('token', signedInUser.token)
         .send(updateCenter)
         .then((res) => {
@@ -129,7 +129,7 @@ describe('API routes', () => {
   describe('regular Users', () => {
     it('should create new regular user', () => {
       return chai.request(app)
-        .post('/users/signup')
+        .post('/api/v1/users/signup')
         .set('Content-Type', 'multipart/form-data')
         .field('fullname', 'tut godfrey')
         .field('username', 'gtutu')
@@ -150,7 +150,7 @@ describe('API routes', () => {
 
     it('should signin a regularUser in and give a token', () => {
       return chai.request(app)
-        .post('/users/signin')
+        .post('/api/v1/users/signin')
         .send({
           username: 'gtutu',
           password: '12345',
@@ -164,7 +164,7 @@ describe('API routes', () => {
 
     it('should create event', () => {
       return chai.request(app)
-        .post('/api/events')
+        .post('/api/v1/secure/events')
         .set('Content-Type', 'multipart/form-data')
         .set('token', signedInUser.token)
         .field('eventType', 'wedding')
@@ -188,7 +188,7 @@ describe('API routes', () => {
         userId: signedInUser.userId,
       };
       return chai.request(app)
-        .put(`/api/events/${event.id}`)
+        .put(`/api/v1/secure/events/${event.id}`)
         .set('token', signedInUser.token)
         .send(updateEvent)
         .then((res) => {
@@ -198,9 +198,9 @@ describe('API routes', () => {
     });
   }); // end reuglar user
   describe('Notifications', () => {
-    it('should signin a adminUser in and give a token', () => {
+    it('should signin a adminUser in and get a token', () => {
       return chai.request(app)
-        .post('/users/signin')
+        .post('/api/v1/users/signin')
         .send({
           username: adminUser.username,
           password: '12345',
@@ -219,7 +219,7 @@ describe('API routes', () => {
         userId: regularUser.id,
       };
       return chai.request(app)
-        .post('/api/notifications')
+        .post('/api/v1/secure/notifications')
         .set('token', signedInUser.token)
         .send(notification)
         .then((res) => {
@@ -229,7 +229,7 @@ describe('API routes', () => {
 
     it('Get notification', () => {
       return chai.request(app)
-        .get(`/api/notifications/${regularUser.id}`)
+        .get(`/api/v1/secure/notifications/${regularUser.id}`)
         .set('token', signedInUser.token)
         .then((res) => {
           expect(res).to.have.status(200);
