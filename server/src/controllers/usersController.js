@@ -44,11 +44,11 @@ const UsersController = class {
                   })
                   .then((signup) => {
                     res.status(201).send({
-                      message: "signup successful",
+                      message: 'signup successful',
                       fullname: signup.fullname,
                       email: signup.email,
                       username: signup.username,
-                    })
+                    });
                   })
                   .catch(error => res.status(400).send(error));
               });
