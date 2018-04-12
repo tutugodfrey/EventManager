@@ -1,34 +1,343 @@
 {
-  "title": "Sample Pet Store App",
-  "description": "This is a sample server for a pet store.",
-  "termsOfService": "http://example.com/terms/",
-  "contact": {
-    "name": "API Support",
-    "url": "http://www.example.com/support",
-    "email": "support@example.com"
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Eventmanager",
+    "description": "Documentation for eventmanager api",
+    "termsOfService": "http://#",
+    "contact": {
+      "name": "Tutu Godfrey",
+      "url": "http://www.example.com/support",
+      "email": "godfrey_tutu@yahoo.com"
+    }
   },
-  "license": {
-    "name": "Apache 2.0",
-    "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-  },
-  "version": "1.0.1",
-  "servers": {
-    "url": "http://localhost:8080/api_docs/v1",
-  "description": "Development server"
-  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/v1",
+      "description": "Development server"
+    },
+    {
+      "url": "https://eventmn.herokuapp.com/api/v1",
+      "description": "production server"
+    }
+  ],
   "paths": {
-    "users": {
+    "/users/signup": {
       "post": {
-
+        "summary": "create a new user on signup",
+        "description": "this path will create a new user when all required field in the form is filled out",
+        "operationId": "singUP",
+        "requestBody": {
+          "required": "true",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fullname": {
+                    "$ref": "#/components/user/fullname"
+                  },
+                  "username": {
+                    "$ref": "#/components/user/username"
+                  },
+                  "email": {
+                    "$ref": "#/components/user/email"
+                  },
+                  "gender": {
+                    "$ref": "#/components/user/gender"
+                  },
+                  "securityQtn": {
+                    "$ref": "#/components/user/securityQtn"
+                  },
+                  "securityAns": {
+                    "$ref": "#/components/user/securityAns"
+                  },
+                  "imgUrl": {
+                    "$ref": "#/components/user/imgUrl"
+                  },
+                  "passwd1": {
+                    "$ref": "#/components/user/passwd1"
+                  },
+                  "passwd2": {
+                    "$ref": "#/components/user/passwd2"
+                  },
+                  "userType": {
+                    "$ref": "#/components/user/userType"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "signup successful"
+                    },
+                    "fullname": {
+                      "$ref": "#/components/user/fullname"
+                    },
+                    "username": {
+                      "$ref": "#/components/user/username"
+                    },
+                    "email": {
+                      "$ref": "#/components/user/email"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "User with the given username already exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "user already exist"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Some required field are not completed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                    "type": "string",
+                    "example":"bad request"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/signin": {
+      "post": {
+        "summary": "user signin",
+        "description": "For user to login to the application, they need to summit their username and password. the username and password should match those the upon signup",
+        "operationId": "signIn",
+        "requestBody": {
+          "required": "true",
+          "content":{
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "$ref": "#/components/user/username"
+                  },
+                  "password": {
+                    "$ref": "#/components/user/passwd1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "signin is successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "$ref": "#/components/user/token"
+                    },
+                    "fullname": {
+                      "$ref": "#/components/user/fullname"
+                    },
+                    "email": {
+                      "$ref": "#/components/user/email"
+                    },
+                    "username": {
+                      "$ref": "#/components/user/username"
+                    },
+                    "userType": {
+                      "$ref": "#/components/user/userType"
+                    },
+                    "userId": {
+                      "$ref": "#/components/user/userId"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User with the given username and password is not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "auth fail- username or password is not correct"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Intenal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "problem accessing the server"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "description": "get an array of all users in the database",
+        "responses": {
+          "200": {
+            "description": "users successfully fetch",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "fullname": {
+                        "$ref": "#/components/user/fullname"
+                      },
+                      "username": {
+                        "$ref": "#/components/user/username"
+                      },
+                      "email": {
+                        "$ref": "#/components/user/email"
+                      },
+                      "gender": {
+                        "$ref": "#/components/user/gender"
+                      },
+                      "securityQtn": {
+                        "$ref": "#/components/user/securityQtn"
+                      },
+                      "securityAns": {
+                        "$ref": "#/components/user/securityAns"
+                      },
+                      "imgUrl": {
+                        "$ref": "#/components/user/imgUrl"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/secure/users/{userId}": {
+      "get": {
+        "description": "get an array of all users in the database",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The id of the user",
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token generated for the person performing the action as at when they signin",
+            "schema": {
+              "type": "string",
+              "example": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user successfully fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fullname": {
+                      "$ref": "#/components/user/fullname"
+                    },
+                    "username": {
+                      "$ref": "#/components/user/username"
+                    },
+                    "email": {
+                      "$ref": "#/components/user/email"
+                    },
+                    "gender": {
+                      "$ref": "#/components/user/gender"
+                    },
+                    "securityQtn": {
+                      "$ref": "#/components/user/securityQtn"
+                    },
+                    "securityAns": {
+                      "$ref": "#/components/user/securityAns"
+                    },
+                    "imgUrl": {
+                      "$ref": "#/components/user/imgUrl"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "put": {
-
-      },
-      "get": {
-
       },
       "delete": {
-
       }
     },
     "centers": {
@@ -65,6 +374,57 @@
       },
       "get": {
 
+      }
+    }
+  },
+  "components": {
+    "user": {
+      "fullname": {
+        "type": "string",
+        "example": "Tutu Godfrey"
+      },
+      "username": {
+        "type": "string",
+        "example": "johnd"
+      },
+      "email": {
+        "type": "string",
+        "example": "tutugodfrey@gmail.com"
+      },
+      "gender": {
+        "type": "string",
+        "example": "male"
+      },
+      "securityQtn": {
+        "type": "string",
+        "example": "What is the name of your first car"
+      },
+      "securityAns": {
+        "type": "string",
+        "example": "Toyota"
+      },
+      "imgUrl": {
+        "type": "file"
+      },
+      "passwd1": {
+        "type": "string",
+        "example": "1234"
+      },
+      "passwd2": {
+        "type": "string",
+        "example": "1234"
+      },
+      "userType": {
+        "type": "string",
+        "example": "admmin"
+      },
+      "userId": {
+        "type": "integer",
+        "example": 1
+      },
+      "token": {
+        "type": "string",
+        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoZW5LZXkiOiJ0Ym95IiwiaWF0IjoxNTIzNDkxOTkyLCJleHAiOjE1MjM2NjQ3OTJ9.ynUt-X0Y3RzNyi6lXBzGLkgYzpxBh635SPzArS8IEXI"
       }
     }
   }

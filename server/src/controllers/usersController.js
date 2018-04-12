@@ -42,7 +42,14 @@ const UsersController = class {
                     securityQtn: req.body.securityQtn,
                     securityAns: req.body.securityAns,
                   })
-                  .then(signup => res.status(201).send(signup))
+                  .then((signup) => {
+                    res.status(201).send({
+                      message: "signup successful",
+                      fullname: signup.fullname,
+                      email: signup.email,
+                      username: signup.username,
+                    })
+                  })
                   .catch(error => res.status(400).send(error));
               });
             });
