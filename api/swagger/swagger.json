@@ -554,21 +554,201 @@
               }
             }
           }
+        },
+        "responses": {
+          "200": {
+            "description": "center deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Center have been deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/402Response"
+          }
         }
       }
     },
-    "events": {
+    "/secure/events": {
       "post": {
-        
-      },
+        "description": "post a new event",
+        "operationId": "create event",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+               "$ref": "#/components/schemas/event"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "center created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/event"
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500Response"
+          }
+        }
+      }
+    },
+    "/secure/events/{eventId}": {
       "put": {
-
-      },
-      "get": {
-
+        "description": "get a center with the given id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref":"#/components/parameters/eventId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success updating event with the given Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/event"
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref":  "#/components/responses/500Response"
+          }
+       }
       },
       "delete": {
-
+        "description": "Delete a center from the list of center. This is an action to be perform by n user who created the event. You will need to send the id of the user along the request body",
+        "operationId": "delete event",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref": "#/components/parameters/eventId"
+          }
+        ],
+        "requestBody": {
+          "required": true, 
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "$ref": "#/components/schemas/id"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "event deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "event have been deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/402Response"
+          }
+        }
+      }
+    },
+    "/secure/events/{userId}": {
+      "get": {
+        "description": "get a center with the given id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref":"#/components/parameters/userId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success fetching event with the given Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items":{
+                    "$ref": "#/components/schemas/event"
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref":  "#/components/responses/500Response"
+          }
+       }
       }
     },
     "notifications": {
@@ -618,6 +798,33 @@
             "example": "path/to/uploaded/photo"
           },
           "id": {
+            "$ref": "#/components/schemas/id"
+          },
+          "userId": {
+            "$ref": "#/components/schemas/id"
+          }
+        }
+      },
+      "event": {
+        "type": "object",
+        "properties": {
+          "eventType": {
+            "type": "string",
+            "example": "Mega Plus Concert"
+          },
+          "eventData": {
+            "type": "string",
+            "example": "10/16/2018"
+          },
+          "facilities": {
+            "type": "array",
+            "example": ["AC", "DJ"]
+          },
+          "imgUrl": {
+            "type": "string",
+            "example": "path/to/event/photo"
+          },
+          "centerId": {
             "$ref": "#/components/schemas/id"
           },
           "userId": {
@@ -690,7 +897,15 @@
       "centerId": {
         "name": "centerId",
         "in": "path",
-        "description": "The unique Id of the user performing and action or against which an action will be performed",
+        "description": "The unique Id of the center against which an action will be performed",
+        "schema": {
+          "$ref": "#/components/schemas/id"
+        }
+      },
+      "eventId": {
+        "name": "eventId",
+        "in": "path",
+        "description": "The unique Id of the event against which an action will be performed",
         "schema": {
           "$ref": "#/components/schemas/id"
         }
