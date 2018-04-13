@@ -921,7 +921,8 @@
           },
           "imgUrl": {
             "type": "string",
-            "example": "path/to/uploaded/photo"
+            "example": "path/to/uploaded/photo",
+            "format": "binary"
           },
           "id": {
             "$ref": "#/components/schemas/id"
@@ -948,7 +949,8 @@
           },
           "imgUrl": {
             "type": "string",
-            "example": "path/to/event/photo"
+            "example": "path/to/event/photo",
+            "format": "binary"
           },
           "centerId": {
             "$ref": "#/components/schemas/id"
@@ -996,7 +998,9 @@
           "example": "Toyota"
         },
         "imgUrl": {
-          "type": "file"
+          "type": "string",
+          "example": "path/to/user/photo",
+          "format": "binary"
         },
         "passwd1": {
           "type": "string",
