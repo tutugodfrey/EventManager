@@ -754,12 +754,135 @@
        }
       }
     },
-    "notifications": {
+    "/secure/notifications": {
       "post": {
-        
+        "description": "Admin create notification to users about thier event status. to post notifcation you have to pass the userId the notification is meant for along with the form",
+        "operationId": "create notification",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema": {
+                "$ref": "#/components/schemas/notification"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Notification posted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items":{
+                    "$ref": "#/components/schemas/notification"
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref":  "#/components/responses/500Response"
+          }
+        }
       },
       "get": {
-
+        "description": "Allow admin to get all notification",
+        "operationId": "get notifications",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "$ref": "#/components/schemas/id"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Notification posted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items":{
+                    "$ref": "#/components/schemas/notification"
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref":  "#/components/responses/500Response"
+          }
+        }
+      }
+    },
+    "/secure/notifications{userId}": {
+      "get": {
+        "description": "Allow users to get their notification by providing theor userId",
+        "operationId": "get notifications",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref": "#/components/parameters/userId"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Notification posted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items":{
+                    "$ref": "#/components/schemas/notification"
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref":  "#/components/responses/500Response"
+          }
+        }
       }
     }
   },
@@ -829,6 +952,18 @@
           },
           "centerId": {
             "$ref": "#/components/schemas/id"
+          },
+          "userId": {
+            "$ref": "#/components/schemas/id"
+          }
+        }
+      },
+      "notification": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "We are glad to info you your event will be fulfilled"
           },
           "userId": {
             "$ref": "#/components/schemas/id"
