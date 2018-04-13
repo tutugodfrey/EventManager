@@ -8,7 +8,6 @@ const Notifications = class {
     const { userType } = req.body;
     if (userType === 'admin') {
       const userId = parseInt(req.body.userId, 10);
-      console.log(userId);
       const { message } = req.body;
       return users
         .find({

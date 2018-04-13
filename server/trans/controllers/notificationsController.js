@@ -32,7 +32,6 @@ var Notifications = function () {
 
       if (userType === 'admin') {
         var userId = parseInt(req.body.userId, 10);
-        console.log(userId);
         var message = req.body.message;
 
         return users.find({
