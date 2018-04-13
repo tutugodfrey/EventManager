@@ -48,6 +48,7 @@ const UsersController = class {
                       fullname: signup.fullname,
                       email: signup.email,
                       username: signup.username,
+                      id: signup.id,
                     });
                   })
                   .catch(error => res.status(400).send(error));

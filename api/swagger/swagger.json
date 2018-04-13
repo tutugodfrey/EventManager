@@ -88,6 +88,9 @@
                     },
                     "email": {
                       "$ref": "#/components/schemas/users/email"
+                    },
+                    "id": {
+                      "$ref": "#/components/schemas/users/id"
                     }
                   }
                 }

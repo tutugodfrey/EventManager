@@ -74,7 +74,13 @@ var UsersController = function () {
                   securityQtn: req.body.securityQtn,
                   securityAns: req.body.securityAns
                 }).then(function (signup) {
-                  return res.status(201).send(signup);
+                  res.status(201).send({
+                    message: 'signup successful',
+                    fullname: signup.fullname,
+                    email: signup.email,
+                    username: signup.username,
+                    id: signup.id
+                  });
                 }).catch(function (error) {
                   return res.status(400).send(error);
                 });
