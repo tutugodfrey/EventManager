@@ -20,6 +20,16 @@
     "integrate1": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./server/trans/test/ --timeout 10000  --exit",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./server/trans/test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage  --exit"
   },
+  "keywords": [
+    "react",
+    "reactjs",
+    "express",
+    "nodejs",
+    "reload",
+    "mocha",
+    "chai",
+    "webpack"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
