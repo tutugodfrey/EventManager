@@ -1,6 +1,9 @@
 node_modules
 npm-debug.log
 npm-debug.log*
+public/centers-photo/*
+public/events-photo/*
+public/users-photo/*
 .env
 coverage
 .vscode
