@@ -29,7 +29,7 @@ class Header extends React.Component {
   
 render() {
   return ( 
-    <div>
+    <div className = 'header-div container-fluid'>
       <nav className = 'navbar navbar-inverse'> 
         <ul main-menu = 'hp-nav' className = 'nav'>
           <li className = 'nav-items' >

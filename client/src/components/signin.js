@@ -53,7 +53,7 @@ class SigninForm extends React.Component {
       body:JSON.stringify(data)
     }
 
-    fetch('/users/signin', options)
+    fetch('/api/v1/users/signin', options)
     .then(res => res.json())
     .then(data => { 
       this.setState({
@@ -101,27 +101,31 @@ class SigninForm extends React.Component {
   }
 
   form() {
-   return <Form formId = 'signin-form' method = 'post' action = '/users/signin' formControls = {this.content()} />
+   return <Form formId = 'signin-form' method = 'post' action = '/api/v1/users/signin' formControls = {this.content()} />
   }
   content() {
     return (
       <div>
-      <h1> Signin to your Accunt </h1>
-      <FormInput type = 'text' id ='username' labelValue = 'username/ Email' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.usernameChange.bind(this)} value = {this.state.username} name = 'username' placeholder = 'username/ Email' />
-      <FormInput type = 'password' id ='password' labelValue = 'password' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.passwordChange.bind(this)} value = {this.state.password} name = 'password' placeholder = 'password' />
-      <FormInput type = 'submit' inputClass = 'btn btn-primary' click = {this.handleSignin.bind(this)} value = 'Signin' />
-    </div>
+        <h1 className =  'card-title'> Signin to your Accunt </h1>
+        <div class = 'card-body'>
+          <FormInput type = 'text' id ='username' labelValue = 'username/ Email' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.usernameChange.bind(this)} value = {this.state.username} name = 'username' placeholder = 'username/ Email' />
+          <FormInput type = 'password' id ='password' labelValue = 'password' divClass = 'form-group' inputClass = 'requiredFields form-control' onChange = {this.passwordChange.bind(this)} value = {this.state.password} name = 'password' placeholder = 'password' />
+          <FormInput type = 'submit' inputClass = 'btn btn-primary' click = {this.handleSignin.bind(this)} value = 'Signin' />
+        </div>
+      </div>
     )
   }
   
   render () {
     return (
-      <div> 
-      <Div divClass = 'card' divContent = {this.form()} /> 
-        <br />
-          <Link hrefLink = '#' hrefId = 'signupBtn' hrefContent = 'Signup' hrefClass = 'btn btn-primary' /> <br />
-          <Link hrefLink = '#' hrefId = 'changePasswordBtn' clicked = {this.handleChangePassword.bind(this)} hrefContent  = 'ChangePassword' hrefClass = 'btn btn-secondary' />
-          <Link hrefLink = '#' hrefId = 'forgetPasswordBtn' clicked = {this.handleForgetPassword.bind(this)} hrefContent = 'Forget Password' hrefClass = 'btn btn-secondary' />
+      <div className = 'row'>
+        <div className = 'py-1 card col-8 col-sm-6 col-md-3 offset-2 offset-sm-3 offset-md-4'>
+        <Div divClass = 'form-group'  divContent = {this.form()} /> 
+          <br />
+            <Link hrefLink = '#' hrefId = 'signupBtn' hrefContent = 'Signup' hrefClass = 'btn btn-primary' /> <br />
+            <Link hrefLink = '#' hrefId = 'changePasswordBtn' clicked = {this.handleChangePassword.bind(this)} hrefContent  = 'ChangePassword' hrefClass = 'btn btn-secondary' /> <br />
+            <Link hrefLink = '#' hrefId = 'forgetPasswordBtn' clicked = {this.handleForgetPassword.bind(this)} hrefContent = 'Forget Password' hrefClass = 'btn btn-secondary' />
+        </div>
       </div>
     )
   } 

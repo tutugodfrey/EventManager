@@ -1,8 +1,10 @@
 node_modules
 npm-debug.lo
 npm-debug.log*
+public/centers-photo/*
+public/events-photo/*
+public/users-photo/*
 .env
-server/trans
 coverage
 .vscode
 processRecall.md

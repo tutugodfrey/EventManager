@@ -29,20 +29,22 @@ class Footer extends React.Component {
   
 render() {
   return ( 
-    <div>
-      <nav className = 'navbar navbar-inverse'> 
-        <ul main-menu = 'hp-nav' className = 'nav'>
-          <li className = 'nav-items' >
-            <Link hrefId = 'bout-us' dispatch = { this.props.dispatch } clicked = {this.aboutUsClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'About Us '/>
-          </li>
-          <li className = 'nav-items' >
-            <Link hrefId = 'contact-us'  dispatch = { this.props.dispatch } clicked = {this.contactUsClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Contact Us'/>
-          </li>
-          <li className = 'nav-items' >
-            <Link hrefId = 'terms-of-use' dispatch = { this.props.dispatch } clicked = {this.termsOfUseClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Terms of Use'/>
-          </li>
-        </ul>
-      </nav>
+    <div className = 'footer-div container-fluid'>
+      <div className = 'row'>
+        <nav className = 'navbar navbar-inverse col-xg-4 col-md-6 offset-xg-4 offset-md-3'> 
+          <ul main-menu = 'hp-nav' className = 'nav'>
+            <li className = 'nav-items' >
+              <Link hrefId = 'bout-us' dispatch = { this.props.dispatch } clicked = {this.aboutUsClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'About Us '/>
+            </li>
+            <li className = 'nav-items' >
+              <Link hrefId = 'contact-us'  dispatch = { this.props.dispatch } clicked = {this.contactUsClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Contact Us'/>
+            </li>
+            <li className = 'nav-items' >
+              <Link hrefId = 'terms-of-use' dispatch = { this.props.dispatch } clicked = {this.termsOfUseClick.bind(this)} hrefLink = '#' hrefClass = 'nav-link' hrefContent =  'Terms of Use'/>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
     )
   }

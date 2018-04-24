@@ -40,7 +40,9 @@ class App extends React.Component {
    return (
      <div>
       <this.state.header store = {this.props.store } />
-      <this.state.mainView store = {this.props.store} />
+      <div id = 'content-area' className = 'py-3'>
+        <this.state.mainView store = {this.props.store} />
+      </div>
       <this.state.footer store = {this.props.store} />
     </div>
  ); 

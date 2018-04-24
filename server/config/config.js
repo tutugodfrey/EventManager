@@ -1,4 +1,4 @@
-{
+config = {
   "development": {
     "username": "postgres",
     "password":"53a80",

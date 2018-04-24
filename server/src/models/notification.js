@@ -1,14 +1,14 @@
 
 export default (sequelize, DataTypes) => {
-  const  notifications = sequelize.define('notifications', {
-    message:{
+  const notifications = sequelize.define('notifications', {
+    message: {
       type: DataTypes.TEXT,
-      allowNull:false
+      allowNull: false,
     },
-    userId:{
+    userId: {
       type: DataTypes.INTEGER,
-      allowNull:false
-    }
+      allowNull: false,
+    },
   });
   return notifications;
 };
