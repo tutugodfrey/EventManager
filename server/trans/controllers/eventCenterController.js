@@ -10,7 +10,7 @@ var _models = require('./../models');
 
 var _models2 = _interopRequireDefault(_models);
 
-var _HelperFuncts = require('./..//funcs/HelperFuncts');
+var _HelperFuncts = require('./../funcs/HelperFuncts');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

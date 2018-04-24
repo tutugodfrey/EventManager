@@ -3,18 +3,18 @@ body {
 }
 
 .header-div {
-  background:$secondary;
+  background:$primary;
   height:100px;
 }
 .footer-div {
-  background:$secondary;
+  background:$primary;
   height:50px;
 }
 #content-area {
   min-height:100vh;
 }
 #showCase {
-	background:url(./../centers-photo/images3.jpg);
+	background:url(./../../public/centers-photo/images3.jpg);
 	background-repeat:no-repeat; 
 	background-size:cover;
 	background-position: center;
