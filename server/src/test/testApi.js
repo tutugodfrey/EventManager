@@ -67,7 +67,7 @@ if (process.env.NODE_ENV !== 'test') {
           .field('securityQtn', 'what isthe name of your best teacher?')
           .field('securityAns', 'westle')
         // .send(user)
-          .attach('userPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20150407_0001.png')
+          .attach('userPix', './filestoupload/wp_ss_20150407_0001.png')
           .then((res) => {
             Object.assign(adminUser, res.body);
             expect(res).to.have.status(201);
@@ -102,7 +102,7 @@ if (process.env.NODE_ENV !== 'test') {
           .field('facilities', 'Air condition')
           .field('userId', signedInUser.userId)
           .field('facilities', 'projector')
-          .attach('centerPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20150309_0001.png')
+          .attach('centerPix', './filestoupload/wp_ss_20150309_0001.png')
           .then((res) => {
             Object.assign(eventCenter, res.body);
             expect(res).to.have.status(201);
@@ -144,7 +144,7 @@ if (process.env.NODE_ENV !== 'test') {
           .field('userType', 'regular')
           .field('securityQtn', 'what isthe name of your best teacher?')
           .field('securityAns', 'westle')
-          .attach('userPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20140715_0001.png')
+          .attach('userPix', './filestoupload/wp_ss_20140715_0001.png')
           .then((res) => {
             Object.assign(regularUser, res.body);
             expect(res).to.have.status(201);
@@ -177,7 +177,7 @@ if (process.env.NODE_ENV !== 'test') {
           .field('facilities', eventCenter.facilities[1])
           .field('centerId', eventCenter.id)
           .field('userId', signedInUser.userId)
-          .attach('eventPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20150922_0001.png')
+          .attach('eventPix', './filestoupload/wp_ss_20150922_0001.png')
           .then((res) => {
             Object.assign(event, res.body);
             expect(res).to.have.status(201);

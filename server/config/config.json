@@ -7,6 +7,6 @@
   },
   "production": {
     "DATABASE_URL":"DATABASE_URL",
-    "dialet":"postgres"
+    "dialect":"postgres"
   }
 }
