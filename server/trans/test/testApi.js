@@ -65,7 +65,7 @@ if (process.env.NODE_ENV !== 'test') {
       it('should create new admin user', function () {
         return _chai2.default.request(app).post('/api/v1/users/signup').set('Content-Type', 'multipart/form-data').field('fullname', 'tutu godfrey').field('username', 'tutug').field('email', 'meandyou@yahoo.com').field('gender', 'male').field('passwd1', '12345').field('passwd2', '12345').field('userType', 'admin').field('securityQtn', 'what isthe name of your best teacher?').field('securityAns', 'westle')
         // .send(user)
-        .attach('userPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20150407_0001.png').then(function (res) {
+        .attach('userPix', './filestoupload/wp_ss_20150407_0001.png').then(function (res) {
           Object.assign(adminUser, res.body);
           expect(res).to.have.status(201);
           expect(res.body).to.be.an('Object');
@@ -84,7 +84,7 @@ if (process.env.NODE_ENV !== 'test') {
       });
 
       it('should create event Center', function () {
-        return _chai2.default.request(app).post('/api/v1/secure/centers').set('Content-Type', 'multipart/form-data').set('token', signedInUser.token).field('userType', signedInUser.userType).field('centerName', 'gard park').field('location', 'Abuja').field('cost', 240).field('sits', 500).field('facilities', 'Air condition').field('userId', signedInUser.userId).field('facilities', 'projector').attach('centerPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20150309_0001.png').then(function (res) {
+        return _chai2.default.request(app).post('/api/v1/secure/centers').set('Content-Type', 'multipart/form-data').set('token', signedInUser.token).field('userType', signedInUser.userType).field('centerName', 'gard park').field('location', 'Abuja').field('cost', 240).field('sits', 500).field('facilities', 'Air condition').field('userId', signedInUser.userId).field('facilities', 'projector').attach('centerPix', './filestoupload/wp_ss_20150309_0001.png').then(function (res) {
           Object.assign(eventCenter, res.body);
           expect(res).to.have.status(201);
           expect(res.body).to.be.an('object');
@@ -109,7 +109,7 @@ if (process.env.NODE_ENV !== 'test') {
     }); // end admin section
     describe('regular Users', function () {
       it('should create new regular user', function () {
-        return _chai2.default.request(app).post('/api/v1/users/signup').set('Content-Type', 'multipart/form-data').field('fullname', 'tut godfrey').field('username', 'gtutu').field('email', 'allofus@yahoo.com').field('gender', 'male').field('passwd1', '12345').field('passwd2', '12345').field('userType', 'regular').field('securityQtn', 'what isthe name of your best teacher?').field('securityAns', 'westle').attach('userPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20140715_0001.png').then(function (res) {
+        return _chai2.default.request(app).post('/api/v1/users/signup').set('Content-Type', 'multipart/form-data').field('fullname', 'tut godfrey').field('username', 'gtutu').field('email', 'allofus@yahoo.com').field('gender', 'male').field('passwd1', '12345').field('passwd2', '12345').field('userType', 'regular').field('securityQtn', 'what isthe name of your best teacher?').field('securityAns', 'westle').attach('userPix', './filestoupload/wp_ss_20140715_0001.png').then(function (res) {
           Object.assign(regularUser, res.body);
           expect(res).to.have.status(201);
           expect(res.body).to.be.an('Object');
@@ -128,7 +128,7 @@ if (process.env.NODE_ENV !== 'test') {
       });
 
       it('should create event', function () {
-        return _chai2.default.request(app).post('/api/v1/secure/events').set('Content-Type', 'multipart/form-data').set('token', signedInUser.token).field('eventType', 'wedding').field('eventDate', '2018-02-10').field('facilities', eventCenter.facilities[0]).field('facilities', eventCenter.facilities[1]).field('centerId', eventCenter.id).field('userId', signedInUser.userId).attach('eventPix', 'C:/Users/TUTU GODFREY/Desktop/pic/wp_ss_20150922_0001.png').then(function (res) {
+        return _chai2.default.request(app).post('/api/v1/secure/events').set('Content-Type', 'multipart/form-data').set('token', signedInUser.token).field('eventType', 'wedding').field('eventDate', '2018-02-10').field('facilities', eventCenter.facilities[0]).field('facilities', eventCenter.facilities[1]).field('centerId', eventCenter.id).field('userId', signedInUser.userId).attach('eventPix', './filestoupload/wp_ss_20150922_0001.png').then(function (res) {
           Object.assign(event, res.body);
           expect(res).to.have.status(201);
           expect(res.body).to.be.an('object');
