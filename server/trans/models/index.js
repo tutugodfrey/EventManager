@@ -32,9 +32,13 @@ console.log(env);
 var db = {};
 var sequelize = void 0;
 if (config.use_env_variable) {
-  sequelize = new _sequelize2.default(process.env[config.use_env_variable], config);
+  sequelize = new _sequelize2.default(process.env[config.use_env_variable], {
+    dialect: 'mysql'
+  });
 } else {
-  sequelize = new _sequelize2.default(config.database, config.username, config.password, config);
+  sequelize = new _sequelize2.default(config.database, config.username, config.password, {
+    dialect: 'postgres'
+  });
 }
 _fs2.default.readdirSync(__dirname).filter(function (file) {
   return file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js';
