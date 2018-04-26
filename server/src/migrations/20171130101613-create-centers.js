@@ -1,4 +1,5 @@
 
+/* eslint-disable no-unused-vars */
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('centers', {
@@ -6,39 +7,47 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
-      name: {
+      centerName: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       location: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       cost: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       sits: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
-      facilities:{
-        type:Sequelize.STRING,
-        allowNull:true
-       },
+      facilities: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        allowNull: true,
+      },
+      imgUrl: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      userId: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('centers');
-  }
+  },
 };

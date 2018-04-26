@@ -1,6 +1,8 @@
 language: node_js
 node_js:
 - "6.10.3"
-script: "cd server && npm run-script test"
-after_success: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+script: "npm test"
+# send coverage to coveralls
+after_success: "npm run send-coverage"
+# after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
 

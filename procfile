@@ -1,1 +1,1 @@
-web: node ./server/bin/www-prod
+web: node ./server/trans/bin/www

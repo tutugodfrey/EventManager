@@ -1,22 +1,34 @@
 
 export default (sequelize, DataTypes) => {
   const events = sequelize.define('events', {
-    type:{
+    eventType: {
       type: DataTypes.STRING,
-      allowNull:false
-      },
-    date:{
-       type:DataTypes.DATE,
-       allowNull:false
+      allowNull: false,
     },
-    centerId:{
-      type: DataTypes.INTEGER,
-      allowNull:false
+    eventDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
     },
-    userId:{
+    facilities: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: true,
+    },
+    imgUrl: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    confirm: {
+      type: DataTypes.ENUM('pending', true, false),
+      defaultValue: 'pending',
+    },
+    centerId: {
       type: DataTypes.INTEGER,
-      allowNull:false
-    }
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   });
   return events;
 };

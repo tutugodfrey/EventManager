@@ -1,0 +1,29 @@
+swagger: "2.0"
+info:
+  version: v1
+  title: eventmanager
+  description: bring event manager and host together;
+host: localhost:8080
+paths:
+  /users:
+    post:
+      description: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                fullname:
+                  type: string
+                  example: Tutu Godfrey
+                username:
+                  type: string
+                  example: tutug
+      responses:
+        201:
+          description: user successfully created

@@ -1,0 +1,1111 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Eventmanager",
+    "description": "Documentation for eventmanager api",
+    "termsOfService": "http://#",
+    "contact": {
+      "name": "Tutu Godfrey",
+      "url": "http://www.example.com/support",
+      "email": "godfrey_tutu@yahoo.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/v1",
+      "description": "Development server"
+    },
+    {
+      "url": "https://eventmn.herokuapp.com/api/v1",
+      "description": "production server"
+    }
+  ],
+  "paths": {
+    "/users/signup": {
+      "post": {
+        "summary": "create a new user on signup",
+        "description": "this path will create a new user when all required field in the form is filled out",
+        "operationId": "singUP",
+        "requestBody": {
+          "required": "true",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fullname": {
+                    "$ref": "#/components/schemas/users/fullname"
+                  },
+                  "username": {
+                    "$ref": "#/components/schemas/users/username"
+                  },
+                  "email": {
+                    "$ref": "#/components/schemas/users/email"
+                  },
+                  "gender": {
+                    "$ref": "#/components/schemas/users/gender"
+                  },
+                  "securityQtn": {
+                    "$ref": "#/components/schemas/users/securityQtn"
+                  },
+                  "securityAns": {
+                    "$ref": "#/components/schemas/users/securityAns"
+                  },
+                  "imgUrl": {
+                    "$ref": "#/components/schemas/users/imgUrl"
+                  },
+                  "passwd1": {
+                    "$ref": "#/components/schemas/users/passwd1"
+                  },
+                  "passwd2": {
+                    "$ref": "#/components/schemas/users/passwd2"
+                  },
+                  "userType": {
+                    "$ref": "#/components/schemas/users/userType"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "signup successful"
+                    },
+                    "fullname": {
+                      "$ref": "#/components/schemas/users/fullname"
+                    },
+                    "username": {
+                      "$ref": "#/components/schemas/users/username"
+                    },
+                    "email": {
+                      "$ref": "#/components/schemas/users/email"
+                    },
+                    "id": {
+                      "$ref": "#/components/schemas/users/id"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "User with the given username already exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "user already exist"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "#ref": "#components/responses/402response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500Response"
+          }
+        }
+      }
+    },
+    "/users/signin": {
+      "post": {
+        "summary": "user signin",
+        "description": "For user to login to the application, they need to summit their username and password. the username and password should match those the upon signup",
+        "operationId": "signIn",
+        "requestBody": {
+          "required": "true",
+          "content":{
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "$ref": "#/components/schemas/users/username"
+                  },
+                  "password": {
+                    "$ref": "#/components/schemas/users/passwd1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "signin is successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "$ref": "#/components/schemas/users/token"
+                    },
+                    "fullname": {
+                      "$ref": "#/components/schemas/users/fullname"
+                    },
+                    "email": {
+                      "$ref": "#/components/schemas/users/email"
+                    },
+                    "username": {
+                      "$ref": "#/components/schemas/users/username"
+                    },
+                    "userType": {
+                      "$ref": "#/components/schemas/users/userType"
+                    },
+                    "userId": {
+                      "$ref": "#/components/schemas/users/userId"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500Response"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "description": "get an array of all users in the database",
+        "responses": {
+          "200": {
+            "description": "users successfully fetch",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "fullname": {
+                        "$ref": "#/components/schemas/users/fullname"
+                      },
+                      "username": {
+                        "$ref": "#/components/schemas/users/username"
+                      },
+                      "email": {
+                        "$ref": "#/components/schemas/users/email"
+                      },
+                      "gender": {
+                        "$ref": "#/components/schemas/users/gender"
+                      },
+                      "securityQtn": {
+                        "$ref": "#/components/schemas/users/securityQtn"
+                      },
+                      "securityAns": {
+                        "$ref": "#/components/schemas/users/securityAns"
+                      },
+                      "imgUrl": {
+                        "$ref": "#/components/schemas/usersimgUrl"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/secure/users/{userId}": {
+      "get": {
+        "description": "get an array of all users in the database",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/userId"
+          },
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user successfully fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fullname": {
+                      "$ref": "#/components/schemas/users/fullname"
+                    },
+                    "username": {
+                      "$ref": "#/components/schemas/users/username"
+                    },
+                    "email": {
+                      "$ref": "#/components/schemas/users/email"
+                    },
+                    "gender": {
+                      "$ref": "#/components/schemas/users/gender"
+                    },
+                    "securityQtn": {
+                      "$ref": "#/components/schemas/users/securityQtn"
+                    },
+                    "securityAns": {
+                      "$ref": "#/components/schemas/users/securityAns"
+                    },
+                    "imgUrl": {
+                      "$ref": "#/components/schemas/users/imgUrl"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "update user profile",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref": "#/components/parameters/userId"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fullname": {
+                    "$ref": "#/components/schemas/users/fullname"
+                  },
+                  "username": {
+                    "$ref": "#/components/schemas/users/username"
+                  },
+                  "email": {
+                    "$ref": "#/components/schemas/users/email"
+                  },
+                  "gender": {
+                    "$ref": "#/components/schemas/users/gender"
+                  },
+                  "imgUrl": {
+                    "$ref": "#/components/schemas/users/imgUrl"
+                  }
+                }
+              }
+            }
+          }  
+        },
+        "responses": {
+          "200": {
+            "description": "update is successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fullname": {
+                      "$ref": "#/components/schemas/users/fullname"
+                    },
+                    "username": {
+                      "$ref": "#/components/schemas/users/username"
+                    },
+                    "email": {
+                      "$ref": "#/components/schemas/users/email"
+                    },
+                    "gender": {
+                      "$ref": "#/components/schemas/users/gender"
+                    },
+                    "imgUrl": {
+                      "$ref": "#/components/schemas/users/imgUrl"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500Response"
+          }
+        }
+      },
+      "delete": {
+        "description": "delete a user",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref": "#components/parameters/userId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "user successfully deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500Response"
+          }
+        }
+      }
+    },
+    "/secure/centers": {
+      "post": {
+        "description": "create a new center",
+        "required": "true",
+        "parameters": {
+          "$ref": "#/components/parameters/token"
+        },
+        "requestBody": {
+          "operationId": "create center",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/center"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "center successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/center"
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500Response"
+          }
+        }
+      },
+      "get": {
+        "description": "Get all centers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success fetching list of all centers",
+            "content": {
+              "application/json": {
+                "type": "array",
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/center"
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500Response"
+          }
+        }
+      }
+    },
+    "/secure/centers/{centerId}": {
+      "get": {
+        "description": "get a center with the given id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref":"#/components/parameters/centerId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success fetching center with the given Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/center"
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref":  "#/components/responses/500Response"
+          }
+       }
+      },
+      "put": {
+        "description": "Update center information",
+        "operationId": "update center",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref": "#/components/parameters/centerId"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/center"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "center updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/center"
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/402Response"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a center from the list of center. This is an action to be perform by an admin user who created the center. You will need to send the id of the user along the request body",
+        "operationId": "delete center",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref": "#/components/parameters/centerId"
+          }
+        ],
+        "requestBody": {
+          "required": true, 
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "$ref": "#/components/schemas/id"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "center deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Center have been deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/402Response"
+          }
+        }
+      }
+    },
+    "/secure/events": {
+      "post": {
+        "description": "post a new event",
+        "operationId": "create event",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+               "$ref": "#/components/schemas/event"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "center created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/event"
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500Response"
+          }
+        }
+      }
+    },
+    "/secure/events/{eventId}": {
+      "put": {
+        "description": "get a center with the given id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref":"#/components/parameters/eventId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success updating event with the given Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/event"
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref":  "#/components/responses/500Response"
+          }
+       }
+      },
+      "delete": {
+        "description": "Delete a center from the list of center. This is an action to be perform by n user who created the event. You will need to send the id of the user along the request body",
+        "operationId": "delete event",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref": "#/components/parameters/eventId"
+          }
+        ],
+        "requestBody": {
+          "required": true, 
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "$ref": "#/components/schemas/id"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "event deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "event have been deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/402Response"
+          }
+        }
+      }
+    },
+    "/secure/events/{userId}": {
+      "get": {
+        "description": "get a center with the given id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref":"#/components/parameters/userId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success fetching event with the given Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items":{
+                    "$ref": "#/components/schemas/event"
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref":  "#/components/responses/500Response"
+          }
+       }
+      }
+    },
+    "/secure/notifications": {
+      "post": {
+        "description": "Admin create notification to users about thier event status. to post notifcation you have to pass the userId the notification is meant for along with the form",
+        "operationId": "create notification",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema": {
+                "$ref": "#/components/schemas/notification"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Notification posted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items":{
+                    "$ref": "#/components/schemas/notification"
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref":  "#/components/responses/500Response"
+          }
+        }
+      },
+      "get": {
+        "description": "Allow admin to get all notification",
+        "operationId": "get notifications",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "$ref": "#/components/schemas/id"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Notification posted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items":{
+                    "$ref": "#/components/schemas/notification"
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref":  "#/components/responses/500Response"
+          }
+        }
+      }
+    },
+    "/secure/notifications{userId}": {
+      "get": {
+        "description": "Allow users to get their notification by providing theor userId",
+        "operationId": "get notifications",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/token"
+          },
+          {
+            "$ref": "#/components/parameters/userId"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Notification posted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items":{
+                    "$ref": "#/components/schemas/notification"
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "$ref": "#/components/responses/402Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404Response"
+          },
+          "500": {
+            "$ref":  "#/components/responses/500Response"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "token": {
+        "type": "string",
+        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoZW5LZXkiOiJ0Ym95IiwiaWF0IjoxNTIzNDkxOTkyLCJleHAiOjE1MjM2NjQ3OTJ9.ynUt-X0Y3RzNyi6lXBzGLkgYzpxBh635SPzArS8IEXI"
+      },
+      "id": {
+        "type": "integer",
+        "example": 1
+      },
+      "center": {
+        "type": "object",
+        "properties": {
+          "centerName": {
+            "type": "string",
+            "example": "D`cubicle event center"
+          },
+          "centerLocation": {
+            "type": "string",
+            "example": "Lagos"
+          },
+          "sits": {
+            "type": "integer",
+            "example": "500"
+          },
+          "price": {
+            "type": "integer",
+            "example": "#450"
+          },
+          "facilities": {
+            "type": "array",
+            "example": ["AC", "Catering"]
+          },
+          "imgUrl": {
+            "type": "string",
+            "example": "path/to/uploaded/photo",
+            "format": "binary"
+          },
+          "id": {
+            "$ref": "#/components/schemas/id"
+          },
+          "userId": {
+            "$ref": "#/components/schemas/id"
+          }
+        }
+      },
+      "event": {
+        "type": "object",
+        "properties": {
+          "eventType": {
+            "type": "string",
+            "example": "Mega Plus Concert"
+          },
+          "eventData": {
+            "type": "string",
+            "example": "10/16/2018"
+          },
+          "facilities": {
+            "type": "array",
+            "example": ["AC", "DJ"]
+          },
+          "imgUrl": {
+            "type": "string",
+            "example": "path/to/event/photo",
+            "format": "binary"
+          },
+          "centerId": {
+            "$ref": "#/components/schemas/id"
+          },
+          "userId": {
+            "$ref": "#/components/schemas/id"
+          }
+        }
+      },
+      "notification": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "We are glad to info you your event will be fulfilled"
+          },
+          "userId": {
+            "$ref": "#/components/schemas/id"
+          }
+        }
+      },
+      "users": {
+        "fullname": {
+          "type": "string",
+          "example": "Tutu Godfrey"
+        },
+        "username": {
+          "type": "string",
+          "example": "johnd"
+        },
+        "email": {
+          "type": "string",
+          "example": "tutugodfrey@gmail.com"
+        },
+        "gender": {
+          "type": "string",
+          "example": "male"
+        },
+        "securityQtn": {
+          "type": "string",
+          "example": "What is the name of your first car"
+        },
+        "securityAns": {
+          "type": "string",
+          "example": "Toyota"
+        },
+        "imgUrl": {
+          "type": "string",
+          "example": "path/to/user/photo",
+          "format": "binary"
+        },
+        "passwd1": {
+          "type": "string",
+          "example": "1234"
+        },
+        "passwd2": {
+          "type": "string",
+          "example": "1234"
+        },
+        "userType": {
+          "type": "string",
+          "example": "regular"
+        },
+        "id": {
+          "$ref": "#/components/schemas/id"
+        }
+      }
+    },
+    "parameters": {
+      "token": {
+        "name": "token",
+        "in": "header",
+        "description": "User access token generated and send when users signin to their accounts",
+        "schema": {
+          "$ref": "#/components/schemas/token"
+        }
+      },
+      "userId": {
+        "name": "userId",
+        "in": "path",
+        "description": "The unique Id of the user performing and action or against which an action will be performed",
+        "schema": {
+          "$ref": "#/components/schemas/id"
+        }
+      },
+      "centerId": {
+        "name": "centerId",
+        "in": "path",
+        "description": "The unique Id of the center against which an action will be performed",
+        "schema": {
+          "$ref": "#/components/schemas/id"
+        }
+      },
+      "eventId": {
+        "name": "eventId",
+        "in": "path",
+        "description": "The unique Id of the event against which an action will be performed",
+        "schema": {
+          "$ref": "#/components/schemas/id"
+        }
+      }
+    },
+    "responses": {
+      "404Response": {
+        "description": "Object not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Model you are looking for is not found"
+                },
+                "action": {
+                  "type": "string",
+                  "example": "No action taken"
+                }
+              }
+            }
+          }
+        }
+      },
+      "402Response": {
+        "description": "Bad request. This error can occur if a required field is missing",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Please send a token"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500Response": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Internal server error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
