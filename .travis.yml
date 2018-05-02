@@ -13,6 +13,7 @@ after_script:
 # send coverage to coveralls
 after_success:
   - "npm run send-coverage"
+  - codeclimate-test-reporter < coverage/lcov.info
 #  - codeclimate-test-reporter < ./coverage/lcov.info
 # after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
 
