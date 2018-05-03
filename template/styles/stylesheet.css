@@ -1,0 +1,91 @@
+body  {
+	background-color:rgba(0, 0, 0);
+	/*background-image:url(./../avatar/images9.jpg); */ width:1000px;  
+		width:1000px; height:1700px; margin:2px;
+}
+
+h1#home-page-description {
+	font-size:35px; text-align:center;
+}
+div.sub-menu {
+	 position:relative; left:75%; top:10px; width:280px;
+}
+div.sub-menu2 {
+	 position:relative; left:75%; top:-45px; width:280px;
+}
+img#profile-pix {
+	height:30px; width:30px;
+}
+/***
+formating for the navigation area
+***/
+
+div#header-div {
+	 background-color:rgba(0, 0, 0, 0.7); padding:8px; width:100%;
+	 margin:-2px; height:65px; position:fixed; Z-index:1; top:0px;
+}
+div.form-div  {
+	position:relative; top:40px; left:-20%;
+}
+div.form-div form {
+	background-color:rgba(0, 0, 0, 0.3); margin-top:25px; width:25rem; position:relative; left:50%;
+}
+
+#modificationNotice {
+	background-color:rgba(0, 0, 0, 0.2); font-weight:bold; position:relative; top:8px;
+}
+
+/***
+formating for the body div 
+***/
+#index-heading {
+	text-align:center; font-size:60px;
+}
+.card {
+	padding:10px; margin:20px; width:150px
+}
+div.body-div {
+	 background-color:rgba(0, 0, 0); position:absolute; top:10px; height:1500px; width:100%; margin-top:60px; margin-bottom:25px;
+	
+}
+div.form-div {
+	position:relative; width:100%;
+}
+
+img.background-images, img.feature-img {
+	width:100%; height:400px;
+}
+#profile-page, #contact  {
+	position:relative; left:30%; top:100px;
+}
+
+.btn { background-color:light-blue;}
+/*** 
+footing for the the footers area
+***/
+div#footer-div {
+	  width:100%; padding:8px; margin:-2px; position:fixed; bottom:0px; background-color:rgba(0, 0, 0, 0.7);  height:50px;  padding:8px;
+	 margin:-2px;
+}
+
+div#footer-div ul {
+	position:relative; left:40%;
+}
+
+
+
+/***
+General formating 
+***/
+p#validationNotice {
+	visibility:hidden; border:1px solid red;
+}
+#modificationNotice {
+	font-weight:bold; position:relative; top:8px;
+}
+#failValidation {
+	background-color:red; color:red;
+}
+.failValidation {
+	 border: 1px solid red;
+}

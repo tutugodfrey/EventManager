@@ -1,5 +1,5 @@
 node_modules
-npm-debug.log
+npm-debug.lo
 npm-debug.log*
 public/centers-photo/*
 public/events-photo/*
@@ -8,3 +8,4 @@ public/users-photo/*
 coverage
 .vscode
 processRecall.md
+

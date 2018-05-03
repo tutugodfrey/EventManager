@@ -1,8 +1,20 @@
 language: node_js
 node_js:
 - "6.10.3"
+addons:
+    code_climate:
+        repo_token: 0c2c4ae2bfe77183517a42401d535b84e841d3d5ee19be8dc5d3866dd88e865f
 script: "npm test"
+# send coverage report to codeclimate
+before_script:
+  - npm install codeclimate-test-reporter istanbul -g
+# after_script:
+#  - codeclimate-test-reporter < ./coverage/lcov.info
 # send coverage to coveralls
-after_success: "npm run send-coverage"
+after_success:
+  - "npm run send-coverage"
+  - codeclimate-test-reporter < coverage/lcov.info
+#  - codeclimate-test-reporter < ./coverage/lcov.info
 # after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+
 
