@@ -3,7 +3,8 @@ node_js:
 - "6.10.3"
 addons:
     code_climate:
-        repo_token: 0c2c4ae2bfe77183517a42401d535b84e841d3d5ee19be8dc5d3866dd88e865f
+        repo_token:
+          secure: "Q8ZQ9HifsRy9p9J9AVwd6Z5hRUDXQ+wTvVCA7MCu7PpdIJWUlP7IbsztRZVHRYc4toPOncm0hUW48NFJTgcAqvZYRvS5dQngWFUgurz9F7oEK3O4NTxq9rrRp3Z9xjh7/bxGsr7e0frvESvr6DGDl+LY+A0e7v7/+DKgpriWOshb0GVRow7Lp36Sr46coSYhW3vvhLH1/u7LbiNFYv/2OzCdlRMn4nWF64yv00pigS0hTeYAf9lEBpueOfipz9o0aGvKAkHzZ/bfmIMr48RepTxiLFaRZFSFhDrY5piLq6GxDGumd5O10iA+aHjJ6Wg53G5Eqt6xDgUgVDdlvoVvrJQ2XCR7+eBEya3lusd/UtNQbz1Hv36e903YrPWIhQV3TrlSMQzpobWTUXZjaqiNLFAWyEvJ5yMPLrhY+v4co6pR1ERCrOUlNJxM6VS28wA1gcwq+xLN/1lVdO6P+GARtwe/WCakVghZpEyYiegBToK4AnPAvzJ9neHAEmyfahBz4LffsEkYwCILDTx4o7bio7Xtil2oOzq5joklWmIOlgYTGC58K5u0lCDPBTIG3UEB4vmgh2yvahptyGL7EM8hq0afYkYDfjy7ASw38xVTLpujQip+hsOCtKaGA5WmFXOGF7haU7hZfGPTnKmm6IYur+HQOZZ6mAqU+QJk3DFeqKs="
 script: "npm test"
 # send coverage report to codeclimate
 before_script:
