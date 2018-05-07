@@ -72,6 +72,38 @@ if (process.env.NODE_ENV !== 'test') {
         });
       });
 
+      it('should not create already existing user', function () {
+        return _chai2.default.request(app).post('/api/v1/users/signup').set('Content-Type', 'multipart/form-data').field('fullname', 'tutu godfrey').field('username', 'tutug').field('email', 'meandyou@yahoo.com').field('gender', 'male').field('passwd1', '12345').field('passwd2', '12345').field('userType', 'admin').field('securityQtn', 'what isthe name of your best teacher?').field('securityAns', 'westle')
+        // .send(user)
+        .attach('userPix', './filestoupload/wp_ss_20150407_0001.png').then(function (res) {
+          expect(res).to.have.status(200);
+          expect(res.body).to.be.an('Object');
+        });
+      });
+
+      it('should not create user if password does not match', function () {
+        return _chai2.default.request(app).post('/api/v1/users/signup').set('Content-Type', 'multipart/form-data').field('fullname', 'tutu godfrey').field('username', 'tutu').field('email', 'mendyou@yahoo.com').field('gender', 'male').field('passwd1', '12345').field('passwd2', '12346').field('userType', 'admin').field('securityQtn', 'what isthe name of your best teacher?').field('securityAns', 'westle')
+        // .send(user)
+        .attach('userPix', './filestoupload/wp_ss_20150407_0001.png').then(function (res) {
+          expect(res).to.have.status(400);
+          expect(res.body).to.be.an('Object');
+        }).catch(function (res) {
+          expect(res).to.have.status(400);
+        });
+      });
+
+      it('should not create user if a required field is not present', function () {
+        return _chai2.default.request(app).post('/api/v1/users/signup').set('Content-Type', 'multipart/form-data').field('fullname', 'tutu godfrey').field('username', 'tutu').field('email', 'mendyou@yahoo.com').field('gender', 'male').field('passwd1', '12345').field('passwd2', '12345').field('userType', 'admin').field('securityQtn', 'what isthe name of your best teacher?')
+        // .send(user)
+        .attach('userPix', './filestoupload/wp_ss_20150407_0001.png').then(function (res) {
+          expect(res).to.have.status(400);
+          //  expect(res.body).to.be.an('Object');
+        }).catch(function (res) {
+          expect(res).to.have.status(400);
+          // expect(res.body).to.be.an('Object');
+        });
+      });
+
       it('should signin a adminUser in and give a token', function () {
         return _chai2.default.request(app).post('/api/v1/users/signin').send({
           username: adminUser.username,
@@ -80,6 +112,49 @@ if (process.env.NODE_ENV !== 'test') {
           Object.assign(signedInUser, res.body);
           expect(res).to.have.status(200);
           expect(res.body).to.be.an('Object');
+        });
+      });
+
+      it('should not signin a user if password is not correct', function () {
+        return _chai2.default.request(app).post('/api/v1/users/signin').send({
+          username: adminUser.username,
+          password: '1345'
+        }).then(function (res) {
+          expect(res).to.have.status(400);
+          expect(res.body).to.be.an('Object');
+        }).catch(function (res) {
+          expect(res).to.have.status(400);
+        });
+      });
+
+      it('should not singin in username is not found', function () {
+        return _chai2.default.request(app).post('/api/v1/users/signin').send({
+          username: 'wronguser',
+          password: '12345'
+        }).then(function (res) {
+          expect(res).to.have.status(400);
+          expect(res.body).to.be.an('Object');
+        }).catch(function (res) {
+          expect(res).to.have.status(400);
+        });
+      });
+
+      it('should fail if token is not sent', function () {
+        return _chai2.default.request(app).post('/api/v1/secure').set('Content-Type', 'multipart/form-data').field('userType', signedInUser.userType).field('centerName', 'gard park').field('location', 'Abuja').field('cost', 240).field('sits', 500).field('facilities', 'Air condition').field('userId', signedInUser.userId).field('facilities', 'projector').attach('centerPix', './filestoupload/wp_ss_20150309_0001.png').then(function (res) {
+          expect(res).to.have.status(402);
+        }).catch(function (res) {
+          return expect(res).to.have.status(402);
+        });
+      });
+
+      it('should fail if token is invalid', function () {
+        var token = signedInUser.token;
+
+        var invalidToken = token.substring(0, token.length - 2);
+        return _chai2.default.request(app).post('/api/v1/secure').set('Content-Type', 'multipart/form-data').set('token', invalidToken).field('userType', signedInUser.userType).field('centerName', 'gard park').field('location', 'Abuja').field('cost', 240).field('sits', 500).field('facilities', 'Air condition').field('userId', signedInUser.userId).field('facilities', 'projector').attach('centerPix', './filestoupload/wp_ss_20150309_0001.png').then(function (res) {
+          expect(res).to.have.status(401);
+        }).catch(function (res) {
+          return expect(res).to.have.status(401);
         });
       });
 
