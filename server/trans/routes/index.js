@@ -118,18 +118,21 @@ var Routes = function () {
       // route controllers for Event Centers
       this.securedApi.use(function (req, res, next) {
         var token = req.body.token || req.headers.token;
-        if (token) {
-          /* eslint-disable no-unused-vars */
-          _jsonwebtoken2.default.verify(token, process.env.SECRET_KEY, function (err, decode) {
-            if (err) {
-              res.status(500).send('Invalid Token');
-            } else {
-              next();
-            }
-          });
-        } else {
-          res.status(402).send('Please send a token');
-        }
+        /* eslint-disable no-unused-vars */
+        var promise = new Promise(function (resolve, reject) {
+          if (token) {
+            _jsonwebtoken2.default.verify(token, process.env.SECRET_KEY, function (err, decode) {
+              if (err) {
+                resolve(res.status(401).send('Invalid Token'));
+              } else {
+                resolve(next());
+              }
+            });
+          } else {
+            resolve(res.status(402).send('Please send a token'));
+          }
+        });
+        return promise;
       });
 
       this.securedApi.get('/users/:userId', this.users.getUser);

@@ -70,18 +70,21 @@ const Routes = class {
     // route controllers for Event Centers
     this.securedApi.use((req, res, next) => {
       const token = req.body.token || req.headers.token;
-      if (token) {
-        /* eslint-disable no-unused-vars */
-        jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
-          if (err) {
-            res.status(500).send('Invalid Token');
-          } else {
-            next();
-          }
-        });
-      } else {
-        res.status(402).send('Please send a token');
-      }
+      /* eslint-disable no-unused-vars */
+      const promise = new Promise((resolve, reject) => {
+        if (token) {
+          jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
+            if (err) {
+              resolve(res.status(401).send('Invalid Token'));
+            } else {
+              resolve(next());
+            }
+          });
+        } else {
+          resolve(res.status(402).send('Please send a token'));
+        }
+      });
+      return promise;
     });
 
     this.securedApi.get('/users/:userId', this.users.getUser);
