@@ -33,7 +33,7 @@ var db = {};
 var sequelize = void 0;
 if (config.use_env_variable) {
   sequelize = new _sequelize2.default(process.env[config.use_env_variable], {
-    dialect: 'mysql'
+    dialect: 'postgres'
   });
 } else {
   sequelize = new _sequelize2.default(config.database, config.username, config.password, {

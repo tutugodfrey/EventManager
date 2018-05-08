@@ -51,7 +51,9 @@ const UsersController = class {
                       id: signup.id,
                     });
                   })
-                  .catch(error => res.status(400).send(error));
+                  .catch((error) => {
+                    return res.status(400).send(error);
+                  });
               });
             });
           } else {
@@ -94,10 +96,10 @@ const UsersController = class {
             return res.status(400).send({ message: 'password is not correct' });
           }
         } else {
-          return res.status(400).send({ message: 'Your username is not correct' });
+          return res.status(400).send({ message: 'password is not correct' });
         }
       })
-      .catch(error => res.status(500).send(error));
+      .catch(error => res.status(400).send(error));
   }
   // get user by id
   getUser(req, res) {
